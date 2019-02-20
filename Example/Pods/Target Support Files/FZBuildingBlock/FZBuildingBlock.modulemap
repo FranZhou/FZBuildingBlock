@@ -1,0 +1,6 @@
+framework module FZBuildingBlock {
+  umbrella header "FZBuildingBlock-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "FZBuildingBlock",
+  "version": "0.1.0",
+  "summary": "A short description of FZBuildingBlock.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/zhoufan123/FZBuildingBlock",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhoufan123": "zhoufan123@babytree-inc.com"
+  },
+  "source": {
+    "git": "https://github.com/zhoufan123/FZBuildingBlock.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "swift_version": "4.2",
+  "subspecs": [
+    {
+      "name": "Extension",
+      "source_files": "FZBuildingBlock/Extension/Classes/**/*",
+      "frameworks": [
+        "UIKit",
+        "Foundation",
+        "CoreGraphics"
+      ],
+      "resource_bundles": {
+        "FZBuildingBlock_Extension": [
+          "FZBuildingBlock/Extension/Assets/**/*"
+        ]
+      }
+    },
+    {
+      "name": "Observer",
+      "source_files": "FZBuildingBlock/Observer/Classes/**/*",
+      "frameworks": "Foundation"
+    }
+  ]
+}
