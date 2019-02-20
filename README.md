@@ -22,7 +22,7 @@ pod 'FZBuildingBlock'
 
 ## Author
 
-zhoufan123, zhoufan123@babytree-inc.com
+FranZhou, fairytale_zf@outlook.com
 
 ## License
 
