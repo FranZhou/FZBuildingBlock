@@ -40,10 +40,6 @@ extension UIImage {
     /// - Parameter attributedString: 需要变成图片显示的文字
     /// - Returns:
     public class func fz_image(withAttributedString attributedString: NSAttributedString) -> UIImage? {
-        if attributedString.size().equalTo(.zero){
-            return nil
-        }
-        
         return UIImage.fz_image(withAttributedString: attributedString, size: attributedString.size())
     }
     
@@ -57,7 +53,7 @@ extension UIImage {
     /// - Returns:
     public class func fz_image(withAttributedString attributedString: NSAttributedString, size: CGSize) -> UIImage? {
         if size.equalTo(.zero){
-            return nil
+            return UIImage()
         }
         
         // 获取绘制高度宽度

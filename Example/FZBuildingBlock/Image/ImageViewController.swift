@@ -21,7 +21,8 @@ class ImageViewController: UIViewController {
         [
             (title: "纯色图片", clzType: ImageColorViewController.self),
             (title: "图片旋转图片", clzType: ImageRotationViewController.self),
-            (title: "文字图片", clzType: StringImageViewController.self)
+            (title: "文字图片", clzType: StringImageViewController.self),
+            (title: "图片圆角", clzType: ImageCornerRadiusViewController.self)
         ]
     ]
 

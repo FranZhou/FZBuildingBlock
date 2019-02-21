@@ -23,7 +23,7 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_fullWaterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: Double = 0) -> UIImage?{
+    public func fz_fullWaterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
         
         return self.fz_fullWaterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), horizontalSpace: horizontalSpace, horizontalAutoOffset: horizontalAutoOffset, verticalSpace: verticalSpace, verticalAutoOffset: verticalAutoOffset, rotation: rotation)
     }
@@ -39,15 +39,15 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_fullWaterMark(withAttributedString attributedMark: NSAttributedString, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: Double = 0) -> UIImage?{
+    public func fz_fullWaterMark(withAttributedString attributedMark: NSAttributedString, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
         // 没有水印文字
         if attributedMark.string.count == 0{
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         // 需要打水印图片的size为{0,0}
         if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         let oriWidth = self.size.width
@@ -73,7 +73,7 @@ extension UIImage{
         
         if rotation.truncatingRemainder(dividingBy: 360) != 0.0 {
             // 以绘制原点为中心旋转
-            context.rotate(by: CGFloat(rotation/180*Double.pi))
+            context.rotate(by: rotation/180*CGFloat.pi)
         }
         
         // 将绘制原点恢复初始值，保证当前context中心和源image的中心处在一个点(当前context已经旋转，所以绘制出的任何layer都是倾斜的)
@@ -124,15 +124,15 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns: 
-    public func fz_fullWaterMark(withImage markImage: UIImage, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: Double = 0) -> UIImage? {
+    public func fz_fullWaterMark(withImage markImage: UIImage, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage? {
         // 水印图片size为{0,0}
         if markImage.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         // 需要打水印图片的size为{0,0}
         if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         let oriWidth = self.size.width
@@ -158,7 +158,7 @@ extension UIImage{
         
         if rotation.truncatingRemainder(dividingBy: 360) != 0.0 {
             // 以绘制原点为中心旋转
-            context.rotate(by: CGFloat(rotation/180*Double.pi))
+            context.rotate(by: rotation/180*CGFloat.pi)
         }
         
         // 将绘制原点恢复初始值，保证当前context中心和源image的中心处在一个点(当前context已经旋转，所以绘制出的任何layer都是倾斜的)
@@ -227,10 +227,9 @@ extension UIImage{
     ///   - mark: 水印文字
     ///   - markAttributes: default nil,水印文字相关属性
     ///   - drawPoint: 水印绘制位置
-    ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawPoint: CGPoint, rotation: Double = 0) -> UIImage?{
-        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawPoint: drawPoint, rotation: rotation)
+    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawPoint: CGPoint) -> UIImage?{
+        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawPoint: drawPoint)
     }
     
     /// 在图片上加上单个文字水印
@@ -239,10 +238,9 @@ extension UIImage{
     ///   - mark: 水印文字
     ///   - markAttributes: default nil,水印文字相关属性
     ///   - drawRect: 水印绘制区域
-    ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawRect: CGRect, rotation: Double = 0) -> UIImage?{
-        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawRect: drawRect, rotation: rotation)
+    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawRect: CGRect) -> UIImage?{
+        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawRect: drawRect)
     }
     
     /// 在图片上加上单个文字水印
@@ -250,22 +248,11 @@ extension UIImage{
     /// - Parameters:
     ///   - attributedMark: 水印文字
     ///   - drawPoint: 水印绘制位置
-    ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawPoint: CGPoint, rotation: Double = 0) -> UIImage?{
-        // 需要打水印图片的size为{0,0}
-        if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
-        }
-        
-        // 没有水印文字
-        if attributedMark.string.count == 0{
-            return self.mutableCopy() as? UIImage
-        }
-        
+    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawPoint: CGPoint) -> UIImage?{
         // 水印文字转换成图片
-        guard let markImage = UIImage.fz_image(withAttributedString: attributedMark)?.fz_rotate(withRotation: rotation) else {
-            return self.mutableCopy() as? UIImage
+        guard let markImage = UIImage.fz_image(withAttributedString: attributedMark) else {
+            return self.fz_copy()
         }
         
         return self.fz_waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
@@ -277,22 +264,11 @@ extension UIImage{
     /// - Parameters:
     ///   - attributedMark: 水印文字
     ///   - drawRect: 水印绘制区域
-    ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawRect: CGRect, rotation: Double = 0) -> UIImage?{
-        // 需要打水印图片的size为{0,0}
-        if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
-        }
-        
-        // 没有水印文字
-        if attributedMark.string.count == 0{
-            return self.mutableCopy() as? UIImage
-        }
-        
+    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawRect: CGRect) -> UIImage?{
         // 水印文字转换成图片
-        guard let markImage = UIImage.fz_image(withAttributedString: attributedMark)?.fz_rotate(withRotation: rotation) else {
-            return self.mutableCopy() as? UIImage
+        guard let markImage = UIImage.fz_image(withAttributedString: attributedMark) else {
+            return self.fz_copy()
         }
         
         return self.fz_waterMark(withImage: markImage, drawRect: drawRect)
@@ -306,14 +282,6 @@ extension UIImage{
     ///   - drawPoint: 绘制位置
     /// - Returns:
     public func fz_waterMark(withImage markImage: UIImage, drawPoint: CGPoint) -> UIImage?{
-        if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
-        }
-        
-        if markImage.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
-        }
-        
         return self.fz_waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
     }
     
@@ -326,15 +294,15 @@ extension UIImage{
     /// - Returns:
     public func fz_waterMark(withImage markImage: UIImage, drawRect: CGRect) -> UIImage?{
         if self.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         if markImage.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         if drawRect.size.equalTo(.zero){
-            return self.mutableCopy() as? UIImage
+            return self.fz_copy()
         }
         
         let oriWidth = self.size.width

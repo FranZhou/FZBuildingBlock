@@ -93,7 +93,7 @@ extension ObserveAble {
 
 
 
-// MARK: - 添加观察者, 添加之后需要主要移除操作
+// MARK: - 添加观察者, 添加之后需要注意移除操作
 extension ObserveAble {
     
     /// 绑定观察者

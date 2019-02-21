@@ -16,7 +16,7 @@ class ImageRotationViewController: UIViewController {
     var imageView: UIImageView!
     var cutImageView: UIImageView!
     
-    var rotation: Double = 0
+    var rotation: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()

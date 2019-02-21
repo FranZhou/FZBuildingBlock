@@ -26,6 +26,10 @@ extension UIImage {
     /// - Parameter size: 修改尺寸
     /// - Returns: 
     public func fz_resize(withSize size: CGSize) -> UIImage? {
+        // 尺寸没有发生变化
+        guard self.size.equalTo(size) else {
+            return self.fz_copy()
+        }
         
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         self.draw(in: CGRect(origin: .zero, size: size))
