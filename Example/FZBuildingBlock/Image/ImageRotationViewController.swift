@@ -10,8 +10,11 @@ import UIKit
 
 class ImageRotationViewController: UIViewController {
     
+    let originSize = CGSize(width: 250, height: 200)
+    
     var image: UIImage!
-    var imageView: UIImageView?
+    var imageView: UIImageView!
+    var cutImageView: UIImageView!
     
     var rotation: Double = 0
 
@@ -20,7 +23,7 @@ class ImageRotationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        if let image = UIImage.fz_image(with: .fz_randomColor(), size: CGSize(width: 300, height: 200)) {
+        if let image = UIImage.fz_image(withColor: .fz_randomColor(), size: CGSize(width: 250, height: 200)) {
             self.image = image
         }else{
             self.image = UIImage()
@@ -32,7 +35,7 @@ class ImageRotationViewController: UIViewController {
     func setUpView() {
         let btn = UIButton(type: .custom)
         btn.fz_x = 100
-        btn.fz_y = 200
+        btn.fz_y = 100
         btn.fz_width = 200
         btn.fz_height = 50
         btn.setTitle("旋转当前图片", for: .normal)
@@ -40,25 +43,41 @@ class ImageRotationViewController: UIViewController {
         
         self.view.addSubview(btn)
         
-        let imageView = UIImageView()
-        imageView.image = self.image
-        imageView.fz_size = self.image.size
-        imageView.fz_outerCenter = self.view.fz_innerCenter
+        self.imageView = UIImageView()
         self.view.addSubview(imageView)
-        self.imageView = imageView
+        
+        self.cutImageView = UIImageView()
+        self.view.addSubview(cutImageView)
+        
+        self.changeImageToShow(with: self.image)
     }
     
     
     @objc func btnClickAction(sender: Any){
-        guard let image = self.image.fz_rotate(with: rotation) else {
+        guard let image = self.image.fz_rotate(withRotation: rotation) else {
             return
         }
         rotation += 30
         
-        imageView?.image = image
-        imageView?.fz_size = image.size
-        imageView?.fz_outerCenter = self.view.fz_innerCenter
+        self.changeImageToShow(with: image)
         
+    }
+    
+    func changeImageToShow(with image: UIImage){
+        imageView!.image = image
+        imageView!.fz_size = image.size
+        imageView!.fz_outerCenterX = self.view.fz_outerCenterX
+        imageView!.fz_outerCenterY = self.view.fz_innerCenterY - 50
+        
+        let originSize = CGSize(width: 250, height: 200)
+        guard let cutImage = image.fz_cut(withRect: CGRect(origin: CGPoint(x: (image.size.width - originSize.width) / 2.0, y: (image.size.height - originSize.height) / 2.0), size: originSize)) else {
+            return
+        }
+        
+        cutImageView!.image = cutImage
+        cutImageView!.fz_size = cutImage.size
+        cutImageView!.fz_outerCenterX = self.view.fz_outerCenterX
+        cutImageView!.fz_y = view.fz_height - cutImageView.fz_height - 50
     }
 
     /*

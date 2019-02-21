@@ -9,13 +9,23 @@ import Foundation
 
 extension UIImage {
     
-    public func fz_scala(with scala: CGFloat) -> UIImage?{
+    
+    /// 按比例缩放图片
+    ///
+    /// - Parameter scala: 缩放比例
+    /// - Returns:
+    public func fz_resize(withScala scala: CGFloat) -> UIImage?{
         let newSize = CGSize(width: self.size.width*scala, height: self.size.height*scala)
         
-        return self.fz_resize(with: newSize)
+        return self.fz_resize(withSize: newSize)
     }
     
-    public func fz_resize(with size: CGSize) -> UIImage? {
+    
+    /// 修改图片尺寸
+    ///
+    /// - Parameter size: 修改尺寸
+    /// - Returns: 
+    public func fz_resize(withSize size: CGSize) -> UIImage? {
         
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         self.draw(in: CGRect(origin: .zero, size: size))

@@ -45,7 +45,7 @@ extension UIColor{
     ///   - alpha: [0, 1] 默认 1
     /// - Returns:
     public class func fz_color(rgbHexString: String, alpha: CGFloat = 1.0) -> UIColor{
-        let colorStr = rgbHexString.fz_trimAllWhiteSpace().fz_trimLeft(with: ["#"])
+        let colorStr = rgbHexString.fz_trimAllWhiteSpace().fz_trimLeft(withFilter: ["#"])
         if colorStr.count != 6{
             return UIColor.init()
         }

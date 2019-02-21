@@ -17,8 +17,15 @@ class StringImageViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        if let stringImage = UIImage.fz_image(with: "zhoufan") {
+        if let stringImage = UIImage.fz_image(withString: "zhoufan") {
             let imageView = UIImageView(image: stringImage)
+            imageView.fz_x = 100
+            imageView.fz_y = 100
+            self.view.addSubview(imageView)
+        }
+        
+        if let stringImage2 = UIImage.fz_image(withString: "FranZhouFranZhouFranZhou FranZhou FranZhou FranZhou FranZhou FranZhou FranZhou", size: CGSize(width: 100, height: 50)) {
+            let imageView = UIImageView(image: stringImage2)
             imageView.fz_x = 100
             imageView.fz_y = 200
             self.view.addSubview(imageView)

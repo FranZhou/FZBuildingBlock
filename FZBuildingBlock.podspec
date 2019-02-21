@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     s.name             = 'FZBuildingBlock'
     s.version          = '0.1.0'
-    s.summary          = '积木私有库，提供开发中最基础的功能组件'
+    s.summary          = '提供开发中最基础的功能组件'
     
     # This description is used to generate tags and improve search results.
     #   * Think: What does it do? Why did you write it? What is the focus?
@@ -37,9 +37,9 @@ Pod::Spec.new do |s|
     s.subspec 'Extension' do |s_extension|
         s_extension.source_files = 'FZBuildingBlock/Extension/Classes/**/*'
         s_extension.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
-        s_extension.resource_bundles = {
-            'FZBuildingBlock_Extension' => ['FZBuildingBlock/Extension/Assets/**/*']
-        }
+#        s_extension.resource_bundles = {
+#            'FZBuildingBlock_Extension' => ['FZBuildingBlock/Extension/Assets/**/*']
+#        }
     end
     
     s.subspec 'Observer' do |s_observer|

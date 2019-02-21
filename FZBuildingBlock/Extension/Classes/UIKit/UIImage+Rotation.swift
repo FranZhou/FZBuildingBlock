@@ -15,9 +15,9 @@ extension UIImage {
     ///
     /// - Parameter rotation: 旋转角度(单位: 度)
     /// - Returns:
-    public func fz_rotate(with rotation: Double) -> UIImage? {
+    public func fz_rotate(withRotation rotation: Double) -> UIImage? {
         if rotation.truncatingRemainder(dividingBy: 360) == 0 {
-            return self
+            return self.mutableCopy() as? UIImage
         }
         
         let imageRect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)

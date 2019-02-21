@@ -15,8 +15,8 @@ extension UIImage {
     ///
     /// - Parameter rect: 截取位置
     /// - Returns:
-    public func fz_cut(with rect: CGRect) -> UIImage?{
-        if rect.equalTo(.zero){
+    public func fz_cut(withRect rect: CGRect) -> UIImage?{
+        if rect.size.equalTo(.zero){
             return UIImage()
         }
         let scala = UIScreen.main.scale

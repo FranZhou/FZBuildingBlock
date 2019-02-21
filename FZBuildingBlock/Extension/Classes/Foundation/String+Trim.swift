@@ -19,16 +19,16 @@ extension String{
     ///   - left: 过滤左边
     ///   - right: 过滤右边
     /// - Returns:
-    public func fz_trim(with filter: [Character], trimCenter center: Bool, trimLeft left: Bool, trimRight right: Bool) -> String{
+    public func fz_trim(withFilter filter: [Character], trimCenter center: Bool, trimLeft left: Bool, trimRight right: Bool) -> String{
         var res = self
         if left {
-            res = res.fz_trimLeft(with: filter)
+            res = res.fz_trimLeft(withFilter: filter)
         }
         if right {
-            res = res.fz_trimRight(with: filter)
+            res = res.fz_trimRight(withFilter: filter)
         }
         if center {
-            res = res.fz_trimCenter(with: filter)
+            res = res.fz_trimCenter(withFilter: filter)
         }
         return res
     }
@@ -38,7 +38,7 @@ extension String{
     ///
     /// - Parameter filter: 要移除的字符
     /// - Returns:
-    public func fz_trimLeft(with filter: [Character]) -> String{
+    public func fz_trimLeft(withFilter filter: [Character]) -> String{
         var startIndex = self.startIndex
         let endIndex = self.index(before: self.endIndex)
         while startIndex <= endIndex{
@@ -55,7 +55,7 @@ extension String{
     ///
     /// - Parameter filter: 要移除的字符
     /// - Returns:
-    public func fz_trimRight(with filter: [Character]) -> String{
+    public func fz_trimRight(withFilter filter: [Character]) -> String{
         let startIndex = self.startIndex
         var endIndex = self.index(before: self.endIndex)
         while startIndex <= endIndex{
@@ -72,7 +72,7 @@ extension String{
     ///
     /// - Parameter filter: 要移除的字符
     /// - Returns:
-    public func fz_trimCenter(with filter: [Character]) -> String{
+    public func fz_trimCenter(withFilter filter: [Character]) -> String{
         var startIndex = self.startIndex
         var endIndex = self.index(before: self.endIndex)
         
@@ -105,7 +105,7 @@ extension String{
     ///
     /// - Parameter trimString: 需要移除的CharacterSet
     /// - Returns:
-    public func fz_trimString(with trimString: String) -> String{
+    public func fz_trimLeftAndRight(withTrimString trimString: String) -> String{
         return self.trimmingCharacters(in: CharacterSet(charactersIn: trimString))
     }
     
@@ -144,7 +144,7 @@ extension String{
     ///
     /// - Returns:
     public func fz_trimLeftWhiteSpace() -> String{
-        return self.fz_trimLeft(with: [" "])
+        return self.fz_trimLeft(withFilter: [" "])
     }
     
     
@@ -152,7 +152,7 @@ extension String{
     ///
     /// - Returns:
     public func fz_trimRightWhiteSpace() -> String{
-        return self.fz_trimRight(with: [" "])
+        return self.fz_trimRight(withFilter: [" "])
     }
     
     
@@ -160,7 +160,7 @@ extension String{
     ///
     /// - Returns:
     public func fz_trimCenterWhiteSpace() -> String{
-        return fz_trimCenter(with: [" "])
+        return fz_trimCenter(withFilter: [" "])
     }
     
 

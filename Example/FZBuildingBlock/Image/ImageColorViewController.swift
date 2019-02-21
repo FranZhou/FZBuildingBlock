@@ -33,7 +33,7 @@ class ImageColorViewController: UIViewController {
     
     
     @objc func btnClickAction(sender: Any){
-        guard let image = UIImage.fz_image(with: .fz_randomColor(), size: self.view.fz_size) else {
+        guard let image = UIImage.fz_image(withColor: .fz_randomColor(), size: self.view.fz_size) else {
             return
         }
         self.view.backgroundColor = UIColor(patternImage: image)
