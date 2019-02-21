@@ -63,11 +63,6 @@ public class ObserveAble<T> {
         self.updateFilter = updateFilter ?? { _ in return true }
     }
     
-    
-    deinit {
-        self.removeAll()
-        print("ObserveAble deinit")
-    }
 }
 
 
@@ -173,7 +168,7 @@ extension ObserveAble {
         }
     }
     
-    /// 创建一个计时器，每调用一次计数都会减一
+    /// 创建一个计数器，每调用一次计数都会减一
     fileprivate func createCounter(start: Int) -> (() -> Int) {
         var startCount = start
         return {
