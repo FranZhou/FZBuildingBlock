@@ -25,7 +25,7 @@ public class ObserverSafeManager<T>{
     /// 触发监听方法，按照添加顺序执行
     ///
     /// - Parameter value:
-    public func fireObserver(with value: T) -> Void{
+    public func fireObserver(withValue value: T) -> Void{
         self.queue.async { [weak self] in
             guard let `self` = self else {
                 return

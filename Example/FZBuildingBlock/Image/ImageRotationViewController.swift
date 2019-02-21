@@ -49,7 +49,7 @@ class ImageRotationViewController: UIViewController {
         self.cutImageView = UIImageView()
         self.view.addSubview(cutImageView)
         
-        self.changeImageToShow(with: self.image)
+        self.changeImageToShow(withImage: self.image)
     }
     
     
@@ -59,11 +59,11 @@ class ImageRotationViewController: UIViewController {
         }
         rotation += 30
         
-        self.changeImageToShow(with: image)
+        self.changeImageToShow(withImage: image)
         
     }
     
-    func changeImageToShow(with image: UIImage){
+    func changeImageToShow(withImage image: UIImage){
         imageView!.image = image
         imageView!.fz_size = image.size
         imageView!.fz_outerCenterX = self.view.fz_outerCenterX

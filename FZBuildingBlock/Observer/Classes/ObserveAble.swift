@@ -38,7 +38,7 @@ public class ObserveAble<T> {
     public private(set) var value: T {
         didSet {
             setterAction(value)
-            observerManager.fireObserver(with: value)
+            observerManager.fireObserver(withValue: value)
         }
     }
     
