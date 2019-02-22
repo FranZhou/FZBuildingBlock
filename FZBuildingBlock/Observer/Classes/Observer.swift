@@ -23,15 +23,12 @@ public struct Observer<T>: Hashable {
         return key.hashValue
     }
     
-}
-
-/// 重写 Observer<T> 的 == 运算符， 两个观察者的唯一标示一样，即认为他们是同一个
-///
-/// - Parameters:
-///   - lhs:
-///   - rhs:
-/// - Returns:
-public func ==<T>(lhs: Observer<T>, rhs: Observer<T>) -> Bool {
-    return lhs.key == rhs.key
+    
+    // MARK: - Equatable protocol
+    
+    public static func == (lhs: Observer<T>, rhs: Observer<T>) -> Bool {
+        return lhs.key == rhs.key
+    }
+    
 }
 
