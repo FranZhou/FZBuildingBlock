@@ -1,5 +1,5 @@
 //
-//  KeyChainManager.swift
+//  KeyChainUniqueIDManager.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/2/22.
@@ -7,11 +7,13 @@
 
 import Foundation
 
-public class KeyChainManager {
+
+/// 在keychain中 保存/获取 设备唯一标识号
+public struct KeyChainUniqueIDManager {
     
     // 配置 keychain 标示符, 服务和账户名称
-    public var serviceName: String
-    public var accountName: String
+    public let serviceName: String
+    public let accountName: String
     
     /*
      Specifying an access group to use with `KeychainPasswordItem` instances
@@ -28,13 +30,7 @@ public class KeyChainManager {
      Not specifying an access group to use with `KeychainPasswordItem` instances
      will create items specific to each app.
      */
-    public var accessGroup: String? = nil
-    
-    public init(serviceName: String, accountName: String, accessGroup: String? = nil){
-        self.serviceName = serviceName
-        self.accountName = accountName
-        self.accessGroup = accessGroup
-    }
+    public let accessGroup: String? = nil
     
     
     /// 唯一标识 ID, 没有的话自动创建一个

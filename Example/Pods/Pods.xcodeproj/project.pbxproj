@@ -26,7 +26,7 @@
 		8A2ABE95A105236D509ECE941B64BBE2 /* String+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1394937712E0ACC8C6B23CE430173EDC /* String+Common.swift */; };
 		8DAFF1FBA81947FB37BD475ECBC55946 /* Pods-FZBuildingBlock_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C01298FF25CF2D960EA9046FC7A6EDC4 /* Pods-FZBuildingBlock_Tests-dummy.m */; };
 		933254D4971515F92B765E3A9EFF4969 /* UIScrollView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F90DDB234610D8ED4FD3262E34E9C /* UIScrollView+Snapshot.swift */; };
-		9918106445178C746EC1EBB977F79092 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainManager.swift */; };
+		9918106445178C746EC1EBB977F79092 /* KeyChainUniqueIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainUniqueIDManager.swift */; };
 		9CA6A79400B36AD21F8C2256F8FD4FDF /* ObserverSafeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B9A3BD094C1823147F402AC343F980 /* ObserverSafeManager.swift */; };
 		A251206B691A919CAF0F4C8F623D73D8 /* UIImage+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD055194D2ABFCE97EC5608CF0C84D /* UIImage+CornerRadius.swift */; };
 		A594547BDC7C5C4CC2DA2C6FA75B6778 /* Pods-FZBuildingBlock_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF265D480E8B6B2792D89AD11B8EEBB /* Pods-FZBuildingBlock_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -62,12 +62,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		009196C2A6F84090E1B0880EB6B7D2E6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		009196C2A6F84090E1B0880EB6B7D2E6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0A7F90DDB234610D8ED4FD3262E34E9C /* UIScrollView+Snapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Snapshot.swift"; sourceTree = "<group>"; };
-		0C2DFCC5AA826F91322AC1B161AF4FCF /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Example.framework; path = "Pods-FZBuildingBlock_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C2DFCC5AA826F91322AC1B161AF4FCF /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13425F251D0FC67D38BEF5079F957A0B /* Observer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Observer.swift; path = FZBuildingBlock/Observer/Classes/Observer.swift; sourceTree = "<group>"; };
 		1394937712E0ACC8C6B23CE430173EDC /* String+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Common.swift"; sourceTree = "<group>"; };
-		13E85AF5AC09122C86C7A3531735382D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		13E85AF5AC09122C86C7A3531735382D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		149B7CEBAFA3F426A91B829CF0C0039B /* Pods-FZBuildingBlock_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZBuildingBlock_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2B9DE31876B2E0B0FE80DC2B6833E76D /* UIView+Shadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -97,15 +97,15 @@
 		8EA3AACFBE1440BF1262C6BB26CFBBBE /* Pods-FZBuildingBlock_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8FCACC624822D534FC1BC8FF1519A269 /* ObserveAble.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserveAble.swift; path = FZBuildingBlock/Observer/Classes/ObserveAble.swift; sourceTree = "<group>"; };
 		90CA26FEEAC165C2EA7C214EF1C16CBE /* Pods-FZBuildingBlock_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Example-resources.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94157F0A9FE9D0C6E69C041E51A0357B /* Pods-FZBuildingBlock_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D6DB6E0D68DF5D19F172D540C78C1FB /* Pods-FZBuildingBlock_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		9F1E451D6BB936D9FA9DFB50C8E2824D /* UIImage+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
 		A456463F854D9B8604E6736A4FFD7FC8 /* UIView+Snapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
-		AF1942EB848B5A205FB5E11845FBA2E4 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZBuildingBlock.framework; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7CEF7AF2B650BADB34B3693FCB41315 /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Tests.framework; path = "Pods-FZBuildingBlock_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF1942EB848B5A205FB5E11845FBA2E4 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7CEF7AF2B650BADB34B3693FCB41315 /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E0793204BC4297E5D7611C4B708CCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B966883CFD787636C6FC57FE0F985C88 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = FZBuildingBlock.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B966883CFD787636C6FC57FE0F985C88 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = FZBuildingBlock.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B98B101BE6B6F4AA6EFA8C918C9A28C1 /* Pods-FZBuildingBlock_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FZBuildingBlock_Example-umbrella.h"; sourceTree = "<group>"; };
 		BE2C5CEF0819D405353E2614DA262EB5 /* UIImage+Rotation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		C01298FF25CF2D960EA9046FC7A6EDC4 /* Pods-FZBuildingBlock_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FZBuildingBlock_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		F4B65F12F23E631ECE172D3794FD1357 /* FZBuildingBlock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZBuildingBlock-dummy.m"; sourceTree = "<group>"; };
 		F9D94EA7BED66364E446DD5026694ED4 /* UIView+Line.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Line.swift"; sourceTree = "<group>"; };
 		F9DD055194D2ABFCE97EC5608CF0C84D /* UIImage+CornerRadius.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+CornerRadius.swift"; sourceTree = "<group>"; };
-		F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyChainManager.swift; path = FZBuildingBlock/KeyChain/Classes/KeyChainManager.swift; sourceTree = "<group>"; };
+		F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainUniqueIDManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyChainUniqueIDManager.swift; path = FZBuildingBlock/KeyChain/Classes/KeyChainUniqueIDManager.swift; sourceTree = "<group>"; };
 		FBEB7C3E897626C98F316B7E3AE0D9D2 /* FZBuildingBlock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZBuildingBlock-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -340,7 +340,7 @@
 		D5B209C2771872F379E3046995E8CBF5 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
-				F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainManager.swift */,
+				F9DD86A3DA81B5F9F8E99502BA94984F /* KeyChainUniqueIDManager.swift */,
 				4AF744B1C9104637275F41C4F2E7E296 /* KeychainPasswordItem.swift */,
 			);
 			name = KeyChain;
@@ -499,7 +499,7 @@
 			files = (
 				CCB2CF742381E993F79689AF2F1B15C3 /* Bundle+Common.swift in Sources */,
 				2C3F3F8391C3AC90ED2D0AAF692B22FB /* FZBuildingBlock-dummy.m in Sources */,
-				9918106445178C746EC1EBB977F79092 /* KeyChainManager.swift in Sources */,
+				9918106445178C746EC1EBB977F79092 /* KeyChainUniqueIDManager.swift in Sources */,
 				BEF2B1E52DFB531D505491A42A91F94D /* KeychainPasswordItem.swift in Sources */,
 				F04DEFB2E0E8E01B53A9DC85B3304818 /* ObserveAble.swift in Sources */,
 				2459D456D08675BB0FD8C386763D2034 /* Observer.swift in Sources */,
@@ -672,8 +672,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
