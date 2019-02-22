@@ -15,7 +15,7 @@ extension UIView {
     ///
     /// - Parameters:
     ///   - shadowColor: default = .black,阴影颜色
-    ///   - shadowOffset: default = {0, -3}, 阴影偏移,width向右偏移，height向下偏移
+    ///   - shadowOffset: default = {0, -3}, 阴影偏移量,width向右偏移，height向下偏移
     ///   - shadowRadius: default = 3, 阴影半径
     ///   - shadowOpacity: default = 0, 阴影透明度
     ///   - shadowPath: default = nil, 阴影路径。如果不指定路径，就会使用layer层的alpha通道的混合，而如果指定阴影路径，就会在多个layer层之间共享同一路径，以此来提高性能。
@@ -25,6 +25,13 @@ extension UIView {
         self.layer.shadowRadius = shadowRadius
         self.layer.shadowOpacity = Float(shadowOpacity)
         self.layer.shadowPath = shadowPath
+    }
+    
+    
+    /// 移除阴影
+    public func fz_removeShadow(){
+        self.layer.shadowOpacity = 0
+        self.layer.shadowPath = nil
     }
     
 }

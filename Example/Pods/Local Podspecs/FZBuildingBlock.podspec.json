@@ -1,18 +1,18 @@
 {
   "name": "FZBuildingBlock",
   "version": "0.1.0",
-  "summary": "A short description of FZBuildingBlock.",
+  "summary": "提供开发中最基础的功能组件",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/zhoufan123/FZBuildingBlock",
+  "homepage": "https://github.com/FranZhou/FZBuildingBlock",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "zhoufan123": "zhoufan123@babytree-inc.com"
+    "FranZhou": "fairytale_zf@outlook.com"
   },
   "source": {
-    "git": "https://github.com/zhoufan123/FZBuildingBlock.git",
+    "git": "https://github.com/FranZhou/FZBuildingBlock.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -27,16 +27,16 @@
         "UIKit",
         "Foundation",
         "CoreGraphics"
-      ],
-      "resource_bundles": {
-        "FZBuildingBlock_Extension": [
-          "FZBuildingBlock/Extension/Assets/**/*"
-        ]
-      }
+      ]
     },
     {
       "name": "Observer",
       "source_files": "FZBuildingBlock/Observer/Classes/**/*",
+      "frameworks": "Foundation"
+    },
+    {
+      "name": "KeyChain",
+      "source_files": "FZBuildingBlock/KeyChain/Classes/**/*",
       "frameworks": "Foundation"
     }
   ]

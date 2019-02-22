@@ -35,10 +35,8 @@ extension UIView {
     ///   - rightTop: 右上方圆角半径
     ///   - borderColor: default = .clear, border color
     ///   - borderWidth: default = 0, border width
-    public func fz_addMaskLayerCornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0) {
-        if leftTop == leftBottom && leftTop == rightBottom && leftTop == rightTop {
-//            return self.fz_addCornerRadius(withRadius: leftTop, borderColor: borderColor, borderWidth: borderWidth)
-        }
+    ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
+    public func fz_addMaskLayerCornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0, lineDashPattern: [NSNumber]? = nil) {
         
         let bezier = UIBezierPath.init()
         bezier.lineWidth = borderWidth
@@ -77,6 +75,8 @@ extension UIView {
         
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
+        maskLayer.lineDashPattern = lineDashPattern
+        
         maskLayer.path = bezier.cgPath
         self.layer.mask = maskLayer
     }

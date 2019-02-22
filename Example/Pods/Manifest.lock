@@ -1,8 +1,10 @@
 PODS:
   - FZBuildingBlock (0.1.0):
     - FZBuildingBlock/Extension (= 0.1.0)
+    - FZBuildingBlock/KeyChain (= 0.1.0)
     - FZBuildingBlock/Observer (= 0.1.0)
   - FZBuildingBlock/Extension (0.1.0)
+  - FZBuildingBlock/KeyChain (0.1.0)
   - FZBuildingBlock/Observer (0.1.0)
 
 DEPENDENCIES:
@@ -13,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FZBuildingBlock: effc8b48f4688fd68b398acc01443cee3b0174c4
+  FZBuildingBlock: 3ed355b11eb89bc4a7fb24c48e8b3331d4a354c4
 
 PODFILE CHECKSUM: 45a25c00105e664709741d3acca4b71994a78b60
 

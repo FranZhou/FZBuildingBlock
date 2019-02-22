@@ -47,6 +47,11 @@ Pod::Spec.new do |s|
         s_observer.frameworks = 'Foundation'
     end
     
+    s.subspec 'KeyChain' do |s_keychain|
+        s_keychain.source_files = 'FZBuildingBlock/KeyChain/Classes/**/*'
+        s_keychain.frameworks = 'Foundation'
+    end
+    
     
     # s.resource_bundles = {
     #   'FZBuildingBlock' => ['FZBuildingBlock/Assets/*.png']
