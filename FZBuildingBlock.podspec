@@ -52,6 +52,11 @@ Pod::Spec.new do |s|
         s_keychain.frameworks = 'Foundation'
     end
     
+    s.subspec 'KeyboardObserver' do |s_keyboard|
+        s_keyboard.source_files = 'FZBuildingBlock/KeyboardObserver/Classes/**/*'
+        s_keyboard.frameworks = 'UIKit', 'Foundation'
+    end
+    
     
     # s.resource_bundles = {
     #   'FZBuildingBlock' => ['FZBuildingBlock/Assets/*.png']

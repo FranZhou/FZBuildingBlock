@@ -9,7 +9,7 @@ import Foundation
 
 
 /// 可观察对象， T 为 value的类型
-public class ObserveAble<T> {
+public class ObserveAble<T>: NSObject {
     
     /// value change tuple
     public typealias Change = (new: T, old: T)

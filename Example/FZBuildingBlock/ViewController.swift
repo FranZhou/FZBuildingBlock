@@ -23,6 +23,9 @@ class ViewController: UIViewController {
         ],
         [
             (title: "观察者", clzType: ObserverViewController.self)
+        ],
+        [
+            (title: "键盘通知监听", clzType: KeyboardObserverViewController.self)
         ]
     ]
     

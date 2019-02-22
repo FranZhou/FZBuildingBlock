@@ -38,6 +38,11 @@
       "name": "KeyChain",
       "source_files": "FZBuildingBlock/KeyChain/Classes/**/*",
       "frameworks": "Foundation"
+    },
+    {
+      "name": "KeyboardObserver",
+      "source_files": "FZBuildingBlock/KeyboardObserver/Classes/**/*",
+      "frameworks": "Foundation"
     }
   ]
 }
