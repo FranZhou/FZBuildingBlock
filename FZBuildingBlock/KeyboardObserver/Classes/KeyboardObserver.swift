@@ -79,6 +79,10 @@ public class KeyboardObserver: NSObject {
     /// 键盘通知回调
     public var keyboardStatushandle: KeyboardStatusAction?
     
+    
+    /// 最新的键盘状态，如果尚未触发，为nil
+    public private(set) var lastKeyboardInfomation: KeyboardInfomation? = nil
+    
     // MARK: - 监听控制
     
     /// 开启键盘监听
@@ -146,7 +150,8 @@ public class KeyboardObserver: NSObject {
         if #available(iOS 9.0, *) {
             isLocal = notification.userInfo?[UIResponder.keyboardIsLocalUserInfoKey] as? Bool ?? true
         }
-        self.keyboardStatushandle?((keyboardStatus: status,frameBegin: frameBegin, frameEnd: frameEnd, animationDuration: animationDuration, animationCurve: animationCurve, isLocal: isLocal))
+        self.lastKeyboardInfomation = (keyboardStatus: status,frameBegin: frameBegin, frameEnd: frameEnd, animationDuration: animationDuration, animationCurve: animationCurve, isLocal: isLocal)
+        self.keyboardStatushandle?(self.lastKeyboardInfomation!)
     }
     
     // MARK: -
