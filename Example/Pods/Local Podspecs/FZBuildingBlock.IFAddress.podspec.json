@@ -57,7 +57,7 @@
       "resources": "FZBuildingBlock/IFAddress/Resources/**/*",
       "preserve_paths": "FZBuildingBlock/IFAddress/Resources/module.modulemap",
       "xcconfig": {
-        "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/FZBuildingBlock/IFAddress/Resources"
+        "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/IFAddress/Resources"
       }
     }
   ]

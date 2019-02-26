@@ -57,6 +57,15 @@ Pod::Spec.new do |s|
         s_keyboard.frameworks = 'UIKit', 'Foundation'
     end
     
+    s.subspec 'IFAddress' do |s_ifaddress|
+        s_ifaddress.source_files = 'FZBuildingBlock/IFAddress/Classes/**/*'
+        s_ifaddress.frameworks = 'UIKit', 'Foundation'
+        
+        s_ifaddress.resources = 'FZBuildingBlock/IFAddress/Resources/**/*'
+        s_ifaddress.preserve_path = 'FZBuildingBlock/IFAddress/Resources/module.modulemap'
+        s_ifaddress.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/IFAddress/Resources'}
+    end
+    
     
     # s.resource_bundles = {
     #   'FZBuildingBlock' => ['FZBuildingBlock/Assets/*.png']
