@@ -154,7 +154,7 @@ extension ObserveAble {
     ///   - action: 更新回调闭包
     public func fireUntilCompleted(key: String, immediate: Bool, action: @escaping OptionalEscapeingAction) {
         
-        // 只要 finish 回调一次就 remove finish 的出发由注册的地方来实现
+        // 只要 finish 回调一次就 remove， finish的触发由注册的地方来实现
         let finish = {
             self.removeObserver(key: key)
         }

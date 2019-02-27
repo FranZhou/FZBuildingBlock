@@ -25,8 +25,7 @@ extension UIView {
     }
     
     
-    /// 使用maskLayer给view添加圆角,
-    /// 当4个角的弧度一样时，会使用fz_addCornerRadius方式设置圆角
+    /// 使用maskLayer给view添加圆角
     ///
     /// - Parameters:
     ///   - leftTop: 左上方圆角半径

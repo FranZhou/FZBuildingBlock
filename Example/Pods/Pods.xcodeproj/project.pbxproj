@@ -31,7 +31,6 @@
 		8DAFF1FBA81947FB37BD475ECBC55946 /* Pods-FZBuildingBlock_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C01298FF25CF2D960EA9046FC7A6EDC4 /* Pods-FZBuildingBlock_Tests-dummy.m */; };
 		991203DB4FF85BD3D0E441A44D68AA38 /* ObserverSafeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406D4C5A18FE782E41C087AA15FDB128 /* ObserverSafeManager.swift */; };
 		9A634A25686E6C816432EBEF331A35B2 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D8A069759B16900A22512B41C502B /* String+Trim.swift */; };
-		9C8B518E1D51623E867EB4CD9D060024 /* UIView+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E76F917FD77FE9EAE939AE8D71EB0 /* UIView+Line.swift */; };
 		A594547BDC7C5C4CC2DA2C6FA75B6778 /* Pods-FZBuildingBlock_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF265D480E8B6B2792D89AD11B8EEBB /* Pods-FZBuildingBlock_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7A3BA43FE3C01DB2E1DDAB703EA60BB /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC315977DF67696FDA161540FDE9DF1 /* UIImage+Rotation.swift */; };
 		B22071E83A5E0AAC6F75DF562B254CA2 /* UIImage+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C297AAD3074DD2AF6C8E98BE4E41D2 /* UIImage+Common.swift */; };
@@ -80,7 +79,6 @@
 		332A7FBB6374494A6CFBE524A2C4950F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		3BB0A34857505E2495CF901B5DED92E4 /* Pods-FZBuildingBlock_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		406D4C5A18FE782E41C087AA15FDB128 /* ObserverSafeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserverSafeManager.swift; path = FZBuildingBlock/Observer/Classes/ObserverSafeManager.swift; sourceTree = "<group>"; };
-		423E76F917FD77FE9EAE939AE8D71EB0 /* UIView+Line.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Line.swift"; sourceTree = "<group>"; };
 		454A39E8FD8754680B553953E5DABB3D /* UIView+Snapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
 		4A304D56DC884DDEDFBE4623F0155B6B /* KeyboardObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = FZBuildingBlock/KeyboardObserver/Classes/KeyboardObserver.swift; sourceTree = "<group>"; };
 		4F8DD7188279EFCDAB3AD4290C134807 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 				89EB05652416C2642E73902DA186EA0A /* UIImage+WaterMark.swift */,
 				247B7404C9E149072B540018758B7B1A /* UIScrollView+Snapshot.swift */,
 				2AE9871D8E200B238B9CCA1A06EF5E79 /* UIView+CornerRadius.swift */,
-				423E76F917FD77FE9EAE939AE8D71EB0 /* UIView+Line.swift */,
 				9F5296DABD0B719B15060ABB45D6D70E /* UIView+Position.swift */,
 				9684F589ED21FB2D5D8217F1E22D9ACD /* UIView+Shadow.swift */,
 				454A39E8FD8754680B553953E5DABB3D /* UIView+Snapshot.swift */,
@@ -558,7 +555,6 @@
 				DE820BFF559A5A6A730BD3BDA7389943 /* UIImage+WaterMark.swift in Sources */,
 				3EC5D8042CE7479B15B9BCD991C920DF /* UIScrollView+Snapshot.swift in Sources */,
 				C0E9C863870E68AE2757C41EC4F55BF1 /* UIView+CornerRadius.swift in Sources */,
-				9C8B518E1D51623E867EB4CD9D060024 /* UIView+Line.swift in Sources */,
 				21DBBA1440F733B72FA8798F464391A6 /* UIView+Position.swift in Sources */,
 				F8160432265F013FFAE756D293D83576 /* UIView+Shadow.swift in Sources */,
 				49C72DEA87FA00ADC0918A0340786202 /* UIView+Snapshot.swift in Sources */,

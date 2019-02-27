@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
-//  FZBuildingBlock
+//  ViewExtensionViewController.swift
+//  FZBuildingBlock_Example
 //
-//  Created by zhoufan123 on 02/20/2019.
-//  Copyright (c) 2019 zhoufan123. All rights reserved.
+//  Created by FranZhou on 2019/2/27.
+//  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewExtensionViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
@@ -19,35 +19,33 @@ class ViewController: UIViewController {
     
     let datas: [[(title: String, clzType: UIViewController.Type)]] = [
         [
-            (title: "图片处理", clzType: ImageViewController.self)
-        ],
-        [
-            (title: "观察者", clzType: ObserverViewController.self)
-        ],
-        [
-            (title: "键盘通知监听", clzType: KeyboardObserverViewController.self)
-        ],
-        [
-            (title: "view扩展", clzType: ViewExtensionViewController.self)
+            (title: "指定边框", clzType: ViewBorderLineViewController.self)
         ]
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
         
         self.view.addSubview(self.tableView)
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
+
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource{
+
+extension ViewExtensionViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.datas.count
     }
@@ -77,5 +75,3 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
-
-
