@@ -91,27 +91,27 @@ public class KeyboardObserver: NSObject {
     public func startKeyboardObserver(observerQueue queue: OperationQueue = OperationQueue.main){
         self.stopKeyboardObserver()
         
-        let willShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let willShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willShow)
         }
         
-        let didShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let didShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didShow)
         }
         
-        let willHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let willHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willHide)
         }
         
-        let didHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let didHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didHide)
         }
         
-        let willChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let willChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willChangeFrame)
         }
         
-        let didChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: OperationQueue.main) { [weak self](notification) in
+        let didChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didChangeFrame)
         }
         
