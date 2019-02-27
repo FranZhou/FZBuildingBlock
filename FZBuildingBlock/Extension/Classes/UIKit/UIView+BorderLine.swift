@@ -8,6 +8,7 @@
 import Foundation
 
 
+/// 边框位置结构体，定位边框位置可以通过位移来确定
 public struct FZViewBorderLineSideType: OptionSet {
     
     public typealias RawValue = Int
@@ -85,7 +86,7 @@ extension UIView {
     
     
     
-    /// 获取 BorderLine的 CAShaperLayer绘制cCGPath
+    /// 获取 BorderLine的 CAShaperLayer绘制CGPath
     ///
     /// - Parameters:
     ///   - fromPoint: 起点
@@ -93,15 +94,18 @@ extension UIView {
     /// - Returns:
     fileprivate func fz_getBorderLinePath(from fromPoint: CGPoint, to toPoint: CGPoint) -> CGPath {
         
+        // 避免报错
+        // [Unknown process name] CGContextDrawPath: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+        
+        // 因为绘图不在drawRect:方法中操作导致绘图时没有当前的图形上下文(context)可设置。所以应该在drawRect:中执行图形绘制。
+        // 或者使用 UIGraphicsBeginImageContextWithOptions
+        
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
         
         let bezier = UIBezierPath()
         
         bezier.move(to: fromPoint)
         bezier.addLine(to: toPoint)
-        
-        bezier.close()
-        bezier.stroke()
         
         UIGraphicsEndImageContext()
         
