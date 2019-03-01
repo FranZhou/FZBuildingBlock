@@ -29,7 +29,7 @@ extension UINavigationController {
         }
         var newVCs: [UIViewController] = []
         
-        // 应该不会与 vcs.count = 0 的情况，这里保证逻辑完整性
+        // 应该不会有 vcs.count = 0 的情况，这里保证逻辑完整性
         if vcs.count != 0 {
             newVCs.append(contentsOf: vcs[0...index])
         }
@@ -57,7 +57,7 @@ extension UINavigationController {
             index = maxIndex
         }
         
-        // 应该不会与 vcs.count = 0 的情况，这里保证逻辑完整性
+        // 应该不会有 vcs.count = 0 的情况，这里保证逻辑完整性
         if vcs.count > 0 {
             let toVC = vcs[index]
             return self.popToViewController(toVC, animated: animated)
