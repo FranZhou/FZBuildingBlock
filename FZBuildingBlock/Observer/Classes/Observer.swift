@@ -10,8 +10,10 @@ import Foundation
 
 /// 观察者对象
 public struct Observer<T>: Hashable {
+    /// value change tuple
+    public typealias Change = (old: T, new: T)
     
-    public typealias Action = (T) -> Void
+    public typealias Action = (Change) -> Void
     
     /// 观察者唯一标示
     public let key: String

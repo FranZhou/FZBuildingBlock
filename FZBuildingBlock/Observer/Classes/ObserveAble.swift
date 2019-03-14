@@ -9,19 +9,19 @@ import Foundation
 
 
 /// 可观察对象， T 为 value的类型
-public class ObserveAble<T>: NSObject {
+open class ObserveAble<T>: NSObject {
     
     /// value change tuple
-    public typealias Change = (new: T, old: T)
+    public typealias Change = (old: T, new: T)
     
     /// 过滤Action,返回true表示允许修改
     public typealias FilterAction = (Change) -> Bool
     
     /// setter Action
-    public typealias SetterAction = (T) -> Void
+    public typealias SetterAction = (Change) -> Void
     
-    /// value 为最新的值，finish 闭包是终止观察的，调用 finish() 则会 remove
-    public typealias OptionalEscapeingAction = (_ value: T, _ finish: @escaping () -> Void) -> Void
+    /// value 为最新的值,这里没有oldValue，old和new都传递当前的value；finish 闭包是终止观察的，调用 finish() 则会 remove
+    public typealias OptionalEscapeingAction = (_ value: Change, _ finish: @escaping () -> Void) -> Void
     
     
     
@@ -37,8 +37,8 @@ public class ObserveAble<T>: NSObject {
     /// 最新的 value
     public private(set) var value: T {
         didSet {
-            setterAction(value)
-            observerManager.fireObserver(withValue: value)
+            setterAction((old: oldValue, new: value))
+            observerManager.fireObserver(oldValue: oldValue, newValue: value)
         }
     }
     
@@ -46,7 +46,7 @@ public class ObserveAble<T>: NSObject {
     ///
     /// - Parameter v: 需要更新的 value
     public func update(value: T) {
-        guard updateFilter((new: value, old: value)) else { return }
+        guard updateFilter((old: self.value, new: value)) else { return }
         self.value = value
     }
     
@@ -128,11 +128,11 @@ extension ObserveAble {
     ///   - key: 唯一标示
     ///   - count: 更新触发的次数, nil 则没有限制，立即触发的一次回调不回改变 count
     ///   - action: (观察者, 是否为立即触发的回调)
-    public func bindAndFireObserver(key: String, count: Int? = nil, action: @escaping (T, Bool) -> Void) {
+    public func bindAndFireObserver(key: String, count: Int? = nil, action: @escaping (Change, Bool) -> Void) {
         bindObserver(key: key, count: count) {
             action($0, false)
         }
-        action(value, true)
+        action((old: value, new: value), true)
     }
     
     /// 只观察下一次的 value 更新，无论是什么值，回调一次就 remove
@@ -164,7 +164,7 @@ extension ObserveAble {
         }
         
         if immediate {
-            action(value, finish)
+            action((old: value, new: value), finish)
         }
     }
     

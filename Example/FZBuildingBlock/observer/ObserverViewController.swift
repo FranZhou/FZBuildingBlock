@@ -24,9 +24,10 @@ class ObserverViewController: UIViewController {
             print("bindAndFireObserver: \(value) -> \(fireAtOnce)")
         })
         
-        self.observer?.fireUntilCompleted(key: "observer test2", immediate: true, action: { (value, finish) in
-            print("fireUntilCompleted: \(value)")
-            guard let v = value, v%3 == 0  else {
+        self.observer?.fireUntilCompleted(key: "observer test2", immediate: true, action: { (arg0, finish) in
+            let (_, newValue) = arg0
+            print("fireUntilCompleted: \(newValue)")
+            guard let v = newValue, v%3 == 0  else {
                 return
             }
             finish()

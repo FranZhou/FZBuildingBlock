@@ -9,7 +9,7 @@ import Foundation
 
 
 /// 观察者管理器, 提供安全的操作方式
-public class ObserverSafeManager<T>{
+open class ObserverSafeManager<T>: NSObject{
     
     /// 所有的观察者集合
     var observerArray = Array<Observer<T>>()
@@ -21,17 +21,18 @@ public class ObserverSafeManager<T>{
         return observerArray.isEmpty
     }
     
-    
     /// 触发监听方法，按照添加顺序执行
     ///
-    /// - Parameter value:
-    public func fireObserver(withValue value: T) -> Void{
+    /// - Parameters:
+    ///   - oldValue: 旧值
+    ///   - newValue: 最新值
+    public func fireObserver(oldValue: T, newValue: T) -> Void{
         self.queue.async { [weak self] in
             guard let `self` = self else {
                 return
             }
             self.observerArray.forEach({
-                $0.action(value)
+                $0.action((old: oldValue, new: newValue))
             })
         }
     }
@@ -40,7 +41,7 @@ public class ObserverSafeManager<T>{
     /// 添加观察者对象
     ///
     /// - Parameter observer:
-    public func append(observer: Observer<T>){
+    public func append(observer: Observer<T>) -> Void{
         self.queue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
@@ -60,7 +61,7 @@ public class ObserverSafeManager<T>{
     /// 移除指定观察者
     ///
     /// - Parameter key: 唯一标示
-    public func removeObserver(key: String){
+    public func removeObserver(key: String) -> Void{
         self.queue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
@@ -76,7 +77,7 @@ public class ObserverSafeManager<T>{
     }
     
     /// 移除所有观察者
-    public func removeAll(){
+    public func removeAll() -> Void{
         self.queue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return

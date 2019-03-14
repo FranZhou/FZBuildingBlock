@@ -11,7 +11,7 @@ import Foundation
 /**
  提供键盘监听功能， 配合ObserveAble使用会更方便
  */
-public class KeyboardObserver: NSObject {
+open class KeyboardObserver: NSObject {
     
     /**
  
