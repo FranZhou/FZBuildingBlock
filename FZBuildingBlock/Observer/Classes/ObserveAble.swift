@@ -24,15 +24,14 @@ open class ObserveAble<T>: NSObject {
     public typealias OptionalEscapeingAction = (_ value: Change, _ finish: @escaping () -> Void) -> Void
     
     
-    
     /// 通过了过滤器，数据才会更新
-    var updateFilter: FilterAction
+    public var updateFilter: FilterAction
     
     /// 外部的setter方法
-    var setterAction: SetterAction
+    public var setterAction: SetterAction
     
     /// 所有观察者的管理器
-    var observerManager = ObserverSafeManager<T>()
+    public var observerManager = ObserverSafeManager<T>()
     
     /// 最新的 value
     public private(set) var value: T {
