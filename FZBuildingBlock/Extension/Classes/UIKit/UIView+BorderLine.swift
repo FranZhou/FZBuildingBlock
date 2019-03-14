@@ -166,7 +166,7 @@ extension UIView {
     /// 添加指定边框
     ///
     /// - Parameters:
-    ///   - lineSides: 添加边框位置
+    ///   - lineSides: 添加边框位置, like [.top, .left, .bottom, .right] or .top
     ///   - lineWidth: 边框宽度
     ///   - lineColor: 边框颜色
     ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
@@ -178,41 +178,57 @@ extension UIView {
         // 绘制的位置应该是  (0, 5) ~ (100, 5), 然后设置 CAShapLayer 的 lineWidth = 10
         let halfLine = lineWidth/2.0
         
-        // top border line
+        // add top border line
         if lineSides.contains(.top){
             let path = self.fz_getBorderLinePath(from: CGPoint(x: 0, y: halfLine), to: CGPoint(x: rect.size.width, y: halfLine))
             self.fz_addBorderLineLayer(layerName: self.fz_topBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
-        } else {
-            self.fz_removeSublayer(byName: self.fz_topBorderLineLayerName)
         }
         
-        
-        // left border line
+        // add left border line
         if lineSides.contains(.left){
             let path = self.fz_getBorderLinePath(from: CGPoint(x: halfLine, y: 0), to: CGPoint(x:halfLine, y: rect.size.height))
             self.fz_addBorderLineLayer(layerName: self.fz_leftBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
-        } else {
-            self.fz_removeSublayer(byName: self.fz_leftBorderLineLayerName)
         }
         
-        
-        // bottom border line
+        // add bottom border line
         if lineSides.contains(.bottom){
             let path = self.fz_getBorderLinePath(from: CGPoint(x: 0, y: rect.size.height-halfLine), to: CGPoint(x: rect.size.width, y: rect.size.height-halfLine))
             self.fz_addBorderLineLayer(layerName: self.fz_bottomBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
-        } else {
-            self.fz_removeSublayer(byName: self.fz_bottomBorderLineLayerName)
         }
         
-        
-        // right border line
+        // add right border line
         if lineSides.contains(.right){
             let path = self.fz_getBorderLinePath(from: CGPoint(x: rect.size.width-halfLine, y: 0), to: CGPoint(x: rect.size.width-halfLine, y: rect.size.height))
             self.fz_addBorderLineLayer(layerName: self.fz_rightBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
-        } else {
-            self.fz_removeSublayer(byName: self.fz_rightBorderLineLayerName)
         }
         
+    }
+    
+    
+    /// 移除指定边框
+    ///
+    /// - Parameter lineSides: 移除边框位置， like [.top, .left, .bottom, .right] or .top
+    public func fz_removeBorderLine(lineSides: FZViewBorderLineSideType) -> Void {
+        
+        // remove top border line
+        if lineSides.contains(.top){
+            self.fz_removeSublayer(byName: self.fz_topBorderLineLayerName)
+        }
+        
+        // remove left border line
+        if lineSides.contains(.left){
+            self.fz_removeSublayer(byName: self.fz_leftBorderLineLayerName)
+        }
+        
+        // remove bottom border line
+        if lineSides.contains(.bottom){
+            self.fz_removeSublayer(byName: self.fz_bottomBorderLineLayerName)
+        }
+        
+        // remove right border line
+        if lineSides.contains(.right){
+            self.fz_removeSublayer(byName: self.fz_rightBorderLineLayerName)
+        }
     }
     
     
