@@ -10,12 +10,12 @@ import Foundation
 
 extension UIViewController {
     
-    
-    /// 得到当前正在显示的ViewController，从 UIApplication.shared.delegate?.window 开始查找
+    /// 得到当前正在显示的ViewController
     ///
+    /// - Parameter rootWindow: default = UIApplication.shared.delegate?.window
     /// - Returns:
-    public static func fz_getTopViewController() -> UIViewController?{
-        guard let delegateWindow = UIApplication.shared.delegate?.window,
+    public static func fz_getTopViewController(rootWindow: UIWindow?? = UIApplication.shared.delegate?.window) -> UIViewController?{
+        guard let delegateWindow = rootWindow,
             let window = delegateWindow
             else {
                 return nil
