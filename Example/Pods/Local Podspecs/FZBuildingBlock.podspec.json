@@ -21,8 +21,8 @@
   "swift_version": "4.2",
   "subspecs": [
     {
-      "name": "Extension",
-      "source_files": "FZBuildingBlock/Extension/Classes/**/*",
+      "name": "Extensions",
+      "source_files": "FZBuildingBlock/Extensions/Classes/**/*",
       "frameworks": [
         "UIKit",
         "Foundation",
@@ -35,29 +35,16 @@
       "frameworks": "Foundation"
     },
     {
-      "name": "KeyChain",
-      "source_files": "FZBuildingBlock/KeyChain/Classes/**/*",
-      "frameworks": "Foundation"
-    },
-    {
-      "name": "KeyboardObserver",
-      "source_files": "FZBuildingBlock/KeyboardObserver/Classes/**/*",
-      "frameworks": [
-        "UIKit",
-        "Foundation"
-      ]
-    },
-    {
-      "name": "IFAddress",
-      "source_files": "FZBuildingBlock/IFAddress/Classes/**/*",
+      "name": "Tools",
+      "source_files": "FZBuildingBlock/Tools/Classes/**/*",
       "frameworks": [
         "UIKit",
         "Foundation"
       ],
-      "resources": "FZBuildingBlock/IFAddress/Resources/**/*",
-      "preserve_paths": "FZBuildingBlock/IFAddress/Resources/module.modulemap",
+      "resources": "FZBuildingBlock/Tools/Resources/**/*",
+      "preserve_paths": "FZBuildingBlock/Tools/Resources/module.modulemap",
       "xcconfig": {
-        "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/FZBuildingBlock/IFAddress/Resources"
+        "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/FZBuildingBlock/Tools/Resources"
       }
     }
   ]

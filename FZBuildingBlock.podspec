@@ -34,10 +34,10 @@ Pod::Spec.new do |s|
     
     s.swift_version = '4.2'
     
-    s.subspec 'Extension' do |s_extension|
-        s_extension.source_files = 'FZBuildingBlock/Extension/Classes/**/*'
-        s_extension.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
-#        s_extension.resource_bundles = {
+    s.subspec 'Extensions' do |s_extensions|
+        s_extensions.source_files = 'FZBuildingBlock/Extensions/Classes/**/*'
+        s_extensions.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
+#        s_extensions.resource_bundles = {
 #            'FZBuildingBlock_Extension' => ['FZBuildingBlock/Extension/Assets/**/*']
 #        }
     end
@@ -47,23 +47,13 @@ Pod::Spec.new do |s|
         s_observer.frameworks = 'Foundation'
     end
     
-    s.subspec 'KeyChain' do |s_keychain|
-        s_keychain.source_files = 'FZBuildingBlock/KeyChain/Classes/**/*'
-        s_keychain.frameworks = 'Foundation'
-    end
-    
-    s.subspec 'KeyboardObserver' do |s_keyboard|
-        s_keyboard.source_files = 'FZBuildingBlock/KeyboardObserver/Classes/**/*'
-        s_keyboard.frameworks = 'UIKit', 'Foundation'
-    end
-    
-    s.subspec 'IFAddress' do |s_ifaddress|
-        s_ifaddress.source_files = 'FZBuildingBlock/IFAddress/Classes/**/*'
-        s_ifaddress.frameworks = 'UIKit', 'Foundation'
+    s.subspec 'Tools' do |s_tools|
+        s_tools.source_files = 'FZBuildingBlock/Tools/Classes/**/*'
+        s_tools.frameworks = 'UIKit', 'Foundation'
         
-        s_ifaddress.resources = 'FZBuildingBlock/IFAddress/Resources/**/*'
-        s_ifaddress.preserve_path = 'FZBuildingBlock/IFAddress/Resources/module.modulemap'
-        s_ifaddress.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/IFAddress/Resources'}
+        s_tools.resources = 'FZBuildingBlock/Tools/Resources/**/*'
+        s_tools.preserve_path = 'FZBuildingBlock/Tools/Resources/module.modulemap'
+        s_tools.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/Tools/Resources'}
     end
     
     

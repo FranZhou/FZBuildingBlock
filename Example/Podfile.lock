@@ -1,15 +1,11 @@
 PODS:
   - FZBuildingBlock (0.1.0):
-    - FZBuildingBlock/Extension (= 0.1.0)
-    - FZBuildingBlock/IFAddress (= 0.1.0)
-    - FZBuildingBlock/KeyboardObserver (= 0.1.0)
-    - FZBuildingBlock/KeyChain (= 0.1.0)
+    - FZBuildingBlock/Extensions (= 0.1.0)
     - FZBuildingBlock/Observer (= 0.1.0)
-  - FZBuildingBlock/Extension (0.1.0)
-  - FZBuildingBlock/IFAddress (0.1.0)
-  - FZBuildingBlock/KeyboardObserver (0.1.0)
-  - FZBuildingBlock/KeyChain (0.1.0)
+    - FZBuildingBlock/Tools (= 0.1.0)
+  - FZBuildingBlock/Extensions (0.1.0)
   - FZBuildingBlock/Observer (0.1.0)
+  - FZBuildingBlock/Tools (0.1.0)
 
 DEPENDENCIES:
   - FZBuildingBlock (from `../`)
@@ -19,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FZBuildingBlock: 3ea560f4cc93ca23dfb4d70a959e2886db05aa5e
+  FZBuildingBlock: 3a29b88664987ee64f9c6486ca47d0ff61f3690f
 
 PODFILE CHECKSUM: 45a25c00105e664709741d3acca4b71994a78b60
 
