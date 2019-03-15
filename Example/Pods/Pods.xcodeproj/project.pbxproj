@@ -15,6 +15,7 @@
 		1D7A9CA8DD45AF6AE16849DD0DEBA767 /* KeyChainUniqueIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA752A5E4CF13995BC18F7A4389B58D /* KeyChainUniqueIDManager.swift */; };
 		1DEE34442227B17600EABB02 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE34432227B17600EABB02 /* UIViewController+TopViewController.swift */; };
 		1DEE34462227E76C00EABB02 /* UINavigationController+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE34452227E76C00EABB02 /* UINavigationController+Common.swift */; };
+		1DF05CD1223A9B7000BE5D87 /* NSAttributedString+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF05CD0223A9B7000BE5D87 /* NSAttributedString+Common.swift */; };
 		21DBBA1440F733B72FA8798F464391A6 /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5296DABD0B719B15060ABB45D6D70E /* UIView+Position.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
 		355BBC8925D07DCDAE1DE57A4D747D7A /* Bundle+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0FBC0E890B814B35F3EEEDE64190A /* Bundle+Common.swift */; };
@@ -75,6 +76,7 @@
 		1D71E6DE22243947002EFE32 /* UIView+BorderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BorderLine.swift"; sourceTree = "<group>"; };
 		1DEE34432227B17600EABB02 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
 		1DEE34452227E76C00EABB02 /* UINavigationController+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Common.swift"; sourceTree = "<group>"; };
+		1DF05CD0223A9B7000BE5D87 /* NSAttributedString+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Common.swift"; sourceTree = "<group>"; };
 		247B7404C9E149072B540018758B7B1A /* UIScrollView+Snapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Snapshot.swift"; sourceTree = "<group>"; };
 		26728DE93FAAA936298CC44015A1D6E9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AE9871D8E200B238B9CCA1A06EF5E79 /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				9235459C20643B53A7EDEB9DEFF0CC05 /* String+Common.swift */,
 				6A5D8A069759B16900A22512B41C502B /* String+Trim.swift */,
 				EE06A9EA9C6B202AC4676949DA1124A5 /* String+URL.swift */,
+				1DF05CD0223A9B7000BE5D87 /* NSAttributedString+Common.swift */,
 			);
 			name = Foundation;
 			path = FZBuildingBlock/Extension/Classes/Foundation;
@@ -543,6 +546,7 @@
 				FD2AF5B1B078EC12B2F40E8ED1DB795E /* KeyboardObserver.swift in Sources */,
 				195B095A901D8B3AA9F6EB1D33C4FB2A /* KeychainPasswordItem.swift in Sources */,
 				1D7A9CA8DD45AF6AE16849DD0DEBA767 /* KeyChainUniqueIDManager.swift in Sources */,
+				1DF05CD1223A9B7000BE5D87 /* NSAttributedString+Common.swift in Sources */,
 				D680C92CA3B0F8ED533282E0AAC16E0A /* ObserveAble.swift in Sources */,
 				64E26677CFF739FCA5422EAE90A72989 /* Observer.swift in Sources */,
 				991203DB4FF85BD3D0E441A44D68AA38 /* ObserverSafeManager.swift in Sources */,

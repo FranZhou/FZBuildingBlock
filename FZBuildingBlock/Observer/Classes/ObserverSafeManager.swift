@@ -34,11 +34,14 @@ open class ObserverSafeManager<T>: NSObject{
             guard let `self` = self else {
                 return
             }
-            self.observerArray.forEach({observer in
-                self.fireQueue.async {
+            // 对全部监听者对象进行一次copy
+            let observerArray = Array<Observer<T>>(self.observerArray)
+            // 在触发队列触发监听者监控操作
+            self.fireQueue.async {
+                observerArray.forEach({observer in
                     observer.action((old: oldValue, new: newValue))
-                }
-            })
+                })
+            }
         }
     }
     

@@ -22,6 +22,7 @@ class ObserverViewController: UIViewController {
         
         self.observer?.bindAndFireObserver(key: "observer test1", action: {(value, fireAtOnce) in
             print("bindAndFireObserver: \(value) -> \(fireAtOnce)")
+            print(Thread.current)
         })
         
         self.observer?.fireUntilCompleted(key: "observer test2", immediate: true, action: { (arg0, finish) in
