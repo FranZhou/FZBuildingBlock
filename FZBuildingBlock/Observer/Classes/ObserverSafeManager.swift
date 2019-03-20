@@ -15,7 +15,7 @@ open class ObserverSafeManager<T>: NSObject{
     var observerArray = Array<Observer<T>>()
     
     /// 观察者管理队列，在该队列中管理观察者对象；新增或者删除使用barrier执行，阻塞其他操作；监听触发时，使用异步执行
-    private var manageQueue = DispatchQueue(label: "ObserverManagerQueue", attributes: DispatchQueue.Attributes.concurrent)
+    private var manageQueue = DispatchQueue(label: "com.fzbuildingblock.ObserverSafeManagerQueue", attributes: DispatchQueue.Attributes.concurrent)
     
     /// default = DispatchQueue.main；触发执行的执行队列,会在该队列上异步执行观察者回调
     public var fireQueue: DispatchQueue = DispatchQueue.main

@@ -19,7 +19,8 @@ class ViewExtensionViewController: UIViewController {
     
     let datas: [[(title: String, clzType: UIViewController.Type)]] = [
         [
-            (title: "指定边框", clzType: ViewBorderLineViewController.self)
+            (title: "指定边框", clzType: ViewBorderLineViewController.self),
+            (title: "按钮图片文字位置", clzType: ButtonLayoutViewController.self)
         ]
     ]
 

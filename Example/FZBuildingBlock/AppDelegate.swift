@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(IFAddressTool.getIFAddresses(ifaName: "en0"))
         
+        print("da".contains(""))
+        
         return true
     }
 
