@@ -10,6 +10,8 @@
 		03223CEE6DA05921E6E395120D770C11 /* ObserveAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338F75428F29BB66CE56A64328B6753F /* ObserveAble.swift */; };
 		060909D448E878A53A252EBFD6C29502 /* UIImage+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB258ABB0D5C16A5EDE5B603A0DBD4A /* UIImage+CornerRadius.swift */; };
 		1D808938223B811B00604783 /* UIButton+ImageAndTitleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D808937223B811B00604783 /* UIButton+ImageAndTitleLayout.swift */; };
+		1DD55C982248CEDD00A98A7A /* NSMutableAttributedString+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD55C972248CEDD00A98A7A /* NSMutableAttributedString+Common.swift */; };
+		1DD55C9A2248DF9700A98A7A /* RunTime+MethodSwizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD55C992248DF9700A98A7A /* RunTime+MethodSwizzled.swift */; };
 		23635F689744FC97D7068B372DB1CE90 /* UIImage+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63902650AE0F5EBA83E1171E43A16876 /* UIImage+Common.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
 		2E4FE19BBC59056E612CF37AC8DF1EC5 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71302CBABA1C8070691A26FBC59F9D /* UIViewController+TopViewController.swift */; };
@@ -73,6 +75,8 @@
 		149B7CEBAFA3F426A91B829CF0C0039B /* Pods-FZBuildingBlock_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZBuildingBlock_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1CC6D671C45A8E18CB4017838A4DD3EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1D808937223B811B00604783 /* UIButton+ImageAndTitleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ImageAndTitleLayout.swift"; sourceTree = "<group>"; };
+		1DD55C972248CEDD00A98A7A /* NSMutableAttributedString+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Common.swift"; sourceTree = "<group>"; };
+		1DD55C992248DF9700A98A7A /* RunTime+MethodSwizzled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RunTime+MethodSwizzled.swift"; sourceTree = "<group>"; };
 		2B8342E4C25B16B61FF69564EB5AE850 /* String+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Common.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
 		2C4F12EF15E2A6512069B39C5241F59D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,9 +244,11 @@
 			children = (
 				DA1C876D593A5E7247B33948CFC8E6E3 /* Bundle+Common.swift */,
 				55D12B405473C52C954C52777B4655CD /* NSAttributedString+Common.swift */,
+				1DD55C972248CEDD00A98A7A /* NSMutableAttributedString+Common.swift */,
 				2B8342E4C25B16B61FF69564EB5AE850 /* String+Common.swift */,
 				CFAC41CA78A8AF60401643F56A111C92 /* String+Trim.swift */,
 				AB6177B52116AA1E67D7132BCAB7CCD2 /* String+URL.swift */,
+				1DD55C992248DF9700A98A7A /* RunTime+MethodSwizzled.swift */,
 			);
 			name = Foundation;
 			path = FZBuildingBlock/Extensions/Classes/Foundation;
@@ -565,10 +571,12 @@
 				6A069CB54185969D971F377D4C546E5A /* Observer.swift in Sources */,
 				721E09F853585D97A04CDDA920498BD8 /* ObserverSafeManager.swift in Sources */,
 				511B648D89B03ACB2723DB645085C930 /* String+Common.swift in Sources */,
+				1DD55C9A2248DF9700A98A7A /* RunTime+MethodSwizzled.swift in Sources */,
 				6E3144BD23D585C9905EA60CDC3FEA20 /* String+Trim.swift in Sources */,
 				546378F693BFA6783A63D136B3B500EE /* String+URL.swift in Sources */,
 				58B0E32430BAD5F18D9D6D1E3F64E799 /* UIColor+Common.swift in Sources */,
 				D52B7C6E983F341E4B3664EABFF06249 /* UIImage+Color.swift in Sources */,
+				1DD55C982248CEDD00A98A7A /* NSMutableAttributedString+Common.swift in Sources */,
 				23635F689744FC97D7068B372DB1CE90 /* UIImage+Common.swift in Sources */,
 				060909D448E878A53A252EBFD6C29502 /* UIImage+CornerRadius.swift in Sources */,
 				39787D6B19DE0B6E76D29407641ED04F /* UIImage+Cut.swift in Sources */,
