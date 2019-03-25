@@ -5,9 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/FZBuildingBlock.svg?style=flat)](https://cocoapods.org/pods/FZBuildingBlock)
 [![Platform](https://img.shields.io/cocoapods/p/FZBuildingBlock.svg?style=flat)](https://cocoapods.org/pods/FZBuildingBlock)
 
-## Example
+## Introduce
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Extensions模块，为控件提供经常需要使用的扩展
+Tools模块，提供开发中的一些简单的功能集合
+Observer模块，简单的观察者模式实现
+
 
 ## Requirements
 
@@ -16,8 +19,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 FZBuildingBlock is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+
 ```ruby
-pod 'FZBuildingBlock'
+<!--pod 'FZBuildingBlock'-->
+目前正在完善当中，建议源码导入
 ```
 
 ## Author
