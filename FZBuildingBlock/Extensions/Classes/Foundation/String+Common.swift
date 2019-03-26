@@ -38,7 +38,7 @@ extension String{
     
     
     /// 安全的下标访问
-    /// 控制上下限在 [0, self.count]之内
+    /// 控制上下限在 [0, self.count-1]之内
     ///
     ///     let subscriptString = "FranZhou"
     ///     subscriptString[fz_safe: 1...4]       // "ranZ"
