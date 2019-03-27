@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
     
     #  s.source_files = 'FZBuildingBlock/Classes/**/*'
     
-    s.swift_version = '4.2'
+    s.swift_version = '5.0'
     
     s.subspec 'Extensions' do |s_extensions|
         s_extensions.source_files = 'FZBuildingBlock/Extensions/Classes/**/*'

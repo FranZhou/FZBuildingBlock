@@ -13,26 +13,31 @@ import Foundation
  */
 open class KeyboardObserver: NSObject {
     
-    /**
- 
-    public class let keyboardWillShowNotification: NSNotification.Name
     
-    public class let keyboardDidShowNotification: NSNotification.Name
-    
-    public class let keyboardWillHideNotification: NSNotification.Name
-    
-    public class let keyboardDidHideNotification: NSNotification.Name
-    
-    // Like the standard keyboard notifications above, these additional notifications include
-    // a nil object and begin/end frames of the keyboard in screen coordinates in the userInfo dictionary.
-    @available(iOS 5.0, *)
-    public class let keyboardWillChangeFrameNotification: NSNotification.Name
-    
-    @available(iOS 5.0, *)
-    public class let keyboardDidChangeFrameNotification: NSNotification.Name
- 
-    */
-    // status 和键盘通知一一对应
+    /// status 和键盘通知一一对应
+    ///
+    ///     public class let keyboardWillShowNotification: NSNotification.Name
+    ///
+    ///     public class let keyboardDidShowNotification: NSNotification.Name
+    ///
+    ///     public class let keyboardWillHideNotification: NSNotification.Name
+    ///
+    ///     public class let keyboardDidHideNotification: NSNotification.Name
+    ///
+    ///     // Like the standard keyboard notifications above, these additional notifications include
+    ///     // a nil object and begin/end frames of the keyboard in screen coordinates in the userInfo dictionary.
+    ///     @available(iOS 5.0, *)
+    ///     public class let keyboardWillChangeFrameNotification: NSNotification.Name
+    ///
+    ///     @available(iOS 5.0, *)
+    ///     public class let keyboardDidChangeFrameNotification: NSNotification.Name
+    ///
+    /// - willShow: keyboardWillShowNotification
+    /// - didShow: keyboardDidShowNotification
+    /// - willHide: keyboardWillHideNotification
+    /// - didHide: keyboardDidHideNotification
+    /// - willChangeFrame: keyboardWillChangeFrameNotification
+    /// - didChangeFrame: keyboardDidChangeFrameNotification
     public enum KeyboardStatus : Int{
         case willShow
         case didShow
@@ -42,31 +47,30 @@ open class KeyboardObserver: NSObject {
         case didChangeFrame
     }
     
-    
-    /**
-     
-     //初始的 frame
-     @available(iOS 3.2, *)
-     public class let keyboardFrameBeginUserInfoKey: String // NSValue of CGRect
-     
-     //结束的 frame
-     @available(iOS 3.2, *)
-     public class let keyboardFrameEndUserInfoKey: String // NSValue of CGRect
-     
-     //持续的时间
-     @available(iOS 3.0, *)
-     public class let keyboardAnimationDurationUserInfoKey: String // NSNumber of double
-     
-     //UIView.AnimationCurve
-     @available(iOS 3.0, *)
-     public class let keyboardAnimationCurveUserInfoKey: String // NSNumber of NSUInteger (UIViewAnimationCurve)
-     
-     //是否是当前 App的键盘
-     @available(iOS 9.0, *)
-     public class let keyboardIsLocalUserInfoKey: String // NSNumber of BOOL
-     
-     */
-    public typealias KeyboardInfomation = (keyboardStatus: KeyboardObserver.KeyboardStatus,frameBegin: CGRect, frameEnd: CGRect, animationDuration: Double, animationCurve: UIView.AnimationCurve, isLocal: Bool)
+    /// 键盘相关数据
+    ///
+    ///     //初始的 frame
+    ///     @available(iOS 3.2, *)
+    ///     public class let keyboardFrameBeginUserInfoKey: String // NSValue of CGRect
+    ///
+    ///     //结束的 frame
+    ///     @available(iOS 3.2, *)
+    ///     public class let keyboardFrameEndUserInfoKey: String // NSValue of CGRect
+    ///
+    ///     //持续的时间
+    ///     @available(iOS 3.0, *)
+    ///     public class let keyboardAnimationDurationUserInfoKey: String // NSNumber of double
+    ///
+    ///     //UIView.AnimationCurve
+    ///     @available(iOS 3.0, *)
+    ///     public class let keyboardAnimationCurveUserInfoKey: String // NSNumber of NSUInteger (UIViewAnimationCurve)
+    ///
+    ///     //是否是当前 App的键盘
+    ///     @available(iOS 9.0, *)
+    ///     public class let keyboardIsLocalUserInfoKey: String // NSNumber of BOOL
+    ///
+    ///
+    public typealias KeyboardInfomation = (keyboardStatus: KeyboardObserver.KeyboardStatus, frameBegin: CGRect, frameEnd: CGRect, animationDuration: Double, animationCurve: UIView.AnimationCurve, isLocal: Bool)
     
     public typealias KeyboardStatusAction = (KeyboardInfomation) -> Void
     
@@ -131,12 +135,12 @@ open class KeyboardObserver: NSObject {
         deinitAction?()
         deinitAction = nil
     }
-    
-    
+
     /// 获取键盘相关数据
     ///
-    /// - Parameter notification: 数据来源的通知对象
-    /// - Returns:
+    /// - Parameters:
+    ///   - notification: 数据来源的通知对象
+    ///   - status: 键盘当前状态
     private func handleKeyboardInfomation(fromNotification notification: Notification, status: KeyboardObserver.KeyboardStatus) {
         guard let frameBegin = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect,
             let frameEnd = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
