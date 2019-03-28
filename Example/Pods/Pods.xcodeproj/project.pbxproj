@@ -11,6 +11,8 @@
 		07E4F9768537CA1C16D38DA43345D47A /* NSMutableAttributedString+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745A664AB2751D491611FB5B576096B7 /* NSMutableAttributedString+Common.swift */; };
 		0D99DF1A95185A9F854F00A9E5A5183C /* FZBuildingBlock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0815923DDF92400CA1D518D6C4E361 /* FZBuildingBlock-dummy.m */; };
 		1472C37F43AFD6F1B47D886F39A2C2FB /* UIImage+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D55EFA0C7035F6D1D748B0F506651 /* UIImage+Common.swift */; };
+		1D1BD3C4224B9E77004211FB /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BD3C3224B9E77004211FB /* String+Emoji.swift */; };
+		1D1BD3C6224C7671004211FB /* String+CommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BD3C5224C7671004211FB /* String+CommonCrypto.swift */; };
 		1ED5746D130810C13CE29BEA44653535 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F7428DBB16EE58EE9CBC1A87410A6 /* KeychainPasswordItem.swift */; };
 		22653B2F4F4BE9FD23F883BEB980577E /* UINavigationController+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502239BCACFF6464C7C081FDE9A31CAD /* UINavigationController+Common.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
@@ -75,9 +77,11 @@
 /* Begin PBXFileReference section */
 		047D55EFA0C7035F6D1D748B0F506651 /* UIImage+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Common.swift"; sourceTree = "<group>"; };
 		07D3410584AD7983DF78BA8264E9FDFB /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
-		0C2DFCC5AA826F91322AC1B161AF4FCF /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Example.framework; path = "Pods-FZBuildingBlock_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C2DFCC5AA826F91322AC1B161AF4FCF /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		149B7CEBAFA3F426A91B829CF0C0039B /* Pods-FZBuildingBlock_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZBuildingBlock_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1CC6D671C45A8E18CB4017838A4DD3EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		1CC6D671C45A8E18CB4017838A4DD3EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		1D1BD3C3224B9E77004211FB /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
+		1D1BD3C5224C7671004211FB /* String+CommonCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CommonCrypto.swift"; sourceTree = "<group>"; };
 		234B989CF998686D039C50160092A141 /* Bundle+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Bundle+Common.swift"; sourceTree = "<group>"; };
 		2844AB2B9B8A63B189896BFEDE69EECD /* RunTime+MethodSwizzled.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RunTime+MethodSwizzled.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -107,7 +111,7 @@
 		77C765DB821E57C553505E2A8DD26270 /* Pods-FZBuildingBlock_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7A306BCDDB16605737FD80F6FF4B9AC5 /* FZBuildingBlock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZBuildingBlock.xcconfig; sourceTree = "<group>"; };
 		7E2607D197786E63D917B4E2ADB74CDC /* Pods-FZBuildingBlock_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Example-frameworks.sh"; sourceTree = "<group>"; };
-		7EE8A9547616F0BCD41CDB900321BC01 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = FZBuildingBlock.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7EE8A9547616F0BCD41CDB900321BC01 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = FZBuildingBlock.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7FF7403AD5FA08BAF15D4A9B3C4BA238 /* Array+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Common.swift"; sourceTree = "<group>"; };
 		80EE3B6A328159ACB342169E3E143BC9 /* String+Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Common.swift"; sourceTree = "<group>"; };
 		81A09DC602A8D9A739FD52A20232CD03 /* UIImage+Cut.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Cut.swift"; sourceTree = "<group>"; };
@@ -117,17 +121,17 @@
 		90B71FAA155732E0767FB59955A6E3B9 /* UIImage+WaterMark.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+WaterMark.swift"; sourceTree = "<group>"; };
 		90CA26FEEAC165C2EA7C214EF1C16CBE /* Pods-FZBuildingBlock_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Example-resources.sh"; sourceTree = "<group>"; };
 		915224FA59426B82C01B762521366370 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94157F0A9FE9D0C6E69C041E51A0357B /* Pods-FZBuildingBlock_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9949B178E98FEDE2207472C076081406 /* FZBuildingBlock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FZBuildingBlock.modulemap; sourceTree = "<group>"; };
 		9A077A9470382810A13F244E818AC2C2 /* KeyChainUniqueIDManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyChainUniqueIDManager.swift; sourceTree = "<group>"; };
 		9A13F2E630BDC524575865CBD2432143 /* FZBuildingBlock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZBuildingBlock-prefix.pch"; sourceTree = "<group>"; };
 		9D6DB6E0D68DF5D19F172D540C78C1FB /* Pods-FZBuildingBlock_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A15C9815F4FC1195F0F7EF53E1F5C646 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		A15C9815F4FC1195F0F7EF53E1F5C646 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AA04F8F7E86A0D146F71814A3217B465 /* String+Trim.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
 		AC658080D6264006D42152724253CDD1 /* Observer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Observer.swift; path = FZBuildingBlock/Observer/Classes/Observer.swift; sourceTree = "<group>"; };
-		AF1942EB848B5A205FB5E11845FBA2E4 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZBuildingBlock.framework; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7CEF7AF2B650BADB34B3693FCB41315 /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Tests.framework; path = "Pods-FZBuildingBlock_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF1942EB848B5A205FB5E11845FBA2E4 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7CEF7AF2B650BADB34B3693FCB41315 /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E0793204BC4297E5D7611C4B708CCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B98B101BE6B6F4AA6EFA8C918C9A28C1 /* Pods-FZBuildingBlock_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FZBuildingBlock_Example-umbrella.h"; sourceTree = "<group>"; };
 		BCEA236662C02969676BFBAF90124FC2 /* FZBuildingBlock-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZBuildingBlock-umbrella.h"; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 				6D917C8150B1A5A76A959BCC68710762 /* String+Pinyin.swift */,
 				AA04F8F7E86A0D146F71814A3217B465 /* String+Trim.swift */,
 				7706105FAFCF3CC5006D378E0B1C85F8 /* String+URL.swift */,
+				1D1BD3C3224B9E77004211FB /* String+Emoji.swift */,
+				1D1BD3C5224C7671004211FB /* String+CommonCrypto.swift */,
 			);
 			name = Foundation;
 			path = FZBuildingBlock/Extensions/Classes/Foundation;
@@ -514,6 +520,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -569,6 +576,7 @@
 				A25CE474DB0C973EF5AEBBDD3A25DB53 /* Array+Common.swift in Sources */,
 				92ABDB2618FF0AB2A3183C23EB927679 /* Bundle+Common.swift in Sources */,
 				0D99DF1A95185A9F854F00A9E5A5183C /* FZBuildingBlock-dummy.m in Sources */,
+				1D1BD3C4224B9E77004211FB /* String+Emoji.swift in Sources */,
 				51D922F865588F3673678DF05B0D11F6 /* IFAddressTool.swift in Sources */,
 				A7453F557A58E342E3C076A901A2870D /* KeyboardObserver.swift in Sources */,
 				1ED5746D130810C13CE29BEA44653535 /* KeychainPasswordItem.swift in Sources */,
@@ -598,6 +606,7 @@
 				59C3E2775C52189B6C9A28DF111F6168 /* UIView+BorderLine.swift in Sources */,
 				758E4841BA874A3151108EB8385F7B81 /* UIView+CornerRadius.swift in Sources */,
 				7EAE5B55EBBCC98552A75F13D2C1E432 /* UIView+Position.swift in Sources */,
+				1D1BD3C6224C7671004211FB /* String+CommonCrypto.swift in Sources */,
 				CC0EEFA7F656EF128442EEC9196E984A /* UIView+Shadow.swift in Sources */,
 				9B51208F58A9902EB53CF8C3DCFBD1B5 /* UIView+Snapshot.swift in Sources */,
 				F37C1586885224A3E5AA0D6AB0E34254 /* UIViewController+TopViewController.swift in Sources */,
@@ -751,8 +760,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
