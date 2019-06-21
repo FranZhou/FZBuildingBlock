@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(IFAddressTool.getIFAddresses())
         
         print(IFAddressTool.getIFAddresses(ifaName: "en0"))
+        
+        
+        print("ZhouFan".fz_base64Encode())
+        print("ZhouFan".fz_base64Encode()?.fz_base64Decode())
                 
         return true
     }

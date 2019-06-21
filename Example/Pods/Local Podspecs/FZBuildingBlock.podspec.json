@@ -19,6 +19,7 @@
     "ios": "8.0"
   },
   "swift_version": "5.0",
+  "static_framework": true,
   "subspecs": [
     {
       "name": "Extensions",
@@ -42,7 +43,7 @@
         "Foundation"
       ],
       "resources": "FZBuildingBlock/Tools/Resources/**/*",
-      "preserve_paths": "FZBuildingBlock/Tools/Resources/module.modulemap",
+      "preserve_paths": "FZBuildingBlock/Tools/Resources/Tools.modulemap",
       "xcconfig": {
         "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/FZBuildingBlock/Tools/Resources"
       }

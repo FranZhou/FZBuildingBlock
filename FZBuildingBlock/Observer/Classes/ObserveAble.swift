@@ -62,6 +62,10 @@ open class ObserveAble<T>: NSObject {
         self.updateFilter = updateFilter ?? { _ in return true }
     }
     
+    deinit {
+        print("ObserveAble deinit")
+    }
+    
 }
 
 

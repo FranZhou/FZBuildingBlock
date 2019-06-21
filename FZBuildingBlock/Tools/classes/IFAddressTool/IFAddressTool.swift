@@ -30,6 +30,7 @@ public struct IFAddressTool {
         
         // Get list of all interfaces on the local machine:
         var ifaddr : UnsafeMutablePointer<ifaddrs>?
+        
         guard getifaddrs(&ifaddr) == 0 else { return [] }
         guard let firstAddr = ifaddr else { return [] }
         

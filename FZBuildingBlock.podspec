@@ -34,6 +34,9 @@ Pod::Spec.new do |s|
     
     s.swift_version = '5.0'
     
+#    for using OpenSSL-Universal
+    s.static_framework = true
+    
     s.subspec 'Extensions' do |s_extensions|
         s_extensions.source_files = 'FZBuildingBlock/Extensions/Classes/**/*'
         s_extensions.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
@@ -52,10 +55,9 @@ Pod::Spec.new do |s|
         s_tools.frameworks = 'UIKit', 'Foundation'
         
         s_tools.resources = 'FZBuildingBlock/Tools/Resources/**/*'
-        s_tools.preserve_path = 'FZBuildingBlock/Tools/Resources/module.modulemap'
+        s_tools.preserve_path = 'FZBuildingBlock/Tools/Resources/Tools.modulemap'
         s_tools.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/Tools/Resources'}
     end
-    
     
     # s.resource_bundles = {
     #   'FZBuildingBlock' => ['FZBuildingBlock/Assets/*.png']

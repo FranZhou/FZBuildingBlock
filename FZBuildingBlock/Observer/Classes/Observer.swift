@@ -21,10 +21,15 @@ public struct Observer<T>: Hashable {
     /// 触发监听执行的action
     public let action: Action
     
+    
+    // MARK: - Hashable
     public var hashValue: Int {
         return key.hashValue
     }
     
+    public func hash(into hasher: inout Hasher){
+        hasher.combine(self.key)
+    }
     
     // MARK: - Equatable protocol
     
