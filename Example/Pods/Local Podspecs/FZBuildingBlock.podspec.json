@@ -47,6 +47,16 @@
       "xcconfig": {
         "SWIFT_INCLUDE_PATHS": "$(PODS_ROOT)/FZBuildingBlock/Tools/Resources"
       }
+    },
+    {
+      "name": "Views",
+      "source_files": "FZBuildingBlock/Views/Classes/**/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "FZBuildingBlock/Extensions": [
+
+        ]
+      }
     }
   ]
 }

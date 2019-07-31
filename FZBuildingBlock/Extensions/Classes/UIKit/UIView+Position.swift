@@ -65,7 +65,7 @@ extension UIView{
     }
     
     
-    ///  外部中心点，根据frame计算
+    ///  外部中心点，根据frame计算,相对于superView的中心点
     ///  例如: frame为 （50, 50, 100, 100）. outerCenter 为 (100, 100), 即(x + width/2.0, y + height/2.0)
     ///  这里CenterX CenterY变化并不会影响width和height的变化
     public var fz_outerCenter: CGPoint{
@@ -95,7 +95,7 @@ extension UIView{
         }
     }
     
-    ///  内部中心点，根据bounds计算
+    ///  内部中心点，根据bounds计算，自己的中心点
     ///  例如: frame为 （50, 50, 100, 100）. innerCenter 为 (50, 50), 即(width/2.0, height/2.0)
     ///  CenterX CenterY变化直接影响到width和height的值
     public var fz_innerCenter: CGPoint{

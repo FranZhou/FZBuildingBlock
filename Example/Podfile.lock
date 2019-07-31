@@ -3,9 +3,12 @@ PODS:
     - FZBuildingBlock/Extensions (= 0.1.0)
     - FZBuildingBlock/Observer (= 0.1.0)
     - FZBuildingBlock/Tools (= 0.1.0)
+    - FZBuildingBlock/Views (= 0.1.0)
   - FZBuildingBlock/Extensions (0.1.0)
   - FZBuildingBlock/Observer (0.1.0)
   - FZBuildingBlock/Tools (0.1.0)
+  - FZBuildingBlock/Views (0.1.0):
+    - FZBuildingBlock/Extensions
 
 DEPENDENCIES:
   - FZBuildingBlock (from `../`)
@@ -15,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FZBuildingBlock: eeffc71cabe59bd93ff1bcdec30d4be488ba05be
+  FZBuildingBlock: 204e0d9447481c149d1b01cf6e080144fd408832
 
 PODFILE CHECKSUM: d8096315e3140465ff980de2579bc8eea3595820
 

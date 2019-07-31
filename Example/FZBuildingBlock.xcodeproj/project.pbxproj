@@ -13,8 +13,6 @@
 		1D2A5E7B221CFFDE00CBAE1A /* ImageColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E76221CFFDE00CBAE1A /* ImageColorViewController.swift */; };
 		1D2A5E7C221CFFDE00CBAE1A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E77221CFFDE00CBAE1A /* ImageViewController.swift */; };
 		1D80893A223B9B6D00604783 /* ButtonLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D808939223B9B6D00604783 /* ButtonLayoutViewController.swift */; };
-		1DAF244722B9023E00A12132 /* rsa_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1DAF244522B9023E00A12132 /* rsa_private_key.pem */; };
-		1DAF244822B9023E00A12132 /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1DAF244622B9023E00A12132 /* rsa_public_key.pem */; };
 		1DE50D82221E9D9C0089F93D /* ImageCornerRadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D81221E9D9C0089F93D /* ImageCornerRadiusViewController.swift */; };
 		1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */; };
 		1DEF13632226E331001F8C9A /* ViewExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */; };
@@ -46,8 +44,6 @@
 		1D2A5E76221CFFDE00CBAE1A /* ImageColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageColorViewController.swift; sourceTree = "<group>"; };
 		1D2A5E77221CFFDE00CBAE1A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		1D808939223B9B6D00604783 /* ButtonLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLayoutViewController.swift; sourceTree = "<group>"; };
-		1DAF244522B9023E00A12132 /* rsa_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key.pem; sourceTree = "<group>"; };
-		1DAF244622B9023E00A12132 /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
 		1DE50D81221E9D9C0089F93D /* ImageCornerRadiusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCornerRadiusViewController.swift; sourceTree = "<group>"; };
 		1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserverViewController.swift; sourceTree = "<group>"; };
 		1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionViewController.swift; sourceTree = "<group>"; };
@@ -133,15 +129,6 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		1DAF243722B8DFF900A12132 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1DAF244522B9023E00A12132 /* rsa_private_key.pem */,
-				1DAF244622B9023E00A12132 /* rsa_public_key.pem */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		1DE50D93221FF78A0089F93D /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +174,6 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				1DAF243722B8DFF900A12132 /* Resources */,
 				1DE50D93221FF78A0089F93D /* keyboard */,
 				1D2A5E73221CFFDE00CBAE1A /* Image */,
 				1D2A5E71221CFFDE00CBAE1A /* observer */,
@@ -322,8 +308,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DAF244822B9023E00A12132 /* rsa_public_key.pem in Resources */,
-				1DAF244722B9023E00A12132 /* rsa_private_key.pem in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,

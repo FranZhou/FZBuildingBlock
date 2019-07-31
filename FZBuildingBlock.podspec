@@ -34,9 +34,10 @@ Pod::Spec.new do |s|
     
     s.swift_version = '5.0'
     
-#    for using OpenSSL-Universal
+    # for using OpenSSL-Universal
     s.static_framework = true
     
+    # 扩展
     s.subspec 'Extensions' do |s_extensions|
         s_extensions.source_files = 'FZBuildingBlock/Extensions/Classes/**/*'
         s_extensions.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
@@ -45,11 +46,13 @@ Pod::Spec.new do |s|
 #        }
     end
     
+    # 观察者
     s.subspec 'Observer' do |s_observer|
         s_observer.source_files = 'FZBuildingBlock/Observer/Classes/**/*'
         s_observer.frameworks = 'Foundation'
     end
     
+    # 工具目录
     s.subspec 'Tools' do |s_tools|
         s_tools.source_files = 'FZBuildingBlock/Tools/Classes/**/*'
         s_tools.frameworks = 'UIKit', 'Foundation'
@@ -57,6 +60,13 @@ Pod::Spec.new do |s|
         s_tools.resources = 'FZBuildingBlock/Tools/Resources/**/*'
         s_tools.preserve_path = 'FZBuildingBlock/Tools/Resources/Tools.modulemap'
         s_tools.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/Tools/Resources'}
+    end
+    
+    # 自定义视图
+    s.subspec 'Views' do |s_views|
+        s_views.source_files = 'FZBuildingBlock/Views/Classes/**/*'
+        s_views.frameworks = 'UIKit'
+        s_views.dependency 'FZBuildingBlock/Extensions'
     end
     
     # s.resource_bundles = {
