@@ -1,0 +1,140 @@
+//
+//  FZTableViewManager.swift
+//  FZBuildingBlock
+//
+//  Created by FranZhou on 2019/8/2.
+//
+
+import Foundation
+
+public protocol FZTableViewManager: UITableViewDelegate, UITableViewDataSource{
+    
+    var tableViewSections: [FZTableViewSection]? { get set }
+    
+    func updateManager(withData data: [FZTableViewSection]?)
+    
+}
+
+//MARK: - 默认实现
+extension FZTableViewManager{
+    
+    public func updateManager(withData data: [FZTableViewSection]?){
+        self.tableViewSections = data
+    }
+    
+}
+
+// MARK: UITableViewDelegate
+extension FZTableViewManager{
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height = CGFloat.leastNormalMagnitude
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if let tableSection = tableViewSections?[fz_safe: section],
+            let tableRow = tableSection.sectionRows?[fz_safe: row]{
+            if let cellHeight = tableRow.cellHeightBlock?(tableView, indexPath){
+                height = cellHeight
+            }
+        }
+        
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        var height = CGFloat.leastNormalMagnitude
+        
+        if let tableSection = tableViewSections?[fz_safe: section]{
+            if let sectionHeaderHeight = tableSection.sectionHeaderHeightBlock?(tableView, section){
+                height = sectionHeaderHeight
+            }
+        }
+        
+        return height
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let tableSection = tableViewSections?[fz_safe: section],
+            let sectionHeaderViewBlock = tableSection.sectionHeaderViewBlock{
+            return sectionHeaderViewBlock(tableView, section)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        var height = CGFloat.leastNormalMagnitude
+        
+        if let tableSection = tableViewSections?[fz_safe: section]{
+            if let sectionFooterHeight = tableSection.sectionFooterHeightBlock?(tableView, section){
+                height = sectionFooterHeight
+            }
+        }
+        
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let tableSection = tableViewSections?[fz_safe: section],
+            let sectionFooterViewBlock = tableSection.sectionFooterViewBlock{
+            return sectionFooterViewBlock(tableView, section)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let tableSection = tableViewSections?[fz_safe: indexPath.section],
+            let tableRow = tableSection.sectionRows?[fz_safe: indexPath.row]{
+            tableRow.cellDidSelectBlock?(tableView, indexPath)
+        }
+    }
+}
+
+// MARK: UITableViewDataSource
+extension FZTableViewManager{
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return tableViewSections?.count ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tableSection = tableViewSections?[fz_safe: section]{
+            return tableSection.sectionRows?.count ?? 0
+        }
+        return 0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell? = nil
+        
+        if let tableSection = tableViewSections?[fz_safe: indexPath.section],
+            let tableRow = tableSection.sectionRows?[fz_safe: indexPath.row]{
+            
+            // get or create cell
+            cell = tableView.dequeueReusableCell(withIdentifier: tableRow.identifier ?? "")
+            if cell == nil{
+                if (FZTableViewCell.classForCoder() is UITableViewCell.Type){
+                    cell = (FZTableViewCell.classForCoder() as! UITableViewCell.Type).init(style: .default, reuseIdentifier: tableRow.identifier ?? "")
+                }
+            }
+            
+            // cell
+            if let cell = cell{
+                // handler FZTableViewCell
+                if cell.isKind(of: FZTableViewCell.classForCoder()) {
+                    (cell as! FZTableViewCell).updateCell(withData: tableRow.rowData, atIndexPath: indexPath)
+                }
+                
+                // handelr all cell
+                if let cellHandlerBlock = tableRow.cellHandlerBlock{
+                    cellHandlerBlock(tableView, cell, indexPath)
+                }
+            }
+        }
+        
+        return cell ?? UITableViewCell()
+    }
+    
+    
+}
