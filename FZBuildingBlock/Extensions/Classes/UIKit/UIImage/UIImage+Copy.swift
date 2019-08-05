@@ -1,5 +1,5 @@
 //
-//  UIImage+Common.swift
+//  UIImage+Copy.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/2/14.

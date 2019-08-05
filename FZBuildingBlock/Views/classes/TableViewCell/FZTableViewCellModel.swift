@@ -9,6 +9,10 @@ import Foundation
 
 open class FZTableViewCellModel {
     
+    public init() {
+        
+    }
+    
     // MARK: - cell背景色
     /// 背景色， 默认 nil
     open var backgroundColor: UIColor?

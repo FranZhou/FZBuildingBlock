@@ -7,27 +7,19 @@
 
 import Foundation
 
-public protocol FZTableViewManager: UITableViewDelegate, UITableViewDataSource{
+open class FZTableViewManager: NSObject{
     
-    var tableViewSections: [FZTableViewSection]? { get set }
+    open var tableViewSections: [FZTableViewSection]?
     
-    func updateManager(withData data: [FZTableViewSection]?)
-    
-}
-
-//MARK: - 默认实现
-extension FZTableViewManager{
-    
-    public func updateManager(withData data: [FZTableViewSection]?){
+    open func updateManager(withData data: [FZTableViewSection]?){
         self.tableViewSections = data
     }
-    
 }
 
 // MARK: UITableViewDelegate
-extension FZTableViewManager{
+extension FZTableViewManager: UITableViewDelegate{
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = CGFloat.leastNormalMagnitude
         let section = indexPath.section
         let row = indexPath.row
@@ -42,7 +34,7 @@ extension FZTableViewManager{
         return height
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         var height = CGFloat.leastNormalMagnitude
         
         if let tableSection = tableViewSections?[fz_safe: section]{
@@ -55,7 +47,7 @@ extension FZTableViewManager{
     }
     
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let tableSection = tableViewSections?[fz_safe: section],
             let sectionHeaderViewBlock = tableSection.sectionHeaderViewBlock{
             return sectionHeaderViewBlock(tableView, section)
@@ -63,7 +55,7 @@ extension FZTableViewManager{
         return nil
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         var height = CGFloat.leastNormalMagnitude
         
         if let tableSection = tableViewSections?[fz_safe: section]{
@@ -75,7 +67,7 @@ extension FZTableViewManager{
         return height
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let tableSection = tableViewSections?[fz_safe: section],
             let sectionFooterViewBlock = tableSection.sectionFooterViewBlock{
             return sectionFooterViewBlock(tableView, section)
@@ -83,7 +75,7 @@ extension FZTableViewManager{
         return nil
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let tableSection = tableViewSections?[fz_safe: indexPath.section],
             let tableRow = tableSection.sectionRows?[fz_safe: indexPath.row]{
             tableRow.cellDidSelectBlock?(tableView, indexPath)
@@ -92,7 +84,7 @@ extension FZTableViewManager{
 }
 
 // MARK: UITableViewDataSource
-extension FZTableViewManager{
+extension FZTableViewManager: UITableViewDataSource{
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewSections?.count ?? 0
@@ -123,7 +115,7 @@ extension FZTableViewManager{
             if let cell = cell{
                 // handler FZTableViewCell
                 if cell.isKind(of: FZTableViewCell.classForCoder()) {
-                    (cell as! FZTableViewCell).updateCell(withData: tableRow.rowData, atIndexPath: indexPath)
+                    (cell as! FZTableViewCell).updateCell(withData: tableRow.cellData, atIndexPath: indexPath)
                 }
                 
                 // handelr all cell

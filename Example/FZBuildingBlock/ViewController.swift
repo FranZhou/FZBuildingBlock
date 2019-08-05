@@ -7,36 +7,115 @@
 //
 
 import UIKit
+import FZBuildingBlock
 
 class ViewController: UIViewController {
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+    lazy var tableView: FZTableView = {
+        let tableView = FZTableView(frame: CGRect(x: 0, y: UIScreen.fz_navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height - UIScreen.fz_navigationBarAndStatusBarHeight), style: .plain)
+        tableView.tableViewManager = TableViewManager()
+        tableView.register(FZTableViewCommonCell.classForCoder(), forCellReuseIdentifier: FZTableViewCommonCell.reuseIdentifier())
         return tableView
     }()
     
-    let datas: [[(title: String, clzType: UIViewController.Type)]] = [
-        [
-            (title: "图片处理", clzType: ImageViewController.self)
-        ],
-        [
-            (title: "观察者", clzType: ObserverViewController.self)
-        ],
-        [
-            (title: "键盘通知监听", clzType: KeyboardObserverViewController.self)
-        ],
-        [
-            (title: "view扩展", clzType: ViewExtensionViewController.self)
-        ]
-    ]
+    lazy var tableViewData: [FZTableViewSection] = {
+        var tableViewData: [FZTableViewSection] = []
+        
+        // FZTableViewSection
+        do{
+            var section = FZTableViewSection()
+            var sectionRows: [FZTableViewRow] = []
+            
+            // 图片处理
+            do{
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "图片处理"
+                
+                var row = FZTableViewRow()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
+                row.cellHeightBlock = { (tableView, indexPath) in
+                    return 44
+                }
+                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                    let vc = ImageViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
+            
+            // 观察者
+            do{
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "观察者"
+                
+                var row = FZTableViewRow()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
+                row.cellHeightBlock = { (tableView, indexPath) in
+                    return 44
+                }
+                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                    let vc = ObserverViewController.self()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
+            
+            // 图片处理
+            do{
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "键盘通知监听"
+                
+                var row = FZTableViewRow()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
+                row.cellHeightBlock = { (tableView, indexPath) in
+                    return 44
+                }
+                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                    let vc = KeyboardObserverViewController.self()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
+            
+            // view扩展
+            do{
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "view扩展"
+                
+                var row = FZTableViewRow()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
+                row.cellHeightBlock = { (tableView, indexPath) in
+                    return 44
+                }
+                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                    let vc = ViewExtensionViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
+            
+            section.sectionRows = sectionRows
+            tableViewData.append(section)
+        }
+        
+        return tableViewData
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.addSubview(self.tableView)
+        
+        tableView.updateTableView(withData: tableViewData)
         
     }
     
@@ -46,36 +125,4 @@ class ViewController: UIViewController {
     }
     
 }
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.datas.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.datas[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "cellIdentifier"
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
-        }
-        
-        let data = self.datas[indexPath.section][indexPath.row]
-        cell?.textLabel?.text = data.title
-        
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let clzType = self.datas[indexPath.section][indexPath.row].clzType
-        
-        let vc = clzType.init()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-}
-
 

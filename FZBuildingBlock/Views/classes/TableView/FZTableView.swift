@@ -11,7 +11,7 @@ open class FZTableView: UITableView {
     
     open var tableViewManager: FZTableViewManager?
 
-    override init(frame: CGRect, style: UITableView.Style) {
+    override public init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
         self.defaultConfig()

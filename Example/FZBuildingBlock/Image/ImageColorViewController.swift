@@ -33,10 +33,16 @@ class ImageColorViewController: UIViewController {
     
     
     @objc func btnClickAction(sender: Any){
-        guard let image = UIImage.fz_image(withColor: .fz_randomColor(), size: self.view.fz_size) else {
+        let randomColor = UIColor.fz_randomColor(alpha: 1)
+        guard let image = UIImage.fz_image(withColor: randomColor, size: self.view.fz_size) else {
             return
         }
         self.view.backgroundColor = UIColor(patternImage: image)
+        
+        print(randomColor.fz_rgbHexString())
+        print(randomColor.fz_rgbHex())
+        print(randomColor.fz_disassembleColor())
+        print(String(format: "%d -> %X", randomColor.fz_rgbHex().rgbHex, randomColor.fz_rgbHex().rgbHex))
     }
 
     /*

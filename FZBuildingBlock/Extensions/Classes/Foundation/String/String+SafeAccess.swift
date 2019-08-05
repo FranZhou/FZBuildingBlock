@@ -1,5 +1,5 @@
 //
-//  String+Common.swift
+//  String+SafeAccess.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/1/25.

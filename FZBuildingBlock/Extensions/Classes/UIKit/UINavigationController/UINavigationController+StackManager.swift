@@ -8,6 +8,36 @@
 import Foundation
 
 
+// MARK: - find
+extension UINavigationController{
+    
+    
+    /// 寻找Navigation中的某个类型的对象
+    ///
+    /// - Parameter clz: viewcontroler的类型
+    /// - Returns: 符合类型的viewControllers
+    public func fz_findViewController(clz: AnyClass) -> [UIViewController]{
+        var viewControllers: [UIViewController] = []
+        for viewController in viewControllers {
+            if viewController.isKind(of: clz){
+                viewControllers.append(viewController)
+            }
+        }
+        return viewControllers
+    }
+    
+    
+    /// 寻找Navigation中的某个viewController的位置
+    ///
+    /// - Parameter viewController: viewcontroler对象
+    /// - Returns: viewcontroler的位置
+    public func fz_findViewController(viewController: UIViewController) -> Int?{
+        return viewControllers.firstIndex(of: viewController)
+    }
+    
+}
+
+// MARK: -
 extension UINavigationController {
     
     

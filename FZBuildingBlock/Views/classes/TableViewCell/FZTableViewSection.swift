@@ -9,6 +9,10 @@ import Foundation
 
 open class FZTableViewSection{
     
+    public init() {
+        
+    }
+    
     /// section rows
     open var sectionRows: [FZTableViewRow]?
     

@@ -17,6 +17,7 @@
 		1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */; };
 		1DEF13632226E331001F8C9A /* ViewExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */; };
 		1DEF13652226E373001F8C9A /* ViewBorderLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF13642226E373001F8C9A /* ViewBorderLineViewController.swift */; };
+		1DFD247C22F80E1D00D95DC1 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */; };
 		5897A2FEDC418D405857E4FA /* Pods_FZBuildingBlock_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserverViewController.swift; sourceTree = "<group>"; };
 		1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionViewController.swift; sourceTree = "<group>"; };
 		1DEF13642226E373001F8C9A /* ViewBorderLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBorderLineViewController.swift; sourceTree = "<group>"; };
+		1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF6D33B7E80A0CB728DC0F3 /* Pods-FZBuildingBlock_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZBuildingBlock_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FZBuildingBlock_Tests/Pods-FZBuildingBlock_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		32B390B355D2A8D05CDB13E5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				1DE50D93221FF78A0089F93D /* keyboard */,
 				1D2A5E73221CFFDE00CBAE1A /* Image */,
@@ -397,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFD247C22F80E1D00D95DC1 /* TableViewManager.swift in Sources */,
 				1D80893A223B9B6D00604783 /* ButtonLayoutViewController.swift in Sources */,
 				1D2A5E7B221CFFDE00CBAE1A /* ImageColorViewController.swift in Sources */,
 				1D2A5E7A221CFFDE00CBAE1A /* ImageRotationViewController.swift in Sources */,

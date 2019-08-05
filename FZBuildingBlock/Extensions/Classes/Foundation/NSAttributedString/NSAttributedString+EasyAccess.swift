@@ -1,5 +1,5 @@
 //
-//  NSAttributedString+Common.swift
+//  NSAttributedString+EasyAccess.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/3/14.
