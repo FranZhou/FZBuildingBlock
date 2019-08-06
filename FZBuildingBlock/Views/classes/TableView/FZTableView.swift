@@ -45,9 +45,15 @@ extension FZTableView{
     /// - Parameter data: FZTableViewSection array
     open func updateTableView(withData data: [FZTableViewSection]? = nil){
         
-        if let manager = tableViewManager {
-            self.delegate = manager
-            self.dataSource = manager
+        if let manager = tableViewManager{
+            if let delegate = self.delegate,
+                let dataSource = self.dataSource,
+                delegate === manager && dataSource === manager{
+                // manager是当前tableview的delegate和dataSource
+            }else{
+                self.delegate = manager
+                self.dataSource = manager
+            }
         }
         
         tableViewManager?.updateManager(withData: data)
