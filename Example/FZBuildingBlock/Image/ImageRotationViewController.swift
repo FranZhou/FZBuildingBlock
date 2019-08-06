@@ -43,6 +43,7 @@ class ImageRotationViewController: UIViewController {
         
         btn.fz_addAction(block: { (button) in
             print("fz_addAction touchUpInside")
+            button.fz_showIndicator()
         })
         
         btn.fz_addAction(block: { (button) in
@@ -51,7 +52,8 @@ class ImageRotationViewController: UIViewController {
         
         btn.fz_addAction(block: { (button) in
             print("touchUpOutside")
-            button.fz_removeAction(forEvent: .touchUpInside)
+//            button.fz_removeAction(forEvent: .touchUpInside)
+            button.fz_hideIndicator()
         }, for: .touchUpOutside)
         
         self.view.addSubview(btn)

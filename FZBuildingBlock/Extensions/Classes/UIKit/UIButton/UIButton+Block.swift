@@ -10,20 +10,20 @@ import Foundation
 // MARK: - private
 extension UIButton{
     
-    fileprivate struct FZUIButtonAssociatedKeyStruct{
-        static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIButtonAssociatedKeyStruct_associatedKeys".hashValue)!
+    fileprivate struct FZUIButtonBlockAssociatedKey{
+        static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIButtonBlockAssociatedKey_associatedKeys".hashValue)!
     }
     
     
     fileprivate var fz_controlEventBlocks:[UIControl.Event.RawValue: [FZButtonBlock]]?{
         get{
-            if let controlEvents = objc_getAssociatedObject(self, FZUIButtonAssociatedKeyStruct.associatedKeys) as? [UIControl.Event.RawValue: [FZButtonBlock]]{
+            if let controlEvents = objc_getAssociatedObject(self, FZUIButtonBlockAssociatedKey.associatedKeys) as? [UIControl.Event.RawValue: [FZButtonBlock]]{
                 return controlEvents
             }
             return nil
         }
         set{
-            objc_setAssociatedObject(self, FZUIButtonAssociatedKeyStruct.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, FZUIButtonBlockAssociatedKey.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
