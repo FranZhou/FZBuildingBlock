@@ -12,7 +12,9 @@ import FZBuildingBlock
 class ViewController: UIViewController {
     
     lazy var tableView: FZTableView = {
-        let tableView = FZTableView(frame: CGRect(x: 0, y: UIScreen.fz_navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height - UIScreen.fz_navigationBarAndStatusBarHeight), style: .plain)
+        let navigationBarAndStatusBarHeight: CGFloat = self.navigationController?.fz_navigationBarAndStatusBarHeight ?? 0
+        
+        let tableView = FZTableView(frame: CGRect(x: 0, y: navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height - navigationBarAndStatusBarHeight), style: .plain)
         tableView.tableViewManager = TableViewManager()
         tableView.register(FZTableViewCommonCell.classForCoder(), forCellReuseIdentifier: FZTableViewCommonCell.reuseIdentifier())
         return tableView
@@ -126,3 +128,27 @@ class ViewController: UIViewController {
     
 }
 
+
+extension ViewController{
+    
+    override var shouldAutorotate: Bool{
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .all
+    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        print("fz_statusBarHeight -> \(UIApplication.shared.fz_statusBarHeight)")
+        
+        print("fz_safeArea -> \(UIApplication.shared.fz_safeArea)")
+        
+        
+        print("fz_navigationBarHeight -> \(self.navigationController?.fz_navigationBarHeight)")
+        print("fz_navigationBarAndStatusBarHeight -> \(self.navigationController?.fz_navigationBarAndStatusBarHeight)")
+        print("fz_tabBarHeight -> \(self.tabBarController?.fz_tabBarHeight)")
+        print("fz_tabBarAndSafeAreaHeight -> \(self.tabBarController?.fz_tabBarAndSafeAreaHeight)")
+    }
+    
+}

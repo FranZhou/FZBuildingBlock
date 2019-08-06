@@ -10,12 +10,14 @@ import Foundation
 extension UIApplication{
     
     /// safeArea会随着屏幕旋转而变化
-    public static var fz_safeArea: UIEdgeInsets {
-        if #available(iOS 11.0, *),
-            let safeAreaInsets = UIApplication.shared.keyWindow?.safeAreaInsets{
-            return safeAreaInsets
-        } else {
-            return .zero
+    public var fz_safeArea: UIEdgeInsets {
+        get{
+            if #available(iOS 11.0, *),
+                let safeAreaInsets = keyWindow?.safeAreaInsets{
+                return safeAreaInsets
+            } else {
+                return .zero
+            }
         }
     }
     

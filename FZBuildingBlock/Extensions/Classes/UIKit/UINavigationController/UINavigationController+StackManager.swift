@@ -7,36 +7,6 @@
 
 import Foundation
 
-
-// MARK: - find
-extension UINavigationController{
-    
-    
-    /// 寻找Navigation中的某个类型的对象
-    ///
-    /// - Parameter clz: viewcontroler的类型
-    /// - Returns: 符合类型的viewControllers
-    public func fz_findViewController(clz: AnyClass) -> [UIViewController]{
-        var viewControllers: [UIViewController] = []
-        for viewController in viewControllers {
-            if viewController.isKind(of: clz){
-                viewControllers.append(viewController)
-            }
-        }
-        return viewControllers
-    }
-    
-    
-    /// 寻找Navigation中的某个viewController的位置
-    ///
-    /// - Parameter viewController: viewcontroler对象
-    /// - Returns: viewcontroler的位置
-    public func fz_findViewController(viewController: UIViewController) -> Int?{
-        return viewControllers.firstIndex(of: viewController)
-    }
-    
-}
-
 // MARK: -
 extension UINavigationController {
     
@@ -51,6 +21,8 @@ extension UINavigationController {
         let validateDestoryLevel = destoryExtraLevel >= 0 ? destoryExtraLevel : 0
         let vcs = self.viewControllers
         let maxIndex = vcs.count - 1
+        
+        // destory后的index
         var index = maxIndex - validateDestoryLevel
         if index < 0 {
             index = 0
@@ -60,15 +32,17 @@ extension UINavigationController {
         var newVCs: [UIViewController] = []
         
         // 应该不会有 vcs.count = 0 的情况，这里保证逻辑完整性
-        if vcs.count != 0 {
+        if vcs.count != 0, index > 0 {
             newVCs.append(contentsOf: vcs[0...index])
         }
+        
+        // destory后，再添加需要push的viewController
         newVCs.append(viewController)
         self.setViewControllers(newVCs, animated: animated)
     }
     
     
-    /// 导航栏控制器pop操作时，额外消除指定level的控制器
+    /// 导航栏控制器pop操作时，额外消除指定level的控制器，导航栏会至少保证根控制器不被pop
     ///
     /// - Parameters:
     ///   - animated: animated
@@ -79,16 +53,18 @@ extension UINavigationController {
         let validateDestoryLevel = destoryExtraLevel >= 0 ? destoryExtraLevel : 0
         let vcs = self.viewControllers
         let maxIndex = vcs.count - 1
+        
+        // pop后的index
         var index = maxIndex - validateDestoryLevel - 1
         
+        // 边界判断
         if index < 0 {
             index = 0
         } else if index >= maxIndex{
             index = maxIndex
         }
         
-        // 应该不会有 vcs.count = 0 的情况，这里保证逻辑完整性
-        if vcs.count > 0 {
+        if vcs.count > index {
             let toVC = vcs[index]
             return self.popToViewController(toVC, animated: animated)
         } else {
