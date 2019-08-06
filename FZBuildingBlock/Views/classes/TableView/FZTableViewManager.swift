@@ -106,8 +106,14 @@ extension FZTableViewManager: UITableViewDataSource{
             // get or create cell
             cell = tableView.dequeueReusableCell(withIdentifier: tableRow.identifier ?? "")
             if cell == nil{
-                if (FZTableViewCell.classForCoder() is UITableViewCell.Type){
-                    cell = (FZTableViewCell.classForCoder() as! UITableViewCell.Type).init(style: .default, reuseIdentifier: tableRow.identifier ?? "")
+                if let cellClassName = tableRow.cellClassName,
+                    let clz = NSClassFromString(cellClassName),
+                    clz is UITableViewCell.Type{
+                    cell = (clz as! UITableViewCell.Type).init(style: .default, reuseIdentifier: tableRow.identifier ?? "")
+                }else{
+                    if (FZTableViewCell.classForCoder() is UITableViewCell.Type){
+                        cell = (FZTableViewCell.classForCoder() as! UITableViewCell.Type).init(style: .default, reuseIdentifier: tableRow.identifier ?? "")
+                    }
                 }
             }
             
