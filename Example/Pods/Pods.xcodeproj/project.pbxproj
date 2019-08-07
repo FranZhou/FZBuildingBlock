@@ -13,6 +13,7 @@
 		1AE267E9CB8F2FB2E7899E58CDAF93A7 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAF881E7732FF07813A05FF736FBFA /* UIViewController+TopViewController.swift */; };
 		1B697AAF5DA5A18DD5F1DC829EB38B22 /* RunTime+MethodSwizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3CE1C25D76B096DB2986F55158220 /* RunTime+MethodSwizzled.swift */; };
 		1BB07E26EC03B561F3ED69FB326DED47 /* Array+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFCBA9A50CA9C60231DD375302007E /* Array+SafeAccess.swift */; };
+		1D9D68C422FA83210095293D /* UIControl+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D68C322FA83200095293D /* UIControl+Block.swift */; };
 		1E94D20B4D0D867593248BD8F9BE6B30 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE2D008990F893CDAA60C506AD14CB /* KeychainPasswordItem.swift */; };
 		21DA081580FEB022880742C9BD5755F0 /* UIApplication+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F71919B034B9115C488BEAB96B4A8 /* UIApplication+SafeArea.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
@@ -74,7 +75,6 @@
 		EE6E280A954BFEA021EAC16D36843F3B /* UIScreen+TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92D0B96A72DDBA7B3C080CFCDEC4808 /* UIScreen+TabBar.swift */; };
 		EFD2E413B7D2AFCE3BB820FE32DE57FB /* FZBuildingBlock-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D869690D36416163A46753EFF1793C /* FZBuildingBlock-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F340D709A163BF721B1F2F11D3B6A162 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F58F7B48A03E3E680BD40B2571DC0 /* String+URL.swift */; };
-		F9731817A7D0763767F1C14B6B241B3C /* UIButton+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF846B61086F4877E05505C4189C5D6 /* UIButton+Block.swift */; };
 		F9B76908DA2DE49A904F3B99A5E74AB2 /* KeyChainUniqueIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E627D431A8D115A5EB54735CFF447F74 /* KeyChainUniqueIDManager.swift */; };
 		FE3338713737578319966A08F04AEF0C /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D2C2AD5AE56754212A9A64E46A0CB /* UIImage+String.swift */; };
 /* End PBXBuildFile section */
@@ -106,6 +106,7 @@
 		1390166BAA5D36A2A5848EEA9B9676A5 /* UIImage+Copy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Copy.swift"; sourceTree = "<group>"; };
 		149B7CEBAFA3F426A91B829CF0C0039B /* Pods-FZBuildingBlock_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZBuildingBlock_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		15C881711BDD2680F965F3857F2DC270 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		1D9D68C322FA83200095293D /* UIControl+Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Block.swift"; sourceTree = "<group>"; };
 		264EC0715BD6A859369BE41022B25D15 /* UIImage+Resize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		29CBF0F47415471D6DE3FF806763B76A /* String+Size.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		4F64CF752822307114C097449A2972CA /* FZTableViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewManager.swift; sourceTree = "<group>"; };
 		4F8DD7188279EFCDAB3AD4290C134807 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59AACF0A685F209CAD0A7181BF1FA6E3 /* UIApplication+StatusBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+StatusBar.swift"; sourceTree = "<group>"; };
-		5EF846B61086F4877E05505C4189C5D6 /* UIButton+Block.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+Block.swift"; sourceTree = "<group>"; };
 		64EFCBA9A50CA9C60231DD375302007E /* Array+SafeAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+SafeAccess.swift"; sourceTree = "<group>"; };
 		67B61DEFD48FCEC15CF59E9F2F59DCF7 /* Pods-FZBuildingBlock_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZBuildingBlock_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6BF265D480E8B6B2792D89AD11B8EEBB /* Pods-FZBuildingBlock_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FZBuildingBlock_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -330,7 +330,6 @@
 		3DE4DA69BB0001F1B26B09D0DB0C96A1 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
-				5EF846B61086F4877E05505C4189C5D6 /* UIButton+Block.swift */,
 				E031587065C9F3DFA57F5F5D8CA3F64F /* UIButton+ImageAndTitleLayout.swift */,
 				8F6E62601670EED45CA07600DE4FEC98 /* UIButton+Indicator.swift */,
 			);
@@ -485,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				F9BA3DDE3EDEF6C532F125213DF00E44 /* UIControl+TouchArea.swift */,
+				1D9D68C322FA83200095293D /* UIControl+Block.swift */,
 			);
 			path = UIControl;
 			sourceTree = "<group>";
@@ -822,8 +822,8 @@
 				F340D709A163BF721B1F2F11D3B6A162 /* String+URL.swift in Sources */,
 				21DA081580FEB022880742C9BD5755F0 /* UIApplication+SafeArea.swift in Sources */,
 				E09A7BAF7EAD03A55C490F340A682EB0 /* UIApplication+StatusBar.swift in Sources */,
-				F9731817A7D0763767F1C14B6B241B3C /* UIButton+Block.swift in Sources */,
 				4715B16E02FFE6DBE8D9464360EF4CB1 /* UIButton+ImageAndTitleLayout.swift in Sources */,
+				1D9D68C422FA83210095293D /* UIControl+Block.swift in Sources */,
 				85DCD27F01B4438BBEFF37E5A8C81755 /* UIButton+Indicator.swift in Sources */,
 				2C9CBA3D5B1546A39D2AC18F158A5624 /* UIColor+Hex.swift in Sources */,
 				24677106F370C9635D9EED566216D35D /* UIColor+Random.swift in Sources */,
