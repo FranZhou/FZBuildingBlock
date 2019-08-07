@@ -14,7 +14,7 @@ extension UIControl{
     }
     
     
-    /// 扩展判断范围
+    /// 设置额外热区，可以扩大或者缩小响应范围
     public var fz_touchAreaEdge: UIEdgeInsets{
         get{
             if let areaEdge = objc_getAssociatedObject(self, FZUIControlTouchAreaInsetsAssociatedKey.associatedKeys) as? UIEdgeInsets{
