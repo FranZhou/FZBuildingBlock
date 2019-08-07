@@ -38,6 +38,7 @@ class ImageRotationViewController: UIViewController {
         btn.fz_y = 100
         btn.fz_width = 200
         btn.fz_height = 50
+        btn.fz_touchAreaEdge = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
         btn.setTitle("旋转当前图片", for: .normal)
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
         
