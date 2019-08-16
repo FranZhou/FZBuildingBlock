@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("ZhouFan".fz_base64Encode())
         print("ZhouFan".fz_base64Encode()?.fz_base64Decode())
-                
+        
+        print("\(UIDevice.fz_totalDiskSpaceBytes())")
+        
         return true
     }
 

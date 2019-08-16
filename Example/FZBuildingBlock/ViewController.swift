@@ -30,8 +30,16 @@ class ViewController: UIViewController {
             
             // 图片处理
             do{
+                var font: UIFont? = nil
+                if let filePath = Bundle.main.path(forResource: "毛泽东字体", ofType: "ttf"),
+                    let fontName = UIFont.fz_registerTTFFont(withFilePath: filePath){
+                    font = UIFont(name: fontName, size: 13)
+                }
+                
                 var cellModel = FZTableViewCellModel()
-                cellModel.leftString = "图片处理"
+                cellModel.leftAttributedString = NSMutableAttributedString(string: "图片处理").fz_set(attribute: NSAttributedString.FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
+                
+                cellModel.rightString = "->"
                 
                 var row = FZTableViewRow()
                 row.cellData = cellModel
@@ -49,8 +57,16 @@ class ViewController: UIViewController {
             
             // 观察者
             do{
+                
+                var font: UIFont? = nil
+                if let filePath = Bundle.main.path(forResource: "simsun", ofType: "ttc"),
+                    let fontNames = UIFont.fz_registerTTCFont(withFilePath: filePath){
+                    font = UIFont(name: fontNames[0], size: 18)
+                }
+                
                 var cellModel = FZTableViewCellModel()
-                cellModel.leftString = "观察者"
+                cellModel.leftAttributedString = NSMutableAttributedString(string: "观察者").fz_set(attribute: NSAttributedString.FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
+                
                 
                 var row = FZTableViewRow()
                 row.cellData = cellModel

@@ -17,6 +17,10 @@
 		1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */; };
 		1DEF13632226E331001F8C9A /* ViewExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */; };
 		1DEF13652226E373001F8C9A /* ViewBorderLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF13642226E373001F8C9A /* ViewBorderLineViewController.swift */; };
+		1DFBC53323065D990077DB50 /* 毛泽东字体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC53223065D990077DB50 /* 毛泽东字体.ttf */; };
+		1DFBC5372306B4590077DB50 /* gulim.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC5362306B4590077DB50 /* gulim.ttc */; };
+		1DFBC53C2306B7A40077DB50 /* simsun.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC53A2306B7A40077DB50 /* simsun.ttc */; };
+		1DFBC53D2306B7A40077DB50 /* simsun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC53B2306B7A40077DB50 /* simsun.ttf */; };
 		1DFD247C22F80E1D00D95DC1 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */; };
 		5897A2FEDC418D405857E4FA /* Pods_FZBuildingBlock_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -49,6 +53,10 @@
 		1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserverViewController.swift; sourceTree = "<group>"; };
 		1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionViewController.swift; sourceTree = "<group>"; };
 		1DEF13642226E373001F8C9A /* ViewBorderLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBorderLineViewController.swift; sourceTree = "<group>"; };
+		1DFBC53223065D990077DB50 /* 毛泽东字体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "毛泽东字体.ttf"; sourceTree = "<group>"; };
+		1DFBC5362306B4590077DB50 /* gulim.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = gulim.ttc; sourceTree = "<group>"; };
+		1DFBC53A2306B7A40077DB50 /* simsun.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = simsun.ttc; sourceTree = "<group>"; };
+		1DFBC53B2306B7A40077DB50 /* simsun.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = simsun.ttf; sourceTree = "<group>"; };
 		1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF6D33B7E80A0CB728DC0F3 /* Pods-FZBuildingBlock_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZBuildingBlock_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FZBuildingBlock_Tests/Pods-FZBuildingBlock_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +157,17 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		1DFBC53123065D750077DB50 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBC5362306B4590077DB50 /* gulim.ttc */,
+				1DFBC53223065D990077DB50 /* 毛泽东字体.ttf */,
+				1DFBC53A2306B7A40077DB50 /* simsun.ttc */,
+				1DFBC53B2306B7A40077DB50 /* simsun.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +192,7 @@
 		607FACD21AFB9204008FA782 /* Example for FZBuildingBlock */ = {
 			isa = PBXGroup;
 			children = (
+				1DFBC53123065D750077DB50 /* Resources */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */,
@@ -277,6 +297,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = L9CBQ6PTWQ;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -311,9 +332,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFBC53C2306B7A40077DB50 /* simsun.ttc in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				1DFBC5372306B4590077DB50 /* gulim.ttc in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				1DFBC53323065D990077DB50 /* 毛泽东字体.ttf in Resources */,
+				1DFBC53D2306B7A40077DB50 /* simsun.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +583,7 @@
 			baseConfigurationReference = 651159D7AEF1D06214F8D958 /* Pods-FZBuildingBlock_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L9CBQ6PTWQ;
 				INFOPLIST_FILE = FZBuildingBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -573,6 +599,7 @@
 			baseConfigurationReference = C8ED9B16181E3112C92529C2 /* Pods-FZBuildingBlock_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L9CBQ6PTWQ;
 				INFOPLIST_FILE = FZBuildingBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
