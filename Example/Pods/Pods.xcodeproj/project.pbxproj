@@ -14,6 +14,7 @@
 		1004438B055B08F9C1C3C5258336DF11 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C690C66A41CCDE8C408652D62E5B /* UIViewController+TopViewController.swift */; };
 		1DFBC53F230A6E6F0077DB50 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC53E230A6E6F0077DB50 /* UIImage+GIF.swift */; };
 		1DFBC542230A89600077DB50 /* UIImageView+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC541230A89600077DB50 /* UIImageView+GIF.swift */; };
+		1DFBC549230AAABE0077DB50 /* FZLargeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC548230AAABE0077DB50 /* FZLargeImageView.swift */; };
 		215565F08AE488B397447DE4F1C32CC9 /* FZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CC3348F5CC2B1712D5F884C8AD05B /* FZTableViewCell.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
 		290469C4AB0E5C35A47ED357E1B39F19 /* FZTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1C8C35FEC6A7ECE68E4B7FC60C41E /* FZTableViewCellModel.swift */; };
@@ -113,6 +114,7 @@
 		18E4900776A64658612C64C5DAD20187 /* UINavigationController+Root.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Root.swift"; sourceTree = "<group>"; };
 		1DFBC53E230A6E6F0077DB50 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		1DFBC541230A89600077DB50 /* UIImageView+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+GIF.swift"; sourceTree = "<group>"; };
+		1DFBC548230AAABE0077DB50 /* FZLargeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZLargeImageView.swift; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
 		2C4F12EF15E2A6512069B39C5241F59D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CD04E683B685519C21973C3C6F847C3 /* FZTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,15 @@
 				1DFBC541230A89600077DB50 /* UIImageView+GIF.swift */,
 			);
 			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		1DFBC547230AA6C80077DB50 /* FZLargeImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBC548230AAABE0077DB50 /* FZLargeImageView.swift */,
+			);
+			name = FZLargeImageView;
+			path = FZBuildingBlock/Views/classes/FZLargeImageView;
 			sourceTree = "<group>";
 		};
 		231035464F224FB8EE56E69D7DE15CFD /* Observer */ = {
@@ -610,6 +621,7 @@
 		DE8D8EF471E0EF809327E29D57C0CF76 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DFBC547230AA6C80077DB50 /* FZLargeImageView */,
 				5E9569006830DC6F048440C7F1CC0D05 /* TableView */,
 				C85F88C01C695989B5AEBA784A1A9DF4 /* TableViewCell */,
 			);
@@ -888,6 +900,7 @@
 				C3283370C53B125C05EF730AB7FABC3D /* UIImage+Resize.swift in Sources */,
 				F70B2EF5EF568D762ACCBC1EC3EFEBEF /* UIImage+Rotation.swift in Sources */,
 				E59089C798DD45D753158B09CDC77905 /* UIImage+String.swift in Sources */,
+				1DFBC549230AAABE0077DB50 /* FZLargeImageView.swift in Sources */,
 				B141ACE360A7DA2810830C0518CD4A47 /* UIImage+WaterMark.swift in Sources */,
 				0E1F4D63D8A796E8E36BB658CE61240E /* UINavigationController+NavigationBar.swift in Sources */,
 				B647FF7F4DCD6E60CFC14045821713BD /* UINavigationController+Query.swift in Sources */,

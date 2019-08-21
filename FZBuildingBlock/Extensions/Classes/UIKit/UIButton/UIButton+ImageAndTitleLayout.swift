@@ -31,13 +31,16 @@ extension UIButton{
     ///   - layoutStyle: default = .imageLeftAndTitleRight；布局方式
     ///   - spacing: default = 0；文字和图片的间距
     public func fz_setImageAndTitleLayout(layoutStyle: FZButtonImageAndTitleLayoutStyle = .imageLeftAndTitleRight, spacing: CGFloat = 0) -> Void{
-        self.sizeToFit()
+        
+        self.layoutIfNeeded()
         
         let imageWidth = self.imageView?.frame.size.width ?? 0
         let imageHeight = self.imageView?.frame.size.height ?? 0
         
-        let titleWidth = self.titleLabel?.intrinsicContentSize.width ?? 0
-        let titleHeight = self.titleLabel?.intrinsicContentSize.height ?? 0
+        let titleWidth = self.titleLabel?.frame.size.width ?? 0
+        let titleHeight = self.titleLabel?.frame.size.height ?? 0
+        
+        let titleIntrinsicWidth = self.titleLabel?.intrinsicContentSize.width ?? 0
         
         var imageEdgeInsets: UIEdgeInsets = UIEdgeInsets()
         var labelEdgeInsets: UIEdgeInsets = UIEdgeInsets()
@@ -47,19 +50,18 @@ extension UIButton{
             imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing/2.0, bottom: 0, right: spacing/2.0)
             labelEdgeInsets = UIEdgeInsets(top: 0, left: spacing/2.0, bottom: 0, right: -spacing/2.0)
         case .imageTopAndTitleBottom:
-            imageEdgeInsets = UIEdgeInsets(top: -titleHeight-spacing/2.0, left: 0, bottom: 0, right: -titleWidth)
+            imageEdgeInsets = UIEdgeInsets(top: -titleHeight-spacing/2.0, left: 0, bottom: 0, right: -titleIntrinsicWidth)
             labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth, bottom: -imageHeight-spacing/2.0, right: 0)
         case .imageRightAndTitleLeft:
             imageEdgeInsets = UIEdgeInsets(top: 0, left: titleWidth+spacing/2.0, bottom: 0, right: -titleWidth-spacing/2.0)
             labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth-spacing/2.0, bottom: 0, right: imageWidth+spacing/2.0)
         case .imageBottomAndTitleTop:
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -titleHeight-spacing/2.0, right: -titleWidth)
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -titleHeight-spacing/2.0, right: -titleIntrinsicWidth)
             labelEdgeInsets = UIEdgeInsets(top: -imageHeight-spacing/2.0, left: -imageWidth, bottom: 0, right: 0)
         }
         
         self.titleEdgeInsets = labelEdgeInsets
         self.imageEdgeInsets = imageEdgeInsets
         
-        self.sizeToFit()
     }
 }

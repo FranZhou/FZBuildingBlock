@@ -23,6 +23,8 @@
 		1DFBC53D2306B7A40077DB50 /* simsun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC53B2306B7A40077DB50 /* simsun.ttf */; };
 		1DFBC544230A981B0077DB50 /* test_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC543230A981B0077DB50 /* test_gif.gif */; };
 		1DFBC546230A984B0077DB50 /* GIFImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC545230A984B0077DB50 /* GIFImageViewController.swift */; };
+		1DFBC54B230CE7B80077DB50 /* LargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC54A230CE7B80077DB50 /* LargeImageViewController.swift */; };
+		1DFBC54D230CE7C50077DB50 /* largeImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBC54C230CE7C50077DB50 /* largeImage.jpg */; };
 		1DFD247C22F80E1D00D95DC1 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */; };
 		5897A2FEDC418D405857E4FA /* Pods_FZBuildingBlock_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -61,6 +63,8 @@
 		1DFBC53B2306B7A40077DB50 /* simsun.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = simsun.ttf; sourceTree = "<group>"; };
 		1DFBC543230A981B0077DB50 /* test_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test_gif.gif; sourceTree = "<group>"; };
 		1DFBC545230A984B0077DB50 /* GIFImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageViewController.swift; sourceTree = "<group>"; };
+		1DFBC54A230CE7B80077DB50 /* LargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImageViewController.swift; sourceTree = "<group>"; };
+		1DFBC54C230CE7C50077DB50 /* largeImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = largeImage.jpg; sourceTree = "<group>"; };
 		1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		1E3C8FA1FF218804988CBDFA /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF6D33B7E80A0CB728DC0F3 /* Pods-FZBuildingBlock_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZBuildingBlock_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FZBuildingBlock_Tests/Pods-FZBuildingBlock_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				1D2A5E77221CFFDE00CBAE1A /* ImageViewController.swift */,
 				1DE50D81221E9D9C0089F93D /* ImageCornerRadiusViewController.swift */,
 				1DFBC545230A984B0077DB50 /* GIFImageViewController.swift */,
+				1DFBC54A230CE7B80077DB50 /* LargeImageViewController.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		1DFBC53123065D750077DB50 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DFBC54C230CE7C50077DB50 /* largeImage.jpg */,
 				1DFBC543230A981B0077DB50 /* test_gif.gif */,
 				1DFBC5362306B4590077DB50 /* gulim.ttc */,
 				1DFBC53223065D990077DB50 /* 毛泽东字体.ttf */,
@@ -343,6 +349,7 @@
 				1DFBC5372306B4590077DB50 /* gulim.ttc in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				1DFBC54D230CE7C50077DB50 /* largeImage.jpg in Resources */,
 				1DFBC544230A981B0077DB50 /* test_gif.gif in Resources */,
 				1DFBC53323065D990077DB50 /* 毛泽东字体.ttf in Resources */,
 				1DFBC53D2306B7A40077DB50 /* simsun.ttf in Resources */,
@@ -437,6 +444,7 @@
 				1D80893A223B9B6D00604783 /* ButtonLayoutViewController.swift in Sources */,
 				1D2A5E7B221CFFDE00CBAE1A /* ImageColorViewController.swift in Sources */,
 				1D2A5E7A221CFFDE00CBAE1A /* ImageRotationViewController.swift in Sources */,
+				1DFBC54B230CE7B80077DB50 /* LargeImageViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				1DEF13632226E331001F8C9A /* ViewExtensionViewController.swift in Sources */,
 				1DE50D82221E9D9C0089F93D /* ImageCornerRadiusViewController.swift in Sources */,

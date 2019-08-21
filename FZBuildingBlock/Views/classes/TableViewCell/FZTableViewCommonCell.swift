@@ -124,7 +124,7 @@ extension FZTableViewCommonCell{
         // bottom line
         var bottomLineHeight: CGFloat = 0
         do {
-            if cellModel.showTopLine {
+            if cellModel.showBottomLine {
                 topLineView.fz_x = cellModel.bottomLineLeftDistance
                 topLineView.fz_y = height - cellModel.topLineHeight
                 topLineView.fz_height = cellModel.topLineHeight

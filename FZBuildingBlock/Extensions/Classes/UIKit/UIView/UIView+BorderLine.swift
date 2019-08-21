@@ -171,6 +171,10 @@ extension UIView {
     ///   - lineColor: 边框颜色
     ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
     public func fz_addBorderLine(lineSides: FZViewBorderLineSideType, lineWidth: CGFloat, lineColor: UIColor, lineDashPattern: [NSNumber]? = nil) {
+        
+        // 告知页面布局立刻更新。所以一般都会和setNeedsLayout一起使用。如果希望立刻生成新的frame需要调用此方法，利用这点一般布局动画可以在更新布局后直接使用这个方法让动画生效。
+        self.layoutIfNeeded()
+        
         let rect = self.bounds
         
         // 要根据线的宽度计算线的起点终点位置

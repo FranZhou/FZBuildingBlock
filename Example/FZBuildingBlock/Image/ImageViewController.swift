@@ -23,7 +23,8 @@ class ImageViewController: UIViewController {
             (title: "图片旋转图片", clzType: ImageRotationViewController.self),
             (title: "文字图片", clzType: StringImageViewController.self),
             (title: "图片圆角", clzType: ImageCornerRadiusViewController.self),
-            (title: "GIF图片", clzType: GIFImageViewController.self)
+            (title: "GIF图片", clzType: GIFImageViewController.self),
+            (title: "显示大图", clzType: LargeImageViewController.self)
         ]
     ]
 
