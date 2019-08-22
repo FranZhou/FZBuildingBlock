@@ -13,7 +13,7 @@ class GIFImageViewController: UIViewController {
     lazy var gifImageView: UIImageView = {
         let iv = UIImageView()
         if let gifFilePath = Bundle.main.path(forResource: "test_gif", ofType: "gif"){
-            iv.fz_loadGif(withFilePath: gifFilePath)
+            iv.fz_loadGIF(withFilePath: gifFilePath)
         }
         iv.sizeToFit()
         return iv

@@ -15,7 +15,7 @@ extension UIImage{
     ///
     /// - Parameter filePath: gif图片本地路径
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGif(withFilePath filePath: String) -> (giImages: [UIImage], gifDuration: Double)?{
+    public class func fz_loadGIF(withFilePath filePath: String) -> (giImages: [UIImage], gifDuration: Double)?{
         let url = URL(fileURLWithPath: filePath)
         var gifData: Data? = nil
         
@@ -26,7 +26,7 @@ extension UIImage{
         }
         
         if let _ = gifData {
-            return fz_loadGif(withData: gifData!)
+            return fz_loadGIF(withData: gifData!)
         }else{
             return nil
         }
@@ -37,7 +37,12 @@ extension UIImage{
     ///
     /// - Parameter data: gif data
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGif(withData data: Data) -> (giImages: [UIImage], gifDuration: Double)?{
+    public class func fz_loadGIF(withData data: Data) -> (giImages: [UIImage], gifDuration: Double)?{
+        
+        
+        guard data.fz_isGIF else {
+            return nil
+        }
         
         // kCGImageSourceShouldCache : 表示是否在存储的时候就解码
         // kCGImageSourceTypeIdentifierHint : 指明source type

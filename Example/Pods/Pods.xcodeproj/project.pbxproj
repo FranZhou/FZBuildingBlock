@@ -15,6 +15,9 @@
 		1DFBC53F230A6E6F0077DB50 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC53E230A6E6F0077DB50 /* UIImage+GIF.swift */; };
 		1DFBC542230A89600077DB50 /* UIImageView+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC541230A89600077DB50 /* UIImageView+GIF.swift */; };
 		1DFBC549230AAABE0077DB50 /* FZLargeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC548230AAABE0077DB50 /* FZLargeImageView.swift */; };
+		1DFBC553230D68810077DB50 /* Data+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC552230D68810077DB50 /* Data+GIF.swift */; };
+		1DFBC555230E8F8F0077DB50 /* Data+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC554230E8F8F0077DB50 /* Data+PNG.swift */; };
+		1DFBC557230E917D0077DB50 /* Data+JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC556230E917D0077DB50 /* Data+JPEG.swift */; };
 		215565F08AE488B397447DE4F1C32CC9 /* FZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CC3348F5CC2B1712D5F884C8AD05B /* FZTableViewCell.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
 		290469C4AB0E5C35A47ED357E1B39F19 /* FZTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1C8C35FEC6A7ECE68E4B7FC60C41E /* FZTableViewCellModel.swift */; };
@@ -115,6 +118,9 @@
 		1DFBC53E230A6E6F0077DB50 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		1DFBC541230A89600077DB50 /* UIImageView+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+GIF.swift"; sourceTree = "<group>"; };
 		1DFBC548230AAABE0077DB50 /* FZLargeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZLargeImageView.swift; sourceTree = "<group>"; };
+		1DFBC552230D68810077DB50 /* Data+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+GIF.swift"; sourceTree = "<group>"; };
+		1DFBC554230E8F8F0077DB50 /* Data+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PNG.swift"; sourceTree = "<group>"; };
+		1DFBC556230E917D0077DB50 /* Data+JPEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JPEG.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
 		2C4F12EF15E2A6512069B39C5241F59D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CD04E683B685519C21973C3C6F847C3 /* FZTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableView.swift; sourceTree = "<group>"; };
@@ -331,6 +337,16 @@
 			path = FZBuildingBlock/Views/classes/FZLargeImageView;
 			sourceTree = "<group>";
 		};
+		1DFBC551230D68720077DB50 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBC552230D68810077DB50 /* Data+GIF.swift */,
+				1DFBC554230E8F8F0077DB50 /* Data+PNG.swift */,
+				1DFBC556230E917D0077DB50 /* Data+JPEG.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		231035464F224FB8EE56E69D7DE15CFD /* Observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +469,7 @@
 		74B9BA1F1D21A87A40CE71A8E2A532B4 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				1DFBC551230D68720077DB50 /* Data */,
 				FD8E6E588ED9882457E9D957692EB785 /* Array */,
 				32FB3C92DB280423A42B055A5F43923F /* Bundle */,
 				AE28271C3E9F742711D4DABE8CD1928F /* NSAttributedString */,
@@ -853,6 +870,7 @@
 				37C775E0372DD89D3CC90144CCF83D50 /* Array+SafeAccess.swift in Sources */,
 				895C38508137A4136C389725A5A762A2 /* Bundle+Find.swift in Sources */,
 				7BBBA684A9BFD4CEA4D12004555614BE /* FZBuildingBlock-dummy.m in Sources */,
+				1DFBC555230E8F8F0077DB50 /* Data+PNG.swift in Sources */,
 				4EA4EA9098962BA2384F6EFC8AF88295 /* FZTableView.swift in Sources */,
 				215565F08AE488B397447DE4F1C32CC9 /* FZTableViewCell.swift in Sources */,
 				290469C4AB0E5C35A47ED357E1B39F19 /* FZTableViewCellModel.swift in Sources */,
@@ -894,7 +912,9 @@
 				CAA4BBC0786363987C6F0CBE9B52A5BA /* UIFont+TTC.swift in Sources */,
 				31398E8BB0C94861DD2CCFC45307EBFC /* UIFont+TTF.swift in Sources */,
 				BE824B36500B5D7E153D8E976ED5E945 /* UIImage+Color.swift in Sources */,
+				1DFBC553230D68810077DB50 /* Data+GIF.swift in Sources */,
 				0881D7331F6E071088FD1974BA842CAB /* UIImage+Copy.swift in Sources */,
+				1DFBC557230E917D0077DB50 /* Data+JPEG.swift in Sources */,
 				F61BDC09B7420F54F01CBE2E399D25E9 /* UIImage+CornerRadius.swift in Sources */,
 				BC40F7E8AE65D67ED0E479593C211753 /* UIImage+Cut.swift in Sources */,
 				C3283370C53B125C05EF730AB7FABC3D /* UIImage+Resize.swift in Sources */,

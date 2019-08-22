@@ -9,8 +9,8 @@ import Foundation
 
 extension UIImageView {
     
-    public class func fz_loadGif(withFilePath filePath: String) -> UIImageView?{
-        guard let gif = UIImage.fz_loadGif(withFilePath: filePath) else {
+    public class func fz_loadGIF(withFilePath filePath: String) -> UIImageView?{
+        guard let gif = UIImage.fz_loadGIF(withFilePath: filePath) else {
             return nil
         }
         
@@ -22,7 +22,7 @@ extension UIImageView {
     
     
     public class func fz_loadGif(withData data: Data) -> UIImageView?{
-        guard let gif = UIImage.fz_loadGif(withData: data) else {
+        guard let gif = UIImage.fz_loadGIF(withData: data) else {
             return nil
         }
         
@@ -34,8 +34,8 @@ extension UIImageView {
 }
 
 extension UIImageView{
-    public func fz_loadGif(withFilePath filePath: String){
-        guard let gif = UIImage.fz_loadGif(withFilePath: filePath) else {
+    public func fz_loadGIF(withFilePath filePath: String){
+        guard let gif = UIImage.fz_loadGIF(withFilePath: filePath) else {
             return
         }
         
@@ -44,7 +44,7 @@ extension UIImageView{
     }
     
     public func fz_loadGif(withData data: Data){
-        guard let gif = UIImage.fz_loadGif(withData: data) else {
+        guard let gif = UIImage.fz_loadGIF(withData: data) else {
             return
         }
         
