@@ -15,8 +15,7 @@ extension UIImageView {
         }
         
         let imageView = UIImageView()
-        imageView.animationImages = gif.giImages
-        imageView.animationDuration = gif.gifDuration
+        imageView.fz_loadGIFFrames(gifFrames: gif)
         return imageView
     }
     
@@ -27,28 +26,42 @@ extension UIImageView {
         }
         
         let imageView = UIImageView()
-        imageView.animationImages = gif.giImages
-        imageView.animationDuration = gif.gifDuration
+        imageView.fz_loadGIFFrames(gifFrames: gif)
         return imageView
     }
 }
 
 extension UIImageView{
+    
+    fileprivate func fz_loadGIFFrames(gifFrames: [UIImage.FZGIFFrameInfo]?){
+        var gifImages: [UIImage]? = nil
+        var gifDuration: Double = 0
+        
+        if let gif = gifFrames {
+            gifImages = gif.map { (gifFrameInfo: UIImage.FZGIFFrameInfo) -> UIImage in
+                return gifFrameInfo.image
+            }
+            
+            gifDuration = gif.reduce(0.0) { (result: Double, gifFrameInfo: UIImage.FZGIFFrameInfo) -> Double in
+                return result + gifFrameInfo.duration
+            }
+        }
+        
+        self.animationImages = gifImages
+        self.animationDuration = gifDuration
+    }
+    
     public func fz_loadGIF(withFilePath filePath: String){
         guard let gif = UIImage.fz_loadGIF(withFilePath: filePath) else {
             return
         }
-        
-        self.animationImages = gif.giImages
-        self.animationDuration = gif.gifDuration
+        fz_loadGIFFrames(gifFrames: gif)
     }
     
     public func fz_loadGif(withData data: Data){
         guard let gif = UIImage.fz_loadGIF(withData: data) else {
             return
         }
-        
-        self.animationImages = gif.giImages
-        self.animationDuration = gif.gifDuration
+        fz_loadGIFFrames(gifFrames: gif)
     }
 }

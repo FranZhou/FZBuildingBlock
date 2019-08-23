@@ -10,12 +10,15 @@ import MobileCoreServices
 
 extension UIImage{
     
+    /// GIF每一帧的数据类型(帧图片，帧动画时间)
+    public typealias FZGIFFrameInfo = (image: UIImage, duration: Double)
+    
     
     /// 加载GIF图片
     ///
     /// - Parameter filePath: gif图片本地路径
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGIF(withFilePath filePath: String) -> (giImages: [UIImage], gifDuration: Double)?{
+    public class func fz_loadGIF(withFilePath filePath: String) -> [FZGIFFrameInfo]?{
         let url = URL(fileURLWithPath: filePath)
         var gifData: Data? = nil
         
@@ -37,9 +40,9 @@ extension UIImage{
     ///
     /// - Parameter data: gif data
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGIF(withData data: Data) -> (giImages: [UIImage], gifDuration: Double)?{
+    public class func fz_loadGIF(withData data: Data) -> [FZGIFFrameInfo]?{
         
-        
+        // 是否是GIF图片的data
         guard data.fz_isGIF else {
             return nil
         }
@@ -55,8 +58,7 @@ extension UIImage{
         
         //获取gif的帧数
         let frameCount = CGImageSourceGetCount(imageSource)
-        var gifDuration = 0.0
-        var images = [UIImage]()
+        var frameImageAndDuration = [(image: UIImage, duration: Double)]()
         
         for i in 0..<frameCount {
             //取出索引对应的图片
@@ -68,7 +70,11 @@ extension UIImage{
             if frameCount == 1 {
                 // 单帧
                 //infinity 解释: https://swifter.tips/math-number/
-                gifDuration = .infinity
+                let gifFrameDuration: Double = .infinity
+                // 图片
+                let frameImage = UIImage(cgImage: imageRef, scale: 1.0, orientation: .up)
+                
+                frameImageAndDuration.append((image: frameImage, duration: gifFrameDuration))
             }else {
                 //1.获取gif没帧的时间间隔
                 
@@ -94,19 +100,19 @@ extension UIImage{
                     print("获取帧时间间隔失败")
                     return nil
                 }
-                //对于播放时间低于0.011s的,重新指定时长为0.100s；
+                // 对于播放时间低于0.011s的,重新指定时长为0.100s；
                 let gifFrameDuration = frameDuration.doubleValue > 0.011 ? frameDuration.doubleValue : defaultFrameDuration
                 
-                //计算总时间
-                gifDuration += gifFrameDuration
                 
-                //2.图片
+                // 图片
                 let frameImage = UIImage(cgImage: imageRef, scale: 1.0, orientation: .up)
-                images.append(frameImage)
+                
+                // 记录每一帧的图片和动画时间
+                frameImageAndDuration.append((image: frameImage, duration: gifFrameDuration))
             }
         }
         
-        return (giImages: images, gifDuration: gifDuration)
+        return frameImageAndDuration
     }
     
 }
