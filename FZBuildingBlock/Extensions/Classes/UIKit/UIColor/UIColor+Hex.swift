@@ -44,7 +44,7 @@ extension UIColor{
 extension UIColor{
     
     
-    /// 颜色拆分，获取颜色的rgba
+    /// 颜色拆分，获取颜色的rgba, 这里rgba的范围在[0,1]之间
     ///
     /// - Returns: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) default = (0, 0, 0, 1)
     public func fz_disassembleColor() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
@@ -76,20 +76,31 @@ extension UIColor{
     }
     
     
+    /// 颜色拆分，获取颜色的rgba, 这里rgb的范围在[0,255]之间，A[0,1]
+    ///
+    /// - Returns: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    public func fz_disassembleColorRGB255() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
+        let (red, green, blue, alpha) = fz_disassembleColor()
+        let multiplier: CGFloat = 255.0
+        
+        
+        return (ceil(red * multiplier), ceil(green * multiplier), ceil(blue * multiplier), alpha)
+    }
+    
+    
     /// UIColor -> rgbHexString
     ///
     /// - Parameter prefix: rgbHexString前缀,default = "#"
     /// - Returns: (rgbHexString: String, alpha: CGFloat)
     public func fz_rgbHexString(withPrefix prefix: String = "#") -> (rgbHexString: String, alpha: CGFloat){
-        let (red, green, blue, alpha) = fz_disassembleColor()
-        let multiplier: CGFloat = 255.0
+        let (red, green, blue, alpha) = fz_disassembleColorRGB255()
         
         return (String(
             format: "%@%02X%02X%02X",
             prefix,
-            Int(red * multiplier),
-            Int(green * multiplier),
-            Int(blue * multiplier)
+            Int(red),
+            Int(green),
+            Int(blue)
         ), alpha)
     }
     
