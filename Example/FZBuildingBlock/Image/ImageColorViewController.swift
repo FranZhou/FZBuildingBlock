@@ -43,6 +43,17 @@ class ImageColorViewController: UIViewController {
         print(randomColor.fz_rgbHex())
         print(randomColor.fz_disassembleColor())
         print(String(format: "%d -> %X", randomColor.fz_rgbHex().rgbHex, randomColor.fz_rgbHex().rgbHex))
+        
+        print(image.fz_colorRGBA(atPoint: CGPoint(x: 50, y: 50))?.fz_rgbHexString())
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let point = touches.first?.location(in: self.view) else {
+            return
+        }
+        
+        print(self.view.fz_colorRGBA(atPoint: point)?.fz_rgbHexString())
     }
 
     /*

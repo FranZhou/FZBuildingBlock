@@ -16,7 +16,29 @@ open class FZLargeImageView: UIView {
     }
     
     // MARK: - private
-    private var originImage: UIImage?
+    private var originImage: UIImage?{
+        didSet{
+            
+            // 设置 imageWidthScale
+            if let imageRect = self.imageRect,
+                imageRect.size.width > 0,
+                self.fz_width > 0{
+                self.imageWidthScale = self.fz_width / imageRect.size.width
+            }else{
+                self.imageWidthScale = nil
+            }
+            
+            // 设置 imageHeightScale
+            if let imageRect = self.imageRect,
+                imageRect.size.height > 0,
+                self.fz_height > 0{
+                self.imageHeightScale = self.fz_height / imageRect.size.height
+            }else{
+                self.imageHeightScale = nil
+            }
+            
+        }
+    }
     
     private var imageRect: CGRect?{
         if let cgImage = self.originImage?.cgImage{
@@ -25,24 +47,9 @@ open class FZLargeImageView: UIView {
         return nil
     }
     
-    private var imageWidthScale: CGFloat?{
-        if let imageRect = self.imageRect,
-            imageRect.size.width > 0,
-            self.fz_width > 0{
-            return self.fz_width / imageRect.size.width
-        }
-        return nil
-    }
+    private var imageWidthScale: CGFloat?
     
-    private var imageHeightScale: CGFloat?{
-        if let imageRect = self.imageRect ,
-            imageRect.size.height > 0,
-            self.fz_height > 0{
-            return self.fz_height / imageRect.size.height
-        }
-        return nil
-    }
-    
+    private var imageHeightScale: CGFloat?
     
 }
 

@@ -18,6 +18,7 @@
 		1DFBC553230D68810077DB50 /* Data+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC552230D68810077DB50 /* Data+GIF.swift */; };
 		1DFBC555230E8F8F0077DB50 /* Data+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC554230E8F8F0077DB50 /* Data+PNG.swift */; };
 		1DFBC557230E917D0077DB50 /* Data+JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC556230E917D0077DB50 /* Data+JPEG.swift */; };
+		1DFBC55923154F010077DB50 /* UIView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC55823154F010077DB50 /* UIView+Color.swift */; };
 		215565F08AE488B397447DE4F1C32CC9 /* FZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CC3348F5CC2B1712D5F884C8AD05B /* FZTableViewCell.swift */; };
 		23821144DDA6991EBB6579B3F5CE3817 /* Pods-FZBuildingBlock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24A535A490BE5660AFB389BC09AF89 /* Pods-FZBuildingBlock_Example-dummy.m */; };
 		290469C4AB0E5C35A47ED357E1B39F19 /* FZTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1C8C35FEC6A7ECE68E4B7FC60C41E /* FZTableViewCellModel.swift */; };
@@ -121,6 +122,7 @@
 		1DFBC552230D68810077DB50 /* Data+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+GIF.swift"; sourceTree = "<group>"; };
 		1DFBC554230E8F8F0077DB50 /* Data+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PNG.swift"; sourceTree = "<group>"; };
 		1DFBC556230E917D0077DB50 /* Data+JPEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JPEG.swift"; sourceTree = "<group>"; };
+		1DFBC55823154F010077DB50 /* UIView+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Color.swift"; sourceTree = "<group>"; };
 		2BD9A58C41EDD53ABD50E41A28BF2E52 /* Pods-FZBuildingBlock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Tests-resources.sh"; sourceTree = "<group>"; };
 		2C4F12EF15E2A6512069B39C5241F59D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CD04E683B685519C21973C3C6F847C3 /* FZTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableView.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				D3B8815732676A777895AB7162CE1328 /* UIView+Position.swift */,
 				598116875271CDB5E175803FF9423D10 /* UIView+Shadow.swift */,
 				E69F0710567878AD11B60EE91459C3A3 /* UIView+Snapshot.swift */,
+				1DFBC55823154F010077DB50 /* UIView+Color.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				808095D06313B8A675FFE5011EDB5606 /* UINavigationController+Root.swift in Sources */,
 				7543B71F188A8DFFA5CA4C885B7823C6 /* UINavigationController+StackManager.swift in Sources */,
 				C43AE71CE32CE6ABE396343DB23BFE80 /* UIScreen+TabBar.swift in Sources */,
+				1DFBC55923154F010077DB50 /* UIView+Color.swift in Sources */,
 				5B8629B84AF28A9231918A5D4CEEE492 /* UIScrollView+Snapshot.swift in Sources */,
 				439B745A3046C41EE11399E2A30C8D14 /* UITabBarController+TabBar.swift in Sources */,
 				E283C5DCCCA3884FCE2CC7735FBF1475 /* UIView+BorderLine.swift in Sources */,
