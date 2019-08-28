@@ -7,15 +7,15 @@
 
 import Foundation
 
-extension UIImage {
+extension FZBuildingBlockWrapper where Base: UIImage {
     
     
     /// 按比例缩放图片
     ///
     /// - Parameter scala: 缩放比例
     /// - Returns:
-    public func fz_resize(withScala scala: CGFloat) -> UIImage?{
-        let newSize = CGSize(width: self.size.width*scala, height: self.size.height*scala)
+    public func resize(withScala scala: CGFloat) -> UIImage?{
+        let newSize = CGSize(width: base.size.width*scala, height: base.size.height*scala)
         
         return self.fz_resize(withSize: newSize)
     }
@@ -27,12 +27,12 @@ extension UIImage {
     /// - Returns: 
     public func fz_resize(withSize size: CGSize) -> UIImage? {
         // 尺寸没有发生变化
-        guard self.size.equalTo(size) else {
-            return self.fz_copy()
+        guard base.size.equalTo(size) else {
+            return copy()
         }
         
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        self.draw(in: CGRect(origin: .zero, size: size))
+        base.draw(in: CGRect(origin: .zero, size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

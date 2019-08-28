@@ -7,6 +7,6 @@
 
 import Foundation
 
-extension UIScreen{
+extension FZBuildingBlockWrapper where Base: UIScreen{
     
 }

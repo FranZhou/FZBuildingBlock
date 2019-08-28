@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(IFAddressTool.getIFAddresses(ifaName: "en0"))
         
         
-        print("ZhouFan".fz_base64Encode())
-        print("ZhouFan".fz_base64Encode()?.fz_base64Decode())
+        print("ZhouFan".fz.base64Encode() ?? "")
+        print("ZhouFan".fz.base64Encode()?.fz.base64Decode() ?? "")
         
-        print("\(UIDevice.fz_totalDiskSpaceBytes())")
+        print("\(UIDevice.fz.totalDiskSpaceBytes())")
         
         return true
     }

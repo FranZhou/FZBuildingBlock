@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-extension UIImage{
+extension UIImage.fz{
     
     
     /// 获取纯色的image
@@ -18,7 +18,7 @@ extension UIImage{
     ///   - color: 图片颜色
     ///   - size: 图片size
     /// - Returns:
-    public class func fz_image(withColor color: UIColor, size: CGSize) -> UIImage?{
+    public static func image(withColor color: UIColor, size: CGSize) -> UIImage?{
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(color.cgColor)
@@ -32,15 +32,15 @@ extension UIImage{
 }
 
 
-extension UIImage{
+extension FZBuildingBlockWrapper where Base: UIImage{
     
     
     /// 获取图片上某一点的颜色
     ///
     /// - Parameter point: 某一点
     /// - Returns: color at point
-    public func fz_colorRGBA(atPoint point: CGPoint) -> UIColor?{
-        guard let cgImage = self.cgImage else {
+    public func colorRGBA(atPoint point: CGPoint) -> UIColor?{
+        guard let cgImage = base.cgImage else {
             return nil
         }
         
@@ -90,6 +90,6 @@ extension UIImage{
         let red = CGFloat(pixelData.load(fromByteOffset: byteIndex + 2, as: UInt8.self))
         let alpha = CGFloat(pixelData.load(fromByteOffset: byteIndex + 3, as: UInt8.self)) / 255.0
         
-        return UIColor.fz_color(red: red, green: green, blue: blue, alpha: alpha)
+        return UIColor.fz.color(red: red, green: green, blue: blue, alpha: alpha)
     }
 }

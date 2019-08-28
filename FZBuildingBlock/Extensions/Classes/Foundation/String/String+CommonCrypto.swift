@@ -8,60 +8,14 @@
 import Foundation
 import CommonCrypto
 
-
-
 // MARK: - MD5, SHA1, SHA224, SHA256, SHA384, SHA512
-extension String{
-    
-    public enum CommonCryptoAlgorithm {
-        case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
-        
-        var HMACAlgorithm: CCHmacAlgorithm {
-            var result: Int = 0
-            switch self {
-            case .MD5:
-                result = kCCHmacAlgMD5
-            case .SHA1:
-                result = kCCHmacAlgSHA1
-            case .SHA224:
-                result = kCCHmacAlgSHA224
-            case .SHA256:
-                result = kCCHmacAlgSHA256
-            case .SHA384:
-                result = kCCHmacAlgSHA384
-            case .SHA512:
-                result = kCCHmacAlgSHA512
-            }
-            return CCHmacAlgorithm(result)
-        }
-        
-        var digestLength: Int {
-            var result: Int32 = 0
-            switch self {
-            case .MD5:
-                result = CC_MD5_DIGEST_LENGTH
-            case .SHA1:
-                result = CC_SHA1_DIGEST_LENGTH
-            case .SHA224:
-                result = CC_SHA224_DIGEST_LENGTH
-            case .SHA256:
-                result = CC_SHA256_DIGEST_LENGTH
-            case .SHA384:
-                result = CC_SHA384_DIGEST_LENGTH
-            case .SHA512:
-                result = CC_SHA512_DIGEST_LENGTH
-            }
-            return Int(result)
-        }
-    }
-    
-    
-    
+extension FZBuildingBlockWrapper where Base == String{
+
     /// MD5
-    public var fz_md5: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.MD5.digestLength
+    public var md5: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.MD5.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -81,10 +35,10 @@ extension String{
     
     
     /// SHA1
-    public var fz_sha1: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.SHA1.digestLength
+    public var sha1: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.SHA1.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -104,10 +58,10 @@ extension String{
     
     
     /// SHA224
-    public var fz_sha224: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.SHA224.digestLength
+    public var sha224: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.SHA224.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -127,10 +81,10 @@ extension String{
     
     
     /// SHA256
-    public var fz_sha256: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.SHA256.digestLength
+    public var sha256: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.SHA256.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -150,10 +104,10 @@ extension String{
     
     
     /// SHA384
-    public var fz_sha384: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.SHA384.digestLength
+    public var sha384: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.SHA384.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -173,10 +127,10 @@ extension String{
     
     
     /// SHA512
-    public var fz_sha512: String?{
-        if let cStr = self.cString(using: .utf8){
-            let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-            let digestLen = CommonCryptoAlgorithm.SHA512.digestLength
+    public var sha512: String?{
+        if let cStr = base.cString(using: .utf8){
+            let strLen = CC_LONG(base.lengthOfBytes(using: .utf8))
+            let digestLen = FZCommonCryptoAlgorithm.SHA512.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -198,7 +152,7 @@ extension String{
 
 
 // MARK: - HMAC
-extension String{
+extension FZBuildingBlockWrapper where Base == String{
     
     /// HMAC加密
     ///
@@ -206,10 +160,10 @@ extension String{
     ///   - algorithm: 散列函数
     ///   - key: key
     /// - Returns:
-    public func fz_hmac(algorithm: CommonCryptoAlgorithm, key: String) -> String?{
-        if let cStr = self.cString(using: .utf8),
+    public func hmac(algorithm: FZCommonCryptoAlgorithm, key: String) -> String?{
+        if let cStr = base.cString(using: .utf8),
             let keyCStr = key.cString(using: .utf8){
-            let strLen = Int(self.lengthOfBytes(using: .utf8))
+            let strLen = Int(base.lengthOfBytes(using: .utf8))
             let keyLen = Int(key.lengthOfBytes(using: .utf8))
             let digestLen = algorithm.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
@@ -233,14 +187,14 @@ extension String{
 
 
 // MARK: - 文件加密
-extension String{
+extension String.fz{
     
     
     /// 计算文件 MD5
     ///
     /// - Parameter filePath: filePath
     /// - Returns: MD5 string
-    public static func fz_md5(OfFile filePath: String) -> String?{
+    public static func md5(OfFile filePath: String) -> String?{
         if let fileHandle = FileHandle(forReadingAtPath: filePath) {
             let ctx = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: MemoryLayout<CC_MD5_CTX>.size)
             defer{
@@ -273,7 +227,7 @@ extension String{
                 }
             }
             
-            let digestLen = CommonCryptoAlgorithm.MD5.digestLength
+            let digestLen = FZCommonCryptoAlgorithm.MD5.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -296,7 +250,7 @@ extension String{
     ///
     /// - Parameter filePath: filePath
     /// - Returns: SHA1 string
-    public static func fz_sha1(OfFile filePath: String) -> String?{
+    public static func sha1(OfFile filePath: String) -> String?{
         if let fileHandle = FileHandle(forReadingAtPath: filePath) {
             let ctx = UnsafeMutablePointer<CC_SHA1_CTX>.allocate(capacity: MemoryLayout<CC_SHA1_CTX>.size)
             defer{
@@ -329,7 +283,7 @@ extension String{
                 }
             }
             
-            let digestLen = CommonCryptoAlgorithm.SHA1.digestLength
+            let digestLen = FZCommonCryptoAlgorithm.SHA1.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -351,7 +305,7 @@ extension String{
     ///
     /// - Parameter filePath: filePath
     /// - Returns: SHA256 string
-    public static func fz_sha256(OfFile filePath: String) -> String?{
+    public static func sha256(OfFile filePath: String) -> String?{
         if let fileHandle = FileHandle(forReadingAtPath: filePath) {
             let ctx = UnsafeMutablePointer<CC_SHA256_CTX>.allocate(capacity: MemoryLayout<CC_SHA256_CTX>.size)
             defer{
@@ -384,7 +338,7 @@ extension String{
                 }
             }
             
-            let digestLen = CommonCryptoAlgorithm.SHA1.digestLength
+            let digestLen = FZCommonCryptoAlgorithm.SHA1.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -406,7 +360,7 @@ extension String{
     ///
     /// - Parameter filePath: filePath
     /// - Returns: SHA512 string
-    public static func fz_sha512(OfFile filePath: String) -> String?{
+    public static func sha512(OfFile filePath: String) -> String?{
         if let fileHandle = FileHandle(forReadingAtPath: filePath) {
             let ctx = UnsafeMutablePointer<CC_SHA512_CTX>.allocate(capacity: MemoryLayout<CC_SHA512_CTX>.size)
             defer{
@@ -439,7 +393,7 @@ extension String{
                 }
             }
             
-            let digestLen = CommonCryptoAlgorithm.SHA1.digestLength
+            let digestLen = FZCommonCryptoAlgorithm.SHA1.digestLength
             let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
             defer{
                 result.deallocate()
@@ -465,7 +419,7 @@ extension String{
     ///   - algorithm: 散列函数
     ///   - key: key
     /// - Returns: HMAC string
-    public static func fz_hmac(OfFile filePath: String, algorithm: CommonCryptoAlgorithm, key: String) -> String?{
+    public static func hmac(OfFile filePath: String, algorithm: FZCommonCryptoAlgorithm, key: String) -> String?{
         if let fileHandle = FileHandle(forReadingAtPath: filePath),
             let keyCStr = key.cString(using: .utf8) {
             let keyLen = Int(key.lengthOfBytes(using: .utf8))

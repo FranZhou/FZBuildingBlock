@@ -7,61 +7,61 @@
 
 import Foundation
 
-extension UIImageView {
+extension UIImageView.fz {
     
-    public class func fz_loadGIF(withFilePath filePath: String) -> UIImageView?{
-        guard let gif = UIImage.fz_loadGIF(withFilePath: filePath) else {
+    public static func loadGIF(withFilePath filePath: String) -> UIImageView?{
+        guard let gif = UIImage.fz.loadGIF(withFilePath: filePath) else {
             return nil
         }
         
         let imageView = UIImageView()
-        imageView.fz_loadGIFFrames(gifFrames: gif)
+        imageView.fz.loadGIFFrames(gifFrames: gif)
         return imageView
     }
     
     
-    public class func fz_loadGif(withData data: Data) -> UIImageView?{
-        guard let gif = UIImage.fz_loadGIF(withData: data) else {
+    public static func loadGif(withData data: Data) -> UIImageView?{
+        guard let gif = UIImage.fz.loadGIF(withData: data) else {
             return nil
         }
         
         let imageView = UIImageView()
-        imageView.fz_loadGIFFrames(gifFrames: gif)
+        imageView.fz.loadGIFFrames(gifFrames: gif)
         return imageView
     }
 }
 
-extension UIImageView{
+extension FZBuildingBlockWrapper where Base: UIImageView{
     
-    fileprivate func fz_loadGIFFrames(gifFrames: [UIImage.FZGIFFrameInfo]?){
+    fileprivate func loadGIFFrames(gifFrames: [UIImage.fz.FZGIFFrameInfo]?){
         var gifImages: [UIImage]? = nil
         var gifDuration: Double = 0
         
         if let gif = gifFrames {
-            gifImages = gif.map { (gifFrameInfo: UIImage.FZGIFFrameInfo) -> UIImage in
+            gifImages = gif.map { (gifFrameInfo: UIImage.fz.FZGIFFrameInfo) -> UIImage in
                 return gifFrameInfo.image
             }
             
-            gifDuration = gif.reduce(0.0) { (result: Double, gifFrameInfo: UIImage.FZGIFFrameInfo) -> Double in
+            gifDuration = gif.reduce(0.0) { (result: Double, gifFrameInfo: UIImage.fz.FZGIFFrameInfo) -> Double in
                 return result + gifFrameInfo.duration
             }
         }
         
-        self.animationImages = gifImages
-        self.animationDuration = gifDuration
+        base.animationImages = gifImages
+        base.animationDuration = gifDuration
     }
     
-    public func fz_loadGIF(withFilePath filePath: String){
-        guard let gif = UIImage.fz_loadGIF(withFilePath: filePath) else {
+    public func loadGIF(withFilePath filePath: String){
+        guard let gif = UIImage.fz.loadGIF(withFilePath: filePath) else {
             return
         }
-        fz_loadGIFFrames(gifFrames: gif)
+        loadGIFFrames(gifFrames: gif)
     }
     
     public func fz_loadGif(withData data: Data){
-        guard let gif = UIImage.fz_loadGIF(withData: data) else {
+        guard let gif = UIImage.fz.loadGIF(withData: data) else {
             return
         }
-        fz_loadGIFFrames(gifFrames: gif)
+        loadGIFFrames(gifFrames: gif)
     }
 }

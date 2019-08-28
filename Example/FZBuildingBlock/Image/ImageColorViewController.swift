@@ -14,17 +14,17 @@ class ImageColorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.setUpView()
     }
     
     
     func setUpView() {
         let btn = UIButton(type: .custom)
-        btn.fz_x = 100
-        btn.fz_y = 200
-        btn.fz_width = 200
-        btn.fz_height = 50
+        btn.fz.x = 100
+        btn.fz.y = 200
+        btn.fz.width = 200
+        btn.fz.height = 50
         btn.setTitle("切换背景颜色", for: .normal)
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
         
@@ -33,18 +33,18 @@ class ImageColorViewController: UIViewController {
     
     
     @objc func btnClickAction(sender: Any){
-        let randomColor = UIColor.fz_randomColor(alpha: 1)
-        guard let image = UIImage.fz_image(withColor: randomColor, size: self.view.fz_size) else {
+        let randomColor = UIColor.fz.randomColor(alpha: 1)
+        guard let image = UIImage.fz.image(withColor: randomColor, size: self.view.fz.size) else {
             return
         }
         self.view.backgroundColor = UIColor(patternImage: image)
         
-        print(randomColor.fz_rgbHexString())
-        print(randomColor.fz_rgbHex())
-        print(randomColor.fz_disassembleColor())
-        print(String(format: "%d -> %X", randomColor.fz_rgbHex().rgbHex, randomColor.fz_rgbHex().rgbHex))
+        print(randomColor.fz.rgbHexString())
+        print(randomColor.fz.rgbHex())
+        print(randomColor.fz.disassembleColor())
+        print(String(format: "%d -> %X", randomColor.fz.rgbHex().rgbHex, randomColor.fz.rgbHex().rgbHex))
         
-        print(image.fz_colorRGBA(atPoint: CGPoint(x: 50, y: 50))?.fz_rgbHexString())
+        print(image.fz.colorRGBA(atPoint: CGPoint(x: 50, y: 50))?.fz.rgbHexString() ?? "")
     }
     
     
@@ -53,7 +53,7 @@ class ImageColorViewController: UIViewController {
             return
         }
         
-        print(self.view.fz_colorRGBA(atPoint: point)?.fz_rgbHexString())
+        print(self.view.fz.colorRGBA(atPoint: point)?.fz.rgbHexString() ?? "")
     }
 
     /*

@@ -8,7 +8,7 @@
 import Foundation
 import MobileCoreServices
 
-extension UIImage{
+extension UIImage.fz{
     
     /// GIF每一帧的数据类型(帧图片，帧动画时间)
     public typealias FZGIFFrameInfo = (image: UIImage, duration: Double)
@@ -18,7 +18,7 @@ extension UIImage{
     ///
     /// - Parameter filePath: gif图片本地路径
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGIF(withFilePath filePath: String) -> [FZGIFFrameInfo]?{
+    public static func loadGIF(withFilePath filePath: String) -> [FZGIFFrameInfo]?{
         let url = URL(fileURLWithPath: filePath)
         var gifData: Data? = nil
         
@@ -29,7 +29,7 @@ extension UIImage{
         }
         
         if let _ = gifData {
-            return fz_loadGIF(withData: gifData!)
+            return loadGIF(withData: gifData!)
         }else{
             return nil
         }
@@ -40,10 +40,10 @@ extension UIImage{
     ///
     /// - Parameter data: gif data
     /// - Returns: gif帧图片和animation时间
-    public class func fz_loadGIF(withData data: Data) -> [FZGIFFrameInfo]?{
+    public static func loadGIF(withData data: Data) -> [FZGIFFrameInfo]?{
         
         // 是否是GIF图片的data
-        guard data.fz_isGIF else {
+        guard data.fz.isGIF else {
             return nil
         }
         

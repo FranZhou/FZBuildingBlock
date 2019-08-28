@@ -7,30 +7,29 @@
 
 import Foundation
 
+fileprivate struct FZUIControlEventBlockAssociatedKey{
+    static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIControlEventBlockAssociatedKey_associatedKeys".hashValue)!
+}
+
 // MARK: - private action blocks
-extension UIControl{
+extension FZBuildingBlockWrapper where Base: UIControl{
     
-    fileprivate struct FZUIControlEventBlockAssociatedKey{
-        static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIControlEventBlockAssociatedKey_associatedKeys".hashValue)!
-    }
-    
-    
-    fileprivate var fz_controlEventBlocks:[UIControl.Event.RawValue: [FZUIControlEventBlock]]?{
+    fileprivate var controlEventBlocks:[UIControl.Event.RawValue: [FZUIControlEventBlock]]?{
         get{
-            if let controlEvents = objc_getAssociatedObject(self, FZUIControlEventBlockAssociatedKey.associatedKeys) as? [UIControl.Event.RawValue: [FZUIControlEventBlock]]{
+            if let controlEvents = objc_getAssociatedObject(base, FZUIControlEventBlockAssociatedKey.associatedKeys) as? [UIControl.Event.RawValue: [FZUIControlEventBlock]]{
                 return controlEvents
             }
             return nil
         }
         set{
-            objc_setAssociatedObject(self, FZUIControlEventBlockAssociatedKey.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(base, FZUIControlEventBlockAssociatedKey.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
 }
 
 // MARK: block handler
-extension UIControl{
+extension FZBuildingBlockWrapper where Base: UIControl{
     
     
     /// 保存event对应的block
@@ -38,11 +37,11 @@ extension UIControl{
     /// - Parameters:
     ///   - block: event触发后执行的block
     ///   - controlEvent: event
-    fileprivate func fz_store(block: @escaping FZUIControlEventBlock, for controlEvent: UIControl.Event){
+    fileprivate mutating func store(block: @escaping FZUIControlEventBlock, for controlEvent: UIControl.Event){
         var controlEventBlocks: [UIControl.Event.RawValue: [FZUIControlEventBlock]] = [:]
         
         // 获取已经存储的所有事件对应的处理block
-        if let storedEventBlocks = fz_controlEventBlocks{
+        if let storedEventBlocks = self.controlEventBlocks{
             controlEventBlocks.merge(storedEventBlocks) { (current, new) -> [FZUIControlEventBlock] in
                 return new
             }
@@ -55,14 +54,14 @@ extension UIControl{
             eventBlocks.append(contentsOf: storedBlocks)
         }else{
             // 第一次添加时，添加处理事件, 在这里处理可以保证每个事件只添加一次
-            fz_addHandler(for: controlEvent)
+            addHandler(for: controlEvent)
         }
         // 记录正在添加的block
         eventBlocks.append(block)
         
         // 保存
         controlEventBlocks[controlEvent.rawValue] = eventBlocks
-        fz_controlEventBlocks = controlEventBlocks
+        self.controlEventBlocks = controlEventBlocks
         
     }
     
@@ -70,50 +69,51 @@ extension UIControl{
     /// 为event添加对应的事件处理
     ///
     /// - Parameter event: event
-    fileprivate func fz_addHandler(for event: UIControl.Event){
+    fileprivate func addHandler(for event: UIControl.Event){
+        let sharedTarget = FZUIControlTargetHandler.sharedTarget
         switch event {
         case .touchDown:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDown(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDown(control:)), for: event)
         case .touchDownRepeat:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDownRepeat(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDownRepeat(control:)), for: event)
         case .touchDragInside:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDragInside(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDragInside(control:)), for: event)
         case .touchDragOutside:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDragOutside(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDragOutside(control:)), for: event)
         case .touchDragEnter:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDragEnter(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDragEnter(control:)), for: event)
         case .touchDragExit:
-            self.addTarget(self, action: #selector(UIControl.fz_touchDragExit(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchDragExit(control:)), for: event)
         case .touchUpInside:
-            self.addTarget(self, action: #selector(UIControl.fz_touchUpInside(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchUpInside(control:)), for: event)
         case .touchUpOutside:
-            self.addTarget(self, action: #selector(UIControl.fz_touchUpOutside(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchUpOutside(control:)), for: event)
         case .touchCancel:
-            self.addTarget(self, action: #selector(UIControl.fz_touchCancel(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.touchCancel(control:)), for: event)
         case .valueChanged:
-            self.addTarget(self, action: #selector(UIControl.fz_valueChanged(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.valueChanged(control:)), for: event)
         case .editingDidBegin:
-            self.addTarget(self, action: #selector(UIControl.fz_editingDidBegin(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.editingDidBegin(control:)), for: event)
         case .editingChanged:
-            self.addTarget(self, action: #selector(UIControl.fz_editingChanged(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.editingChanged(control:)), for: event)
         case .editingDidEnd:
-            self.addTarget(self, action: #selector(UIControl.fz_editingDidEnd(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.editingDidEnd(control:)), for: event)
         case .editingDidEndOnExit:
-            self.addTarget(self, action: #selector(UIControl.fz_editingDidEndOnExit(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.editingDidEndOnExit(control:)), for: event)
         case .allTouchEvents:
-            self.addTarget(self, action: #selector(UIControl.fz_allTouchEvents(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.allTouchEvents(control:)), for: event)
         case .allEditingEvents:
-            self.addTarget(self, action: #selector(UIControl.fz_allEditingEvents(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.allEditingEvents(control:)), for: event)
         case .applicationReserved:
-            self.addTarget(self, action: #selector(UIControl.fz_applicationReserved(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.applicationReserved(control:)), for: event)
         case .systemReserved:
-            self.addTarget(self, action: #selector(UIControl.fz_systemReserved(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.systemReserved(control:)), for: event)
         case .allEvents:
-            self.addTarget(self, action: #selector(UIControl.fz_allEvents(control:)), for: event)
+            base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.allEvents(control:)), for: event)
         default:
             if #available(iOS 9.0, *) {
                 if event == .primaryActionTriggered{
-                    self.addTarget(self, action: #selector(UIControl.fz_primaryActionTriggered(control:)), for: event)
+                    base.addTarget(sharedTarget, action: #selector(FZUIControlTargetHandler.primaryActionTriggered(control:)), for: event)
                 }
             } else {
                 // Fallback on earlier versions
@@ -126,11 +126,11 @@ extension UIControl{
     ///
     /// - Parameter event: event
     /// - Returns: blocks
-    fileprivate func fz_actionBlocks(forEvent event: UIControl.Event) -> [FZUIControlEventBlock]{
+    fileprivate func actionBlocks(forEvent event: UIControl.Event) -> [FZUIControlEventBlock]{
         var controlEventBlocks: [UIControl.Event.RawValue: [FZUIControlEventBlock]] = [:]
         
         // 获取已经存储的所有事件对应的处理block
-        if let storedEventBlocks = fz_controlEventBlocks{
+        if let storedEventBlocks = self.controlEventBlocks{
             controlEventBlocks.merge(storedEventBlocks) { (current, new) -> [FZUIControlEventBlock] in
                 return new
             }
@@ -151,11 +151,11 @@ extension UIControl{
     ///
     /// - Parameter events: events
     /// - Returns: blocks集合
-    fileprivate func fz_actionBlocks(forEvents events: [UIControl.Event]) -> [FZUIControlEventBlock]{
+    fileprivate func actionBlocks(forEvents events: [UIControl.Event]) -> [FZUIControlEventBlock]{
         var eventBlocks: [FZUIControlEventBlock] = []
         
         for event in events {
-            let blocks = fz_actionBlocks(forEvent: event)
+            let blocks = actionBlocks(forEvent: event)
             eventBlocks.append(contentsOf: blocks)
         }
         
@@ -163,137 +163,8 @@ extension UIControl{
     }
 }
 
-// MARK: - event target SEL
-extension UIControl{
-    
-    @objc fileprivate func fz_touchDown(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDown]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchDownRepeat(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDownRepeat]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchDragInside(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDragInside]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchDragOutside(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDragOutside]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchDragEnter(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDragEnter]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchDragExit(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchDragExit]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchUpInside(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchUpInside]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchUpOutside(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchUpOutside]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_touchCancel(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.touchCancel]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_valueChanged(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.valueChanged]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_primaryActionTriggered(control: UIControl){
-        if #available(iOS 9.0, *) {
-            for block in fz_actionBlocks(forEvents: [.primaryActionTriggered]) {
-                block(control)
-            }
-        } else {
-
-        }
-    }
-    
-    @objc fileprivate func fz_editingDidBegin(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.editingDidBegin]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_editingChanged(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.editingChanged]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_editingDidEnd(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.editingDidEnd]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_editingDidEndOnExit(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.editingDidEndOnExit]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_allTouchEvents(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.allTouchEvents]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_allEditingEvents(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.allEditingEvents]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_applicationReserved(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.applicationReserved]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_systemReserved(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.systemReserved]) {
-            block(control)
-        }
-    }
-    
-    @objc fileprivate func fz_allEvents(control: UIControl){
-        for block in fz_actionBlocks(forEvents: [.allEvents]) {
-            block(control)
-        }
-    }
-    
-}
-
 // MARK: - UIControl+Block for event
-extension UIControl{
+extension FZBuildingBlockWrapper where Base: UIControl{
     
     public typealias FZUIControlEventBlock = (UIControl) -> Void
     
@@ -322,24 +193,24 @@ extension UIControl{
      - allEvents: UIControl.Event
      
      */
-    public func fz_addAction(block: @escaping FZUIControlEventBlock, for controlEvent: UIControl.Event = .touchUpInside){
-        fz_store(block: block, for: controlEvent)
+    public mutating func addAction(block: @escaping FZUIControlEventBlock, for controlEvent: UIControl.Event = .touchUpInside){
+        store(block: block, for: controlEvent)
     }
     
     
     /// 移除所有的action block
-    public func fz_removeAllAction(){
-        fz_controlEventBlocks = nil
+    public mutating func removeAllAction(){
+        self.controlEventBlocks = nil
     }
     
     
     /// 移除与event相关的action block
     ///
     /// - Parameter event: 需要移除action block的event
-    public func fz_removeAction(forEvent event: UIControl.Event){
+    public mutating func removeAction(forEvent event: UIControl.Event){
         
         var controlEventBlocks: [UIControl.Event.RawValue: [FZUIControlEventBlock]] = [:]
-        if let storedEventBlocks = fz_controlEventBlocks{
+        if let storedEventBlocks = self.controlEventBlocks{
             controlEventBlocks.merge(storedEventBlocks) { (current, new) -> [FZUIControlEventBlock] in
                 return new
             }
@@ -348,7 +219,138 @@ extension UIControl{
         // 清空event对应的action block
         controlEventBlocks[event.rawValue] = []
         
-        fz_controlEventBlocks = controlEventBlocks
+        self.controlEventBlocks = controlEventBlocks
     }
     
+}
+
+
+// MARK: - event target SEL
+@objc fileprivate class FZUIControlTargetHandler: NSObject{
+    
+    static let sharedTarget: FZUIControlTargetHandler = FZUIControlTargetHandler()
+    
+    @objc func touchDown(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDown]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchDownRepeat(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDownRepeat]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchDragInside(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDragInside]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchDragOutside(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDragOutside]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchDragEnter(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDragEnter]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchDragExit(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchDragExit]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchUpInside(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchUpInside]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchUpOutside(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchUpOutside]) {
+            block(control)
+        }
+    }
+    
+    @objc func touchCancel(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.touchCancel]) {
+            block(control)
+        }
+    }
+    
+    @objc func valueChanged(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.valueChanged]) {
+            block(control)
+        }
+    }
+    
+    @objc func primaryActionTriggered(control: UIControl){
+        if #available(iOS 9.0, *) {
+            for block in control.fz.actionBlocks(forEvents: [.primaryActionTriggered]) {
+                block(control)
+            }
+        } else {
+            
+        }
+    }
+    
+    @objc func editingDidBegin(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.editingDidBegin]) {
+            block(control)
+        }
+    }
+    
+    @objc func editingChanged(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.editingChanged]) {
+            block(control)
+        }
+    }
+    
+    @objc func editingDidEnd(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.editingDidEnd]) {
+            block(control)
+        }
+    }
+    
+    @objc func editingDidEndOnExit(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.editingDidEndOnExit]) {
+            block(control)
+        }
+    }
+    
+    @objc func allTouchEvents(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.allTouchEvents]) {
+            block(control)
+        }
+    }
+    
+    @objc func allEditingEvents(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.allEditingEvents]) {
+            block(control)
+        }
+    }
+    
+    @objc func applicationReserved(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.applicationReserved]) {
+            block(control)
+        }
+    }
+    
+    @objc func systemReserved(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.systemReserved]) {
+            block(control)
+        }
+    }
+    
+    @objc func allEvents(control: UIControl){
+        for block in control.fz.actionBlocks(forEvents: [.allEvents]) {
+            block(control)
+        }
+    }
 }

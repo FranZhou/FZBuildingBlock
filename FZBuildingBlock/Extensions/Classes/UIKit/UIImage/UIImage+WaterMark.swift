@@ -10,7 +10,7 @@ import CoreGraphics
 
 
 // MARK: - 铺满全图的水印
-extension UIImage{
+extension FZBuildingBlockWrapper where Base: UIImage{
     
     /// 在图片上打满文字水印
     ///
@@ -23,9 +23,9 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_fullWaterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
+    public func fullWaterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
         
-        return self.fz_fullWaterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), horizontalSpace: horizontalSpace, horizontalAutoOffset: horizontalAutoOffset, verticalSpace: verticalSpace, verticalAutoOffset: verticalAutoOffset, rotation: rotation)
+        return fullWaterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), horizontalSpace: horizontalSpace, horizontalAutoOffset: horizontalAutoOffset, verticalSpace: verticalSpace, verticalAutoOffset: verticalAutoOffset, rotation: rotation)
     }
     
     
@@ -39,23 +39,23 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns:
-    public func fz_fullWaterMark(withAttributedString attributedMark: NSAttributedString, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
+    public func fullWaterMark(withAttributedString attributedMark: NSAttributedString, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage?{
         // 没有水印文字
         if attributedMark.string.count == 0{
-            return self.fz_copy()
+            return copy()
         }
         
         // 需要打水印图片的size为{0,0}
-        if self.size.equalTo(.zero){
-            return self.fz_copy()
+        if base.size.equalTo(.zero){
+            return copy()
         }
         
-        let oriWidth = self.size.width
-        let oriHeight = self.size.height
+        let oriWidth = base.size.width
+        let oriHeight = base.size.height
         
         // 为了防止图片失真，绘制区域宽高和原始图片宽高一样
         UIGraphicsBeginImageContextWithOptions(CGSize(width: oriWidth, height: oriHeight), false, UIScreen.main.scale)
-        self.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
+        base.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
         
         // 获取文字高度宽度
         let markWidth = attributedMark.size().width
@@ -124,23 +124,23 @@ extension UIImage{
     ///   - verticalAutoOffset: default NO,垂直方向是否自动偏移
     ///   - rotation: default 0,水印文字旋转角度(单位: 度)
     /// - Returns: 
-    public func fz_fullWaterMark(withImage markImage: UIImage, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage? {
+    public func fullWaterMark(withImage markImage: UIImage, horizontalSpace: CGFloat = 30, horizontalAutoOffset: Bool = false, verticalSpace: CGFloat = 30, verticalAutoOffset: Bool = false, rotation: CGFloat = 0) -> UIImage? {
         // 水印图片size为{0,0}
         if markImage.size.equalTo(.zero){
-            return self.fz_copy()
+            return copy()
         }
         
         // 需要打水印图片的size为{0,0}
-        if self.size.equalTo(.zero){
-            return self.fz_copy()
+        if base.size.equalTo(.zero){
+            return copy()
         }
         
-        let oriWidth = self.size.width
-        let oriHeight = self.size.height
+        let oriWidth = base.size.width
+        let oriHeight = base.size.height
         
         // 为了防止图片失真，绘制区域宽高和原始图片宽高一样
         UIGraphicsBeginImageContextWithOptions(CGSize(width: oriWidth, height: oriHeight), false, UIScreen.main.scale)
-        self.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
+        base.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
         
         // 获取水印图片高度宽度
         let markWidth = markImage.size.width
@@ -219,7 +219,7 @@ extension UIImage{
 
 
 // MARK: - 单个水印
-extension UIImage{
+extension FZBuildingBlockWrapper where Base: UIImage{
     
     /// 在图片上加上单个文字水印
     ///
@@ -228,8 +228,8 @@ extension UIImage{
     ///   - markAttributes: default nil,水印文字相关属性
     ///   - drawPoint: 水印绘制位置
     /// - Returns:
-    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawPoint: CGPoint) -> UIImage?{
-        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawPoint: drawPoint)
+    public func waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawPoint: CGPoint) -> UIImage?{
+        return waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawPoint: drawPoint)
     }
     
     /// 在图片上加上单个文字水印
@@ -239,8 +239,8 @@ extension UIImage{
     ///   - markAttributes: default nil,水印文字相关属性
     ///   - drawRect: 水印绘制区域
     /// - Returns:
-    public func fz_waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawRect: CGRect) -> UIImage?{
-        return self.fz_waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawRect: drawRect)
+    public func waterMark(withString mark: String, markAttributes:  [NSAttributedString.Key : Any]? = nil, drawRect: CGRect) -> UIImage?{
+        return waterMark(withAttributedString: NSAttributedString(string: mark, attributes: markAttributes), drawRect: drawRect)
     }
     
     /// 在图片上加上单个文字水印
@@ -249,13 +249,13 @@ extension UIImage{
     ///   - attributedMark: 水印文字
     ///   - drawPoint: 水印绘制位置
     /// - Returns:
-    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawPoint: CGPoint) -> UIImage?{
+    public func waterMark(withAttributedString attributedMark: NSAttributedString, drawPoint: CGPoint) -> UIImage?{
         // 水印文字转换成图片
         guard let markImage = UIImage.fz_image(withAttributedString: attributedMark) else {
-            return self.fz_copy()
+            return copy()
         }
         
-        return self.fz_waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
+        return waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
     }
     
     
@@ -265,13 +265,13 @@ extension UIImage{
     ///   - attributedMark: 水印文字
     ///   - drawRect: 水印绘制区域
     /// - Returns:
-    public func fz_waterMark(withAttributedString attributedMark: NSAttributedString, drawRect: CGRect) -> UIImage?{
+    public func waterMark(withAttributedString attributedMark: NSAttributedString, drawRect: CGRect) -> UIImage?{
         // 水印文字转换成图片
         guard let markImage = UIImage.fz_image(withAttributedString: attributedMark) else {
-            return self.fz_copy()
+            return copy()
         }
         
-        return self.fz_waterMark(withImage: markImage, drawRect: drawRect)
+        return waterMark(withImage: markImage, drawRect: drawRect)
     }
     
     
@@ -281,8 +281,8 @@ extension UIImage{
     ///   - markImage: 水印图片
     ///   - drawPoint: 绘制位置
     /// - Returns:
-    public func fz_waterMark(withImage markImage: UIImage, drawPoint: CGPoint) -> UIImage?{
-        return self.fz_waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
+    public func waterMark(withImage markImage: UIImage, drawPoint: CGPoint) -> UIImage?{
+        return waterMark(withImage: markImage, drawRect: CGRect(origin: drawPoint, size: markImage.size))
     }
     
     
@@ -292,25 +292,25 @@ extension UIImage{
     ///   - markImage: 水印图片
     ///   - drawRect: 绘制区域
     /// - Returns:
-    public func fz_waterMark(withImage markImage: UIImage, drawRect: CGRect) -> UIImage?{
-        if self.size.equalTo(.zero){
-            return self.fz_copy()
+    public func waterMark(withImage markImage: UIImage, drawRect: CGRect) -> UIImage?{
+        if base.size.equalTo(.zero){
+            return copy()
         }
         
         if markImage.size.equalTo(.zero){
-            return self.fz_copy()
+            return copy()
         }
         
         if drawRect.size.equalTo(.zero){
-            return self.fz_copy()
+            return copy()
         }
         
-        let oriWidth = self.size.width
-        let oriHeight = self.size.height
+        let oriWidth = base.size.width
+        let oriHeight = base.size.height
         
         // 为了防止图片失真，绘制区域宽高和原始图片宽高一样
         UIGraphicsBeginImageContextWithOptions(CGSize(width: oriWidth, height: oriHeight), false, UIScreen.main.scale)
-        self.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
+        base.draw(in: CGRect(x: 0, y: 0, width: oriWidth, height: oriHeight))
         
         markImage.draw(in: drawRect)
         

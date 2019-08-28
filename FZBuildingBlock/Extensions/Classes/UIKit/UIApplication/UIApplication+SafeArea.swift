@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension UIApplication{
+extension FZBuildingBlockWrapper where Base: UIApplication{
     
     /// safeArea会随着屏幕旋转而变化
-    public var fz_safeArea: UIEdgeInsets {
+    public var safeArea: UIEdgeInsets {
         get{
             if #available(iOS 11.0, *),
-                let safeAreaInsets = keyWindow?.safeAreaInsets{
+                let safeAreaInsets = base.keyWindow?.safeAreaInsets{
                 return safeAreaInsets
             } else {
                 return .zero

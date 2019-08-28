@@ -7,15 +7,15 @@
 
 import Foundation
 
-extension UIImage{
+extension FZBuildingBlockWrapper where Base: UIImage{
     
     
     /// 图片拷贝(深拷贝)
     ///
     /// - Returns: 
-    public func fz_copy() -> UIImage?{
-        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
-        self.draw(in: CGRect(origin: .zero, size: self.size))
+    public func copy() -> UIImage?{
+        UIGraphicsBeginImageContextWithOptions(base.size, false, UIScreen.main.scale)
+        base.draw(in: CGRect(origin: .zero, size: base.size))
         let copyImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return copyImage

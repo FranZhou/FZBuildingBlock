@@ -22,8 +22,8 @@ open class FZLargeImageView: UIView {
             // 设置 imageWidthScale
             if let imageRect = self.imageRect,
                 imageRect.size.width > 0,
-                self.fz_width > 0{
-                self.imageWidthScale = self.fz_width / imageRect.size.width
+                self.fz.width > 0{
+                self.imageWidthScale = self.fz.width / imageRect.size.width
             }else{
                 self.imageWidthScale = nil
             }
@@ -31,8 +31,8 @@ open class FZLargeImageView: UIView {
             // 设置 imageHeightScale
             if let imageRect = self.imageRect,
                 imageRect.size.height > 0,
-                self.fz_height > 0{
-                self.imageHeightScale = self.fz_height / imageRect.size.height
+                self.fz.height > 0{
+                self.imageHeightScale = self.fz.height / imageRect.size.height
             }else{
                 self.imageHeightScale = nil
             }

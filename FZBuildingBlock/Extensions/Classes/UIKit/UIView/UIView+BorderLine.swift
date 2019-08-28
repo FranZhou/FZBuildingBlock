@@ -39,32 +39,32 @@ public struct FZViewBorderLineSideType: OptionSet {
     
 }
 
-extension UIView {
+extension FZBuildingBlockWrapper where Base: UIView {
     
     
     /// top border line layer name
-    fileprivate var fz_topBorderLineLayerName: String {
+    fileprivate var topBorderLineLayerName: String {
         get{
             return "fz_topBorderLineLayer"
         }
     }
     
     /// left border line layer name
-    fileprivate var fz_leftBorderLineLayerName: String {
+    fileprivate var leftBorderLineLayerName: String {
         get{
             return "fz_leftBorderLineLayer"
         }
     }
     
     /// bottom border line layer name
-    fileprivate var fz_bottomBorderLineLayerName: String {
+    fileprivate var bottomBorderLineLayerName: String {
         get{
             return "fz_bottomBorderLineLayer"
         }
     }
     
     /// right border line layer name
-    fileprivate var fz_rightBorderLineLayerName: String {
+    fileprivate var rightBorderLineLayerName: String {
         get{
             return "fz_rightBorderLineLayer"
         }
@@ -75,8 +75,8 @@ extension UIView {
     ///
     /// - Parameter name: layer's name
     /// - Returns: layer
-    fileprivate func fz_getLayer(byName name: String) -> CALayer? {
-        return self.layer.sublayers?.filter({ (sublayer: CALayer) -> Bool in
+    fileprivate func getLayer(byName name: String) -> CALayer? {
+        return base.layer.sublayers?.filter({ (sublayer: CALayer) -> Bool in
             guard let sublayerName = sublayer.name else{
                 return false
             }
@@ -92,7 +92,7 @@ extension UIView {
     ///   - fromPoint: 起点
     ///   - toPoint: 终点
     /// - Returns:
-    fileprivate func fz_getBorderLinePath(from fromPoint: CGPoint, to toPoint: CGPoint) -> CGPath {
+    fileprivate func getBorderLinePath(from fromPoint: CGPoint, to toPoint: CGPoint) -> CGPath {
         
         // 避免报错
         // [Unknown process name] CGContextDrawPath: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
@@ -100,7 +100,7 @@ extension UIView {
         // 因为绘图不在drawRect:方法中操作导致绘图时没有当前的图形上下文(context)可设置。所以应该在drawRect:中执行图形绘制。
         // 或者使用 UIGraphicsBeginImageContextWithOptions
         
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(base.frame.size, false, UIScreen.main.scale)
         
         let bezier = UIBezierPath()
         
@@ -121,10 +121,10 @@ extension UIView {
     ///   - lineWith: lineWith
     ///   - lineColor: lineColor, layer的fillColor和strokeColor
     ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
-    public func fz_addBorderLineLayer(layerName name: String, path: CGPath, lineWith: CGFloat, lineColor: UIColor, lineDashPattern: [NSNumber]? = nil) {
+    public func addBorderLineLayer(layerName name: String, path: CGPath, lineWith: CGFloat, lineColor: UIColor, lineDashPattern: [NSNumber]? = nil) {
         
         // 根据name能找到layer
-        if let layer = self.fz_getLayer(byName: name) {
+        if let layer = getLayer(byName: name) {
             // layer类型是CAShapeLayer
             if let shapeLayer = layer as? CAShapeLayer{
                 shapeLayer.path = path
@@ -151,15 +151,15 @@ extension UIView {
         shapeLayer.lineWidth = lineWith
         shapeLayer.lineDashPattern = lineDashPattern
         
-        self.layer.addSublayer(shapeLayer)
+        base.layer.addSublayer(shapeLayer)
     }
     
     
     /// 移除指定name的layer
     ///
     /// - Parameter name: layer's name
-    public func fz_removeSublayer(byName name: String) {
-        self.fz_getLayer(byName: name)?.removeFromSuperlayer()
+    public func removeSublayer(byName name: String) {
+        getLayer(byName: name)?.removeFromSuperlayer()
     }
     
     
@@ -170,12 +170,12 @@ extension UIView {
     ///   - lineWidth: 边框宽度
     ///   - lineColor: 边框颜色
     ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
-    public func fz_addBorderLine(lineSides: FZViewBorderLineSideType, lineWidth: CGFloat, lineColor: UIColor, lineDashPattern: [NSNumber]? = nil) {
+    public func addBorderLine(lineSides: FZViewBorderLineSideType, lineWidth: CGFloat, lineColor: UIColor, lineDashPattern: [NSNumber]? = nil) {
         
         // 告知页面布局立刻更新。所以一般都会和setNeedsLayout一起使用。如果希望立刻生成新的frame需要调用此方法，利用这点一般布局动画可以在更新布局后直接使用这个方法让动画生效。
-        self.layoutIfNeeded()
+        base.layoutIfNeeded()
         
-        let rect = self.bounds
+        let rect = base.bounds
         
         // 要根据线的宽度计算线的起点终点位置
         // 假设线的宽度是10， 要（0，0）~（100，10）添加一条边框
@@ -184,26 +184,26 @@ extension UIView {
         
         // add top border line
         if lineSides.contains(.top){
-            let path = self.fz_getBorderLinePath(from: CGPoint(x: 0, y: halfLine), to: CGPoint(x: rect.size.width, y: halfLine))
-            self.fz_addBorderLineLayer(layerName: self.fz_topBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
+            let path = getBorderLinePath(from: CGPoint(x: 0, y: halfLine), to: CGPoint(x: rect.size.width, y: halfLine))
+            addBorderLineLayer(layerName: topBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
         }
         
         // add left border line
         if lineSides.contains(.left){
-            let path = self.fz_getBorderLinePath(from: CGPoint(x: halfLine, y: 0), to: CGPoint(x:halfLine, y: rect.size.height))
-            self.fz_addBorderLineLayer(layerName: self.fz_leftBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
+            let path = getBorderLinePath(from: CGPoint(x: halfLine, y: 0), to: CGPoint(x:halfLine, y: rect.size.height))
+            addBorderLineLayer(layerName: leftBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
         }
         
         // add bottom border line
         if lineSides.contains(.bottom){
-            let path = self.fz_getBorderLinePath(from: CGPoint(x: 0, y: rect.size.height-halfLine), to: CGPoint(x: rect.size.width, y: rect.size.height-halfLine))
-            self.fz_addBorderLineLayer(layerName: self.fz_bottomBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
+            let path = getBorderLinePath(from: CGPoint(x: 0, y: rect.size.height-halfLine), to: CGPoint(x: rect.size.width, y: rect.size.height-halfLine))
+            addBorderLineLayer(layerName: bottomBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
         }
         
         // add right border line
         if lineSides.contains(.right){
-            let path = self.fz_getBorderLinePath(from: CGPoint(x: rect.size.width-halfLine, y: 0), to: CGPoint(x: rect.size.width-halfLine, y: rect.size.height))
-            self.fz_addBorderLineLayer(layerName: self.fz_rightBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
+            let path = getBorderLinePath(from: CGPoint(x: rect.size.width-halfLine, y: 0), to: CGPoint(x: rect.size.width-halfLine, y: rect.size.height))
+            addBorderLineLayer(layerName: rightBorderLineLayerName, path: path, lineWith: lineWidth, lineColor: lineColor, lineDashPattern: lineDashPattern)
         }
         
     }
@@ -212,26 +212,26 @@ extension UIView {
     /// 移除指定边框
     ///
     /// - Parameter lineSides: 移除边框位置， like [.top, .left, .bottom, .right] or .top
-    public func fz_removeBorderLine(lineSides: FZViewBorderLineSideType) -> Void {
+    public func removeBorderLine(lineSides: FZViewBorderLineSideType) -> Void {
         
         // remove top border line
         if lineSides.contains(.top){
-            self.fz_removeSublayer(byName: self.fz_topBorderLineLayerName)
+            removeSublayer(byName: topBorderLineLayerName)
         }
         
         // remove left border line
         if lineSides.contains(.left){
-            self.fz_removeSublayer(byName: self.fz_leftBorderLineLayerName)
+            removeSublayer(byName: leftBorderLineLayerName)
         }
         
         // remove bottom border line
         if lineSides.contains(.bottom){
-            self.fz_removeSublayer(byName: self.fz_bottomBorderLineLayerName)
+            removeSublayer(byName: bottomBorderLineLayerName)
         }
         
         // remove right border line
         if lineSides.contains(.right){
-            self.fz_removeSublayer(byName: self.fz_rightBorderLineLayerName)
+            removeSublayer(byName: rightBorderLineLayerName)
         }
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: -
-extension UINavigationController {
+extension FZBuildingBlockWrapper where Base: UINavigationController {
     
     
     /// 导航栏控制器销毁指定level层控制器后进行push操作
@@ -17,9 +17,9 @@ extension UINavigationController {
     ///   - viewController: push viewController
     ///   - animated: animated
     ///   - destoryExtraLevel: default = 0, 小于0时，当0来处理
-    public func fz_pushViewController(_ viewController: UIViewController, animated: Bool = true, destoryExtraLevel: Int = 0){
+    public func pushViewController(_ viewController: UIViewController, animated: Bool = true, destoryExtraLevel: Int = 0){
         let validateDestoryLevel = destoryExtraLevel >= 0 ? destoryExtraLevel : 0
-        let vcs = self.viewControllers
+        let vcs = base.viewControllers
         let maxIndex = vcs.count - 1
         
         // destory后的index
@@ -38,7 +38,7 @@ extension UINavigationController {
         
         // destory后，再添加需要push的viewController
         newVCs.append(viewController)
-        self.setViewControllers(newVCs, animated: animated)
+        base.setViewControllers(newVCs, animated: animated)
     }
     
     
@@ -49,9 +49,9 @@ extension UINavigationController {
     ///   - destoryExtraLevel: default = 0, 小于0时，当0来处理
     /// - Returns:
     @discardableResult
-    public func fz_popViewController(animated: Bool = true, destoryExtraLevel: Int = 0) -> [UIViewController]?{
+    public func popViewController(animated: Bool = true, destoryExtraLevel: Int = 0) -> [UIViewController]?{
         let validateDestoryLevel = destoryExtraLevel >= 0 ? destoryExtraLevel : 0
-        let vcs = self.viewControllers
+        let vcs = base.viewControllers
         let maxIndex = vcs.count - 1
         
         // pop后的index
@@ -66,7 +66,7 @@ extension UINavigationController {
         
         if vcs.count > index {
             let toVC = vcs[index]
-            return self.popToViewController(toVC, animated: animated)
+            return base.popToViewController(toVC, animated: animated)
         } else {
             return nil
         }

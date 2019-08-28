@@ -7,32 +7,32 @@
 
 import Foundation
 
-extension Data{
+extension FZBuildingBlockWrapper where Base == Data{
     
     /// PNG图片Data数据头
-    public var fz_PNGHeader: [UInt8]{
+    public var PNGHeader: [UInt8]{
         return [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]
     }
     
     
     /// 当前Data是否是PNG图片
-    public var fz_isPNG: Bool{
-        guard self.count > 8
+    public var isPNG: Bool{
+        guard base.count > 8
             else {
                 return false
         }
         
-        let count = fz_PNGHeader.count
+        let count = PNGHeader.count
         let buffer: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: count)
         defer {
             buffer.deallocate()
         }
         
-        self.copyBytes(to: buffer, count: count)
+        base.copyBytes(to: buffer, count: count)
         
         var isPNG = true
         for i in 0..<count {
-            if buffer.advanced(by: i).pointee != fz_PNGHeader[i]{
+            if buffer.advanced(by: i).pointee != PNGHeader[i]{
                 isPNG = false
                 break
             }

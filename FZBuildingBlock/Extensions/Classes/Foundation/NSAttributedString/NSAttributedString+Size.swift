@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NSAttributedString{
+extension FZBuildingBlockWrapper where Base: NSAttributedString{
     
     
     /// 属性字符串显示size计算
@@ -18,8 +18,8 @@ extension NSAttributedString{
     ///   - lines: lines, 为0时表示无限制
     ///   - lineSpacing: 行间距
     /// - Returns: size
-    public func fz_size(withLimit size: CGSize, font: UIFont, lines: Int = 0, lineSpacing: CGFloat? = nil) -> CGSize{
-        let rect = boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+    public func size(withLimit size: CGSize, font: UIFont, lines: Int = 0, lineSpacing: CGFloat? = nil) -> CGSize{
+        let rect = base.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
         
         if lines < 0 {
             return .zero

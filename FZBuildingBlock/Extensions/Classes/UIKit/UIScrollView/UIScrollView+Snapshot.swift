@@ -7,33 +7,33 @@
 
 import Foundation
 
-extension UIScrollView {
+extension FZBuildingBlockWrapper where Base: UIScrollView {
     
-    public override func fz_snapshotImage() -> UIImage? {
-        let originFrame = self.frame
-        let originContentOffset = self.contentOffset
+    public func snapshotImage() -> UIImage? {
+        let originFrame = base.frame
+        let originContentOffset = base.contentOffset
         
-        self.frame = CGRect(x: 0, y: 0, width: self.contentSize.width, height: self.contentSize.height)
-        self.contentOffset = CGPoint.zero
+        base.frame = CGRect(x: 0, y: 0, width: base.contentSize.width, height: base.contentSize.height)
+        base.contentOffset = CGPoint.zero
         
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(base.frame.size, false, UIScreen.main.scale)
         
         // IOS7及其后续版本
-        if self.responds(to: #selector(drawHierarchy(in:afterScreenUpdates:))){
-            self.drawHierarchy(in: self.frame, afterScreenUpdates: true)
+        if base.responds(to: #selector(UIScrollView.drawHierarchy(in:afterScreenUpdates:))){
+            base.drawHierarchy(in: base.frame, afterScreenUpdates: true)
         }else{
             // IOS7之前的版本
             guard let context = UIGraphicsGetCurrentContext() else {
                 return nil
             }
-            self.layer.render(in: context)
+            base.layer.render(in: context)
         }
         
         let snapshotImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.frame = originFrame
-        self.contentOffset = originContentOffset
+        base.frame = originFrame
+        base.contentOffset = originContentOffset
         
         return snapshotImage
     }

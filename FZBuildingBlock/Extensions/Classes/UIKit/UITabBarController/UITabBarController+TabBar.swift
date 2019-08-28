@@ -7,20 +7,20 @@
 
 import Foundation
 
-extension UITabBarController{
+extension FZBuildingBlockWrapper where Base: UITabBarController{
     
     
     /// 竖屏情况下，tabBarHeight
-    public var fz_tabBarHeight: CGFloat {
+    public var tabBarHeight: CGFloat {
         get{
-            return tabBar.frame.size.height
+            return base.tabBar.frame.size.height
         }
     }
     
     
-    public var fz_tabBarAndSafeAreaHeight: CGFloat{
+    public var tabBarAndSafeAreaHeight: CGFloat{
         get{
-            return fz_tabBarHeight + UIApplication.shared.fz_safeArea.bottom
+            return tabBarHeight + UIApplication.shared.fz.safeArea.bottom
         }
     }
 }

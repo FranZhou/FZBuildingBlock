@@ -40,10 +40,10 @@ class ObserverViewController: UIViewController {
 
     func setUpView() {
         let btn = UIButton(type: .custom)
-        btn.fz_x = 100
-        btn.fz_y = 200
-        btn.fz_width = 200
-        btn.fz_height = 50
+        btn.fz.x = 100
+        btn.fz.y = 200
+        btn.fz.width = 200
+        btn.fz.height = 50
         btn.setTitle("触发监听", for: .normal)
         btn.addTarget(self, action: #selector(ObserverViewController.btnClickAction(sender:)), for: .touchUpInside)
         

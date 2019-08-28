@@ -7,16 +7,16 @@
 
 import Foundation
 
-extension UIView{
+extension FZBuildingBlockWrapper where Base: UIView{
     
     
     /// 获取View上某一点的颜色
     ///
     /// - Parameter point: 某一点
     /// - Returns: color at point
-    public func fz_colorRGBA(atPoint point: CGPoint) -> UIColor?{
+    public func colorRGBA(atPoint point: CGPoint) -> UIColor?{
         
-        guard self.bounds.contains(point) else {
+        guard base.bounds.contains(point) else {
             return nil
         }
         
@@ -52,7 +52,7 @@ extension UIView{
         
         context.translateBy(x: -point.x, y: -point.y)
         
-        self.layer.render(in: context)
+        base.layer.render(in: context)
         
         guard let pixelData = rawData else { return nil }
         
@@ -62,7 +62,7 @@ extension UIView{
         let blue = CGFloat(pixelData.load(fromByteOffset: 2, as: UInt8.self))
         let alpha = CGFloat(pixelData.load(fromByteOffset: 3, as: UInt8.self)) / 255.0
         
-        return UIColor.fz_color(red: red, green: green, blue: blue, alpha: alpha)
+        return UIColor.fz.color(red: red, green: green, blue: blue, alpha: alpha)
     }
     
 }

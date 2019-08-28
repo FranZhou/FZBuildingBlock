@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension UIFont{
+extension UIFont.fz{
     
     
     /// 加载TTC字体文件，获取对应的FontName集合，后续可以直接使用FontName来创建UIFont
     ///
     /// - Parameter filePath: TTC字体文件路径
     /// - Returns: 注册的FontName集合
-    public class func fz_registerTTCFont(withFilePath filePath: String) -> [String]?{
+    public static func registerTTCFont(withFilePath filePath: String) -> [String]?{
         
         let cPath = filePath.withCString { (path: UnsafePointer<Int8>) -> UnsafePointer<Int8> in
             return path

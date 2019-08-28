@@ -7,28 +7,32 @@
 
 import Foundation
 
-extension UIControl{
-    
-    fileprivate struct FZUIControlTouchAreaInsetsAssociatedKey{
-        static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIControlTouchAreaInsetsAssociatedKey_associatedKeys".hashValue)!
-    }
-    
+fileprivate struct FZUIControlTouchAreaInsetsAssociatedKey{
+    static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIControlTouchAreaInsetsAssociatedKey_associatedKeys".hashValue)!
+}
+
+extension FZBuildingBlockWrapper where Base: UIControl{
     
     /// 设置额外热区，可以扩大或者缩小响应范围
-    public var fz_touchAreaEdge: UIEdgeInsets{
+    public var touchAreaEdge: UIEdgeInsets{
         get{
-            if let areaEdge = objc_getAssociatedObject(self, FZUIControlTouchAreaInsetsAssociatedKey.associatedKeys) as? UIEdgeInsets{
+            if let areaEdge = objc_getAssociatedObject(base, FZUIControlTouchAreaInsetsAssociatedKey.associatedKeys) as? UIEdgeInsets{
                 return areaEdge
             }
             return .zero
         }
         set{
-            objc_setAssociatedObject(self, FZUIControlTouchAreaInsetsAssociatedKey.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(base, FZUIControlTouchAreaInsetsAssociatedKey.associatedKeys, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
+
+    
+}
+
+extension UIControl{
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let areaEdge = fz_touchAreaEdge
+        let areaEdge = self.fz.touchAreaEdge
         let touchAreaRect = CGRect(
             x: bounds.origin.x - areaEdge.left,
             y: bounds.origin.y - areaEdge.top,
@@ -37,5 +41,4 @@ extension UIControl{
         )
         return touchAreaRect.contains(point)
     }
-    
 }

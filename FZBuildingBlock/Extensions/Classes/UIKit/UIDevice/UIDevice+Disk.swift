@@ -7,12 +7,12 @@
 
 import Foundation
 
-extension UIDevice{
+extension UIDevice.fz{
     
     /// totalDiskSpace
     ///
     /// - Returns: Bytes of totalDiskSpace
-    public class func fz_totalDiskSpaceBytes() -> UInt64{
+    public static func totalDiskSpaceBytes() -> UInt64{
         let buf: UnsafeMutablePointer<statfs> = UnsafeMutablePointer<statfs>.allocate(capacity: MemoryLayout<statfs>.size)
         defer {
             buf.deallocate()
@@ -33,7 +33,7 @@ extension UIDevice{
     /// freeDiskSpace
     ///
     /// - Returns: Bytes of freeDiskSpace
-    public class func fz_freeDiskSpaceBytes() -> UInt64{
+    public static func freeDiskSpaceBytes() -> UInt64{
         let buf: UnsafeMutablePointer<statfs> = UnsafeMutablePointer<statfs>.allocate(capacity: MemoryLayout<statfs>.size)
         defer {
             buf.deallocate()

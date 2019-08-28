@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Bundle{
+extension Bundle.fz{
     
     /// 根据bundle名获得相应bundle
     ///
@@ -15,7 +15,7 @@ extension Bundle{
     ///   - classInBundle: bundle所在module中的一个关联的class
     ///   - name: bundle name
     /// - Returns:
-    public class func fz_bundle(classInBundle: AnyClass, name: String) -> Bundle?{
+    public static func bundle(classInBundle: AnyClass, name: String) -> Bundle?{
         if name.count == 0 {
             return nil
         }

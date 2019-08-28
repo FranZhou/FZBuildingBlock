@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIView {
+extension FZBuildingBlockWrapper where Base: UIView {
     
     
     /// 传统方式给view添加阴影
@@ -19,19 +19,19 @@ extension UIView {
     ///   - shadowRadius: default = 3, 阴影半径
     ///   - shadowOpacity: default = 0, 阴影透明度
     ///   - shadowPath: default = nil, 阴影路径。如果不指定路径，就会使用layer层的alpha通道的混合，而如果指定阴影路径，就会在多个layer层之间共享同一路径，以此来提高性能。
-    public func fz_addShadow(shadowColor: UIColor = .black, shadowOffset: CGSize = CGSize(width: 0, height: -3), shadowRadius: CGFloat = 3, shadowOpacity: CGFloat = 0, shadowPath: CGPath? = nil) {
-        self.layer.shadowColor = shadowColor.cgColor
-        self.layer.shadowOffset = shadowOffset
-        self.layer.shadowRadius = shadowRadius
-        self.layer.shadowOpacity = Float(shadowOpacity)
-        self.layer.shadowPath = shadowPath
+    public func addShadow(shadowColor: UIColor = .black, shadowOffset: CGSize = CGSize(width: 0, height: -3), shadowRadius: CGFloat = 3, shadowOpacity: CGFloat = 0, shadowPath: CGPath? = nil) {
+        base.layer.shadowColor = shadowColor.cgColor
+        base.layer.shadowOffset = shadowOffset
+        base.layer.shadowRadius = shadowRadius
+        base.layer.shadowOpacity = Float(shadowOpacity)
+        base.layer.shadowPath = shadowPath
     }
     
     
     /// 移除阴影
-    public func fz_removeShadow(){
-        self.layer.shadowOpacity = 0
-        self.layer.shadowPath = nil
+    public func removeShadow(){
+        base.layer.shadowOpacity = 0
+        base.layer.shadowPath = nil
     }
     
 }

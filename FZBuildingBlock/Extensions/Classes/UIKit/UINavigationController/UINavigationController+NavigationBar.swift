@@ -7,17 +7,17 @@
 
 import Foundation
 
-extension UINavigationController{
+extension FZBuildingBlockWrapper where Base: UINavigationController{
     
-    public var fz_navigationBarHeight: CGFloat {
+    public var navigationBarHeight: CGFloat {
         get{
-            return navigationBar.frame.size.height
+            return base.navigationBar.frame.size.height
         }
     }
     
-    public var fz_navigationBarAndStatusBarHeight: CGFloat {
+    public var navigationBarAndStatusBarHeight: CGFloat {
         get{
-            return UIApplication.shared.fz_statusBarHeight + fz_navigationBarHeight
+            return UIApplication.shared.fz.statusBarHeight + navigationBarHeight
         }
     }
     

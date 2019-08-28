@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIImage {
+extension FZBuildingBlockWrapper where Base: UIImage {
     
     
     /// 图片圆角截取
@@ -17,19 +17,19 @@ extension UIImage {
     ///   - leftBottom: 左下方圆角半径
     ///   - rightBottom: 右下方圆角半径
     ///   - rightTop: 右上方圆角半径
-    public func fz_cornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat) -> UIImage? {
+    public func cornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat) -> UIImage? {
         if leftTop == 0 && leftBottom == 0 && rightBottom == 0 && rightTop == 0{
-            return self.fz_copy()
+            return copy()
         }
         
-        if self.size.equalTo(.zero) {
-            return self.fz_copy()
+        if base.size.equalTo(.zero) {
+            return copy()
         }
         
-        let width = self.size.width
-        let height = self.size.height
+        let width = base.size.width
+        let height = base.size.height
         
-        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(base.size, false, UIScreen.main.scale)
         
         let bezier = UIBezierPath.init()
         bezier.lineWidth = 0
@@ -64,7 +64,7 @@ extension UIImage {
         // 在这以后的图形绘制超出当前路径范围则不可见
         bezier.addClip()
         
-        self.draw(in: CGRect(origin: .zero, size: self.size))
+        base.draw(in: CGRect(origin: .zero, size: base.size))
         let cornerRadiusImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -75,8 +75,8 @@ extension UIImage {
     /// 图片圆角
     ///
     /// - Parameter radius: 圆角的半径
-    public func fz_cornerRadius(withRadius radius: CGFloat) -> UIImage?{
-        return self.fz_cornerRadius(leftTop: radius, leftBottom: radius, rightBottom: radius, rightTop: radius)
+    public func cornerRadius(withRadius radius: CGFloat) -> UIImage?{
+        return cornerRadius(leftTop: radius, leftBottom: radius, rightBottom: radius, rightTop: radius)
     }
     
 }

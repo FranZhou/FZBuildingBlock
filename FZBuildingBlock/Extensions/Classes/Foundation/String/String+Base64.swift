@@ -8,14 +8,14 @@
 import Foundation
 
 
-extension String{
+extension FZBuildingBlockWrapper where Base == String{
     
     
     /// base64加密
     ///
     /// - Returns:
-    public func fz_base64Encode() -> String?{
-        if let data = self.data(using: .utf8) {
+    public func base64Encode() -> String?{
+        if let data = base.data(using: .utf8) {
             return data.base64EncodedString()
         }
         return nil
@@ -25,8 +25,8 @@ extension String{
     /// base64解密
     ///
     /// - Returns:
-    public func fz_base64Decode() -> String?{
-        if let data = self.fz_base64Data() {
+    public func base64Decode() -> String?{
+        if let data = self.base64Data() {
             return String(data: data, encoding: .utf8)
         }
         return nil
@@ -36,8 +36,8 @@ extension String{
     /// string --> base64 Data
     ///
     /// - Returns: Data
-    public func fz_base64Data() -> Data?{
-        return Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0))
+    public func base64Data() -> Data?{
+        return Data(base64Encoded: base, options: Data.Base64DecodingOptions.init(rawValue: 0))
     }
     
 }

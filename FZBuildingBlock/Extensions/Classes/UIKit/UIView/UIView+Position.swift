@@ -7,60 +7,60 @@
 
 import Foundation
 
-extension UIView{
+extension FZBuildingBlockWrapper where Base: UIView{
     
     
-    public var fz_size: CGSize {
+    public var size: CGSize {
         get{
-            return self.frame.size
+            return base.frame.size
         }
         set{
-            self.frame.size = newValue
+            base.frame.size = newValue
         }
     }
     
-    public var fz_origin: CGPoint{
+    public var origin: CGPoint{
         get{
-            return self.frame.origin
+            return base.frame.origin
         }
         set{
-            self.frame.origin = newValue
+            base.frame.origin = newValue
         }
     }
     
-    public var fz_width: CGFloat{
+    public var width: CGFloat{
         get{
-            return self.frame.size.width
+            return base.frame.size.width
         }
         set{
-            self.frame.size.width = newValue
+            base.frame.size.width = newValue
         }
     }
     
-    public var fz_height: CGFloat{
+    public var height: CGFloat{
         get{
-            return self.frame.size.height
+            return base.frame.size.height
         }
         set{
-            self.frame.size.height = newValue
+            base.frame.size.height = newValue
         }
     }
     
-    public var fz_x: CGFloat {
+    public var x: CGFloat {
         get{
-            return self.frame.origin.x
+            return base.frame.origin.x
         }
         set{
-            self.frame.origin.x = newValue
+            base.frame.origin.x = newValue
         }
     }
     
-    public var fz_y: CGFloat {
+    public var y: CGFloat {
         get{
-            return self.frame.origin.y
+            return base.frame.origin.y
         }
         set{
-            self.frame.origin.y = newValue
+            base.frame.origin.y = newValue
         }
     }
     
@@ -68,62 +68,62 @@ extension UIView{
     ///  外部中心点，根据frame计算,相对于superView的中心点
     ///  例如: frame为 （50, 50, 100, 100）. outerCenter 为 (100, 100), 即(x + width/2.0, y + height/2.0)
     ///  这里CenterX CenterY变化并不会影响width和height的变化
-    public var fz_outerCenter: CGPoint{
+    public var outerCenter: CGPoint{
         set{
-            self.center = newValue
+            base.center = newValue
         }
         get{
-            return self.center
+            return base.center
         }
     }
     
-    public var fz_outerCenterX: CGFloat{
+    public var outerCenterX: CGFloat{
         set{
-            self.center.x = newValue
+            base.center.x = newValue
         }
         get{
-            return self.center.x
+            return base.center.x
         }
     }
     
-    public var fz_outerCenterY: CGFloat{
+    public var outerCenterY: CGFloat{
         set{
-            self.center.y = newValue
+            base.center.y = newValue
         }
         get{
-            return self.center.y
+            return base.center.y
         }
     }
     
     ///  内部中心点，根据bounds计算，自己的中心点
     ///  例如: frame为 （50, 50, 100, 100）. innerCenter 为 (50, 50), 即(width/2.0, height/2.0)
     ///  CenterX CenterY变化直接影响到width和height的值
-    public var fz_innerCenter: CGPoint{
+    public var innerCenter: CGPoint{
         set{
-            self.fz_width = newValue.x * 2
-            self.fz_height = newValue.y * 2
+            width = newValue.x * 2
+            height = newValue.y * 2
         }
         get{
-            return CGPoint(x: self.fz_width / 2.0, y: self.fz_height / 2.0)
+            return CGPoint(x: width / 2.0, y: height / 2.0)
         }
     }
     
     // 变动时，默认origin.x位置不变
-    public var fz_innerCenterX: CGFloat{
+    public var innerCenterX: CGFloat{
         set{
-            self.fz_width = newValue * 2.0
+            width = newValue * 2.0
         }
         get{
-            return self.fz_width / 2.0
+            return width / 2.0
         }
     }
     
-    public var fz_innerCenterY: CGFloat{
+    public var innerCenterY: CGFloat{
         set{
-            self.fz_height = newValue * 2.0
+            height = newValue * 2.0
         }
         get{
-            return self.fz_height / 2.0
+            return height / 2.0
         }
     }
     

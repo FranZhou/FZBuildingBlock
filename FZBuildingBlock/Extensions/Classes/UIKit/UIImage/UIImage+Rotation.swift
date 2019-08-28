@@ -8,19 +8,19 @@
 import Foundation
 
 
-extension UIImage {
+extension FZBuildingBlockWrapper where Base: UIImage {
     
     
     /// 旋转图片(size会发生变化)
     ///
     /// - Parameter rotation: 旋转角度(单位: 度)
     /// - Returns:
-    public func fz_rotate(withRotation rotation: CGFloat) -> UIImage? {
+    public func rotate(withRotation rotation: CGFloat) -> UIImage? {
         if rotation.truncatingRemainder(dividingBy: 360) == 0 {
-            return self.fz_copy()
+            return copy()
         }
         
-        let imageRect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+        let imageRect = CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height)
         let radian = rotation/180*CGFloat.pi
         let rotatedTransform = CGAffineTransform(rotationAngle: radian)
         
@@ -44,7 +44,7 @@ extension UIImage {
         // 这里用imageRect
         context.translateBy(x: -imageRect.width/2, y: -imageRect.height/2)
         
-        self.draw(at: .zero)
+        base.draw(at: .zero)
         let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

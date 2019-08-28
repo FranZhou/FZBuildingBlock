@@ -106,17 +106,17 @@ extension FZTableViewCommonCell{
         }
         
         // cell 高度宽度
-        let width = self.fz_width
-        let height = self.fz_height
+        let width = self.fz.width
+        let height = self.fz.height
         
         // top line
         var topLineHeight: CGFloat = 0
         do {
             if cellModel.showTopLine {
-                topLineView.fz_x = cellModel.topLineLeftDistance
-                topLineView.fz_y = 0
-                topLineView.fz_height = cellModel.topLineHeight
-                topLineView.fz_width = width - cellModel.topLineLeftDistance - cellModel.topLineLeftDistance
+                topLineView.fz.x = cellModel.topLineLeftDistance
+                topLineView.fz.y = 0
+                topLineView.fz.height = cellModel.topLineHeight
+                topLineView.fz.width = width - cellModel.topLineLeftDistance - cellModel.topLineLeftDistance
                 topLineHeight = cellModel.topLineHeight
             }
         }
@@ -125,10 +125,10 @@ extension FZTableViewCommonCell{
         var bottomLineHeight: CGFloat = 0
         do {
             if cellModel.showBottomLine {
-                topLineView.fz_x = cellModel.bottomLineLeftDistance
-                topLineView.fz_y = height - cellModel.topLineHeight
-                topLineView.fz_height = cellModel.topLineHeight
-                topLineView.fz_width = width - cellModel.bottomLineLeftDistance - cellModel.bottomLineLeftDistance
+                topLineView.fz.x = cellModel.bottomLineLeftDistance
+                topLineView.fz.y = height - cellModel.topLineHeight
+                topLineView.fz.height = cellModel.topLineHeight
+                topLineView.fz.width = width - cellModel.bottomLineLeftDistance - cellModel.bottomLineLeftDistance
                 bottomLineHeight = cellModel.bottomLineHeight
             }
         }
@@ -139,10 +139,10 @@ extension FZTableViewCommonCell{
         var leftDistance = cellModel.leftDistance
         do {
             if !leftIconImageView.isHidden {
-                leftDistance += leftIconImageView.fz_width + cellModel.leftIconDistance
+                leftDistance += leftIconImageView.fz.width + cellModel.leftIconDistance
                 
-                leftIconImageView.fz_x = cellModel.leftDistance
-                leftIconImageView.fz_outerCenterY = centerY
+                leftIconImageView.fz.x = cellModel.leftDistance
+                leftIconImageView.fz.outerCenterY = centerY
             }
         }
         
@@ -150,10 +150,10 @@ extension FZTableViewCommonCell{
         var rightDistance = cellModel.rightDistance
         do{
             if !rightIconImageView.isHidden {
-                rightDistance += rightIconImageView.fz_width + cellModel.rightIconDistance
+                rightDistance += rightIconImageView.fz.width + cellModel.rightIconDistance
                 
-                rightIconImageView.fz_x = width - rightIconImageView.fz_width - cellModel.rightIconDistance
-                rightIconImageView.fz_outerCenterY = centerY
+                rightIconImageView.fz.x = width - rightIconImageView.fz.width - cellModel.rightIconDistance
+                rightIconImageView.fz.outerCenterY = centerY
             }
         }
         
@@ -169,126 +169,126 @@ extension FZTableViewCommonCell{
         let centerMinDistance = cellModel.centerMinDistance
         do{
             if let view = centerView {
-                view.fz_outerCenterX = fz_innerCenterX
-                view.fz_outerCenterY = centerY
+                view.fz.outerCenterX = contentView.fz.innerCenterX
+                view.fz.outerCenterY = centerY
                 
-                centerWidth = view.fz_width
+                centerWidth = view.fz.width
             }else{
-                centerLabel.fz_width = maxWidth
-                centerLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                centerLabel.fz.width = maxWidth
+                centerLabel.fz.height = CGFloat.greatestFiniteMagnitude
                 
                 centerLabel.sizeToFit()
-                centerLabel.fz_outerCenterX = fz_innerCenterX
-                centerLabel.fz_outerCenterY = centerY
+                centerLabel.fz.outerCenterX = contentView.fz.innerCenterX
+                centerLabel.fz.outerCenterY = centerY
                 
-                centerWidth = centerLabel.fz_width
+                centerWidth = centerLabel.fz.width
             }
         }
         
         // left
         do{
             if let view = leftView {
-                view.fz_x = leftDistance
-                view.fz_outerCenterY = centerY
+                view.fz.x = leftDistance
+                view.fz.outerCenterY = centerY
             }else{
                 var leftMaxWidth = maxWidth
                 if centerWidth > 0{
                     leftMaxWidth = width / 2.0 - leftDistance - centerWidth / 2.0 - centerMinDistance
                 }
-                leftLabel.fz_width = leftMaxWidth
-                leftLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                leftLabel.fz.width = leftMaxWidth
+                leftLabel.fz.height = CGFloat.greatestFiniteMagnitude
                 
                 leftLabel.sizeToFit()
-                leftLabel.fz_x = leftDistance
-                leftLabel.fz_outerCenterY = centerY
+                leftLabel.fz.x = leftDistance
+                leftLabel.fz.outerCenterY = centerY
             }
         }
         
         // right
         do{
             if let view = centerView {
-                view.fz_x = width - rightDistance - view.fz_width
-                view.fz_outerCenterY = centerY
+                view.fz.x = width - rightDistance - view.fz.width
+                view.fz.outerCenterY = centerY
             }else{
                 if centerWidth > 0 {
                     // 中间有视图，有点显示宽度有限制
                     let rightMaxWidth = width / 2.0 - rightDistance - centerWidth / 2.0 - centerMinDistance
-                    rightLabel.fz_width = rightMaxWidth
-                    rightLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                    rightLabel.fz.width = rightMaxWidth
+                    rightLabel.fz.height = CGFloat.greatestFiniteMagnitude
                     
                     rightLabel.sizeToFit()
-                    rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                    rightLabel.fz_outerCenterY = centerY
+                    rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                    rightLabel.fz.outerCenterY = centerY
                 }else{
                     // 中间没有视图时
-                    rightLabel.fz_width = maxWidth
-                    rightLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                    rightLabel.fz.width = maxWidth
+                    rightLabel.fz.height = CGFloat.greatestFiniteMagnitude
                     rightLabel.sizeToFit()
                     
-                    let rightMaxWidth = rightLabel.fz_width
+                    let rightMaxWidth = rightLabel.fz.width
                     if let view = leftView{
                         // 左边显示的是自定义视图, 中间没有视图
-                        let leftWidth = view.fz_width
+                        let leftWidth = view.fz.width
                         if leftWidth + rightMaxWidth + centerMinDistance < maxWidth{
                             // 左右能显示完全
-                            rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                            rightLabel.fz_outerCenterY = centerY
+                            rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                            rightLabel.fz.outerCenterY = centerY
                         }else{
                             // 左边自定义视图显示完全，右边label换行显示
-                            rightLabel.fz_width = maxWidth - leftWidth - centerMinDistance
-                            rightLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                            rightLabel.fz.width = maxWidth - leftWidth - centerMinDistance
+                            rightLabel.fz.height = CGFloat.greatestFiniteMagnitude
                             
                             rightLabel.sizeToFit()
-                            rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                            rightLabel.fz_outerCenterY = centerY
+                            rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                            rightLabel.fz.outerCenterY = centerY
                         }
                     }else{
                         // 左边是label，右边也是label
-                        let leftWidth = leftLabel.fz_width
+                        let leftWidth = leftLabel.fz.width
                         if leftWidth + rightMaxWidth + centerMinDistance <= maxWidth{
                             // 左右label都能显示完全
-                            rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                            rightLabel.fz_outerCenterY = centerY
+                            rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                            rightLabel.fz.outerCenterY = centerY
                         }else{
                             // 左右label不能同时显示完全
                             if leftWidth <= (maxWidth - centerMinDistance) / 2.0{
                                 // 左边内容少于一半，保证左边完全显示，右边换行
-                                rightLabel.fz_width = maxWidth - leftWidth - centerMinDistance
-                                rightLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                                rightLabel.fz.width = maxWidth - leftWidth - centerMinDistance
+                                rightLabel.fz.height = CGFloat.greatestFiniteMagnitude
                                 
                                 rightLabel.sizeToFit()
-                                rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                                rightLabel.fz_outerCenterY = centerY
+                                rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                                rightLabel.fz.outerCenterY = centerY
                             }else if rightMaxWidth <= (maxWidth - centerMinDistance) / 2.0{
                                 // 右边内容少于一半，保证右边完全显示，左边换行
-                                rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                                rightLabel.fz_outerCenterY = centerY
+                                rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                                rightLabel.fz.outerCenterY = centerY
                                 
-                                leftLabel.fz_width = maxWidth - rightMaxWidth - centerMinDistance
-                                leftLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                                leftLabel.fz.width = maxWidth - rightMaxWidth - centerMinDistance
+                                leftLabel.fz.height = CGFloat.greatestFiniteMagnitude
                                 
                                 leftLabel.sizeToFit()
-                                leftLabel.fz_x = leftDistance
-                                leftLabel.fz_outerCenterY = centerY
+                                leftLabel.fz.x = leftDistance
+                                leftLabel.fz.outerCenterY = centerY
                             }else{
                                 // 左右都长,左右都换行显示，宽度比6:4
                                 let _leftWidth = (maxWidth - centerMinDistance) * 0.6
                                 
                                 // left label
-                                leftLabel.fz_width = _leftWidth
-                                leftLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                                leftLabel.fz.width = _leftWidth
+                                leftLabel.fz.height = CGFloat.greatestFiniteMagnitude
                                 
                                 leftLabel.sizeToFit()
-                                leftLabel.fz_x = leftDistance
-                                leftLabel.fz_outerCenterY = centerY
+                                leftLabel.fz.x = leftDistance
+                                leftLabel.fz.outerCenterY = centerY
                                 
                                 // right label
-                                rightLabel.fz_width = maxWidth - _leftWidth - centerMinDistance
-                                rightLabel.fz_height = CGFloat.greatestFiniteMagnitude
+                                rightLabel.fz.width = maxWidth - _leftWidth - centerMinDistance
+                                rightLabel.fz.height = CGFloat.greatestFiniteMagnitude
                                 
                                 rightLabel.sizeToFit()
-                                rightLabel.fz_x = width - rightDistance - rightLabel.fz_width
-                                rightLabel.fz_outerCenterY = centerY
+                                rightLabel.fz.x = width - rightDistance - rightLabel.fz.width
+                                rightLabel.fz.outerCenterY = centerY
                                 
                             }
                         }

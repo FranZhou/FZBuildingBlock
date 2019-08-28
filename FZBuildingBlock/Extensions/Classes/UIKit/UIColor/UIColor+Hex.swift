@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIColor{
+extension UIColor.fz{
     
     /// 十六进制颜色
     ///
@@ -15,11 +15,11 @@ extension UIColor{
     ///   - rgbHex: [0x000000, 0xffffff]
     ///   - alpha: [0, 1] 默认 1
     /// - Returns:
-    public class func fz_color(rgbHex: UInt32, alpha: CGFloat = 1.0) -> UIColor{
+    public static func color(rgbHex: UInt32, alpha: CGFloat = 1.0) -> UIColor{
         let r = CGFloat((rgbHex & 0xff0000) >> (4 * 4))
         let g = CGFloat((rgbHex & 0x00ff00) >> (2 * 4))
         let b = CGFloat((rgbHex & 0x0000ff) >> (0 * 4))
-        return fz_color(red: r, green: g, blue: b, alpha: alpha)
+        return UIColor.fz.color(red: r, green: g, blue: b, alpha: alpha)
     }
     
     
@@ -29,25 +29,25 @@ extension UIColor{
     ///   - rgbHexString: ["#000000", "#ffffff"]
     ///   - alpha: [0, 1] 默认 1
     /// - Returns:
-    public class func fz_color(rgbHexString: String, alpha: CGFloat = 1.0) -> UIColor{
-        let colorStr = rgbHexString.fz_trimAllWhiteSpace().fz_trimLeft(withFilter: ["#"])
+    public static func color(rgbHexString: String, alpha: CGFloat = 1.0) -> UIColor{
+        let colorStr = rgbHexString.fz.trimAllWhiteSpace().fz.trimLeft(withFilter: ["#"])
         if colorStr.count != 6{
             return UIColor.init()
         }
         var rgbValue: UInt32 = 0
         Scanner(string: colorStr).scanHexInt32(&rgbValue)
-        return fz_color(rgbHex: rgbValue, alpha: alpha)
+        return UIColor.fz.color(rgbHex: rgbValue, alpha: alpha)
     }
     
 }
 
-extension UIColor{
+extension FZBuildingBlockWrapper where Base: UIColor{
     
     
     /// 颜色拆分，获取颜色的rgba, 这里rgba的范围在[0,1]之间
     ///
     /// - Returns: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) default = (0, 0, 0, 1)
-    public func fz_disassembleColor() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
+    public func disassembleColor() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
         let red = UnsafeMutablePointer<CGFloat>.allocate(capacity: MemoryLayout<CGFloat>.size)
         defer {
             red.deallocate()
@@ -68,7 +68,7 @@ extension UIColor{
             alpha.deallocate()
         }
         
-        guard getRed(red, green: green, blue: blue, alpha: alpha) else{
+        guard base.getRed(red, green: green, blue: blue, alpha: alpha) else{
             return (0, 0, 0, 1)
         }
         
@@ -79,8 +79,8 @@ extension UIColor{
     /// 颜色拆分，获取颜色的rgba, 这里rgb的范围在[0,255]之间，A[0,1]
     ///
     /// - Returns: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    public func fz_disassembleColorRGB255() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
-        let (red, green, blue, alpha) = fz_disassembleColor()
+    public func disassembleColorRGB255() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat){
+        let (red, green, blue, alpha) = disassembleColor()
         let multiplier: CGFloat = 255.0
         
         
@@ -92,8 +92,8 @@ extension UIColor{
     ///
     /// - Parameter prefix: rgbHexString前缀,default = "#"
     /// - Returns: (rgbHexString: String, alpha: CGFloat)
-    public func fz_rgbHexString(withPrefix prefix: String = "#") -> (rgbHexString: String, alpha: CGFloat){
-        let (red, green, blue, alpha) = fz_disassembleColorRGB255()
+    public func rgbHexString(withPrefix prefix: String = "#") -> (rgbHexString: String, alpha: CGFloat){
+        let (red, green, blue, alpha) = disassembleColorRGB255()
         
         return (String(
             format: "%@%02X%02X%02X",
@@ -107,8 +107,8 @@ extension UIColor{
     /// UIColor -> rgbHex十进制value
     ///
     /// - Returns: (rgbHex: UInt32 ,alpha: CGFloat)
-    public func fz_rgbHex() -> (rgbHex: UInt32 ,alpha: CGFloat){
-        let rgbHexStringTouple = fz_rgbHexString(withPrefix: "")
+    public func rgbHex() -> (rgbHex: UInt32 ,alpha: CGFloat){
+        let rgbHexStringTouple = rgbHexString(withPrefix: "")
         let rgbHexString = rgbHexStringTouple.rgbHexString
         let alpha = rgbHexStringTouple.alpha
         

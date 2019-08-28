@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension UIView {
+extension FZBuildingBlockWrapper where Base: UIView {
     
     
     /// 传统方式给view添加圆角，内部会将masksToBounds设为true
@@ -17,11 +17,11 @@ extension UIView {
     ///   - radius: 圆角半径
     ///   - borderColor: default = .clear, border color
     ///   - borderWidth: default = 0, border width
-    public func fz_addCornerRadius(withRadius radius: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0) {
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = borderWidth
-        self.layer.borderColor = borderColor.cgColor
-        self.layer.cornerRadius = radius
+    public func addCornerRadius(withRadius radius: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0) {
+        base.layer.masksToBounds = true
+        base.layer.borderWidth = borderWidth
+        base.layer.borderColor = borderColor.cgColor
+        base.layer.cornerRadius = radius
     }
     
     
@@ -35,17 +35,17 @@ extension UIView {
     ///   - borderColor: default = .clear, border color
     ///   - borderWidth: default = 0, border width
     ///   - lineDashPattern: default = nil, 虚线中实线部分和间隔部分分别的长度，默认是实线的
-    public func fz_addMaskLayerCornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0, lineDashPattern: [NSNumber]? = nil) {
+    public func addMaskLayerCornerRadius(leftTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat, rightTop: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0, lineDashPattern: [NSNumber]? = nil) {
         
-        self.layoutIfNeeded()
+        base.layoutIfNeeded()
         
         let bezier = UIBezierPath.init()
         bezier.lineWidth = borderWidth
         
         borderColor.setStroke()
         
-        let width = self.frame.size.width
-        let height = self.frame.size.height
+        let width = base.frame.size.width
+        let height = base.frame.size.height
         
         // 左上方圆角
         bezier.move(to: CGPoint(x: leftTop, y: 0))
@@ -75,11 +75,11 @@ extension UIView {
         bezier.stroke()
         
         let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.bounds
+        maskLayer.frame = base.bounds
         maskLayer.lineDashPattern = lineDashPattern
         
         maskLayer.path = bezier.cgPath
-        self.layer.mask = maskLayer
+        base.layer.mask = maskLayer
     }
     
     

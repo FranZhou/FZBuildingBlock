@@ -12,7 +12,7 @@ import FZBuildingBlock
 class ViewController: UIViewController {
     
     lazy var tableView: FZTableView = {
-        let navigationBarAndStatusBarHeight: CGFloat = self.navigationController?.fz_navigationBarAndStatusBarHeight ?? 0
+        let navigationBarAndStatusBarHeight: CGFloat = self.navigationController?.fz.navigationBarAndStatusBarHeight ?? 0
         
         let tableView = FZTableView(frame: CGRect(x: 0, y: navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height - navigationBarAndStatusBarHeight), style: .plain)
         tableView.tableViewManager = TableViewManager()
@@ -32,12 +32,12 @@ class ViewController: UIViewController {
             do{
                 var font: UIFont? = nil
                 if let filePath = Bundle.main.path(forResource: "毛泽东字体", ofType: "ttf"),
-                    let fontName = UIFont.fz_registerTTFFont(withFilePath: filePath){
+                    let fontName = UIFont.fz.registerTTFFont(withFilePath: filePath){
                     font = UIFont(name: fontName, size: 13)
                 }
                 
                 var cellModel = FZTableViewCellModel()
-                cellModel.leftAttributedString = NSMutableAttributedString(string: "图片处理").fz_set(attribute: NSAttributedString.FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
+                cellModel.leftAttributedString = NSMutableAttributedString(string: "图片处理").fz.set(attribute: FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
                 
                 cellModel.rightString = "->"
                 
@@ -60,12 +60,12 @@ class ViewController: UIViewController {
                 
                 var font: UIFont? = nil
                 if let filePath = Bundle.main.path(forResource: "simsun", ofType: "ttc"),
-                    let fontNames = UIFont.fz_registerTTCFont(withFilePath: filePath){
+                    let fontNames = UIFont.fz.registerTTCFont(withFilePath: filePath){
                     font = UIFont(name: fontNames[0], size: 18)
                 }
                 
                 var cellModel = FZTableViewCellModel()
-                cellModel.leftAttributedString = NSMutableAttributedString(string: "观察者").fz_set(attribute: NSAttributedString.FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
+                cellModel.leftAttributedString = NSMutableAttributedString(string: "观察者").fz.set(attribute: FZAttribute.font(font ?? UIFont.systemFont(ofSize: 13)))
                 
                 
                 var row = FZTableViewRow()
@@ -156,15 +156,15 @@ extension ViewController{
     }
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        print("fz_statusBarHeight -> \(UIApplication.shared.fz_statusBarHeight)")
+        print("fz_statusBarHeight -> \(UIApplication.shared.fz.statusBarHeight)")
         
-        print("fz_safeArea -> \(UIApplication.shared.fz_safeArea)")
+        print("fz_safeArea -> \(UIApplication.shared.fz.safeArea)")
         
         
-        print("fz_navigationBarHeight -> \(self.navigationController?.fz_navigationBarHeight)")
-        print("fz_navigationBarAndStatusBarHeight -> \(self.navigationController?.fz_navigationBarAndStatusBarHeight)")
-        print("fz_tabBarHeight -> \(self.tabBarController?.fz_tabBarHeight)")
-        print("fz_tabBarAndSafeAreaHeight -> \(self.tabBarController?.fz_tabBarAndSafeAreaHeight)")
+        print("fz_navigationBarHeight -> \(String(describing: self.navigationController?.fz.navigationBarHeight))")
+        print("fz_navigationBarAndStatusBarHeight -> \(String(describing: self.navigationController?.fz.navigationBarAndStatusBarHeight))")
+        print("fz_tabBarHeight -> \(String(describing: self.tabBarController?.fz.tabBarHeight))")
+        print("fz_tabBarAndSafeAreaHeight -> \(String(describing: self.tabBarController?.fz.tabBarAndSafeAreaHeight))")
     }
     
 }

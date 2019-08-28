@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIFont{
+extension UIFont.fz{
     
     
     /// 获取TTF字体（TTF OTF都可以使用）
@@ -16,7 +16,7 @@ extension UIFont{
     ///   - filePath: 字体文件路径
     ///   - size: 字体大小
     /// - Returns: 加载本地字体，无法加载时使用系统默认字体
-    public class func fz_ttfFont(withFilePath filePath: String, size: CGFloat) -> UIFont{
+    public static func ttfFont(withFilePath filePath: String, size: CGFloat) -> UIFont{
         guard let fontURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, filePath as CFString, CFURLPathStyle.cfurlposixPathStyle, false),
             let dataProvider = CGDataProvider.init(url: fontURL),
             let graphicsFont = CGFont.init(dataProvider)
@@ -39,7 +39,7 @@ extension UIFont{
     ///
     /// - Parameter filePath: TTF OTF字体文件路径
     /// - Returns: 字体名称
-    public class func fz_registerTTFFont(withFilePath filePath: String) -> String?{
+    public static func registerTTFFont(withFilePath filePath: String) -> String?{
         guard let fontURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, filePath as CFString, CFURLPathStyle.cfurlposixPathStyle, false),
             let dataProvider = CGDataProvider.init(url: fontURL),
             let graphicsFont = CGFont.init(dataProvider)

@@ -7,38 +7,38 @@
 
 import Foundation
 
-extension Data{
+extension FZBuildingBlockWrapper where Base == Data{
     
     /// JPEG图片Data数据头
-    public var fz_JPEGHeaderSOI: [UInt8]{
+    public var JPEGHeaderSOI: [UInt8]{
         return [0xFF, 0xD8]
     }
     
-    public var fz_JPEGHeaderIF: [UInt8]{
+    public var JPEGHeaderIF: [UInt8]{
         return [0xFF]
     }
     
     
     /// 当前Data是否是JPEG图片
-    public var fz_isJPEG: Bool{
-        guard self.count > 8
+    public var isJPEG: Bool{
+        guard base.count > 8
             else {
                 return false
         }
         
-        let count = fz_JPEGHeaderSOI.count + fz_JPEGHeaderIF.count
+        let count = JPEGHeaderSOI.count + JPEGHeaderIF.count
         let buffer: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: count)
         defer {
             buffer.deallocate()
         }
         
-        self.copyBytes(to: buffer, count: count)
+        base.copyBytes(to: buffer, count: count)
         
         var isJPEG = true
         
-        if buffer.advanced(by: 0).pointee != fz_JPEGHeaderSOI[0],
-            buffer.advanced(by: 1).pointee != fz_JPEGHeaderSOI[1],
-            buffer.advanced(by: 2).pointee != fz_JPEGHeaderIF[0]{
+        if buffer.advanced(by: 0).pointee != JPEGHeaderSOI[0],
+            buffer.advanced(by: 1).pointee != JPEGHeaderSOI[1],
+            buffer.advanced(by: 2).pointee != JPEGHeaderIF[0]{
             isJPEG = false
         }
         

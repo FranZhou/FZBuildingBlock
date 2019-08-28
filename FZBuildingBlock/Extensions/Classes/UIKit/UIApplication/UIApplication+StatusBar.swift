@@ -7,12 +7,12 @@
 
 import Foundation
 
-extension UIApplication{
+extension FZBuildingBlockWrapper where Base: UIApplication{
     
     /// statusBarHeight
-    public var fz_statusBarHeight: CGFloat {
+    public var statusBarHeight: CGFloat {
         get{
-            return statusBarFrame.height
+            return base.statusBarFrame.height
         }
     }
     
@@ -20,8 +20,8 @@ extension UIApplication{
     /// 状态栏旋转菊花是否展示
     ///
     /// - Parameter visible: visible
-    public func fz_networkActivity(visible: Bool) {
-        isNetworkActivityIndicatorVisible = visible
+    public func networkActivity(visible: Bool) {
+        base.isNetworkActivityIndicatorVisible = visible
     }
     
 }

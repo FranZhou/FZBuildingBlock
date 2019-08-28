@@ -22,7 +22,7 @@ public enum FZButtonImageAndTitleLayoutStyle: Int{
 }
 
 
-extension UIButton{
+extension FZBuildingBlockWrapper where Base: UIButton{
     
     
     /// 修改按钮图片和文字布局方式，要先设置好图片和文字后再调用此方法
@@ -30,17 +30,17 @@ extension UIButton{
     /// - Parameters:
     ///   - layoutStyle: default = .imageLeftAndTitleRight；布局方式
     ///   - spacing: default = 0；文字和图片的间距
-    public func fz_setImageAndTitleLayout(layoutStyle: FZButtonImageAndTitleLayoutStyle = .imageLeftAndTitleRight, spacing: CGFloat = 0) -> Void{
+    public func setImageAndTitleLayout(layoutStyle: FZButtonImageAndTitleLayoutStyle = .imageLeftAndTitleRight, spacing: CGFloat = 0) -> Void{
         
-        self.layoutIfNeeded()
+        base.layoutIfNeeded()
         
-        let imageWidth = self.imageView?.frame.size.width ?? 0
-        let imageHeight = self.imageView?.frame.size.height ?? 0
+        let imageWidth = base.imageView?.frame.size.width ?? 0
+        let imageHeight = base.imageView?.frame.size.height ?? 0
         
-        let titleWidth = self.titleLabel?.frame.size.width ?? 0
-        let titleHeight = self.titleLabel?.frame.size.height ?? 0
+        let titleWidth = base.titleLabel?.frame.size.width ?? 0
+        let titleHeight = base.titleLabel?.frame.size.height ?? 0
         
-        let titleIntrinsicWidth = self.titleLabel?.intrinsicContentSize.width ?? 0
+        let titleIntrinsicWidth = base.titleLabel?.intrinsicContentSize.width ?? 0
         
         var imageEdgeInsets: UIEdgeInsets = UIEdgeInsets()
         var labelEdgeInsets: UIEdgeInsets = UIEdgeInsets()
@@ -60,8 +60,8 @@ extension UIButton{
             labelEdgeInsets = UIEdgeInsets(top: -imageHeight-spacing/2.0, left: -imageWidth, bottom: 0, right: 0)
         }
         
-        self.titleEdgeInsets = labelEdgeInsets
-        self.imageEdgeInsets = imageEdgeInsets
+        base.titleEdgeInsets = labelEdgeInsets
+        base.imageEdgeInsets = imageEdgeInsets
         
     }
 }
