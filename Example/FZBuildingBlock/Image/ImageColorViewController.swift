@@ -45,6 +45,8 @@ class ImageColorViewController: UIViewController {
         print(String(format: "%d -> %X", randomColor.fz.rgbHex().rgbHex, randomColor.fz.rgbHex().rgbHex))
         
         print(image.fz.colorRGBA(atPoint: CGPoint(x: 50, y: 50))?.fz.rgbHexString() ?? "")
+        
+        self.navigationItem.fz.hideIndicator()
     }
     
     
@@ -52,6 +54,8 @@ class ImageColorViewController: UIViewController {
         guard let point = touches.first?.location(in: self.view) else {
             return
         }
+        
+        self.navigationItem.fz.showIndicator(position: .center)
         
         print(self.view.fz.colorRGBA(atPoint: point)?.fz.rgbHexString() ?? "")
     }
