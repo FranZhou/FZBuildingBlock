@@ -30,6 +30,7 @@ pod 'FZBuildingBlock'
 ## Author
 
 FranZhou, fairytale_zf@outlook.com
+swift QQ交流群: 628172981
 
 ## License
 
