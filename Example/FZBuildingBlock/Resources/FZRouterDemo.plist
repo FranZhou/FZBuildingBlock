@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fran</key>
+	<dict>
+		<key>www.franzhou.com</key>
+		<dict>
+			<key>routerTest</key>
+			<array>
+				<dict>
+					<key>target</key>
+					<string>RouterDemo</string>
+					<key>actions</key>
+					<dict>
+						<key>router_action</key>
+						<string>testRouterAction</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>actions</key>
+					<dict>
+						<key>oc_router_action</key>
+						<string>testOCRouterAction</string>
+					</dict>
+					<key>target</key>
+					<string>OCRouterDemo</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

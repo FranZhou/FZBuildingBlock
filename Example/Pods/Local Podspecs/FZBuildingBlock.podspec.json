@@ -57,6 +57,11 @@
 
         ]
       }
+    },
+    {
+      "name": "Router",
+      "source_files": "FZBuildingBlock/Router/Classes/**/*",
+      "frameworks": "Foundation"
     }
   ]
 }

@@ -1,0 +1,89 @@
+//
+//  FZRouter.swift
+//  FZBuildingBlock
+//
+//  Created by FranZhou on 2019/8/31.
+//
+
+import UIKit
+
+public enum FZRouterError: Error{
+    case unknownRouterURL(String)
+    case unableToPerform(AnyObject, Selector)
+}
+
+// MARK: - 
+open class FZRouter: NSObject {
+    
+    /// router instance
+    @objc public static let defaultRouter = FZRouter()
+    
+    /// router manager，default is FZRouterManager.manager
+    @objc public var routerManager: FZRouterManagerProtocol = FZRouterManager.defaultManager
+    
+    /// router loader，default is FZRouterPlistLoader.plistLoader
+    @objc public var routerLoader: FZRouterLoaderProtocol = FZRouterPlistLoader.defaultLoader
+    
+    /// router execute filter，default is FZRouterExecute.execute
+    @objc public var routerExecute: FZRouterExecuterProtocol = FZRouterExecute.defaultExecuter
+
+}
+
+// MARK: -
+extension FZRouter{
+    
+    @objc public func loadRouter(withFilePath filePath: String){
+        routerLoader.loadRouter(withFilePath: filePath, router: self)
+    }
+    
+    @objc public func appendRouter(withFilePath filePath: String){
+        routerLoader.appendRouter(withFilePath: filePath, router: self)
+    }
+    
+    @objc public func loadRouter(withRouterURLs urls: [String]){
+        routerLoader.loadRouter(withRouterURLs: urls, router: self)
+    }
+    
+    @objc public func appendRouter(withRouterURL url: String){
+        routerLoader.appendRouter(withRouterURL: url, router: self)
+    }
+    
+    @objc public func removeRouter(withRouterURL url: String){
+        routerManager.remove(WithRouterURL: url)
+    }
+    
+    @objc public func removeAllRouter(){
+        routerManager.removeAllRouter()
+    }
+    
+}
+
+// MARK: -
+extension FZRouter{
+    
+    @discardableResult
+    @objc public func router(withRouterURL url: String, extraParameters params: [String: Any]? = nil) throws -> FZRouterDataPacket{
+        // get router execute infomation
+        if let routerModel = routerExecute.couldExecute(withRouterURL: url, router: self) {
+            let target = routerModel.target
+            let selector = routerModel.selector
+
+            if target.responds(to: selector){
+                
+                let passingParameters = routerExecute.passingParameters(withRouterURL: url, extra: params, routerModel: routerModel, router: self)
+                let dataPacket = FZRouterDataPacket(parameters: passingParameters)
+                
+                let _ = target.perform(selector, with: dataPacket)
+                
+                return dataPacket
+                
+            }else{
+                throw FZRouterError.unableToPerform(target, selector)
+            }
+        }
+        
+        throw FZRouterError.unknownRouterURL(url)
+    }
+
+    
+}

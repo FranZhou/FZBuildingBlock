@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D11AF4F2319249600919ED9 /* FZRouterDemo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D11AF4E2319249600919ED9 /* FZRouterDemo.plist */; };
+		1D11AF6A231D280D00919ED9 /* Target_RouterDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11AF69231D280D00919ED9 /* Target_RouterDemo.swift */; };
+		1D11AF812320B1A200919ED9 /* Target_OCRouterDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D11AF802320B1A200919ED9 /* Target_OCRouterDemo.m */; };
 		1D2A5E78221CFFDE00CBAE1A /* ObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E72221CFFDE00CBAE1A /* ObserverViewController.swift */; };
 		1D2A5E79221CFFDE00CBAE1A /* StringImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E74221CFFDE00CBAE1A /* StringImageViewController.swift */; };
 		1D2A5E7A221CFFDE00CBAE1A /* ImageRotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E75221CFFDE00CBAE1A /* ImageRotationViewController.swift */; };
@@ -47,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D11AF4E2319249600919ED9 /* FZRouterDemo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FZRouterDemo.plist; sourceTree = "<group>"; };
+		1D11AF69231D280D00919ED9 /* Target_RouterDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target_RouterDemo.swift; sourceTree = "<group>"; };
+		1D11AF7F2320B1A200919ED9 /* Target_OCRouterDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_OCRouterDemo.h; sourceTree = "<group>"; };
+		1D11AF802320B1A200919ED9 /* Target_OCRouterDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_OCRouterDemo.m; sourceTree = "<group>"; };
+		1D11AF822320B3A900919ED9 /* FZBuildingBlock_Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FZBuildingBlock_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D2A5E72221CFFDE00CBAE1A /* ObserverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverViewController.swift; sourceTree = "<group>"; };
 		1D2A5E74221CFFDE00CBAE1A /* StringImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringImageViewController.swift; sourceTree = "<group>"; };
 		1D2A5E75221CFFDE00CBAE1A /* ImageRotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRotationViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +135,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1D11AF68231D27F500919ED9 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				1D11AF69231D280D00919ED9 /* Target_RouterDemo.swift */,
+				1D11AF7F2320B1A200919ED9 /* Target_OCRouterDemo.h */,
+				1D11AF802320B1A200919ED9 /* Target_OCRouterDemo.m */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
 		1D2A5E71221CFFDE00CBAE1A /* observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +194,7 @@
 				1DFBC53223065D990077DB50 /* 毛泽东字体.ttf */,
 				1DFBC53A2306B7A40077DB50 /* simsun.ttc */,
 				1DFBC53B2306B7A40077DB50 /* simsun.ttf */,
+				1D11AF4E2319249600919ED9 /* FZRouterDemo.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -206,9 +225,11 @@
 			children = (
 				1DFBC53123065D750077DB50 /* Resources */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				1D11AF822320B3A900919ED9 /* FZBuildingBlock_Example-Bridging-Header.h */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				1DFD247B22F80E1D00D95DC1 /* TableViewManager.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1D11AF68231D27F500919ED9 /* router */,
 				1DE50D93221FF78A0089F93D /* keyboard */,
 				1D2A5E73221CFFDE00CBAE1A /* Image */,
 				1D2A5E71221CFFDE00CBAE1A /* observer */,
@@ -349,6 +370,7 @@
 				1DFBC5372306B4590077DB50 /* gulim.ttc in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				1D11AF4F2319249600919ED9 /* FZRouterDemo.plist in Resources */,
 				1DFBC54D230CE7C50077DB50 /* largeImage.jpg in Resources */,
 				1DFBC544230A981B0077DB50 /* test_gif.gif in Resources */,
 				1DFBC53323065D990077DB50 /* 毛泽东字体.ttf in Resources */,
@@ -447,12 +469,14 @@
 				1DFBC54B230CE7B80077DB50 /* LargeImageViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				1DEF13632226E331001F8C9A /* ViewExtensionViewController.swift in Sources */,
+				1D11AF812320B1A200919ED9 /* Target_OCRouterDemo.m in Sources */,
 				1DE50D82221E9D9C0089F93D /* ImageCornerRadiusViewController.swift in Sources */,
 				1D2A5E7C221CFFDE00CBAE1A /* ImageViewController.swift in Sources */,
 				1DEF13652226E373001F8C9A /* ViewBorderLineViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */,
 				1D2A5E78221CFFDE00CBAE1A /* ObserverViewController.swift in Sources */,
+				1D11AF6A231D280D00919ED9 /* Target_RouterDemo.swift in Sources */,
 				1D2A5E79221CFFDE00CBAE1A /* StringImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,12 +629,15 @@
 			baseConfigurationReference = 651159D7AEF1D06214F8D958 /* Pods-FZBuildingBlock_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L9CBQ6PTWQ;
 				INFOPLIST_FILE = FZBuildingBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FZBuildingBlock/FZBuildingBlock_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -620,12 +647,14 @@
 			baseConfigurationReference = C8ED9B16181E3112C92529C2 /* Pods-FZBuildingBlock_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L9CBQ6PTWQ;
 				INFOPLIST_FILE = FZBuildingBlock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FZBuildingBlock/FZBuildingBlock_Example-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

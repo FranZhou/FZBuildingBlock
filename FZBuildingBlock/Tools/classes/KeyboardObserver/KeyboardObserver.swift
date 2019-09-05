@@ -11,8 +11,11 @@ import Foundation
 /**
  提供键盘监听功能， 配合ObserveAble使用会更方便
  */
-open class KeyboardObserver: NSObject {
+open class KeyboardObserver {
     
+    public init(){
+        
+    }
     
     /// status 和键盘通知一一对应
     ///

@@ -28,6 +28,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("\(UIDevice.fz.totalDiskSpaceBytes())")
         
+        if let filePath = Bundle.main.path(forResource: "FZRouterDemo", ofType: "plist"){
+            FZRouter.defaultRouter.loadRouter(withFilePath: filePath)
+        }
+
+//        do {
+//            let res = try FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/router_action", extraParameters: ["name": "FranZhou"])
+//            print(String(describing: res))
+//        } catch FZRouterError.unableToPerform(let target, let selector) {
+//            print("\(target) can't perform to \(selector)")
+//        } catch FZRouterError.unknownRouterURL(let routerURL){
+//            print("unknownRouterURL: \(routerURL)")
+//        } catch let error{
+//            print(error.localizedDescription)
+//        }
+        
+        let res1 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/router_action", extraParameters: ["name": "FranZhou"])
+        print(String(describing: res1))
+        
+        let res2 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/oc_router_action", extraParameters: ["name": "FranZhou", "age": 28])
+        print(String(describing: res2))
+        
         return true
     }
 
