@@ -7,25 +7,25 @@
 
 import Foundation
 
-open class FZTableViewSection{
+@objc open class FZTableViewSection: NSObject{
     
-    public init() {
+    public override init() {
         
     }
     
     /// section rows
-    open var sectionRows: [FZTableViewRow]?
+    @objc open var sectionRows: [FZTableViewRow]?
     
     /// section header height
-    open var sectionHeaderHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
+    @objc open var sectionHeaderHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
     
     /// section header View
-    open var sectionHeaderViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
+    @objc open var sectionHeaderViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
     
     /// section footer height
-    open var sectionFooterHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
+    @objc open var sectionFooterHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
     
     /// section footer View
-    open var sectionFooterViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
+    @objc open var sectionFooterViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
     
 }

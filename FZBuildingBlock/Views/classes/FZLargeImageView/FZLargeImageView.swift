@@ -61,7 +61,7 @@ extension FZLargeImageView{
     /// - Parameters:
     ///   - image: image
     ///   - tileSize: layer划分视图区域最大尺寸，默认(256, 256)
-    public func setImage(_ image: UIImage, tileSize: CGSize = CGSize(width: 256, height: 256)){
+    @objc public func setImage(_ image: UIImage, tileSize: CGSize = CGSize(width: 256, height: 256)){
             
         self.originImage = image
         

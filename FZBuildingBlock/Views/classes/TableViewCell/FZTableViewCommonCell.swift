@@ -7,67 +7,68 @@
 
 import UIKit
 
-open class FZTableViewCommonCell: FZTableViewCell {
+
+@objc open class FZTableViewCommonCell: FZTableViewCell {
     
     // MARK: -
     
     //MARK: cell data model
-    public var cellModel: FZTableViewCellModel?
+    @objc public var cellModel: FZTableViewCellModel?
     
     // MARK: separate line
     /// top line
-    open lazy var topLineView: UIView = {
+    @objc open lazy var topLineView: UIView = {
         let v = UIView()
         return v
     }()
     
     /// bottom line
-    open lazy var bottomLineView: UIView = {
+    @objc open lazy var bottomLineView: UIView = {
         let v = UIView()
         return v
     }()
     
     // MARK: icon
     /// left icon image view
-    open lazy var leftIconImageView: UIImageView = {
+    @objc open lazy var leftIconImageView: UIImageView = {
         let v = UIImageView()
         v.contentMode = .scaleAspectFill
         return v
     }()
     
     /// right icon image view
-    open lazy var rightIconImageView: UIImageView = {
+    @objc open lazy var rightIconImageView: UIImageView = {
         let v = UIImageView()
         v.contentMode = .scaleAspectFill
         return v
     }()
     
     // MARK: left
-    open lazy var leftLabel: UILabel = {
+    @objc open lazy var leftLabel: UILabel = {
         let v = UILabel()
         v.textAlignment = .left
         return v
     }()
     
-    private var leftView: UIView?
+    @objc private var leftView: UIView?
     
     // MARK: center
-    open lazy var centerLabel: UILabel = {
+    @objc open lazy var centerLabel: UILabel = {
         let v = UILabel()
         v.textAlignment = .center
         return v
     }()
     
-    private var centerView: UIView?
+    @objc private var centerView: UIView?
     
     // MARK: right
-    open lazy var rightLabel: UILabel = {
+    @objc open lazy var rightLabel: UILabel = {
         let v = UILabel()
         v.textAlignment = .right
         return v
     }()
     
-    private var rightView: UIView?
+    @objc private var rightView: UIView?
     
     
     // MARK: -
