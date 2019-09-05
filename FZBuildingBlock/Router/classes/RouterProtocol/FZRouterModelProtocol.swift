@@ -13,8 +13,8 @@ import Foundation
     @objc var routerKey: String { get }
     
     /// NSClassFromString(targetName)
-    @objc var target: AnyObject { get }
+    @objc var target: AnyObject { get set }
     
     /// NSStringFromSelector(method)
-    @objc var selector: Selector { get }
+    @objc var selector: Selector { get set }
 }

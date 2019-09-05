@@ -56,6 +56,10 @@ extension FZRouter{
         routerManager.removeAllRouter()
     }
     
+    @objc func change(WithRouterURL url: String, target: AnyObject, selector: Selector){
+        let _ = routerManager.change(WithRouterURL: url, target: target, selector: selector)
+    }
+    
 }
 
 // MARK: -

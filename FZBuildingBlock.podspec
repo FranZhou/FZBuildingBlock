@@ -69,7 +69,7 @@ Pod::Spec.new do |s|
         s_views.dependency 'FZBuildingBlock/Extensions'
     end
     
-    # 自定义视图
+    # 自定义路由
     s.subspec 'Router' do |s_router|
         s_router.source_files = 'FZBuildingBlock/Router/Classes/**/*'
         s_router.frameworks = 'Foundation'

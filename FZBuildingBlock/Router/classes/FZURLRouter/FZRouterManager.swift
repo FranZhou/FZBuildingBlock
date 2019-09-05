@@ -57,5 +57,23 @@ extension FZRouterManager: FZRouterManagerProtocol{
             return keyValue.value
         })
     }
+    
+    public func change(WithRouterURL url: String, target: AnyObject, selector: Selector) -> FZRouterModelProtocol? {
+        if let routerKey = FZRouterURLUtil.key(withRouterURL: url){
+            if let routerModel = routerMapper[routerKey]{
+                routerModel.target = target
+                routerModel.selector = selector
+                
+                self.add(router: routerModel)
+                return routerModel
+            }else{
+                let routerModel = FZRouterModel(routerKey: routerKey, target: target, selector: selector)
+                self.add(router: routerModel)
+                
+                return routerModel
+            }
+        }
+        return nil
+    }
 
 }
