@@ -10,9 +10,9 @@ import Foundation
 @objc 
 open class FZTableViewCellModel: NSObject {
     
-    public override init() {
-        
-    }
+    /// model功能标识字段，默认为nil
+    /// 当你需要根据model判断当前处理什么业务时，可以设置modelIdentifier，然后根据modelIdentifier来判断
+    @objc open var modelIdentifier: String?
     
     // MARK: - cell背景色
     /// 背景色， 默认 nil

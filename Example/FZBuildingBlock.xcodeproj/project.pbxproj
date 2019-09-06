@@ -393,21 +393,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FZBuildingBlock_Example/Pods-FZBuildingBlock_Example-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FZBuildingBlock_Example/Pods-FZBuildingBlock_Example-resources.sh",
 				"${PODS_ROOT}/../../FZBuildingBlock/Tools/Resources/Tools.modulemap",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Tools.modulemap",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FZBuildingBlock_Example/Pods-FZBuildingBlock_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FZBuildingBlock_Example/Pods-FZBuildingBlock_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5655FBA3AC458BC1B8B01AA0 /* [CP] Check Pods Manifest.lock */ = {

@@ -25,11 +25,11 @@ open class FZRouter: NSObject {
     @objc public var routerLoader: FZRouterLoaderProtocol = FZRouterPlistLoader.defaultLoader
     
     /// router execute filter，default is FZRouterExecute.execute
-    @objc public var routerExecute: FZRouterExecuterProtocol = FZRouterExecute.defaultExecuter
+    @objc public var routerExecuter: FZRouterExecuterProtocol = FZRouterExecute.defaultExecuter
 
 }
 
-// MARK: -
+// MARK: - loader & manager
 extension FZRouter{
     
     @objc public func loadRouter(withFilePath filePath: String){
@@ -62,19 +62,19 @@ extension FZRouter{
     
 }
 
-// MARK: -
+// MARK: - routerExecuter
 extension FZRouter{
     
     @discardableResult
     @objc public func router(withRouterURL url: String, extraParameters params: [String: Any]? = nil) throws -> FZRouterDataPacket{
         // get router execute infomation
-        if let routerModel = routerExecute.couldExecute(withRouterURL: url, router: self) {
+        if let routerModel = routerExecuter.couldExecute(withRouterURL: url, router: self) {
             let target = routerModel.target
             let selector = routerModel.selector
 
             if target.responds(to: selector){
                 
-                let passingParameters = routerExecute.passingParameters(withRouterURL: url, extra: params, routerModel: routerModel, router: self)
+                let passingParameters = routerExecuter.passingParameters(withRouterURL: url, extra: params, routerModel: routerModel, router: self)
                 let dataPacket = FZRouterDataPacket(parameters: passingParameters)
                 
                 let _ = target.perform(selector, with: dataPacket)

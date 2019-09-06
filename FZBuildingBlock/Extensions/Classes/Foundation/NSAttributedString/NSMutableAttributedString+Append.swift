@@ -39,6 +39,6 @@ extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
     /// - Returns: 对象本身，用于链式语法
     @discardableResult
     public func append(string: String, attributes: [FZAttribute] = []) -> Base {
-        return append(attrString: NSMutableAttributedString(string: string, attributes: attributes))
+        return append(attrString: NSMutableAttributedString.fz.mutableAttributedString(with: string, attributes: attributes))
     }
 }

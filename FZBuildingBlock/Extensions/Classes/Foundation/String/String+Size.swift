@@ -23,7 +23,7 @@ extension FZBuildingBlockWrapper where Base == String{
             return .zero
         }
         
-        let attributedString = NSMutableAttributedString(string: base, attributes: [.font(font)])
+        let attributedString = NSMutableAttributedString.fz.mutableAttributedString(with: base, attributes: [.font(font)])
         
         if let lineSpacing = lineSpacing{
             let paragraph = NSMutableParagraphStyle()

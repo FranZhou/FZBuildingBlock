@@ -7,24 +7,24 @@
 
 import Foundation
 
-extension NSAttributedString {
+extension NSAttributedString.fz {
     
-    /// 便利构造函数
+    /// 便利创建方式
     ///
     /// - Parameters:
     ///   - string: 字符串
     ///   - attribute: 枚举属性
-    public convenience init(string: String, attribute: FZAttribute) {
-        self.init(string: string, attributes: [attribute])
+    public static func attributedString(with string: String, attribute: FZAttribute) -> NSAttributedString {
+        return self.attributedString(with: string, attributes: [attribute])
     }
     
-    /// 便利构造函数
+    ///便利创建方式
     ///
     /// - Parameters:
     ///   - string: 字符串
     ///   - attributes: 枚举属性数组
-    public convenience init(string: String, attributes: [FZAttribute]) {
-        self.init(string: string, attributes: attributes.reduce([:], { $1.fill(in: $0 ) }))
+    public static func attributedString(with string: String, attributes: [FZAttribute]) -> NSAttributedString {
+        return NSAttributedString.init(string: string, attributes: attributes.reduce([:], { $1.fill(in: $0 ) }))
     }
     
 }
