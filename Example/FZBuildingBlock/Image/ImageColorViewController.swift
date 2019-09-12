@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FZBuildingBlock
 
 class ImageColorViewController: UIViewController {
 
@@ -20,13 +21,15 @@ class ImageColorViewController: UIViewController {
     
     
     func setUpView() {
-        let btn = UIButton(type: .custom)
+        let btn = FZGradientButton(type: .custom)
         btn.fz.x = 100
         btn.fz.y = 200
         btn.fz.width = 200
         btn.fz.height = 50
         btn.setTitle("切换背景颜色", for: .normal)
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
+        btn.setVerticallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .normal)
+        btn.setHorizontallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .highlighted)
         
         self.view.addSubview(btn)
     }
