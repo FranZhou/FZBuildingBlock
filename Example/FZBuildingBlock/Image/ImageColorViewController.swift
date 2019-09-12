@@ -18,8 +18,7 @@ class ImageColorViewController: UIViewController {
 
         self.setUpView()
     }
-    
-    
+
     func setUpView() {
         let btn = FZGradientButton(type: .custom)
         btn.fz.x = 100
@@ -30,36 +29,34 @@ class ImageColorViewController: UIViewController {
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
         btn.setVerticallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .normal)
         btn.setHorizontallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .highlighted)
-        
+
         self.view.addSubview(btn)
     }
-    
-    
-    @objc func btnClickAction(sender: Any){
+
+    @objc func btnClickAction(sender: Any) {
         let randomColor = UIColor.fz.randomColor(alpha: 1)
         guard let image = UIImage.fz.image(withColor: randomColor, size: self.view.fz.size) else {
             return
         }
         self.view.backgroundColor = UIColor(patternImage: image)
-        
+
         print(randomColor.fz.rgbHexString())
         print(randomColor.fz.rgbHex())
         print(randomColor.fz.disassembleColor())
         print(String(format: "%d -> %X", randomColor.fz.rgbHex().rgbHex, randomColor.fz.rgbHex().rgbHex))
-        
+
         print(image.fz.colorRGBA(atPoint: CGPoint(x: 50, y: 50))?.fz.rgbHexString() ?? "")
-        
+
         self.navigationItem.fz.hideIndicator()
     }
-    
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let point = touches.first?.location(in: self.view) else {
             return
         }
-        
+
         self.navigationItem.fz.showIndicator(position: .center)
-        
+
         print(self.view.fz.colorRGBA(atPoint: point)?.fz.rgbHexString() ?? "")
     }
 

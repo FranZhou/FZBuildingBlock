@@ -12,14 +12,14 @@ import FZBuildingBlock
 @objc(Target_RouterDemo)
 class Target_RouterDemo: NSObject {
 
-    @objc class func testRouterAction(_ dataPacket: FZRouterDataPacket){
-        
-        if let params = dataPacket.parameters{
+    @objc class func testRouterAction(_ dataPacket: FZRouterDataPacket) {
+
+        if let params = dataPacket.parameters {
             print(params.description)
         }
-        
+
         dataPacket.targetActionReturnValue = 123
 
     }
-    
+
 }

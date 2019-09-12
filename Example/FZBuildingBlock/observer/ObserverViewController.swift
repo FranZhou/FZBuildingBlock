@@ -12,19 +12,19 @@ import FZBuildingBlock
 class ObserverViewController: UIViewController {
 
     var observer: ObserveAble<Int?>?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.observer = ObserveAble<Int?>(value: nil)
-        
+
         self.observer?.bindAndFireObserver(key: "observer test1", action: {(value, fireAtOnce) in
             print("bindAndFireObserver: \(value) -> \(fireAtOnce)")
             print(Thread.current)
         })
-        
+
         self.observer?.fireUntilCompleted(key: "observer test2", immediate: true, action: { (arg0, finish) in
             let (_, newValue) = arg0
             print("fireUntilCompleted: \(arg0)")
@@ -33,10 +33,9 @@ class ObserverViewController: UIViewController {
             }
             finish()
         })
-        
+
         self.setUpView()
     }
-    
 
     func setUpView() {
         let btn = UIButton(type: .custom)
@@ -46,16 +45,14 @@ class ObserverViewController: UIViewController {
         btn.fz.height = 50
         btn.setTitle("触发监听", for: .normal)
         btn.addTarget(self, action: #selector(ObserverViewController.btnClickAction(sender:)), for: .touchUpInside)
-        
+
         self.view.addSubview(btn)
     }
-    
-    
-    @objc func btnClickAction(sender: Any){
+
+    @objc func btnClickAction(sender: Any) {
         self.observer?.update(value: Int(arc4random()))
     }
-    
-    
+
     deinit {
         self.observer?.removeObserver(key: "observer test1")
         self.observer?.removeObserver(key: "observer test2")

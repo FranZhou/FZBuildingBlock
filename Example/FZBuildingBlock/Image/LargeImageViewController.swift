@@ -10,7 +10,7 @@ import UIKit
 import FZBuildingBlock
 
 class LargeImageViewController: UIViewController {
-    
+
     lazy var largeImageView: FZLargeImageView = {
         let view = FZLargeImageView()
         view.frame = self.view.bounds
@@ -21,14 +21,14 @@ class LargeImageViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.view.addSubview(self.largeImageView)
-        
+
         if let path = Bundle.main.path(forResource: "largeImage", ofType: "jpg"),
-            let image = UIImage(contentsOfFile: path){
+            let image = UIImage(contentsOfFile: path) {
             self.largeImageView.setImage(image, tileSize: CGSize(width: image.size.width / 20.0, height: image.size.height / 20.0))
         }
-        
+
     }
-    
+
 }

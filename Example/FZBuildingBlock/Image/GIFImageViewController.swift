@@ -9,10 +9,10 @@
 import UIKit
 
 class GIFImageViewController: UIViewController {
-    
+
     lazy var gifImageView: UIImageView = {
         let iv = UIImageView()
-        if let gifFilePath = Bundle.main.path(forResource: "test_gif", ofType: "gif"){
+        if let gifFilePath = Bundle.main.path(forResource: "test_gif", ofType: "gif") {
             iv.fz.loadGIF(withFilePath: gifFilePath)
         }
         iv.sizeToFit()
@@ -23,19 +23,18 @@ class GIFImageViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.view.backgroundColor = .white
-        
+
         self.view.addSubview(self.gifImageView)
         self.gifImageView.fz.outerCenter = self.view.fz.innerCenter
-        
+
         self.gifImageView.startAnimating()
     }
-    
+
     deinit {
         self.gifImageView.stopAnimating()
     }
-    
 
     /*
     // MARK: - Navigation

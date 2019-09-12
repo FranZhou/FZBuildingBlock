@@ -9,7 +9,7 @@
 import UIKit
 
 class ButtonLayoutViewController: UIViewController {
-    
+
     let imageLeftTitleRightButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
@@ -19,7 +19,7 @@ class ButtonLayoutViewController: UIViewController {
         button.backgroundColor = UIColor.fz.randomColor()
         return button
     }()
-    
+
     let imageTopTitleBottomButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 200, y: 200, width: 100, height: 50)
@@ -29,7 +29,7 @@ class ButtonLayoutViewController: UIViewController {
         button.backgroundColor = UIColor.fz.randomColor()
         return button
     }()
-    
+
     let imageRightTitleLeftButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 50, y: 400, width: 100, height: 50)
@@ -39,7 +39,7 @@ class ButtonLayoutViewController: UIViewController {
         button.backgroundColor = UIColor.fz.randomColor()
         return button
     }()
-    
+
     let imageBottomTitleTopButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 200, y: 400, width: 100, height: 50)
@@ -52,7 +52,7 @@ class ButtonLayoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.view.backgroundColor = .white
 
         // Do any additional setup after loading the view.
@@ -61,6 +61,5 @@ class ButtonLayoutViewController: UIViewController {
         self.view.addSubview(self.imageRightTitleLeftButton)
         self.view.addSubview(self.imageBottomTitleTopButton)
     }
-    
 
 }

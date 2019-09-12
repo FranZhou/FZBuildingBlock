@@ -14,21 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         print(IFAddressTool.getIFAddresses())
-        
+
         print(IFAddressTool.getIFAddresses(ifaName: "en0"))
-        
-        
+
         print("ZhouFan".fz.base64Encode() ?? "")
         print("ZhouFan".fz.base64Encode()?.fz.base64Decode() ?? "")
-        
+
         print("\(UIDevice.fz.totalDiskSpaceBytes())")
-        
-        if let filePath = Bundle.main.path(forResource: "FZRouterDemo", ofType: "plist"){
+
+        if let filePath = Bundle.main.path(forResource: "FZRouterDemo", ofType: "plist") {
             FZRouter.defaultRouter.loadRouter(withFilePath: filePath)
         }
 
@@ -42,13 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } catch let error{
 //            print(error.localizedDescription)
 //        }
-        
+
         let res1 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/router_action", extraParameters: ["name": "FranZhou"])
         print(String(describing: res1))
-        
+
         let res2 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/oc_router_action", extraParameters: ["name": "FranZhou", "age": 28])
         print(String(describing: res2))
-        
+
         return true
     }
 
@@ -74,6 +72,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-
