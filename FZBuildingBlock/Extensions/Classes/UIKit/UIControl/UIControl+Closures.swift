@@ -11,7 +11,7 @@ fileprivate struct FZUIControlEventClosureAssociatedKey{
     static var associatedKeys: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "FZUIControlEventClosureAssociatedKey_associatedKeys".hashValue)!
 }
 
-// MARK: - private action Handlers
+// MARK: - property
 extension FZBuildingBlockWrapper where Base: UIControl{
     
     fileprivate var controlEventHandlers:[UIControl.Event.RawValue: [FZUIControlClosureHandler]]?{
@@ -28,7 +28,7 @@ extension FZBuildingBlockWrapper where Base: UIControl{
     
 }
 
-// MARK: store or get handlers
+// MARK: private
 extension FZBuildingBlockWrapper where Base: UIControl{
     
     
@@ -106,7 +106,7 @@ extension FZBuildingBlockWrapper where Base: UIControl{
     }
 }
 
-// MARK: - UIControl+Closure for event
+// MARK: - public
 extension FZBuildingBlockWrapper where Base: UIControl{
 
     ///
@@ -135,7 +135,9 @@ extension FZBuildingBlockWrapper where Base: UIControl{
     /// - Parameters:
     ///   - closure: handler closure
     ///   - controlEvent: event
-    public mutating func addHandler(closure: @escaping FZUIControlClosureHandler.FZUIControlClosure, for controlEvent: UIControl.Event = .touchUpInside){
+    /// - Returns: FZUIControlClosureHandler
+    @discardableResult
+    public mutating func addHandler(closure: @escaping FZUIControlClosureHandler.FZUIControlClosure, for controlEvent: UIControl.Event = .touchUpInside) -> FZUIControlClosureHandler{
         
         // create handler
         let handler = FZUIControlClosureHandler(closure: closure, control: base, event: controlEvent)
@@ -145,8 +147,41 @@ extension FZBuildingBlockWrapper where Base: UIControl{
         
         // store handler
         storeHandler(handler: handler, for: controlEvent)
+        
+        return handler
     }
     
+    
+    /// 移除指定的FZUIControlClosureHandler
+    ///
+    /// - Parameter handler: FZUIControlClosureHandler to remove
+    public mutating func removeHandler(handler: FZUIControlClosureHandler){
+        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]] = [:]
+        
+        if let storedEventHandlers = self.controlEventHandlers{
+            controlEventHandlers.merge(storedEventHandlers) { (current, new) -> [FZUIControlClosureHandler] in
+                return new
+            }
+        }
+        
+        // contain remove handler
+        let filterHandlers = controlEventHandlers.filter { (eventhandlers: (key: UIControl.Event.RawValue, value: [FZUIControlClosureHandler])) -> Bool in
+            return eventhandlers.value.contains(handler)
+        }
+        
+        for filterHandler in filterHandlers{
+            let event = filterHandler.key
+            
+            // remove handler
+            let handlers = filterHandler.value.filter { (closureHandler: FZUIControlClosureHandler) -> Bool in
+                return handler != closureHandler
+            }
+            
+            controlEventHandlers[event] = handlers
+        }
+        
+        self.controlEventHandlers = controlEventHandlers
+    }
     
     /// 移除所有的event Handlers
     public mutating func removeAllHandlers(){
@@ -157,7 +192,6 @@ extension FZBuildingBlockWrapper where Base: UIControl{
             }
         }
     }
-    
     
     /// 移除与event相关的Handlers
     ///
