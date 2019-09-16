@@ -26,7 +26,7 @@ extension FZTableViewManager: UITableViewDelegate{
         
         if let tableSection = tableViewSections?[fz_safe: section],
             let tableRow = tableSection.sectionRows?[fz_safe: row]{
-            if let cellHeight = tableRow.cellHeightBlock?(tableView, indexPath){
+            if let cellHeight = tableRow.cellHeightClosure?(tableView, indexPath){
                 height = cellHeight
             }
         }
@@ -38,7 +38,7 @@ extension FZTableViewManager: UITableViewDelegate{
         var height = CGFloat.leastNormalMagnitude
         
         if let tableSection = tableViewSections?[fz_safe: section]{
-            if let sectionHeaderHeight = tableSection.sectionHeaderHeightBlock?(tableView, section){
+            if let sectionHeaderHeight = tableSection.sectionHeaderHeightClosure?(tableView, section){
                 height = sectionHeaderHeight
             }
         }
@@ -49,8 +49,8 @@ extension FZTableViewManager: UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let tableSection = tableViewSections?[fz_safe: section],
-            let sectionHeaderViewBlock = tableSection.sectionHeaderViewBlock{
-            return sectionHeaderViewBlock(tableView, section)
+            let sectionHeaderViewClosure = tableSection.sectionHeaderViewClosure{
+            return sectionHeaderViewClosure(tableView, section)
         }
         return nil
     }
@@ -59,7 +59,7 @@ extension FZTableViewManager: UITableViewDelegate{
         var height = CGFloat.leastNormalMagnitude
         
         if let tableSection = tableViewSections?[fz_safe: section]{
-            if let sectionFooterHeight = tableSection.sectionFooterHeightBlock?(tableView, section){
+            if let sectionFooterHeight = tableSection.sectionFooterHeightClosure?(tableView, section){
                 height = sectionFooterHeight
             }
         }
@@ -69,8 +69,8 @@ extension FZTableViewManager: UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let tableSection = tableViewSections?[fz_safe: section],
-            let sectionFooterViewBlock = tableSection.sectionFooterViewBlock{
-            return sectionFooterViewBlock(tableView, section)
+            let sectionFooterViewClosure = tableSection.sectionFooterViewClosure{
+            return sectionFooterViewClosure(tableView, section)
         }
         return nil
     }
@@ -78,7 +78,7 @@ extension FZTableViewManager: UITableViewDelegate{
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let tableSection = tableViewSections?[fz_safe: indexPath.section],
             let tableRow = tableSection.sectionRows?[fz_safe: indexPath.row]{
-            tableRow.cellDidSelectBlock?(tableView, indexPath)
+            tableRow.cellDidSelectClosure?(tableView, indexPath)
         }
     }
 }
@@ -125,8 +125,8 @@ extension FZTableViewManager: UITableViewDataSource{
                 }
                 
                 // handelr all cell
-                if let cellHandlerBlock = tableRow.cellHandlerBlock{
-                    cellHandlerBlock(tableView, cell, indexPath)
+                if let cellHandlerClosure = tableRow.cellHandlerClosure{
+                    cellHandlerClosure(tableView, cell, indexPath)
                 }
             }
         }

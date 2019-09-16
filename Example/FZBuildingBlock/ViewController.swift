@@ -45,10 +45,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
-                row.cellHeightBlock = { (tableView, indexPath) in
+                row.cellHeightClosure = { (tableView, indexPath) in
                     return 44
                 }
-                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                row.cellDidSelectClosure = { [weak self](tableView, indexPath) in
                     let vc = ImageViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -71,10 +71,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
-                row.cellHeightBlock = { (tableView, indexPath) in
+                row.cellHeightClosure = { (tableView, indexPath) in
                     return 44
                 }
-                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                row.cellDidSelectClosure = { [weak self](tableView, indexPath) in
                     let vc = ObserverViewController.self()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -90,10 +90,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
-                row.cellHeightBlock = { (tableView, indexPath) in
+                row.cellHeightClosure = { (tableView, indexPath) in
                     return 44
                 }
-                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                row.cellDidSelectClosure = { [weak self](tableView, indexPath) in
                     let vc = KeyboardObserverViewController.self()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -109,10 +109,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
-                row.cellHeightBlock = { (tableView, indexPath) in
+                row.cellHeightClosure = { (tableView, indexPath) in
                     return 44
                 }
-                row.cellDidSelectBlock = { [weak self](tableView, indexPath) in
+                row.cellDidSelectClosure = { [weak self](tableView, indexPath) in
                     let vc = ViewExtensionViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }

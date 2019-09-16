@@ -9,11 +9,11 @@ import Foundation
 
 @objc open class FZTableViewRow: NSObject{
     
-    public typealias CellDidSelectBlock = (_ tableView: UITableView, _ indexPath: IndexPath) -> Void
+    public typealias CellDidSelectClosure = (_ tableView: UITableView, _ indexPath: IndexPath) -> Void
     
-    public typealias CellHeightBlock = (_ tableView: UITableView, _ indexPath: IndexPath) -> CGFloat
+    public typealias CellHeightClosure = (_ tableView: UITableView, _ indexPath: IndexPath) -> CGFloat
     
-    public typealias CellHandlerBlock = (_ tableView: UITableView, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
+    public typealias CellHandlerClosure = (_ tableView: UITableView, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
     
     public override init() {
         
@@ -29,11 +29,11 @@ import Foundation
     @objc open var cellClassName: String? = nil
     
     /// didSelectRowAt
-    @objc open var cellDidSelectBlock: CellDidSelectBlock?
+    @objc open var cellDidSelectClosure: CellDidSelectClosure?
     
     /// cell height
-    @objc open var cellHeightBlock: CellHeightBlock?
+    @objc open var cellHeightClosure: CellHeightClosure?
     
     /// cellForRowAt，called after cell has been dequeue
-    @objc open var cellHandlerBlock: CellHandlerBlock?
+    @objc open var cellHandlerClosure: CellHandlerClosure?
 }

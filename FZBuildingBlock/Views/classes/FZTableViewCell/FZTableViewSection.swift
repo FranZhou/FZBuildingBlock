@@ -17,15 +17,15 @@ import Foundation
     @objc open var sectionRows: [FZTableViewRow]?
     
     /// section header height
-    @objc open var sectionHeaderHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
+    @objc open var sectionHeaderHeightClosure: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
     
     /// section header View
-    @objc open var sectionHeaderViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
+    @objc open var sectionHeaderViewClosure: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
     
     /// section footer height
-    @objc open var sectionFooterHeightBlock: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
+    @objc open var sectionFooterHeightClosure: ((_ tableView: UITableView, _ section: Int) -> CGFloat)?
     
     /// section footer View
-    @objc open var sectionFooterViewBlock: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
+    @objc open var sectionFooterViewClosure: ((_ tableView: UITableView, _ section: Int) -> UIView?)?
     
 }

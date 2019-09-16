@@ -45,8 +45,8 @@ open class FZContainerView: UIView{
         // execute itemBlock
         for model in models{
             if let view = model.itemView,
-                let block = model.itemBlock{
-                block(view, self)
+                let closure = model.itemClosure{
+                closure(view, self)
             }
         }
         

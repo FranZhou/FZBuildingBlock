@@ -43,7 +43,6 @@ class KeyboardObserverViewController: UIViewController {
         textField.edgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         textField.placeholder = "请输入"
         textField.frame = CGRect(x: 50, y: 100, width: 200, height: 50)
-
         self.view.addSubview(textField)
 
         let textView = FZTextView()
@@ -54,6 +53,7 @@ class KeyboardObserverViewController: UIViewController {
         textView.maxInputLength = 20
         textView.placeholderText = "请输入"
         self.view.addSubview(textView)
+        
     }
 
     deinit {
