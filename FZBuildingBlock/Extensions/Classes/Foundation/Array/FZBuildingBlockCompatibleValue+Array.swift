@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension Array: FZBuildingBlockCompatibleValue{
-    
+extension Array: FZBuildingBlockCompatibleValue {
+
 }
 
-extension Array{
-    
-    public struct fz{
-        
+extension Array {
+
+    public struct fz {
+
     }
-    
+
 }

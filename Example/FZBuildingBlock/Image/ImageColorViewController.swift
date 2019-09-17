@@ -15,8 +15,8 @@ class ImageColorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        self.view.fz.onTap { (tapGesture: UITapGestureRecognizer) in
+
+        self.view.fz.onTap { (_: UITapGestureRecognizer) in
             print("UITapGestureRecognizer")
         }
 

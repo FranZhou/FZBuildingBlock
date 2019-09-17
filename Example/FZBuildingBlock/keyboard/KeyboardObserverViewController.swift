@@ -53,7 +53,7 @@ class KeyboardObserverViewController: UIViewController {
         textView.maxInputLength = 20
         textView.placeholderText = "请输入"
         self.view.addSubview(textView)
-        
+
     }
 
     deinit {

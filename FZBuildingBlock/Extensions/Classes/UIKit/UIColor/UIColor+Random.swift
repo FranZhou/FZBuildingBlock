@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension UIColor.fz{
-    
+extension UIColor.fz {
+
     /// 生成随机色
     ///
     /// - Parameter alpha: [0, 1] 默认 1
     /// - Returns:
-    public static func randomColor(alpha: CGFloat = 1.0) -> UIColor{
+    public static func randomColor(alpha: CGFloat = 1.0) -> UIColor {
         let r = CGFloat(arc4random() % 256)
         let g = CGFloat(arc4random() % 256)
         let b = CGFloat(arc4random() % 256)

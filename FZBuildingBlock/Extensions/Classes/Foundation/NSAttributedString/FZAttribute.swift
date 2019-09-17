@@ -58,83 +58,83 @@ public enum FZAttribute {
     case expansion(CGFloat)
     case writingDirection(Array<Int>)
     case verticalGlyphForm(Int)
-    
-    var value: [NSAttributedString.Key:Any] {
+
+    var value: [NSAttributedString.Key: Any] {
         return fill()
     }
-    
-    func fill(in result: [NSAttributedString.Key:Any] = [:]) -> [NSAttributedString.Key:Any] {
+
+    func fill(in result: [NSAttributedString.Key: Any] = [:]) -> [NSAttributedString.Key: Any] {
         var result = result
         switch self {
         case .font(let font):
             result[.font] = font
-            
+
         case .paragraphStyle(let paragraphStyle):
             result[.paragraphStyle] = paragraphStyle
-            
+
         case .foregroundColor(let color):
             result[.foregroundColor] = color
-            
+
         case .backgroundColor(let color):
             result[.backgroundColor] = color
-            
+
         case .ligature(let ligature):
             result[.ligature] = ligature
-            
+
         case .kern(let kern):
             result[.kern] = kern
-            
+
         case .strikethrough(let strikethroughStyle, let strikethroughColor):
             result[.strikethroughStyle] = strikethroughStyle
-            if let color = strikethroughColor{
+            if let color = strikethroughColor {
                 result[.strikethroughColor] = color
             }
-            
+
         case .underline(let underlineStyle, let underlineColor):
             result[.underlineStyle] = underlineStyle
-            if let color = underlineColor{
+            if let color = underlineColor {
                 result[.underlineColor] = color
             }
-            
+
         case .stroke(let strokeWidth, let strokeColor):
             result[.strokeWidth] = strokeWidth
-            if let color = strokeColor{
+            if let color = strokeColor {
                 result[.strokeColor] = color
             }
-            
+
         case .shadow(let shadow):
             result[.shadow] = shadow
-            
+
         case .textEffect(let textEffect):
             result[.textEffect] = textEffect
-            
+
         case .attachment(let attachment):
             result[.attachment] = attachment
-            
+
         case .link(let url, let urlString):
             // NSURL (preferred) or NSString
-            if let urlString = urlString{
+            if let urlString = urlString {
                 result[.link] = urlString
             }
-            if let url = url{
+            if let url = url {
                 result[.link] = url
             }
-            
+
         case .baselineOffset(let baselineOffset):
             result[.baselineOffset] = baselineOffset
-            
+
         case .obliqueness(let obliqueness):
             result[.obliqueness] = obliqueness
-            
+
         case .expansion(let expansion):
             result[.expansion] = expansion
-            
+
         case .writingDirection(let writingDirection):
             result[.writingDirection] = writingDirection
-            
+
         case .verticalGlyphForm(let verticalGlyphForm):
             result[.verticalGlyphForm] = verticalGlyphForm
-            
+
         }
         return result
     }

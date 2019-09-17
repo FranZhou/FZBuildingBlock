@@ -7,15 +7,13 @@
 
 import UIKit
 
-
 /// FZRouter Info Model
 open class FZRouterModel: NSObject, FZRouterModelProtocol {
-    
+
     public let routerKey: String
     public var target: AnyObject
     public var selector: Selector
-    
-    
+
     /// FZRouterModel
     ///
     /// - Parameters:
@@ -27,20 +25,20 @@ open class FZRouterModel: NSObject, FZRouterModelProtocol {
         self.target = target
         self.selector = selector
     }
-    
+
     // MARK: -
-    open override var hash: Int{
+    open override var hash: Int {
         return routerKey.hash
     }
-    
+
     open override func isEqual(_ object: Any?) -> Bool {
-        if let rhs = object as? FZRouterModel{
+        if let rhs = object as? FZRouterModel {
             return routerKey == rhs.routerKey
         }
         return false
     }
-    
-    static func == (lhs: FZRouterModel, rhs: FZRouterModel) -> Bool{
+
+    static func == (lhs: FZRouterModel, rhs: FZRouterModel) -> Bool {
         return lhs.routerKey == rhs.routerKey
     }
 

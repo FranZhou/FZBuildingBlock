@@ -8,8 +8,7 @@
 import Foundation
 
 extension FZBuildingBlockWrapper where Base: UIView {
-    
-    
+
     /// 传统方式给view添加阴影
     /// 必须 masksToBounds = fasle 才生效，该设置要在外部控制，masksToBounds默认false
     ///
@@ -26,12 +25,11 @@ extension FZBuildingBlockWrapper where Base: UIView {
         base.layer.shadowOpacity = Float(shadowOpacity)
         base.layer.shadowPath = shadowPath
     }
-    
-    
+
     /// 移除阴影
-    public func removeShadow(){
+    public func removeShadow() {
         base.layer.shadowOpacity = 0
         base.layer.shadowPath = nil
     }
-    
+
 }

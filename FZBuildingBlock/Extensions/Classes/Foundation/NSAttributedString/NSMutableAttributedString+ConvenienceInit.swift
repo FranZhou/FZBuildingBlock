@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension NSMutableAttributedString.fz{
-    
+extension NSMutableAttributedString.fz {
+
     /// 便利创建方式
     ///
     /// - Parameters:
@@ -17,7 +17,7 @@ extension NSMutableAttributedString.fz{
     public static func mutableAttributedString(with string: String, attribute: FZAttribute) -> NSMutableAttributedString {
         return self.mutableAttributedString(with: string, attributes: [attribute])
     }
-    
+
     ///便利创建方式
     ///
     /// - Parameters:
@@ -26,5 +26,5 @@ extension NSMutableAttributedString.fz{
     public static func mutableAttributedString(with string: String, attributes: [FZAttribute]) -> NSMutableAttributedString {
         return NSMutableAttributedString.init(string: string, attributes: attributes.reduce([:], { $1.fill(in: $0 ) }))
     }
-    
+
 }

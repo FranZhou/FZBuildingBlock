@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension UINavigationItem: FZBuildingBlockCompatible{
-    
+extension UINavigationItem: FZBuildingBlockCompatible {
+
 }
 
-extension UINavigationItem{
-    
-    public struct fz{
-        
+extension UINavigationItem {
+
+    public struct fz {
+
     }
-    
+
 }

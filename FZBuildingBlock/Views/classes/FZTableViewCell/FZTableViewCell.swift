@@ -8,7 +8,7 @@
 import UIKit
 
 open class FZTableViewCell: UITableViewCell {
-    
+
     // MARK: -
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -23,25 +23,24 @@ open class FZTableViewCell: UITableViewCell {
 
 }
 
-
 // MARK: - override
-@objc 
-extension FZTableViewCell{
+@objc
+extension FZTableViewCell {
 
     /// cell reuseIdentifier
     ///
     /// - Returns: reuseIdentifier, default = className String
-    open class func reuseIdentifier() -> String{
+    open class func reuseIdentifier() -> String {
         return NSStringFromClass(self.classForCoder())
     }
-    
+
     /// update cell UI
     /// 子类继承并且实现自定义处理方式，FZTableViewManager会进行调用
     ///
     /// - Parameters:
     ///   - data: cell data, default = nil
     ///   - indexPath: indexPath, default = nil
-    open func updateCell(withData data: Any? = nil, atIndexPath indexPath: IndexPath? = nil){
-        
+    open func updateCell(withData data: Any? = nil, atIndexPath indexPath: IndexPath? = nil) {
+
     }
 }

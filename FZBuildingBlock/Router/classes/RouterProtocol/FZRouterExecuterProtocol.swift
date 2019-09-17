@@ -7,9 +7,8 @@
 
 import Foundation
 
+@objc public protocol FZRouterExecuterProtocol: NSObjectProtocol {
 
-@objc public protocol FZRouterExecuterProtocol: NSObjectProtocol{
-    
     /// could execute router, you can choose which routerModel to execute
     ///
     /// - Parameters:
@@ -17,8 +16,7 @@ import Foundation
     ///   - router: FZRouter instance
     /// - Returns: return the router could be executed, return nil means couldn't execute
     @objc func couldExecute(withRouterURL url: String, router: FZRouter) -> FZRouterModelProtocol?
-    
-    
+
     /// Parameters passed by router
     ///
     /// - Parameters:
@@ -28,5 +26,5 @@ import Foundation
     ///   - router: FZRouter instance
     /// - Returns: Parameters passed by router
     @objc func passingParameters(withRouterURL url: String, extra parameters: [String: Any]?, routerModel: FZRouterModelProtocol, router: FZRouter) -> [String: Any]?
-    
+
 }

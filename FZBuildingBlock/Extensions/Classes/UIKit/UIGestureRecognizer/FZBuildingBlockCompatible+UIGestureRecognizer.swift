@@ -7,15 +7,14 @@
 
 import Foundation
 
-extension UIGestureRecognizer: FZBuildingBlockCompatible{
-    
+extension UIGestureRecognizer: FZBuildingBlockCompatible {
+
 }
 
+extension UIGestureRecognizer {
 
-extension UIGestureRecognizer{
-    
-    public struct fz{
-        
+    public struct fz {
+
     }
-    
+
 }

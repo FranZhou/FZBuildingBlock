@@ -7,125 +7,122 @@
 
 import Foundation
 
-extension FZBuildingBlockWrapper where Base: UIView{
-    
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     public var size: CGSize {
-        get{
+        get {
             return base.frame.size
         }
-        set{
+        set {
             base.frame.size = newValue
         }
     }
-    
-    public var origin: CGPoint{
-        get{
+
+    public var origin: CGPoint {
+        get {
             return base.frame.origin
         }
-        set{
+        set {
             base.frame.origin = newValue
         }
     }
-    
-    public var width: CGFloat{
-        get{
+
+    public var width: CGFloat {
+        get {
             return base.frame.size.width
         }
-        set{
+        set {
             base.frame.size.width = newValue
         }
     }
-    
-    public var height: CGFloat{
-        get{
+
+    public var height: CGFloat {
+        get {
             return base.frame.size.height
         }
-        set{
+        set {
             base.frame.size.height = newValue
         }
     }
-    
+
     public var x: CGFloat {
-        get{
+        get {
             return base.frame.origin.x
         }
-        set{
+        set {
             base.frame.origin.x = newValue
         }
     }
-    
+
     public var y: CGFloat {
-        get{
+        get {
             return base.frame.origin.y
         }
-        set{
+        set {
             base.frame.origin.y = newValue
         }
     }
-    
-    
+
     ///  外部中心点，根据frame计算,相对于superView的中心点
     ///  例如: frame为 （50, 50, 100, 100）. outerCenter 为 (100, 100), 即(x + width/2.0, y + height/2.0)
     ///  这里CenterX CenterY变化并不会影响width和height的变化
-    public var outerCenter: CGPoint{
-        set{
+    public var outerCenter: CGPoint {
+        set {
             base.center = newValue
         }
-        get{
+        get {
             return base.center
         }
     }
-    
-    public var outerCenterX: CGFloat{
-        set{
+
+    public var outerCenterX: CGFloat {
+        set {
             base.center.x = newValue
         }
-        get{
+        get {
             return base.center.x
         }
     }
-    
-    public var outerCenterY: CGFloat{
-        set{
+
+    public var outerCenterY: CGFloat {
+        set {
             base.center.y = newValue
         }
-        get{
+        get {
             return base.center.y
         }
     }
-    
+
     ///  内部中心点，根据bounds计算，自己的中心点
     ///  例如: frame为 （50, 50, 100, 100）. innerCenter 为 (50, 50), 即(width/2.0, height/2.0)
     ///  CenterX CenterY变化直接影响到width和height的值
-    public var innerCenter: CGPoint{
-        set{
+    public var innerCenter: CGPoint {
+        set {
             width = newValue.x * 2
             height = newValue.y * 2
         }
-        get{
+        get {
             return CGPoint(x: width / 2.0, y: height / 2.0)
         }
     }
-    
+
     // 变动时，默认origin.x位置不变
-    public var innerCenterX: CGFloat{
-        set{
+    public var innerCenterX: CGFloat {
+        set {
             width = newValue * 2.0
         }
-        get{
+        get {
             return width / 2.0
         }
     }
-    
-    public var innerCenterY: CGFloat{
-        set{
+
+    public var innerCenterY: CGFloat {
+        set {
             height = newValue * 2.0
         }
-        get{
+        get {
             return height / 2.0
         }
     }
-    
-    
+
 }

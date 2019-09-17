@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Tap Gesture
 extension FZBuildingBlockWrapper where Base: UIView {
-    
+
     /// add UITapGestureRecognizer
     ///
     /// - Parameters:
@@ -18,45 +18,42 @@ extension FZBuildingBlockWrapper where Base: UIView {
     ///   - closure: handler closure
     /// - Returns: UITapGestureRecognizer
     @discardableResult
-    public func onTap(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, closure: @escaping (UITapGestureRecognizer) -> Void) -> UITapGestureRecognizer{
-        
+    public func onTap(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, closure: @escaping (UITapGestureRecognizer) -> Void) -> UITapGestureRecognizer {
+
         let gesture = UITapGestureRecognizer.fz.tapGesture(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
-    
+
     /// remove all UITapGestureRecognizer
-    public func removeAllTapGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllTapGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UITapGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UITapGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UITapGestureRecognizer {
                     removeTapGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UITapGestureRecognizer
     ///
     /// - Parameter gesture: UITapGestureRecognizer to remove
-    public func removeTapGesture(_ gesture: UITapGestureRecognizer){
+    public func removeTapGesture(_ gesture: UITapGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
-    
+
 }
 
-
 // MARK: - LongPress Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UILongPressGestureRecognizer
     ///
     /// - Parameters:
@@ -67,44 +64,42 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UILongPressGestureRecognizer
     @discardableResult
-    public func onLongPress(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, minimumPressDuration: TimeInterval = 0.5, allowableMovement: CGFloat = 10, closure: @escaping (UILongPressGestureRecognizer) -> Void) -> UILongPressGestureRecognizer{
-        
+    public func onLongPress(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, minimumPressDuration: TimeInterval = 0.5, allowableMovement: CGFloat = 10, closure: @escaping (UILongPressGestureRecognizer) -> Void) -> UILongPressGestureRecognizer {
+
         let gesture = UILongPressGestureRecognizer.fz.longPressGesture(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, minimumPressDuration: minimumPressDuration, allowableMovement: allowableMovement, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UILongPressGestureRecognizer
-    public func removeAllLongPressGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllLongPressGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UILongPressGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UILongPressGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UILongPressGestureRecognizer {
                     removeLongPressGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UILongPressGestureRecognizer
     ///
     /// - Parameter gesture: UILongPressGestureRecognizer to remove
-    public func removeLongPressGesture(_ gesture: UILongPressGestureRecognizer){
+    public func removeLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
-    
+
 }
 
-
 // MARK: - Swipe Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UISwipeGestureRecognizer
     ///
     /// - Parameters:
@@ -113,42 +108,41 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UISwipeGestureRecognizer
     @discardableResult
-    public func onSwipe(numberOfTouchesRequired: Int = 1, direction: UISwipeGestureRecognizer.Direction = .right, closure: @escaping (UISwipeGestureRecognizer) -> Void) -> UISwipeGestureRecognizer{
-        
+    public func onSwipe(numberOfTouchesRequired: Int = 1, direction: UISwipeGestureRecognizer.Direction = .right, closure: @escaping (UISwipeGestureRecognizer) -> Void) -> UISwipeGestureRecognizer {
+
         let gesture = UISwipeGestureRecognizer.fz.swipeGesture(numberOfTouchesRequired: numberOfTouchesRequired, direction: direction, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UISwipeGestureRecognizer
-    public func removeAllSwipeGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllSwipeGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UISwipeGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UISwipeGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UISwipeGestureRecognizer {
                     removeSwipeGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UISwipeGestureRecognizer
     ///
     /// - Parameter gesture: UISwipeGestureRecognizer to remove
-    public func removeSwipeGesture(_ gesture: UISwipeGestureRecognizer){
+    public func removeSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
 }
 
 // MARK: - Pan Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UIPanGestureRecognizer
     ///
     /// - Parameters:
@@ -157,43 +151,41 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UIPanGestureRecognizer
     @discardableResult
-    public func panGesture(minimumNumberOfTouches: Int = 1, maximumNumberOfTouches: Int = Int.max, closure: @escaping (UIPanGestureRecognizer) -> Void) -> UIPanGestureRecognizer{
-        
+    public func panGesture(minimumNumberOfTouches: Int = 1, maximumNumberOfTouches: Int = Int.max, closure: @escaping (UIPanGestureRecognizer) -> Void) -> UIPanGestureRecognizer {
+
         let gesture = UIPanGestureRecognizer.fz.panGesture(minimumNumberOfTouches: minimumNumberOfTouches, maximumNumberOfTouches: maximumNumberOfTouches, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UIPanGestureRecognizer
-    public func removeAllPanGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllPanGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UIPanGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UIPanGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UIPanGestureRecognizer {
                     removePanGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UIPanGestureRecognizer
     ///
     /// - Parameter gesture: UIPanGestureRecognizer to remove
-    public func removePanGesture(_ gesture: UIPanGestureRecognizer){
+    public func removePanGesture(_ gesture: UIPanGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
 }
 
-
 // MARK: - Pinch Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UIPinchGestureRecognizer
     ///
     /// - Parameters:
@@ -201,43 +193,41 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UIPinchGestureRecognizer
     @discardableResult
-    public func pinchGesture(scale: CGFloat? = nil, closure: @escaping (UIPinchGestureRecognizer) -> Void) -> UIPinchGestureRecognizer{
-        
+    public func pinchGesture(scale: CGFloat? = nil, closure: @escaping (UIPinchGestureRecognizer) -> Void) -> UIPinchGestureRecognizer {
+
         let gesture = UIPinchGestureRecognizer.fz.pinchGesture(scale: scale, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UIPinchGestureRecognizer
-    public func removeAllPinchGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllPinchGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UIPinchGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UIPinchGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UIPinchGestureRecognizer {
                     removePinchGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UIPinchGestureRecognizer
     ///
     /// - Parameter gesture: UIPinchGestureRecognizer to remove
-    public func removePinchGesture(_ gesture: UIPinchGestureRecognizer){
+    public func removePinchGesture(_ gesture: UIPinchGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
 }
 
-
 // MARK: - Rotation Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UIRotationGestureRecognizer
     ///
     /// - Parameters:
@@ -245,42 +235,41 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UIRotationGestureRecognizer
     @discardableResult
-    public func rotationGesture(rotation: CGFloat? = nil, closure: @escaping (UIRotationGestureRecognizer) -> Void) -> UIRotationGestureRecognizer{
-        
+    public func rotationGesture(rotation: CGFloat? = nil, closure: @escaping (UIRotationGestureRecognizer) -> Void) -> UIRotationGestureRecognizer {
+
         let gesture = UIRotationGestureRecognizer.fz.rotationGesture(rotation: rotation, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UIRotationGestureRecognizer
-    public func removeAllRotationGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllRotationGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UIRotationGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UIRotationGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UIRotationGestureRecognizer {
                     removeRotationGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UIRotationGestureRecognizer
     ///
     /// - Parameter gesture: UIRotationGestureRecognizer to remove
-    public func removeRotationGesture(_ gesture: UIRotationGestureRecognizer){
+    public func removeRotationGesture(_ gesture: UIRotationGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
 }
 
 // MARK: - ScreenEdgePan Gesture
-extension FZBuildingBlockWrapper where Base: UIView{
-    
+extension FZBuildingBlockWrapper where Base: UIView {
+
     /// add UIScreenEdgePanGestureRecognizer
     ///
     /// - Parameters:
@@ -288,35 +277,34 @@ extension FZBuildingBlockWrapper where Base: UIView{
     ///   - closure: handler closure
     /// - Returns: UIScreenEdgePanGestureRecognizer
     @discardableResult
-    public func screenEdgePanGesture(edges: UIRectEdge? = nil, closure: @escaping (UIScreenEdgePanGestureRecognizer) -> Void) -> UIScreenEdgePanGestureRecognizer{
-        
+    public func screenEdgePanGesture(edges: UIRectEdge? = nil, closure: @escaping (UIScreenEdgePanGestureRecognizer) -> Void) -> UIScreenEdgePanGestureRecognizer {
+
         let gesture = UIScreenEdgePanGestureRecognizer.fz.screenEdgePanGesture(edges: edges, closure: closure)
-        
+
         base.addGestureRecognizer(gesture)
-        
+
         return gesture
     }
-    
+
     /// remove all UIScreenEdgePanGestureRecognizer
-    public func removeAllScreenEdgePanGesture(){
-        if let gestureRecognizers = base.gestureRecognizers{
+    public func removeAllScreenEdgePanGesture() {
+        if let gestureRecognizers = base.gestureRecognizers {
             let gestures = gestureRecognizers.filter { (gesture: UIGestureRecognizer) -> Bool in
                 return gesture is UIScreenEdgePanGestureRecognizer
             }
-            
-            for gesture in gestures{
-                if let gesture = gesture as? UIScreenEdgePanGestureRecognizer{
+
+            for gesture in gestures {
+                if let gesture = gesture as? UIScreenEdgePanGestureRecognizer {
                     removeScreenEdgePanGesture(gesture)
                 }
             }
         }
     }
-    
-    
+
     /// remove UIScreenEdgePanGestureRecognizer
     ///
     /// - Parameter gesture: UIScreenEdgePanGestureRecognizer to remove
-    public func removeScreenEdgePanGesture(_ gesture: UIScreenEdgePanGestureRecognizer){
+    public func removeScreenEdgePanGesture(_ gesture: UIScreenEdgePanGestureRecognizer) {
         base.removeGestureRecognizer(gesture)
     }
 }

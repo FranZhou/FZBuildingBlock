@@ -8,8 +8,8 @@
 import Foundation
 
 // MARK: - append
-extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
-    
+extension FZBuildingBlockWrapper where Base: NSMutableAttributedString {
+
     /// 添加属性字符串到尾部
     ///
     /// - Parameter attrString: attrString
@@ -19,7 +19,7 @@ extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
         base.append(attrString)
         return base
     }
-    
+
     /// 添加字符串到尾部，可以指定单个属性
     ///
     /// - Parameters:
@@ -30,7 +30,7 @@ extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
     public func append(string: String, attribute: FZAttribute) -> Base {
         return append(string: string, attributes: [attribute])
     }
-    
+
     /// 添加字符串到尾部，可以指定多个属性
     ///
     /// - Parameters:

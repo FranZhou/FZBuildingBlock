@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension NSAttributedString: FZBuildingBlockCompatibleValue{
-     
+extension NSAttributedString: FZBuildingBlockCompatibleValue {
+
 }
 
-extension NSAttributedString{
-    
-    public struct fz{
-        
+extension NSAttributedString {
+
+    public struct fz {
+
     }
-    
+
 }

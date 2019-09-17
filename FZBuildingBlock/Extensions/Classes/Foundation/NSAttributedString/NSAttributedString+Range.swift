@@ -8,9 +8,9 @@
 import Foundation
 
 extension FZBuildingBlockWrapper where Base: NSAttributedString {
-    
+
     public var range: NSRange {
         return NSRange(location: 0, length: base.length)
     }
-    
+
 }

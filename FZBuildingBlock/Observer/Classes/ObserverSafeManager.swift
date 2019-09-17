@@ -7,29 +7,28 @@
 
 import Foundation
 
-
 /// 观察者管理器, 提供安全的操作方式
-open class ObserverSafeManager<T>: NSObject{
-    
+open class ObserverSafeManager<T>: NSObject {
+
     /// 所有的观察者集合
     var observerArray = Array<Observer<T>>()
-    
+
     /// 观察者管理队列，在该队列中管理观察者对象；新增或者删除使用barrier执行，阻塞其他操作；监听触发时，使用异步执行
     private var manageQueue = DispatchQueue(label: "com.fzbuildingblock.ObserverSafeManagerQueue", attributes: DispatchQueue.Attributes.concurrent)
-    
+
     /// default = DispatchQueue.main；触发执行的执行队列,会在该队列上异步执行观察者回调
     public var fireQueue: DispatchQueue = DispatchQueue.main
-    
+
     public func isEmpty() -> Bool {
         return observerArray.isEmpty
     }
-    
+
     /// 触发监听方法，按照添加顺序执行
     ///
     /// - Parameters:
     ///   - oldValue: 旧值
     ///   - newValue: 最新值
-    public func fireObserver(oldValue: T, newValue: T) -> Void{
+    public func fireObserver(oldValue: T, newValue: T) {
         self.manageQueue.async { [weak self] in
             guard let `self` = self else {
                 return
@@ -44,17 +43,16 @@ open class ObserverSafeManager<T>: NSObject{
             }
         }
     }
-    
-    
+
     /// 添加观察者对象
     ///
     /// - Parameter observer:
-    public func append(observer: Observer<T>) -> Void{
+    public func append(observer: Observer<T>) {
         self.manageQueue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
             }
-            
+
             guard let index = self.observerArray.firstIndex(where: { (o: Observer<T>) -> Bool in
                 return o == observer
             }) else {
@@ -65,16 +63,16 @@ open class ObserverSafeManager<T>: NSObject{
             self.observerArray.append(observer)
         }
     }
-    
+
     /// 移除指定观察者
     ///
     /// - Parameter key: 唯一标示
-    public func removeObserver(key: String) -> Void{
+    public func removeObserver(key: String) {
         self.manageQueue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
             }
-            
+
             guard let index = self.observerArray.firstIndex(where: { (o: Observer<T>) -> Bool in
                 return o.key == key
             }) else {
@@ -83,9 +81,9 @@ open class ObserverSafeManager<T>: NSObject{
             self.observerArray.remove(at: index)
         }
     }
-    
+
     /// 移除所有观察者
-    public func removeAll() -> Void{
+    public func removeAll() {
         self.manageQueue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
@@ -93,6 +91,5 @@ open class ObserverSafeManager<T>: NSObject{
             self.observerArray.removeAll(keepingCapacity: false)
         }
     }
-    
-}
 
+}

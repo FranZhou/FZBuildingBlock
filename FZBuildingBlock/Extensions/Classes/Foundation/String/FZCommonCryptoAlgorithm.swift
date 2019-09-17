@@ -10,7 +10,7 @@ import CommonCrypto
 
 public enum FZCommonCryptoAlgorithm {
     case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
-    
+
     var HMACAlgorithm: CCHmacAlgorithm {
         var result: Int = 0
         switch self {
@@ -29,7 +29,7 @@ public enum FZCommonCryptoAlgorithm {
         }
         return CCHmacAlgorithm(result)
     }
-    
+
     var digestLength: Int {
         var result: Int32 = 0
         switch self {

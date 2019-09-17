@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension UIApplication: FZBuildingBlockCompatible{
-    
+extension UIApplication: FZBuildingBlockCompatible {
+
 }
 
-extension UIApplication{
-    
-    public struct fz{
-        
+extension UIApplication {
+
+    public struct fz {
+
     }
-    
+
 }

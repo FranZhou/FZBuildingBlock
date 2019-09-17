@@ -7,14 +7,14 @@
 
 import Foundation
 
-@objc public protocol FZRouterModelProtocol: NSObjectProtocol{
-    
+@objc public protocol FZRouterModelProtocol: NSObjectProtocol {
+
     /// router key
     @objc var routerKey: String { get }
-    
+
     /// NSClassFromString(targetName)
     @objc var target: AnyObject { get set }
-    
+
     /// NSStringFromSelector(method)
     @objc var selector: Selector { get set }
 }

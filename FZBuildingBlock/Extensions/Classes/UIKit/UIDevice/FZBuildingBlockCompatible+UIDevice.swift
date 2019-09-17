@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension UIDevice: FZBuildingBlockCompatible{
-    
+extension UIDevice: FZBuildingBlockCompatible {
+
 }
 
-extension UIDevice{
-    
-    public struct fz{
-        
+extension UIDevice {
+
+    public struct fz {
+
     }
-    
+
 }

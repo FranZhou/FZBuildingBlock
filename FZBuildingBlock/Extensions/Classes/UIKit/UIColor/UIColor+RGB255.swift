@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-extension UIColor.fz{
-    
-    
+extension UIColor.fz {
+
     /// RGBA 颜色
     ///
     /// - Parameters:
@@ -19,7 +18,7 @@ extension UIColor.fz{
     ///   - blue: [0, 255]
     ///   - alpha: [0, 1] 默认 1
     /// - Returns:
-    public static func color(red:CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1) -> UIColor{
+    public static func color(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: alpha)
     }
 }

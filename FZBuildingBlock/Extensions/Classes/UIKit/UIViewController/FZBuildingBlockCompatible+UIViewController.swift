@@ -7,15 +7,14 @@
 
 import Foundation
 
-extension UIViewController: FZBuildingBlockCompatible{
-    
+extension UIViewController: FZBuildingBlockCompatible {
+
 }
 
+extension UIViewController {
 
-extension UIViewController{
-    
-    public struct fz{
-        
+    public struct fz {
+
     }
-    
+
 }

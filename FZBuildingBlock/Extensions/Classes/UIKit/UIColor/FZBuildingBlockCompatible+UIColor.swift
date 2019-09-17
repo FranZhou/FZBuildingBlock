@@ -7,15 +7,14 @@
 
 import Foundation
 
-extension UIColor: FZBuildingBlockCompatible{
-    
+extension UIColor: FZBuildingBlockCompatible {
+
 }
 
+extension UIColor {
 
-extension UIColor{
-    
-    public struct fz{
-        
+    public struct fz {
+
     }
-    
+
 }

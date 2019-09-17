@@ -7,15 +7,14 @@
 
 import Foundation
 
+extension Bundle: FZBuildingBlockCompatibleValue {
 
-extension Bundle: FZBuildingBlockCompatibleValue{
-    
 }
 
-extension Bundle{
-    
-    public struct fz{
-    
+extension Bundle {
+
+    public struct fz {
+
     }
-    
+
 }

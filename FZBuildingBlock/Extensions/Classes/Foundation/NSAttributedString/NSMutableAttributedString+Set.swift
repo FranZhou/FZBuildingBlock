@@ -8,9 +8,8 @@
 import Foundation
 
 // MARK: - set
-extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
-    
-    
+extension FZBuildingBlockWrapper where Base: NSMutableAttributedString {
+
     /// 设置指定位置的属性
     ///
     /// - Parameters:
@@ -22,8 +21,7 @@ extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
         base.addAttributes(attribute.value, range: range ?? self.range)
         return base
     }
-    
-    
+
     /// 设置指定位置的属性
     ///
     /// - Parameters:
@@ -35,5 +33,5 @@ extension FZBuildingBlockWrapper where Base: NSMutableAttributedString{
         base.addAttributes(attributes.reduce([:], { $1.fill(in: $0) }), range: range ?? self.range)
         return base
     }
-    
+
 }

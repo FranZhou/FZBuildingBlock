@@ -10,7 +10,7 @@ import Foundation
 /// Represents an object type that is compatible with FZBuildingBlock. You can use `fz` property to get a
 /// value in the namespace of FZBuildingBlock.
 public protocol FZBuildingBlockCompatible: AnyObject {
-    
+
 }
 
 extension FZBuildingBlockCompatible {

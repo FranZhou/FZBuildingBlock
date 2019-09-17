@@ -7,14 +7,14 @@
 
 import Foundation
 
-extension UIFont: FZBuildingBlockCompatible{
-    
+extension UIFont: FZBuildingBlockCompatible {
+
 }
 
-extension UIFont{
-    
-    public struct fz{
-        
+extension UIFont {
+
+    public struct fz {
+
     }
-    
+
 }

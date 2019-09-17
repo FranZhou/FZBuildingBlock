@@ -7,16 +7,15 @@
 
 import Foundation
 
-
 /**
  提供键盘监听功能， 配合ObserveAble使用会更方便
  */
 open class KeyboardObserver {
-    
-    public init(){
-        
+
+    public init() {
+
     }
-    
+
     /// status 和键盘通知一一对应
     ///
     ///     public class let keyboardWillShowNotification: NSNotification.Name
@@ -41,7 +40,7 @@ open class KeyboardObserver {
     /// - didHide: keyboardDidHideNotification
     /// - willChangeFrame: keyboardWillChangeFrameNotification
     /// - didChangeFrame: keyboardDidChangeFrameNotification
-    public enum KeyboardStatus : Int{
+    public enum KeyboardStatus: Int {
         case willShow
         case didShow
         case willHide
@@ -49,7 +48,7 @@ open class KeyboardObserver {
         case willChangeFrame
         case didChangeFrame
     }
-    
+
     /// 键盘相关数据
     ///
     ///     //初始的 frame
@@ -74,54 +73,52 @@ open class KeyboardObserver {
     ///
     ///
     public typealias KeyboardInfomation = (keyboardStatus: KeyboardObserver.KeyboardStatus, frameBegin: CGRect, frameEnd: CGRect, animationDuration: Double, animationCurve: UIView.AnimationCurve, isLocal: Bool)
-    
+
     public typealias KeyboardStatusAction = (KeyboardInfomation) -> Void
-    
-    
+
     /// 销毁监听的通知
     private var deinitAction: (() -> Void)?
-    
+
     // MARK: - 键盘各个状态的回调action
-    
+
     /// 键盘通知回调
     public var keyboardStatushandle: KeyboardStatusAction?
-    
-    
+
     /// 最新的键盘状态，如果尚未触发，为nil
-    public private(set) var lastKeyboardInfomation: KeyboardInfomation? = nil
-    
+    public private(set) var lastKeyboardInfomation: KeyboardInfomation?
+
     // MARK: - 监听控制
-    
+
     /// 开启键盘监听
     ///
     /// - Parameter queue: default = OperationQueue.main, 通知回调执行的操作队列
-    public func startKeyboardObserver(observerQueue queue: OperationQueue = OperationQueue.main){
+    public func startKeyboardObserver(observerQueue queue: OperationQueue = OperationQueue.main) {
         self.stopKeyboardObserver()
-        
+
         let willShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willShow)
         }
-        
+
         let didShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didShow)
         }
-        
+
         let willHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willHide)
         }
-        
+
         let didHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didHide)
         }
-        
+
         let willChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .willChangeFrame)
         }
-        
+
         let didChnageFrameObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: queue) { [weak self](notification) in
             self?.handleKeyboardInfomation(fromNotification: notification, status: .didChangeFrame)
         }
-        
+
         deinitAction = {
             NotificationCenter.default.removeObserver(willShowObserver)
             NotificationCenter.default.removeObserver(didShowObserver)
@@ -131,8 +128,7 @@ open class KeyboardObserver {
             NotificationCenter.default.removeObserver(didChnageFrameObserver)
         }
     }
-    
-    
+
     /// 停止键盘监听
     public func stopKeyboardObserver() {
         deinitAction?()
@@ -157,14 +153,14 @@ open class KeyboardObserver {
         if #available(iOS 9.0, *) {
             isLocal = notification.userInfo?[UIResponder.keyboardIsLocalUserInfoKey] as? Bool ?? true
         }
-        self.lastKeyboardInfomation = (keyboardStatus: status,frameBegin: frameBegin, frameEnd: frameEnd, animationDuration: animationDuration, animationCurve: animationCurve, isLocal: isLocal)
+        self.lastKeyboardInfomation = (keyboardStatus: status, frameBegin: frameBegin, frameEnd: frameEnd, animationDuration: animationDuration, animationCurve: animationCurve, isLocal: isLocal)
         self.keyboardStatushandle?(self.lastKeyboardInfomation!)
     }
-    
+
     // MARK: -
-    
+
     deinit {
         deinitAction?()
     }
-    
+
 }
