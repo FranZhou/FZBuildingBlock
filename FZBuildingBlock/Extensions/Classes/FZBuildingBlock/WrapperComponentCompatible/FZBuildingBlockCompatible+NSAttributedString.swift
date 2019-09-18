@@ -1,5 +1,5 @@
 //
-//  FZBuildingBlockCompatibleValue+NSAttributedString.swift
+//  FZBuildingBlockCompatible+NSAttributedString.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/8/28.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NSAttributedString: FZBuildingBlockCompatibleValue {
+extension NSAttributedString: FZBuildingBlockCompatible {
 
 }
 

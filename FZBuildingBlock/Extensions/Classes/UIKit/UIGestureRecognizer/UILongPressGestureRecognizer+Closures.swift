@@ -18,7 +18,7 @@ extension UILongPressGestureRecognizer.fz {
     ///   - allowableMovement: Default is 10. Maximum movement in pixels allowed before the gesture fails. Once recognized (after minimumPressDuration) there is no limit on finger movement for the remainder of the touch tracking
     ///   - closure: handler closure
     /// - Returns: UILongPressGestureRecognizer 
-    public static func longPressGesture(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, minimumPressDuration: TimeInterval = 0.5, allowableMovement: CGFloat = 10, closure: @escaping (UILongPressGestureRecognizer) -> Void) -> UILongPressGestureRecognizer {
+    public static func longPressGesture(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, minimumPressDuration: TimeInterval = 0.5, allowableMovement: CGFloat = 10, closure: ((UILongPressGestureRecognizer) -> Void)?) -> UILongPressGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UILongPressGestureRecognizer>(closure: closure)
 
@@ -30,10 +30,10 @@ extension UILongPressGestureRecognizer.fz {
         gesture.allowableMovement = allowableMovement
 
         // weak hold
-        handler.control = gesture
+        handler.sender = gesture
 
         // gestures hold handler，avoid release early
-        gesture.fz.setHandler(handler: handler)
+        gesture.fz.setGestureRecognizerHandler(handler: handler)
 
         // return gestures
         return gesture

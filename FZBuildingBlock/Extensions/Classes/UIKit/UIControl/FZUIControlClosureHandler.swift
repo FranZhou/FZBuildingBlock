@@ -7,22 +7,23 @@
 
 import Foundation
 
-open class FZUIControlClosureHandler: NSObject {
+public final class FZUIControlClosureHandler: NSObject {
 
     public typealias FZUIControlClosure = (UIControl) -> Void
 
     var closure: FZUIControlClosure?
+    weak var sender: UIControl?
     var event: UIControl.Event?
-    weak var control: UIControl?
 
-    init(closure: @escaping FZUIControlClosure, control: UIControl? = nil, event: UIControl.Event? = nil) {
+    init(closure: FZUIControlClosure?, sender: UIControl? = nil, event: UIControl.Event? = nil) {
         self.closure = closure
-        self.control = control
+        self.sender = sender
+        self.event = event
     }
 
     @objc func handle() {
-        if let control = self.control {
-            closure?(control)
+        if let sender = self.sender {
+            closure?(sender)
         }
     }
 

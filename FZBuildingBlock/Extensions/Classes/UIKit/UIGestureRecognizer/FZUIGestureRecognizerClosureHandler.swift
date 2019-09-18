@@ -7,19 +7,19 @@
 
 import Foundation
 
-class FZUIGestureRecognizerClosureHandler<T: UIGestureRecognizer>: NSObject {
+public final class FZUIGestureRecognizerClosureHandler<T: UIGestureRecognizer>: NSObject {
 
     var closure: ((T) -> Void)?
-    weak var control: T?
+    weak var sender: T?
 
-    init(closure: @escaping (T) -> Void, control: T? = nil) {
+    init(closure: ((T) -> Void)?, sender: T? = nil) {
         self.closure = closure
-        self.control = control
+        self.sender = sender
     }
 
     @objc func handle() {
-        if let control = self.control {
-            closure?(control)
+        if let sender = self.sender {
+            closure?(sender)
         }
     }
 

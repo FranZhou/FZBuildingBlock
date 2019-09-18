@@ -14,7 +14,7 @@ public protocol FZBuildingBlockCompatibleValue {
 }
 
 extension FZBuildingBlockCompatibleValue {
-    /// Gets a namespace holder for FZBuildingBlock compatible types.
+    /// Gets a namespace holder for FZBuildingBlock compatible value types.
     public var fz: FZBuildingBlockWrapper<Self> {
         get { return FZBuildingBlockWrapper(self) }
         set { }

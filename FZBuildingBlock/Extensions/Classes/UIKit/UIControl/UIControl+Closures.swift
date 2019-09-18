@@ -133,10 +133,10 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     ///   - controlEvent: event
     /// - Returns: FZUIControlClosureHandler
     @discardableResult
-    public mutating func addHandler(closure: @escaping FZUIControlClosureHandler.FZUIControlClosure, for controlEvent: UIControl.Event = .touchUpInside) -> FZUIControlClosureHandler {
+    public mutating func addHandler(closure: FZUIControlClosureHandler.FZUIControlClosure?, for controlEvent: UIControl.Event = .touchUpInside) -> FZUIControlClosureHandler {
 
         // create handler
-        let handler = FZUIControlClosureHandler(closure: closure, control: base, event: controlEvent)
+        let handler = FZUIControlClosureHandler(closure: closure, sender: base, event: controlEvent)
 
         // add target
         base.addTarget(handler, action: #selector(handler.handle), for: controlEvent)

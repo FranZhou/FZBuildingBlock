@@ -15,7 +15,7 @@ extension UIRotationGestureRecognizer.fz {
     ///   - rotation: rotation in radians
     ///   - closure: handler closure
     /// - Returns: UIRotationGestureRecognizer
-    public static func rotationGesture(rotation: CGFloat? = nil, closure: @escaping (UIRotationGestureRecognizer) -> Void) -> UIRotationGestureRecognizer {
+    public static func rotationGesture(rotation: CGFloat? = nil, closure: ((UIRotationGestureRecognizer) -> Void)?) -> UIRotationGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UIRotationGestureRecognizer>(closure: closure)
 
@@ -26,10 +26,10 @@ extension UIRotationGestureRecognizer.fz {
         }
 
         // weak hold
-        handler.control = gesture
+        handler.sender = gesture
 
         // gestures hold handler，avoid release early
-        gesture.fz.setHandler(handler: handler)
+        gesture.fz.setGestureRecognizerHandler(handler: handler)
 
         // return gestures
         return gesture

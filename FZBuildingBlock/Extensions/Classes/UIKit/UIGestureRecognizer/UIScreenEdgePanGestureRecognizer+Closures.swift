@@ -15,7 +15,7 @@ extension UIScreenEdgePanGestureRecognizer.fz {
     ///   - edges: the edges on which this gesture recognizes, relative to the current interface orientation
     ///   - closure: handler closure
     /// - Returns: UIScreenEdgePanGestureRecognizer
-    public static func screenEdgePanGesture(edges: UIRectEdge? = nil, closure: @escaping (UIScreenEdgePanGestureRecognizer) -> Void) -> UIScreenEdgePanGestureRecognizer {
+    public static func screenEdgePanGesture(edges: UIRectEdge? = nil, closure: ((UIScreenEdgePanGestureRecognizer) -> Void)?) -> UIScreenEdgePanGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UIScreenEdgePanGestureRecognizer>(closure: closure)
 
@@ -26,10 +26,10 @@ extension UIScreenEdgePanGestureRecognizer.fz {
         }
 
         // weak hold
-        handler.control = gesture
+        handler.sender = gesture
 
         // gestures hold handler，avoid release early
-        gesture.fz.setHandler(handler: handler)
+        gesture.fz.setGestureRecognizerHandler(handler: handler)
 
         // return gestures
         return gesture

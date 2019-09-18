@@ -16,7 +16,7 @@ extension UISwipeGestureRecognizer.fz {
     ///   - direction: default is UISwipeGestureRecognizerDirectionRight. the desired direction of the swipe. multiple directions may be specified if they will result in the same behavior (for example, UITableView swipe delete)
     ///   - closure: handler closure
     /// - Returns: UISwipeGestureRecognizer
-    public static func swipeGesture(numberOfTouchesRequired: Int = 1, direction: UISwipeGestureRecognizer.Direction = .right, closure: @escaping (UISwipeGestureRecognizer) -> Void) -> UISwipeGestureRecognizer {
+    public static func swipeGesture(numberOfTouchesRequired: Int = 1, direction: UISwipeGestureRecognizer.Direction = .right, closure: ((UISwipeGestureRecognizer) -> Void)?) -> UISwipeGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UISwipeGestureRecognizer>(closure: closure)
 
@@ -26,10 +26,10 @@ extension UISwipeGestureRecognizer.fz {
         gesture.direction = direction
 
         // weak hold
-        handler.control = gesture
+        handler.sender = gesture
 
         // gestures hold handler，avoid release early
-        gesture.fz.setHandler(handler: handler)
+        gesture.fz.setGestureRecognizerHandler(handler: handler)
 
         // return gestures
         return gesture

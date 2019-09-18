@@ -13,11 +13,11 @@ private struct FZUIGestureRecognizerHandlerAssociatedKey {
 
 extension FZBuildingBlockWrapper where Base: UIGestureRecognizer {
 
-    internal func setHandler<T: UIGestureRecognizer>(handler: FZUIGestureRecognizerClosureHandler<T>) {
+    internal func setGestureRecognizerHandler<T: UIGestureRecognizer>(handler: FZUIGestureRecognizerClosureHandler<T>) {
         objc_setAssociatedObject(base, FZUIGestureRecognizerHandlerAssociatedKey.associatedKeys, handler, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
-    internal func handler<T>() -> FZUIGestureRecognizerClosureHandler<T>? {
+    internal func gestureRecognizerHandler<T>() -> FZUIGestureRecognizerClosureHandler<T>? {
         return objc_getAssociatedObject(base, FZUIGestureRecognizerHandlerAssociatedKey.associatedKeys) as? FZUIGestureRecognizerClosureHandler
     }
 
