@@ -12,7 +12,24 @@ public enum FZRouterError: Error {
     case unableToPerform(AnyObject, Selector)
 }
 
-// MARK: - 
+// MARK: -
+
+/**
+ The routing implementation object must inherit NSObject.
+ The method that responds to the target-action must identify @objc, and accept an argument of type FZRouterDataPacket
+ 
+ ```
+ @objc(Target_RouterDemo)
+ class Target_RouterDemo: NSObject {
+    @objc class func testRouterAction(_ dataPacket: FZRouterDataPacket) {
+        if let params = dataPacket.parameters {
+            print(params.description)
+        }
+        dataPacket.targetActionReturnValue = "result"
+    }
+ }
+ ```
+ */
 open class FZRouter: NSObject {
 
     /// router instance

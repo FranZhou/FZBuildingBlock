@@ -7,7 +7,6 @@
 
 import Foundation
 
+open class FZRuntime: NSObject {
 
-open class FZRuntime: NSObject{
-    
 }

@@ -18,7 +18,7 @@ class Target_RouterDemo: NSObject {
             print(params.description)
         }
 
-        dataPacket.targetActionReturnValue = 123
+        dataPacket.targetActionReturnValue = "result"
 
     }
 
