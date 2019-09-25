@@ -45,11 +45,11 @@ class ImageRotationViewController: UIViewController {
         btn.fz.addHandler(closure: { (_) in
             print("fz_addAction touchUpInside")
             btn.fz.showIndicator()
-        })
+        }, for: .touchUpInside)
 
         btn.fz.addHandler(closure: { (_) in
             print("fz_addAction touchUpInside repeat")
-        })
+        }, for: .touchUpInside)
 
         btn.fz.addHandler(closure: { (_) in
             print("touchUpOutside")

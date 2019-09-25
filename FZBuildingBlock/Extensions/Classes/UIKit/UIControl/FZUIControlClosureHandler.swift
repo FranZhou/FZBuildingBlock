@@ -11,11 +11,11 @@ public final class FZUIControlClosureHandler: NSObject {
 
     public typealias FZUIControlClosure = (UIControl) -> Void
 
-    var closure: FZUIControlClosure?
+    let closure: FZUIControlClosure
     weak var sender: UIControl?
     var event: UIControl.Event?
 
-    init(closure: FZUIControlClosure?, sender: UIControl? = nil, event: UIControl.Event? = nil) {
+    init(closure: @escaping FZUIControlClosure, sender: UIControl? = nil, event: UIControl.Event? = nil) {
         self.closure = closure
         self.sender = sender
         self.event = event
@@ -23,7 +23,7 @@ public final class FZUIControlClosureHandler: NSObject {
 
     @objc func handle() {
         if let sender = self.sender {
-            closure?(sender)
+            closure(sender)
         }
     }
 

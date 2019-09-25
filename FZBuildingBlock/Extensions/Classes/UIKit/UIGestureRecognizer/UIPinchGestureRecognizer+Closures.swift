@@ -15,7 +15,7 @@ extension UIPinchGestureRecognizer.fz {
     ///   - scale: scale relative to the touch points in screen coordinates
     ///   - closure: handler closure
     /// - Returns: UIPinchGestureRecognizer
-    public static func pinchGesture(scale: CGFloat? = nil, closure: ((UIPinchGestureRecognizer) -> Void)?) -> UIPinchGestureRecognizer {
+    public static func pinchGesture(scale: CGFloat? = nil, closure: @escaping ((UIPinchGestureRecognizer) -> Void)) -> UIPinchGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UIPinchGestureRecognizer>(closure: closure)
 

@@ -16,7 +16,7 @@ extension UITapGestureRecognizer.fz {
     ///   - numberOfTouchesRequired: Default is 1. The number of fingers required to match
     ///   - closure: handler closure
     /// - Returns: UITapGestureRecognizer
-    public static func tapGesture(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, closure: ((UITapGestureRecognizer) -> Void)?) -> UITapGestureRecognizer {
+    public static func tapGesture(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, closure: @escaping ((UITapGestureRecognizer) -> Void)) -> UITapGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UITapGestureRecognizer>(closure: closure)
 

@@ -16,7 +16,7 @@ extension UIPanGestureRecognizer.fz {
     ///   - maximumNumberOfTouches: default is INT_MAX. the maximum number of touches that can be down
     ///   - closure: handler closure
     /// - Returns: UIPanGestureRecognizer
-    public static func panGesture(minimumNumberOfTouches: Int = 1, maximumNumberOfTouches: Int = Int.max, closure: ((UIPanGestureRecognizer) -> Void)?) -> UIPanGestureRecognizer {
+    public static func panGesture(minimumNumberOfTouches: Int = 1, maximumNumberOfTouches: Int = Int.max, closure: @escaping ((UIPanGestureRecognizer) -> Void)) -> UIPanGestureRecognizer {
         // create handler
         let handler = FZUIGestureRecognizerClosureHandler<UIPanGestureRecognizer>(closure: closure)
 
