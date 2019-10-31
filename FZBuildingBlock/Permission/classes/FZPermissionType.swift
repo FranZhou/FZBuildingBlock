@@ -71,7 +71,7 @@ public enum FZPermissionType {
 
     case camera
 
-    case photos
+    case photoLibrary
 
     case event(FZPermissionEventType)
 
@@ -84,4 +84,79 @@ public enum FZPermissionType {
     @available(iOS 9.3, *) case mediaLibrary
 
     @available(iOS 10.0, *) case siri
+}
+
+extension FZPermissionType{
+    
+    var usageDescriptionKey: [String]?{
+        switch self {
+        case .addressBook:
+            return ["NSContactsUsageDescription"]
+        case .contacts(_):
+            return ["NSContactsUsageDescription"]
+        case .location(let locationType):
+            switch locationType {
+            case .locationAlways:
+                return ["NSLocationAlwaysUsageDescription", "NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription"]
+            case .locationWhenInUse:
+                return ["NSLocationWhenInUseUsageDescription"]
+            }
+        case .notifications(_):
+            return nil
+        case .microphone:
+            return ["NSMicrophoneUsageDescription"]
+        case .camera:
+            return ["NSCameraUsageDescription"]
+        case .photoLibrary:
+            return ["NSPhotoLibraryUsageDescription"]
+        case .event(let eventType):
+            switch eventType {
+            case .event:
+                return ["NSCalendarsUsageDescription"]
+            case .reminder:
+                return ["NSRemindersUsageDescription"]
+            }
+        case .bluetooth:
+            return nil
+        case .motion:
+            return ["NSMotionUsageDescription"]
+        case .speechRecognizer:
+            return ["NSSpeechRecognitionUsageDescription"]
+        case .mediaLibrary:
+            return ["NSAppleMusicUsageDescription"]
+        case .siri:
+            return ["NSSiriUsageDescription"]
+        }
+    }
+    
+    var containsAllUsageDescriptionKeyInInfoPlist: Bool{
+        if let missingKeys = self.missingKeysInInfoPlist{
+            return missingKeys.count == 0
+        }else{
+            return true
+        }
+    }
+    
+    var missingKeysInInfoPlist: [String]?{
+        if let usageDescriptionKey = self.usageDescriptionKey {
+            let missingKeys = usageDescriptionKey.filter { (descriptionKey) -> Bool in
+                if let _ = Bundle.main.object(forInfoDictionaryKey: descriptionKey){
+                    return false
+                }else{
+                    return true
+                }
+            }
+            return missingKeys
+        }else{
+            return nil
+        }
+    }
+    
+    var missingKeysDescription: String?{
+        if let missingKeys = self.missingKeysInInfoPlist{
+            return "\(missingKeys.joined(separator: ", "))"
+        }
+        return nil
+    }
+    
 }

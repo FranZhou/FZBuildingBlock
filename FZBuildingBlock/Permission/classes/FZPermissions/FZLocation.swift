@@ -29,16 +29,8 @@ public class FZLocation {
     }
 
     public func requestLocationPermision(for type: FZPermissionLocationType, callback: @escaping FZPermissionCallBack) {
-        var locationKey = FZLocation.locationWhenInUseUsageDescription
-        switch type {
-        case .locationAlways:
-            locationKey = FZLocation.locationAlwaysUsageDescription
-        case .locationWhenInUse:
-            locationKey = FZLocation.locationWhenInUseUsageDescription
-        }
-
-        guard let _ = Bundle.main.object(forInfoDictionaryKey: locationKey) else {
-            callback(.disabled("WARNING: \(locationKey) not found in Info.plist"))
+        if !FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist{
+            callback(.disabled("WARNING: \(FZPermissionType.location(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
 
@@ -51,7 +43,9 @@ public class FZLocation {
                 }
 
                 if manager.type == type {
-                    callback(status)
+                    DispatchQueue.main.async {
+                        callback(status)
+                    }
                 }
 
                 DispatchQueue.main.async { [weak self] in

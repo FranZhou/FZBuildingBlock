@@ -43,14 +43,8 @@ public class FZContacts {
     }
 
     public func requestContactsPermission(for type: FZPermissionContactsType, callback: @escaping FZPermissionCallBack) {
-        var contactsKey = FZContacts.contactsUsageDescription
-        switch type {
-        case .contacts:
-            contactsKey = FZContacts.contactsUsageDescription
-        }
-
-        guard let _ = Bundle.main.object(forInfoDictionaryKey: contactsKey) else {
-            callback(.disabled("WARNING: \(contactsKey) not found in Info.plist"))
+        if !FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist{
+            callback(.disabled("WARNING: \(FZPermissionType.contacts(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
         
@@ -62,7 +56,9 @@ public class FZContacts {
                 guard let `self` = self else {
                     return
                 }
-                callback(self.status(for: type))
+                DispatchQueue.main.async {
+                    callback(self.status(for: type))
+                }
             }
         }
     }

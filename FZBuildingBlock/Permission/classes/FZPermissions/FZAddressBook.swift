@@ -34,11 +34,11 @@ public class FZAddressBook {
     }
 
     public func requestAddressBookPermission(callback: @escaping FZPermissionCallBack) {
-        let contactsKey = FZAddressBook.contactsUsageDescription
-        guard let _ = Bundle.main.object(forInfoDictionaryKey: contactsKey) else {
-            callback(.disabled("WARNING: \(contactsKey) not found in Info.plist"))
+        if !FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist{
+            callback(.disabled("WARNING: \(FZPermissionType.addressBook.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
+
         
         if status == .authorized {
             callback(.authorized)
@@ -48,7 +48,9 @@ public class FZAddressBook {
                 guard let `self` = self else {
                     return
                 }
-                callback(self.status)
+                DispatchQueue.main.async {
+                    callback(self.status)
+                }
             }
         }
 
