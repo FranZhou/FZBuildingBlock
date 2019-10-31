@@ -58,6 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FZLocation.shared.requestLocationPermision(for: .locationAlways) { (status) in
             print(status)
         }
+        
+        FZContacts.shared.requestContactsPermission(for: .contacts) { (status) in
+            print(status)
+        }
+        
+        FZAddressBook.shared.requestAddressBookPermission { (status) in
+            print(status)
+        }
 
         return true
     }

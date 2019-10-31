@@ -12,6 +12,8 @@ import AddressBook
 @available(iOS, introduced: 2.0, deprecated: 9.0)
 public class FZAddressBook {
 
+    static let contactsUsageDescription = "NSContactsUsageDescription"
+    
     public static let shared = FZAddressBook()
 
     public var status: FZPermissionStatus {
@@ -32,6 +34,12 @@ public class FZAddressBook {
     }
 
     public func requestAddressBookPermission(callback: @escaping FZPermissionCallBack) {
+        let contactsKey = FZAddressBook.contactsUsageDescription
+        guard let _ = Bundle.main.object(forInfoDictionaryKey: contactsKey) else {
+            callback(.disabled("WARNING: \(contactsKey) not found in Info.plist"))
+            return
+        }
+        
         if status == .authorized {
             callback(.authorized)
         } else {
