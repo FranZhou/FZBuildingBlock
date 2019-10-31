@@ -2,11 +2,13 @@ PODS:
   - FZBuildingBlock (0.2.0):
     - FZBuildingBlock/Extensions (= 0.2.0)
     - FZBuildingBlock/Observer (= 0.2.0)
+    - FZBuildingBlock/Permission (= 0.2.0)
     - FZBuildingBlock/Router (= 0.2.0)
     - FZBuildingBlock/Tools (= 0.2.0)
     - FZBuildingBlock/Views (= 0.2.0)
   - FZBuildingBlock/Extensions (0.2.0)
   - FZBuildingBlock/Observer (0.2.0)
+  - FZBuildingBlock/Permission (0.2.0)
   - FZBuildingBlock/Router (0.2.0)
   - FZBuildingBlock/Tools (0.2.0)
   - FZBuildingBlock/Views (0.2.0):
@@ -20,8 +22,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FZBuildingBlock: da045aaf23108fd07e4d1122196d9d93546f8136
+  FZBuildingBlock: 540f75e18c19cea891b294d980e8268bdd2264a5
 
 PODFILE CHECKSUM: d8096315e3140465ff980de2579bc8eea3595820
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

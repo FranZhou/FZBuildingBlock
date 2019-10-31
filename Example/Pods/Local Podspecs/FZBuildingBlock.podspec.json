@@ -62,6 +62,25 @@
       "name": "Router",
       "source_files": "FZBuildingBlock/Router/Classes/**/*",
       "frameworks": "Foundation"
+    },
+    {
+      "name": "Permission",
+      "source_files": "FZBuildingBlock/Permission/Classes/**/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit",
+        "AddressBook",
+        "AddressBook",
+        "AVFoundation",
+        "Contacts",
+        "EventKit",
+        "CoreLocation",
+        "MediaPlayer",
+        "CoreMotion",
+        "Photos",
+        "Intents",
+        "Speech"
+      ]
     }
   ],
   "swift_version": "5.0"
