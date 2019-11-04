@@ -42,7 +42,7 @@ extension FZPermissionStatus: CustomStringConvertible {
         case .notDetermined:
             return "Not Determined"
         case .disabled(let message):
-            return "disabled(\(message))"
+            return "\(message)"
         }
     }
 }

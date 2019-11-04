@@ -1,5 +1,5 @@
 //
-//  FZAddressBook.swift
+//  FZPermissionAddressBook.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/10/31.
@@ -10,11 +10,9 @@ import AddressBook
 
 ///
 @available(iOS, introduced: 2.0, deprecated: 9.0)
-public class FZAddressBook {
+public class FZPermissionAddressBook {
 
-    static let contactsUsageDescription = "NSContactsUsageDescription"
-    
-    public static let shared = FZAddressBook()
+    public static let shared = FZPermissionAddressBook()
 
     public var status: FZPermissionStatus {
         let status = ABAddressBookGetAuthorizationStatus()
@@ -34,12 +32,11 @@ public class FZAddressBook {
     }
 
     public func requestAddressBookPermission(callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist{
+        if !FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist {
             callback(.disabled("WARNING: \(FZPermissionType.addressBook.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
 
-        
         if status == .authorized {
             callback(.authorized)
         } else {

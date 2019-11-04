@@ -47,26 +47,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let res2 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/oc_router_action", extraParameters: ["name": "FranZhou", "age": 28])
         print(String(describing: res2))
 
-        FZLocation.shared.requestLocationPermision(for: .locationWhenInUse) { (status) in
-            print(status)
-        }
-
-        FZLocation.shared.requestLocationPermision(for: .locationWhenInUse) { (status) in
-            print(status)
-        }
-
-        FZLocation.shared.requestLocationPermision(for: .locationAlways) { (status) in
+//        FZPermissionLocation.shared.requestLocationPermision(for: .whenInUse) { (status) in
+//            print(status)
+//        }
+//
+//        FZPermissionLocation.shared.requestLocationPermision(for: .always) { (status) in
+//            print(status)
+//        }
+//
+//        FZPermissionContacts.shared.requestContactsPermission(for: .contacts) { (status) in
+//            print(status)
+//        }
+//
+//        FZPermissionAddressBook.shared.requestAddressBookPermission { (status) in
+//            print(status)
+//        }
+//
+//        if #available(iOS 12.0, *) {
+//            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert, .provisional]) { (status) in
+//                print(status)
+//            }
+//        } else {
+//            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert]) { (status) in
+//                print(status)
+//            }
+//        }
+//
+//        FZPermissionMicrophone.shared.requestMicrophonePermission{ (status) in
+//            print(status)
+//        }
+//
+//        FZPermissionCamera.shared.requestCameraPermission { (status) in
+//            print(status)
+//        }
+//
+//        FZPermissionPhotoLibrary.shared.requestPhotoLibraryPermission { (status) in
+//            print(status)
+//        }
+//        
+//        FZPermissionEvent.shared.requestEventPermision(for: .event) { (status) in
+//            print(status)
+//        }
+//        
+//        FZPermissionEvent.shared.requestEventPermision(for: .reminder) { (status) in
+//            print(status)
+//        }
+        
+        FZPermissionBluetooth.shared.requestBluetoothPermission { (status) in
             print(status)
         }
         
-        FZContacts.shared.requestContactsPermission(for: .contacts) { (status) in
-            print(status)
-        }
-        
-        FZAddressBook.shared.requestAddressBookPermission { (status) in
-            print(status)
-        }
-
         return true
     }
 

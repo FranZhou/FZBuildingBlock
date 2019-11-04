@@ -1,5 +1,5 @@
 //
-//  FZContacts.swift
+//  FZPermissionContacts.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/10/31.
@@ -9,24 +9,12 @@ import UIKit
 import Contacts
 
 @available(iOS 9.0, *)
-public class FZContacts {
-    
-    static let contactsUsageDescription = "NSContactsUsageDescription"
+public class FZPermissionContacts {
 
-    public static let shared = FZContacts()
+    public static let shared = FZPermissionContacts()
 
-    func transformType(for type: FZPermissionContactsType) -> CNEntityType {
-        var entityType: CNEntityType = .contacts
-        switch type {
-        case .contacts:
-            entityType = .contacts
-        }
-        return entityType
-    }
-
-    public func status(for type: FZPermissionContactsType) -> FZPermissionStatus {
-        let entityType = transformType(for: type)
-        let status = CNContactStore.authorizationStatus(for: entityType)
+    public func status(for type: CNEntityType) -> FZPermissionStatus {
+        let status = CNContactStore.authorizationStatus(for: type)
 
         switch status {
         case .authorized:
@@ -42,17 +30,16 @@ public class FZContacts {
         }
     }
 
-    public func requestContactsPermission(for type: FZPermissionContactsType, callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist{
+    public func requestContactsPermission(for type: CNEntityType, callback: @escaping FZPermissionCallBack) {
+        if !FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist {
             callback(.disabled("WARNING: \(FZPermissionType.contacts(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if status(for: type) == .authorized {
             callback(.authorized)
         } else {
-            let entityType = transformType(for: type)
-            CNContactStore().requestAccess(for: entityType) { [weak self](_, _) in
+            CNContactStore().requestAccess(for: type) { [weak self](_, _) in
                 guard let `self` = self else {
                     return
                 }

@@ -1,5 +1,5 @@
 //
-//  FZLocation.swift
+//  FZPermissionLocation.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/10/31.
@@ -8,14 +8,11 @@
 import UIKit
 import CoreLocation
 
-public class FZLocation {
+public class FZPermissionLocation {
 
-    static let locationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
-    static let locationAlwaysUsageDescription    = "NSLocationAlwaysUsageDescription"
+    public static let shared = FZPermissionLocation()
 
-    public static let shared = FZLocation()
-
-    private var locationManagerArray: [FZLocationManager] = []
+    private var locationManagerArray: [FZPermissionLocationManager] = []
 
     public func status(for type: FZPermissionLocationType) -> FZPermissionStatus {
         guard CLLocationManager.locationServicesEnabled() else {
@@ -24,12 +21,12 @@ public class FZLocation {
 
         let status = CLLocationManager.authorizationStatus()
 
-        return FZLocationManager.transformStatus(for: type, status: status)
+        return FZPermissionLocationManager.transformStatus(for: type, status: status)
 
     }
 
     public func requestLocationPermision(for type: FZPermissionLocationType, callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist{
+        if !FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist {
             callback(.disabled("WARNING: \(FZPermissionType.location(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
@@ -37,7 +34,7 @@ public class FZLocation {
         if self.status(for: type) == .authorized {
             callback(.authorized)
         } else {
-            let locationManager = FZLocationManager.init(type: type) { [weak self](manager, status) in
+            let locationManager = FZPermissionLocationManager.init(type: type) { [weak self](manager, status) in
                 guard let `self` = self else {
                         return
                 }
@@ -48,8 +45,8 @@ public class FZLocation {
                     }
                 }
 
-                DispatchQueue.main.async { [weak self] in
-                    self?.locationManagerArray.removeAll { $0 == manager }
+                DispatchQueue.main.async {
+                    self.locationManagerArray.removeAll { $0 == manager }
                 }
             }
 
@@ -59,13 +56,13 @@ public class FZLocation {
     }
 }
 
-// MARK: - FZLocationManager
-private class FZLocationManager: NSObject {
+// MARK: - FZPermissionLocationManager
+private class FZPermissionLocationManager: NSObject {
 
-    typealias FZLocationManagerCallBack = (FZLocationManager, FZPermissionStatus) -> Void
+    typealias FZPermissionLocationManagerCallBack = (FZPermissionLocationManager, FZPermissionStatus) -> Void
 
     let type: FZPermissionLocationType
-    let callback: FZLocationManagerCallBack
+    let callback: FZPermissionLocationManagerCallBack
 
     lazy var locationManager: CLLocationManager = {
         let lm = CLLocationManager()
@@ -73,15 +70,15 @@ private class FZLocationManager: NSObject {
         return lm
     }()
 
-    init(type: FZPermissionLocationType, callback: @escaping FZLocationManagerCallBack) {
+    init(type: FZPermissionLocationType, callback: @escaping FZPermissionLocationManagerCallBack) {
         self.type = type
         self.callback = callback
         super.init()
 
         switch type {
-        case .locationAlways:
+        case .always:
             locationManager.requestAlwaysAuthorization()
-        case .locationWhenInUse:
+        case .whenInUse:
             locationManager.requestWhenInUseAuthorization()
         }
 
@@ -98,7 +95,7 @@ private class FZLocationManager: NSObject {
         case .authorizedAlways:
             return .authorized
         case .authorizedWhenInUse:
-            if type == .locationWhenInUse {
+            if type == .whenInUse {
                 return .authorized
             } else {
                 return .notDetermined
@@ -110,11 +107,11 @@ private class FZLocationManager: NSObject {
 
 }
 
-extension FZLocationManager: CLLocationManagerDelegate {
+extension FZPermissionLocationManager: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
-        let permissionStatus = FZLocationManager.transformStatus(for: type, status: status)
+        let permissionStatus = FZPermissionLocationManager.transformStatus(for: type, status: status)
         callback(self, permissionStatus)
     }
 

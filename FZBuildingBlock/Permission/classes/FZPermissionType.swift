@@ -6,53 +6,55 @@
 //
 
 import UIKit
+import Contacts
 import EventKit
 
 /// location type
 /// - locationAlways: 使用app的时候使用位置信息
 /// - locationWhenInUse: 允许app一直使用位置信息
 public enum FZPermissionLocationType: CustomStringConvertible {
-    case locationAlways
-    case locationWhenInUse
+    case always
+    case whenInUse
 
     public var description: String {
         switch self {
-        case .locationAlways:
-            return "LocationAlways"
-        case .locationWhenInUse:
-            return "LocationWhenInUse"
+        case .always:
+            return "Always"
+        case .whenInUse:
+            return "WhenInUse"
         }
     }
 }
 
-/// event type，对应 EKEntityType
-/// - event: 日历事件
-/// - reminder: 提醒事项
-public enum FZPermissionEventType: CustomStringConvertible {
-    case event
-    case reminder
+public struct FZPermissionNotificationOptions: OptionSet{
+    
+    public typealias RawValue = Int
 
-    public var description: String {
-        switch self {
-        case .event:
-            return "Event"
-        case .reminder:
-            return "Reminder"
-        }
+    public var rawValue: RawValue
+
+    public init(rawValue: FZViewBorderLineSideType.RawValue) {
+        self.rawValue = rawValue
     }
-}
+    
+    public static var badge: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 0)
 
-/// contacts type， 对应CNEntityType
-/// - contacts: The user's contacts.
-public enum FZPermissionContactsType: CustomStringConvertible {
-    case contacts
+    public static var sound: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 1)
 
-    public var description: String {
-        switch self {
-        case .contacts:
-            return "Contacts"
-        }
-    }
+    public static var alert: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 2)
+
+    public static var carPlay: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 3)
+
+    @available(iOS 12.0, *)
+    public static var criticalAlert: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 4)
+
+    @available(iOS 12.0, *)
+    public static var providesAppNotificationSettings: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 5)
+
+    @available(iOS 12.0, *)
+    public static var provisional: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 6)
+
+    @available(iOS 13.0, *)
+    public static var announcement: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 7)
 }
 
 // MARK: -
@@ -61,11 +63,11 @@ public enum FZPermissionType {
 
     @available(iOS, introduced: 2.0, deprecated: 9.0) case addressBook
 
-    @available(iOS 9.0, *) case contacts(FZPermissionContactsType)
+    @available(iOS 9.0, *) case contacts(CNEntityType)
 
     case location(FZPermissionLocationType)
 
-    case notifications(UIUserNotificationSettings)
+    case notification(FZPermissionNotificationOptions)
 
     case microphone
 
@@ -73,7 +75,7 @@ public enum FZPermissionType {
 
     case photoLibrary
 
-    case event(FZPermissionEventType)
+    case event(EKEntityType)
 
     case bluetooth
 
@@ -86,22 +88,22 @@ public enum FZPermissionType {
     @available(iOS 10.0, *) case siri
 }
 
-extension FZPermissionType{
-    
-    var usageDescriptionKey: [String]?{
+extension FZPermissionType {
+
+    var usageDescriptionKey: [String]? {
         switch self {
         case .addressBook:
             return ["NSContactsUsageDescription"]
-        case .contacts(_):
+        case .contacts:
             return ["NSContactsUsageDescription"]
         case .location(let locationType):
             switch locationType {
-            case .locationAlways:
-                return ["NSLocationAlwaysUsageDescription", "NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription"]
-            case .locationWhenInUse:
+            case .always:
+                return [/*"NSLocationAlwaysUsageDescription",*/ "NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription"]
+            case .whenInUse:
                 return ["NSLocationWhenInUseUsageDescription"]
             }
-        case .notifications(_):
+        case .notification(_):
             return nil
         case .microphone:
             return ["NSMicrophoneUsageDescription"]
@@ -115,6 +117,8 @@ extension FZPermissionType{
                 return ["NSCalendarsUsageDescription"]
             case .reminder:
                 return ["NSRemindersUsageDescription"]
+            @unknown default:
+                return nil
             }
         case .bluetooth:
             return nil
@@ -128,35 +132,36 @@ extension FZPermissionType{
             return ["NSSiriUsageDescription"]
         }
     }
-    
-    var containsAllUsageDescriptionKeyInInfoPlist: Bool{
-        if let missingKeys = self.missingKeysInInfoPlist{
-            return missingKeys.count == 0
-        }else{
-            return true
-        }
+
+    var containsAllUsageDescriptionKeyInInfoPlist: Bool {
+        return true
+//        if let missingKeys = self.missingKeysInInfoPlist {
+//            return missingKeys.count == 0
+//        } else {
+//            return true
+//        }
     }
-    
-    var missingKeysInInfoPlist: [String]?{
+
+    var missingKeysInInfoPlist: [String]? {
         if let usageDescriptionKey = self.usageDescriptionKey {
             let missingKeys = usageDescriptionKey.filter { (descriptionKey) -> Bool in
-                if let _ = Bundle.main.object(forInfoDictionaryKey: descriptionKey){
+                if let _ = Bundle.main.object(forInfoDictionaryKey: descriptionKey) {
                     return false
-                }else{
+                } else {
                     return true
                 }
             }
             return missingKeys
-        }else{
+        } else {
             return nil
         }
     }
-    
-    var missingKeysDescription: String?{
-        if let missingKeys = self.missingKeysInInfoPlist{
+
+    var missingKeysDescription: String? {
+        if let missingKeys = self.missingKeysInInfoPlist {
             return "\(missingKeys.joined(separator: ", "))"
         }
         return nil
     }
-    
+
 }
