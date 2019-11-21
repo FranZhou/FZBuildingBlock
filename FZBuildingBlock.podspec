@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
         s_router.frameworks = 'Foundation'
     end
     
-    # 自定义路由
+    # 权限申请
     s.subspec 'Permission' do |s_permission|
         s_permission.source_files = 'FZBuildingBlock/Permission/Classes/**/*'
         s_permission.frameworks = 'Foundation', 'UIKit', 'AddressBook', 'AddressBook', 'AVFoundation', 'Contacts', 'EventKit', 'CoreLocation', 'MediaPlayer', 'CoreMotion', 'Photos', 'Intents', 'Speech'
