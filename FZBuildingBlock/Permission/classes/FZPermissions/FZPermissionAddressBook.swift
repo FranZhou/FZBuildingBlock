@@ -10,7 +10,7 @@ import AddressBook
 
 ///
 @available(iOS, introduced: 2.0, deprecated: 9.0)
-public class FZPermissionAddressBook {
+public class FZPermissionAddressBook: NSObject {
 
     public static let shared = FZPermissionAddressBook()
 
@@ -32,7 +32,7 @@ public class FZPermissionAddressBook {
     }
 
     public func requestAddressBookPermission(callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist {
+        guard FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist else{
             callback(.disabled("WARNING: \(FZPermissionType.addressBook.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

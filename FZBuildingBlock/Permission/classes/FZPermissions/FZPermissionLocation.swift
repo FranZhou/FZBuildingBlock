@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-public class FZPermissionLocation {
+public class FZPermissionLocation: NSObject {
 
     public static let shared = FZPermissionLocation()
 
@@ -26,7 +26,7 @@ public class FZPermissionLocation {
     }
 
     public func requestLocationPermision(for type: FZPermissionLocationType, callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist {
+        guard FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist else{
             callback(.disabled("WARNING: \(FZPermissionType.location(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

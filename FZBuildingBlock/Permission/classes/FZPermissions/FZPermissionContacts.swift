@@ -9,7 +9,7 @@ import UIKit
 import Contacts
 
 @available(iOS 9.0, *)
-public class FZPermissionContacts {
+public class FZPermissionContacts: NSObject {
 
     public static let shared = FZPermissionContacts()
 
@@ -31,7 +31,7 @@ public class FZPermissionContacts {
     }
 
     public func requestContactsPermission(for type: CNEntityType, callback: @escaping FZPermissionCallBack) {
-        if !FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist {
+        guard FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist else{
             callback(.disabled("WARNING: \(FZPermissionType.contacts(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

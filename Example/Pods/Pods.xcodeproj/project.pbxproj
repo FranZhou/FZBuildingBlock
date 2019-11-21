@@ -23,6 +23,10 @@
 		1184FA4CE3800221892C99D1D473DB59 /* FZPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EFFBB0C35185C2161579FB043CD65 /* FZPermission.swift */; };
 		1614444C0D73AE243EB80A9ED58F65E8 /* FZTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773602219757B55041D33CB81E36AA6 /* FZTableView.swift */; };
 		173F9B5091A410C60A911FD4150574EF /* FZBuildingBlockCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77242B67A6912CE1DAD91E9263B11576 /* FZBuildingBlockCompatible.swift */; };
+		1D7F935723851022005AC998 /* FZPermissionMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F935623851022005AC998 /* FZPermissionMotion.swift */; };
+		1D7F935923851A65005AC998 /* FZPermissionSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F935823851A65005AC998 /* FZPermissionSpeechRecognizer.swift */; };
+		1D7F935B23852665005AC998 /* FZPermissionMediaLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F935A23852665005AC998 /* FZPermissionMediaLibrary.swift */; };
+		1D7F935D23853AA3005AC998 /* FZPermissionSiri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F935C23853AA3005AC998 /* FZPermissionSiri.swift */; };
 		1E7AF0DB2A7BEA0E90275EB91622FAC6 /* Data+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC341FBCFF402AEE345E0AFD4572C82 /* Data+PNG.swift */; };
 		1E8FAD3574D46381E17B1CB42820E095 /* NSMutableAttributedString+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD63B38B035BD13D8F1FE8A9F9F1EA9C /* NSMutableAttributedString+Remove.swift */; };
 		200D67C9F9F4A18EA324005F01EFB54A /* FZCommonCryptoAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1C61673BEDE15C3F1FC481043A315 /* FZCommonCryptoAlgorithm.swift */; };
@@ -195,13 +199,17 @@
 		0D20E3EBF01C89548612FFAFAC6F8034 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
 		0D4BB51BCB0A125C847528F4536BC5EB /* Pods-FZBuildingBlock_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0F9D085834BA7E0AFC21D2EA64A4025F /* UIView+Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
-		103580E9D24E48338F8FA0AB222B205C /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Tests.framework; path = "Pods-FZBuildingBlock_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		103580E9D24E48338F8FA0AB222B205C /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A991564C8272F03828836F1B3EFC9D /* FZGradientButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZGradientButton.swift; sourceTree = "<group>"; };
 		16EE288CD0A819D0FFD9E3D889C4F7FA /* Pods-FZBuildingBlock_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FZBuildingBlock_Example-dummy.m"; sourceTree = "<group>"; };
-		19892BD094C4632338D49852C0E40C14 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		19892BD094C4632338D49852C0E40C14 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		198F941AA9FF06260FEC3D2C6EBE9218 /* UIControl+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIControl+Closures.swift"; sourceTree = "<group>"; };
 		1B97E862B63977862E6282843FA59F43 /* FZBuildingBlockCompatibleValue+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatibleValue+String.swift"; sourceTree = "<group>"; };
 		1CF332738F2A1143806D071814A6B140 /* NSAttributedString+ConvenienceInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+ConvenienceInit.swift"; sourceTree = "<group>"; };
+		1D7F935623851022005AC998 /* FZPermissionMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZPermissionMotion.swift; sourceTree = "<group>"; };
+		1D7F935823851A65005AC998 /* FZPermissionSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZPermissionSpeechRecognizer.swift; sourceTree = "<group>"; };
+		1D7F935A23852665005AC998 /* FZPermissionMediaLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZPermissionMediaLibrary.swift; sourceTree = "<group>"; };
+		1D7F935C23853AA3005AC998 /* FZPermissionSiri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FZPermissionSiri.swift; sourceTree = "<group>"; };
 		1D8848E404E2BD8F0749E0DF5C903970 /* FZTableViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewManager.swift; sourceTree = "<group>"; };
 		21460D0B1EE4F0C4D9F8EFEF35EE361A /* Pods-FZBuildingBlock_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FZBuildingBlock_Example.modulemap"; sourceTree = "<group>"; };
 		222DCF293260E7E93781AE213FD90982 /* UIView+Color.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Color.swift"; sourceTree = "<group>"; };
@@ -233,7 +241,7 @@
 		45DFFDC871B87A596F6D92A6C0812002 /* UINavigationController+StackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationController+StackManager.swift"; sourceTree = "<group>"; };
 		4626FF4080E210481E65999ECD9D9DD3 /* FZRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZRuntime.swift; sourceTree = "<group>"; };
 		4773602219757B55041D33CB81E36AA6 /* FZTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableView.swift; sourceTree = "<group>"; };
-		47A66F56F5EDC1569AD8E88BF2AF78F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		47A66F56F5EDC1569AD8E88BF2AF78F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		498F55C5060FA9B1815F50977B726928 /* KeyChainUniqueIDManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyChainUniqueIDManager.swift; sourceTree = "<group>"; };
 		4B885E35863CC0C3D077C81024638B34 /* String+CommonCrypto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+CommonCrypto.swift"; sourceTree = "<group>"; };
 		4C463EF224B7C2103E1DE284247DDC06 /* ObserverSafeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserverSafeManager.swift; path = FZBuildingBlock/Observer/Classes/ObserverSafeManager.swift; sourceTree = "<group>"; };
@@ -254,7 +262,7 @@
 		62A1B87E1BE13756AAC96ADD0A056ECC /* Pods-FZBuildingBlock_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		63258C93E03FB9FA94140C995535F191 /* FZRouterManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZRouterManagerProtocol.swift; sourceTree = "<group>"; };
 		64BC114FE8A267D7FB70ED336B44B671 /* FZPermissionMicrophone.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionMicrophone.swift; sourceTree = "<group>"; };
-		68B004EA68DFE8FCD5B32D6F8AD93B8B /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Example.framework; path = "Pods-FZBuildingBlock_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B004EA68DFE8FCD5B32D6F8AD93B8B /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD9CBE6FA4E41A8ACCCB75DC0F9C0D4 /* FZPermissionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZPermissionType.swift; path = FZBuildingBlock/Permission/classes/FZPermissionType.swift; sourceTree = "<group>"; };
 		7511B10C542BE91A5FCC855C5AFDEE09 /* String+SafeAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+SafeAccess.swift"; sourceTree = "<group>"; };
 		77242B67A6912CE1DAD91E9263B11576 /* FZBuildingBlockCompatible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZBuildingBlockCompatible.swift; sourceTree = "<group>"; };
@@ -274,7 +282,7 @@
 		9983837FDD183D0559C8BB1604F53B9A /* Pods-FZBuildingBlock_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Example-Info.plist"; sourceTree = "<group>"; };
 		9D11B01E76E8E92474FAF79194D320C5 /* FZTableViewCommonCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewCommonCell.swift; sourceTree = "<group>"; };
 		9D696BB4B6A923430960F73668D7DDC5 /* FZPermissionLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionLocation.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EF718CC5FB52EFEDD7984A3D0993972 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		9F0396B96DD9626C1B05709417F42BE5 /* FZBuildingBlockCompatibleValue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZBuildingBlockCompatibleValue.swift; sourceTree = "<group>"; };
 		A029EF4FF55E16BC3D16DC2AD19399F3 /* FZTableViewRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewRow.swift; sourceTree = "<group>"; };
@@ -294,7 +302,7 @@
 		AFF36EA48CFE44E180D7D8D0A08C5B1F /* UIView+Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B117DDB0047D5E22913FB485F54E2800 /* FZBuildingBlock-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FZBuildingBlock-Info.plist"; sourceTree = "<group>"; };
 		B15038FD87A8CABE3AD282C62287F88A /* NSMutableAttributedString+Set.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Set.swift"; sourceTree = "<group>"; };
-		B2B096E2E2585F59718AF447FE776504 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FZBuildingBlock.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B2B096E2E2585F59718AF447FE776504 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FZBuildingBlock.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B2EA98F5AFA1565F35A764D13C4AA1B6 /* FZBuildingBlockCompatible+UIColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIColor.swift"; sourceTree = "<group>"; };
 		B33FAE62744543DA459589AC4F74C167 /* UIImage+Copy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Copy.swift"; sourceTree = "<group>"; };
 		B89C68023100D70B0D16200527DE5E76 /* FZRouterExecute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZRouterExecute.swift; sourceTree = "<group>"; };
@@ -348,7 +356,7 @@
 		F0FBEA2B6503814FEB411D9A3024B232 /* FZPermissionEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionEvent.swift; sourceTree = "<group>"; };
 		F32EC466FFB93F8A9F24BC2CD50498CD /* FZBuildingBlockCompatible+UIBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIBarButtonItem.swift"; sourceTree = "<group>"; };
 		F40B89E2D9A693B802B995758F26BC4E /* NSMutableAttributedString+ConvenienceInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+ConvenienceInit.swift"; sourceTree = "<group>"; };
-		F464BE079FA511406C29252126E051B9 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZBuildingBlock.framework; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F464BE079FA511406C29252126E051B9 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F613E49CA3C2B57BC6B81BB46C47CFC3 /* UISwipeGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
 		F68AE27160AEE3BEF64779C0C563735B /* UIColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		F899B440F851A56B65D49BCBE48513F0 /* FZBuildingBlockCompatible+UIApplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIApplication.swift"; sourceTree = "<group>"; };
@@ -401,7 +409,6 @@
 			children = (
 				4CD08A70E8C816BB57E7AEF7E416610B /* Bundle+Find.swift */,
 			);
-			name = Bundle;
 			path = Bundle;
 			sourceTree = "<group>";
 		};
@@ -429,7 +436,6 @@
 				E7D1E310FA0C7831F5E31E294B101A55 /* UIImage+String.swift */,
 				A676884701CCE84EBF6D269D26148448 /* UIImage+WaterMark.swift */,
 			);
-			name = UIImage;
 			path = UIImage;
 			sourceTree = "<group>";
 		};
@@ -468,7 +474,6 @@
 				F613E49CA3C2B57BC6B81BB46C47CFC3 /* UISwipeGestureRecognizer+Closures.swift */,
 				5C009DB102B7156E5E9BE91FE2B53A85 /* UITapGestureRecognizer+Closures.swift */,
 			);
-			name = UIGestureRecognizer;
 			path = UIGestureRecognizer;
 			sourceTree = "<group>";
 		};
@@ -492,7 +497,6 @@
 			children = (
 				54962F2FD5B690495FAB3618807D85B3 /* UIDevice+Disk.swift */,
 			);
-			name = UIDevice;
 			path = UIDevice;
 			sourceTree = "<group>";
 		};
@@ -535,7 +539,6 @@
 			children = (
 				28EE1FAA6C9281567341AE3F378A521C /* UIScrollView+Snapshot.swift */,
 			);
-			name = UIScrollView;
 			path = UIScrollView;
 			sourceTree = "<group>";
 		};
@@ -563,7 +566,6 @@
 				3E4ADBC2F15EE86843249060CDAED1DB /* UINavigationController+Root.swift */,
 				45DFFDC871B87A596F6D92A6C0812002 /* UINavigationController+StackManager.swift */,
 			);
-			name = UINavigationController;
 			path = UINavigationController;
 			sourceTree = "<group>";
 		};
@@ -572,7 +574,6 @@
 			children = (
 				D5EF31AEB55A571CE30636E2DAB09D8F /* UINavigationItem+Indicator.swift */,
 			);
-			name = UINavigationItem;
 			path = UINavigationItem;
 			sourceTree = "<group>";
 		};
@@ -589,7 +590,6 @@
 			children = (
 				0D20E3EBF01C89548612FFAFAC6F8034 /* UIViewController+TopViewController.swift */,
 			);
-			name = UIViewController;
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
@@ -643,7 +643,6 @@
 				408CC967BEDA1051340B35B611CC20AA /* String+Trim.swift */,
 				A6079B8F3B58175A3AC318DEDF143AF2 /* String+URL.swift */,
 			);
-			name = String;
 			path = String;
 			sourceTree = "<group>";
 		};
@@ -653,7 +652,6 @@
 				45468C1DB48FF43E37FC68290CCB59C7 /* UIApplication+SafeArea.swift */,
 				AA3DACB5D6CE0F8D7D6E9E39BDBEEA17 /* UIApplication+StatusBar.swift */,
 			);
-			name = UIApplication;
 			path = UIApplication;
 			sourceTree = "<group>";
 		};
@@ -714,7 +712,6 @@
 				AC976D43E0BAD80CAA52B1057253643A /* UIColor+Random.swift */,
 				E46FA4EA75B3E652E25953348C9B3C8E /* UIColor+RGB255.swift */,
 			);
-			name = UIColor;
 			path = UIColor;
 			sourceTree = "<group>";
 		};
@@ -724,7 +721,6 @@
 				C30EB52B5109827B442C8D15D904D556 /* UIButton+ImageAndTitleLayout.swift */,
 				8EBBD4AC3DBA80467065B2C8F3A463EF /* UIButton+Indicator.swift */,
 			);
-			name = UIButton;
 			path = UIButton;
 			sourceTree = "<group>";
 		};
@@ -743,7 +739,6 @@
 			children = (
 				782C462EE6209C3E94974CBE7B90703C /* UITabBarController+TabBar.swift */,
 			);
-			name = UITabBarController;
 			path = UITabBarController;
 			sourceTree = "<group>";
 		};
@@ -817,7 +812,6 @@
 			children = (
 				77F40BA2C86068229F6E07C4789A4C66 /* UIScreen+TabBar.swift */,
 			);
-			name = UIScreen;
 			path = UIScreen;
 			sourceTree = "<group>";
 		};
@@ -828,7 +822,6 @@
 				43D9AB9FC650346BE218911A3EBF8E0B /* Data+JPEG.swift */,
 				EDC341FBCFF402AEE345E0AFD4572C82 /* Data+PNG.swift */,
 			);
-			name = Data;
 			path = Data;
 			sourceTree = "<group>";
 		};
@@ -845,7 +838,6 @@
 				86018C277E6D0BDA09C5E66115B03334 /* UIView+Snapshot.swift */,
 				2EF409351B73194A1D8236277E338EC4 /* UIView+UIViewController.swift */,
 			);
-			name = UIView;
 			path = UIView;
 			sourceTree = "<group>";
 		};
@@ -866,7 +858,6 @@
 				198F941AA9FF06260FEC3D2C6EBE9218 /* UIControl+Closures.swift */,
 				58B90D19777C422D91F18CDE77C28DAA /* UIControl+TouchArea.swift */,
 			);
-			name = UIControl;
 			path = UIControl;
 			sourceTree = "<group>";
 		};
@@ -877,7 +868,6 @@
 				CCB10C0FD25F61C85923D3CDE50E4210 /* FZBuildingBlockCompatibleValue+Data.swift */,
 				1B97E862B63977862E6282843FA59F43 /* FZBuildingBlockCompatibleValue+String.swift */,
 			);
-			name = WrapperComponentCompatibleValue;
 			path = WrapperComponentCompatibleValue;
 			sourceTree = "<group>";
 		};
@@ -919,7 +909,6 @@
 			children = (
 				DC60000EA39F4567B337761B005FA71D /* Array+SafeAccess.swift */,
 			);
-			name = Array;
 			path = Array;
 			sourceTree = "<group>";
 		};
@@ -943,6 +932,10 @@
 				64BC114FE8A267D7FB70ED336B44B671 /* FZPermissionMicrophone.swift */,
 				8AD49F8E68C576A1E0C2549738FAC4FB /* FZPermissionNotification.swift */,
 				50A716D8C39D2C9D189ED3C6968A649C /* FZPermissionPhotoLibrary.swift */,
+				1D7F935623851022005AC998 /* FZPermissionMotion.swift */,
+				1D7F935823851A65005AC998 /* FZPermissionSpeechRecognizer.swift */,
+				1D7F935A23852665005AC998 /* FZPermissionMediaLibrary.swift */,
+				1D7F935C23853AA3005AC998 /* FZPermissionSiri.swift */,
 			);
 			name = FZPermissions;
 			path = FZBuildingBlock/Permission/classes/FZPermissions;
@@ -981,7 +974,6 @@
 				BD63B38B035BD13D8F1FE8A9F9F1EA9C /* NSMutableAttributedString+Remove.swift */,
 				B15038FD87A8CABE3AD282C62287F88A /* NSMutableAttributedString+Set.swift */,
 			);
-			name = NSAttributedString;
 			path = NSAttributedString;
 			sourceTree = "<group>";
 		};
@@ -1031,7 +1023,6 @@
 				31774EEA8D93B8F09741BD1945F47AC3 /* FZBuildingBlockCompatible+UIView.swift */,
 				2AA7C085C9A292D919CF9CC1D7399B3C /* FZBuildingBlockCompatible+UIViewController.swift */,
 			);
-			name = WrapperComponentCompatible;
 			path = WrapperComponentCompatible;
 			sourceTree = "<group>";
 		};
@@ -1042,7 +1033,6 @@
 				FDC65DCCEC11DA3BDC7E71F97D9D2413 /* UIBarButtonItem+Closures.swift */,
 				E97134C1B4320F9AA68982D923611FF8 /* UIBarButtonItem+Handler.swift */,
 			);
-			name = UIBarButtonItem;
 			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
@@ -1051,7 +1041,6 @@
 			children = (
 				3AD1203AF59EA0A6F21527F2F68D47D2 /* UIImageView+GIF.swift */,
 			);
-			name = UIImageView;
 			path = UIImageView;
 			sourceTree = "<group>";
 		};
@@ -1083,7 +1072,6 @@
 				E107F39235CE6EC98F4B2BA4F0E5E6DF /* UIFont+TTC.swift */,
 				4F4AD162C36741E08CCDC6E491BE2B4B /* UIFont+TTF.swift */,
 			);
-			name = UIFont;
 			path = UIFont;
 			sourceTree = "<group>";
 		};
@@ -1295,6 +1283,7 @@
 				EB1A7467DF4528A4A42B0283ED43EEB1 /* FZRouter.swift in Sources */,
 				D0AAA832B06F8E47F40410C72CFBABF9 /* FZRouterDataPacket.swift in Sources */,
 				ED4072B33730210732743ADD9CF41BC2 /* FZRouterExecute.swift in Sources */,
+				1D7F935B23852665005AC998 /* FZPermissionMediaLibrary.swift in Sources */,
 				201C06318658DBC02780BFF6945CE6F1 /* FZRouterExecuterProtocol.swift in Sources */,
 				30554855D1356D3A8FAB0ACC8A69E378 /* FZRouterLoaderProtocol.swift in Sources */,
 				56D91B64DACD4D3E8B838A5CAA0EC532 /* FZRouterManager.swift in Sources */,
@@ -1314,6 +1303,7 @@
 				E74A2D10E3085DBDA8ABDD82B37ADEC3 /* FZTableViewSection.swift in Sources */,
 				33BD6EEFFCC866A11B5611D73A92F01D /* FZTextField.swift in Sources */,
 				926AF080341B936BA5C3800C57061F6F /* FZTextView.swift in Sources */,
+				1D7F935723851022005AC998 /* FZPermissionMotion.swift in Sources */,
 				DA00D5180E21AE8FE72D1D97268208E9 /* FZUIBarButtonItemClosureHandler.swift in Sources */,
 				2B9FD4D9E8830F8EBB45DB7C56923D0F /* FZUIControlClosureHandler.swift in Sources */,
 				383B73FA395251B4110F29A6B4514A7E /* FZUIGestureRecognizerClosureHandler.swift in Sources */,
@@ -1324,6 +1314,7 @@
 				989A0EFEE431E8D3FE66B08453FC7DE8 /* NSAttributedString+ConvenienceInit.swift in Sources */,
 				6A83CCF4C71FB60FD94E55CC7AD618F4 /* NSAttributedString+Range.swift in Sources */,
 				823E2BB653AA281CC3C7A04CD61ABC15 /* NSAttributedString+Size.swift in Sources */,
+				1D7F935D23853AA3005AC998 /* FZPermissionSiri.swift in Sources */,
 				0F412FE76A844D8F013E2C310B10E268 /* NSMutableAttributedString+Add.swift in Sources */,
 				DF62409E7156DA7D20D65BB1AE096AB6 /* NSMutableAttributedString+Append.swift in Sources */,
 				BD88AF7B28A6FAB6D19DD3A11A783A31 /* NSMutableAttributedString+ConvenienceInit.swift in Sources */,
@@ -1393,6 +1384,7 @@
 				CF25FC80C2DD5FE49281ADC320CEF391 /* UIView+Snapshot.swift in Sources */,
 				3377A22E5E4B3FC8563B95A7C1B2931C /* UIView+UIViewController.swift in Sources */,
 				AD7F8CA28A4A793CFADEF10769A3C23C /* UIViewController+TopViewController.swift in Sources */,
+				1D7F935923851A65005AC998 /* FZPermissionSpeechRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1633,8 +1625,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

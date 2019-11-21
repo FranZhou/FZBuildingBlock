@@ -50,7 +50,7 @@ public class FZPermissionBluetooth: NSObject {
     }
     
     public func requestBluetoothPermission(callback: @escaping FZPermissionCallBack){
-        if !FZPermissionType.bluetooth.containsAllUsageDescriptionKeyInInfoPlist {
+        guard FZPermissionType.bluetooth.containsAllUsageDescriptionKeyInInfoPlist else{
             callback(.disabled("WARNING: \(FZPermissionType.bluetooth.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

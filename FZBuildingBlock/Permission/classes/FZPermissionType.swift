@@ -59,6 +59,20 @@ public struct FZPermissionNotificationOptions: OptionSet{
 
 // MARK: -
 
+/// Permission Type
+/// - addressBook: 通讯录，iOS9以前使用
+/// - contacts: 系统联系人，iOS9以后使用
+/// - location: 定位
+/// - notification: 通知推送
+/// - microphone: 麦克风
+/// - camera: 相机
+/// - photoLibrary: 相册
+/// - event: 日历
+/// - bluetooth: 蓝牙
+/// - motion: 传感器
+/// - speechRecognizer: 语音识别
+/// - mediaLibrary: 媒体库
+/// - siri: siri
 public enum FZPermissionType {
 
     @available(iOS, introduced: 2.0, deprecated: 9.0) case addressBook
@@ -121,7 +135,7 @@ extension FZPermissionType {
                 return nil
             }
         case .bluetooth:
-            return nil
+            return ["NSBluetoothAlwaysUsageDescription"]
         case .motion:
             return ["NSMotionUsageDescription"]
         case .speechRecognizer:
@@ -134,12 +148,11 @@ extension FZPermissionType {
     }
 
     var containsAllUsageDescriptionKeyInInfoPlist: Bool {
-        return true
-//        if let missingKeys = self.missingKeysInInfoPlist {
-//            return missingKeys.count == 0
-//        } else {
-//            return true
-//        }
+        if let missingKeys = self.missingKeysInInfoPlist {
+            return missingKeys.count == 0
+        } else {
+            return true
+        }
     }
 
     var missingKeysInInfoPlist: [String]? {
