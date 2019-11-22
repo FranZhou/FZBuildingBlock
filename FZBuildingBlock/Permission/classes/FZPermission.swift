@@ -10,15 +10,15 @@ import UIKit
 public typealias FZPermissionCallBack = (FZPermissionStatus) -> Void
 
 open class FZPermission: NSObject {
-    
-    public class func requestPermission(for type: FZPermissionType, callback: @escaping FZPermissionCallBack){
+
+    public class func requestPermission(for type: FZPermissionType, callback: @escaping FZPermissionCallBack) {
         switch type {
         case .addressBook:
             FZPermissionAddressBook.shared.requestAddressBookPermission(callback: callback)
         case .contacts(let entityType):
             if #available(iOS 9.0, *) {
                 FZPermissionContacts.shared.requestContactsPermission(for: entityType, callback: callback)
-            }else{
+            } else {
                 callback(.disabled("FZPermissionType.contacts available iOS 9.0"))
             }
         case .location(let locationType):
@@ -57,5 +57,5 @@ open class FZPermission: NSObject {
             callback(.disabled("unknown FZPermissionType: \(type)"))
         }
     }
-    
+
 }

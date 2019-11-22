@@ -26,8 +26,8 @@ public enum FZPermissionLocationType: CustomStringConvertible {
     }
 }
 
-public struct FZPermissionNotificationOptions: OptionSet{
-    
+public struct FZPermissionNotificationOptions: OptionSet {
+
     public typealias RawValue = Int
 
     public var rawValue: RawValue
@@ -35,7 +35,7 @@ public struct FZPermissionNotificationOptions: OptionSet{
     public init(rawValue: FZViewBorderLineSideType.RawValue) {
         self.rawValue = rawValue
     }
-    
+
     public static var badge: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 0)
 
     public static var sound: FZPermissionNotificationOptions = FZPermissionNotificationOptions(rawValue: 1 << 1)
@@ -117,7 +117,7 @@ extension FZPermissionType {
             case .whenInUse:
                 return ["NSLocationWhenInUseUsageDescription"]
             }
-        case .notification(_):
+        case .notification:
             return nil
         case .microphone:
             return ["NSMicrophoneUsageDescription"]

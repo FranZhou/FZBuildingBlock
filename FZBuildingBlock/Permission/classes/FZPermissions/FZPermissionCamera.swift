@@ -9,12 +9,12 @@ import UIKit
 import AVFoundation
 
 public class FZPermissionCamera: NSObject {
-    
+
     public static let shared = FZPermissionCamera()
-    
-    public var status: FZPermissionStatus{
+
+    public var status: FZPermissionStatus {
         let status = AVCaptureDevice.authorizationStatus(for: .audio)
-        
+
         switch status {
         case .notDetermined:
             return .notDetermined
@@ -28,16 +28,16 @@ public class FZPermissionCamera: NSObject {
             return .disabled("unkunown AVCaptureDevice authorizationStatus \(status)")
         }
     }
-    
-    public func requestCameraPermission(callback: @escaping FZPermissionCallBack){
-        guard FZPermissionType.camera.containsAllUsageDescriptionKeyInInfoPlist else{
+
+    public func requestCameraPermission(callback: @escaping FZPermissionCallBack) {
+        guard FZPermissionType.camera.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.camera.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if self.status == .authorized {
             callback(self.status)
-        }else{
+        } else {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self](_) in
                 DispatchQueue.main.async {
                     guard let `self` = self else {
@@ -50,5 +50,5 @@ public class FZPermissionCamera: NSObject {
             })
         }
     }
-    
+
 }

@@ -9,12 +9,12 @@ import UIKit
 import AVFoundation
 
 public class FZPermissionMicrophone: NSObject {
-    
+
     public static let shared = FZPermissionMicrophone()
-    
-    public var status: FZPermissionStatus{
+
+    public var status: FZPermissionStatus {
         let status = AVAudioSession.sharedInstance().recordPermission
-        
+
         switch status {
         case .undetermined:
             return .notDetermined
@@ -26,16 +26,16 @@ public class FZPermissionMicrophone: NSObject {
             return .disabled("unkunown AVAudioSession recordPermission \(status)")
         }
     }
-    
-    public func requestMicrophonePermission(callback: @escaping FZPermissionCallBack){
-        guard FZPermissionType.microphone.containsAllUsageDescriptionKeyInInfoPlist else{
+
+    public func requestMicrophonePermission(callback: @escaping FZPermissionCallBack) {
+        guard FZPermissionType.microphone.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.microphone.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if self.status == .authorized {
             callback(self.status)
-        }else{
+        } else {
             AVAudioSession.sharedInstance().requestRecordPermission { [weak self](_) in
                 DispatchQueue.main.async {
                     guard let `self` = self else {
@@ -48,5 +48,5 @@ public class FZPermissionMicrophone: NSObject {
             }
         }
     }
-    
+
 }

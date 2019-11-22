@@ -26,7 +26,7 @@ public class FZPermissionLocation: NSObject {
     }
 
     public func requestLocationPermision(for type: FZPermissionLocationType, callback: @escaping FZPermissionCallBack) {
-        guard FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist else{
+        guard FZPermissionType.location(type).containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.location(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

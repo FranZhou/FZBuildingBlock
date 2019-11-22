@@ -9,15 +9,15 @@ import UIKit
 import CoreBluetooth
 
 public class FZPermissionBluetooth: NSObject {
-    
+
     public static let shared = FZPermissionBluetooth()
-    
+
     private var bluetoothManagerArray: [FZPermissionBluetoothManager] = []
-    
-    public var status: FZPermissionStatus{
+
+    public var status: FZPermissionStatus {
         if #available(iOS 13.0, *) {
             let status = CBPeripheralManager.authorization
-            
+
             switch status {
             case .allowedAlways:
                 return .authorized
@@ -30,10 +30,10 @@ public class FZPermissionBluetooth: NSObject {
             @unknown default:
                 return .disabled("unknown CBPeripheralManager authorizationStatus : \(status)")
             }
-            
-        }else{
+
+        } else {
             let status = CBPeripheralManager.authorizationStatus()
-            
+
             switch status {
             case .authorized:
                 return .authorized
@@ -48,16 +48,16 @@ public class FZPermissionBluetooth: NSObject {
             }
         }
     }
-    
-    public func requestBluetoothPermission(callback: @escaping FZPermissionCallBack){
-        guard FZPermissionType.bluetooth.containsAllUsageDescriptionKeyInInfoPlist else{
+
+    public func requestBluetoothPermission(callback: @escaping FZPermissionCallBack) {
+        guard FZPermissionType.bluetooth.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.bluetooth.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if self.status == .authorized {
             callback(self.status)
-        }else{
+        } else {
             let bluetoothManager = FZPermissionBluetoothManager { [weak self](manager, status) in
                 guard let `self` = self else {
                         return
@@ -72,24 +72,23 @@ public class FZPermissionBluetooth: NSObject {
                     self.bluetoothManagerArray.removeAll { $0 == manager }
                 }
             }
-            
+
             bluetoothManager.startAdvertising(nil)
             self.bluetoothManagerArray.append(bluetoothManager)
         }
     }
-    
+
 }
 
-
 // MARK: - FZPermissionBluetoothManager
-fileprivate class FZPermissionBluetoothManager: NSObject{
-    
+private class FZPermissionBluetoothManager: NSObject {
+
     typealias FZPermissionBluetoothManagerCallBack = (FZPermissionBluetoothManager, FZPermissionStatus) -> Void
 
     let callback: FZPermissionBluetoothManagerCallBack
 
     lazy var bluetoothManager: CBPeripheralManager = {
-        let bm = CBPeripheralManager(delegate: self, queue: DispatchQueue.main, options: [CBPeripheralManagerOptionShowPowerAlertKey : true])
+        let bm = CBPeripheralManager(delegate: self, queue: DispatchQueue.main, options: [CBPeripheralManagerOptionShowPowerAlertKey: true])
         return bm
     }()
 
@@ -97,23 +96,21 @@ fileprivate class FZPermissionBluetoothManager: NSObject{
         self.callback = callback
         super.init()
     }
-    
-    public func startAdvertising(_ advertisementData: [String : Any]?){
+
+    public func startAdvertising(_ advertisementData: [String: Any]?) {
         self.bluetoothManager.startAdvertising(advertisementData)
     }
-    
-    public func stopAdvertising(){
+
+    public func stopAdvertising() {
         self.bluetoothManager.stopAdvertising()
     }
-    
+
 }
 
+extension FZPermissionBluetoothManager: CBPeripheralManagerDelegate {
 
-extension FZPermissionBluetoothManager: CBPeripheralManagerDelegate{
-    
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         callback(self, FZPermissionBluetooth.shared.status)
     }
-    
-}
 
+}

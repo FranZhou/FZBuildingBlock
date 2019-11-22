@@ -92,11 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        FZPermissionEvent.shared.requestEventPermision(for: .reminder) { (status) in
 //            print(status)
 //        }
-        
+
         FZPermissionBluetooth.shared.requestBluetoothPermission { (status) in
             print(status)
         }
-        
+
         return true
     }
 

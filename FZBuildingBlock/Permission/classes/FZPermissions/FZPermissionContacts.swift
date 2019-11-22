@@ -31,7 +31,7 @@ public class FZPermissionContacts: NSObject {
     }
 
     public func requestContactsPermission(for type: CNEntityType, callback: @escaping FZPermissionCallBack) {
-        guard FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist else{
+        guard FZPermissionType.contacts(type).containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.contacts(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }

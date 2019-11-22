@@ -9,12 +9,12 @@ import UIKit
 import Photos
 
 public class FZPermissionPhotoLibrary: NSObject {
-    
+
     public static let shared = FZPermissionPhotoLibrary()
-    
-    public var status: FZPermissionStatus{
+
+    public var status: FZPermissionStatus {
         let status = PHPhotoLibrary.authorizationStatus()
-        
+
         switch status {
         case .notDetermined:
             return .notDetermined
@@ -28,16 +28,16 @@ public class FZPermissionPhotoLibrary: NSObject {
             return .disabled("unkunown PHPhotoLibrary authorizationStatus \(status)")
         }
     }
-    
-    public func requestPhotoLibraryPermission(callback: @escaping FZPermissionCallBack){
-        guard FZPermissionType.photoLibrary.containsAllUsageDescriptionKeyInInfoPlist else{
+
+    public func requestPhotoLibraryPermission(callback: @escaping FZPermissionCallBack) {
+        guard FZPermissionType.photoLibrary.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.photoLibrary.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if self.status == .authorized {
             callback(self.status)
-        }else{
+        } else {
             PHPhotoLibrary.requestAuthorization { [weak self](_) in
                 DispatchQueue.main.async {
                     guard let `self` = self else {
@@ -50,5 +50,5 @@ public class FZPermissionPhotoLibrary: NSObject {
             }
         }
     }
-    
+
 }

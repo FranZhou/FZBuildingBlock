@@ -8,7 +8,7 @@
 import Foundation
 
 /// 观察者对象
-public struct Observer<T>: Hashable {
+open class Observer<T>: NSObject {
     /// value change tuple
     public typealias Change = (old: T, new: T)
 
@@ -21,12 +21,15 @@ public struct Observer<T>: Hashable {
     public let action: Action
 
     // MARK: - Hashable
-    public var hashValue: Int {
+    public override var hash: Int {
         return key.hashValue
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.key)
+    public init(key: String, action: @escaping Action) {
+        self.key = key
+        self.action = action
+
+        super.init()
     }
 
     // MARK: - Equatable protocol

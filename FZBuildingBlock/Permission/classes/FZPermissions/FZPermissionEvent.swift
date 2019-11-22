@@ -11,10 +11,10 @@ import EventKit
 public class FZPermissionEvent: NSObject {
 
     public static let shared = FZPermissionEvent()
-    
-    public func status(for type: EKEntityType) -> FZPermissionStatus{
+
+    public func status(for type: EKEntityType) -> FZPermissionStatus {
         let status = EKEventStore.authorizationStatus(for: type)
-        
+
         switch status {
         case .notDetermined:
             return .notDetermined
@@ -28,16 +28,16 @@ public class FZPermissionEvent: NSObject {
             return .disabled("unkunown EKEventStore authorizationStatus \(status)")
         }
     }
-    
+
     public func requestEventPermision(for type: EKEntityType, callback: @escaping FZPermissionCallBack) {
-        guard FZPermissionType.event(type).containsAllUsageDescriptionKeyInInfoPlist else{
+        guard FZPermissionType.event(type).containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.event(type).missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
-        
+
         if self.status(for: type) == .authorized {
             callback(.authorized)
-        }else{
+        } else {
             EKEventStore().requestAccess(to: type) { [weak self](_, _) in
                 DispatchQueue.main.async {
                     guard let `self` = self else {
@@ -49,6 +49,6 @@ public class FZPermissionEvent: NSObject {
                 }
             }
         }
-        
+
     }
 }

@@ -31,7 +31,7 @@ public class FZPermissionSiri: NSObject {
     }
 
     public func requestSiriPermission(callback: @escaping FZPermissionCallBack) {
-        guard FZPermissionType.siri.containsAllUsageDescriptionKeyInInfoPlist else{
+        guard FZPermissionType.siri.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.siri.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
@@ -40,7 +40,7 @@ public class FZPermissionSiri: NSObject {
             callback(.authorized)
         } else {
             INPreferences.requestSiriAuthorization({ [weak self](status: INSiriAuthorizationStatus) in
-                guard let `self` = self else{
+                guard let `self` = self else {
                     return
                 }
                 DispatchQueue.main.async {

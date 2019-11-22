@@ -31,7 +31,7 @@ public class FZPermissionMediaLibrary: NSObject {
     }
 
     public func requestMediaLibraryPermission(callback: @escaping FZPermissionCallBack) {
-        guard FZPermissionType.mediaLibrary.containsAllUsageDescriptionKeyInInfoPlist else{
+        guard FZPermissionType.mediaLibrary.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.mediaLibrary.missingKeysDescription ?? "") not found in Info.plist"))
             return
         }
@@ -40,7 +40,7 @@ public class FZPermissionMediaLibrary: NSObject {
             callback(.authorized)
         } else {
             MPMediaLibrary.requestAuthorization({ [weak self](status: MPMediaLibraryAuthorizationStatus) in
-                guard let `self` = self else{
+                guard let `self` = self else {
                     return
                 }
                 DispatchQueue.main.async {
