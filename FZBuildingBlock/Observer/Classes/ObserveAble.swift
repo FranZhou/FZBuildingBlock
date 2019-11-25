@@ -60,6 +60,7 @@ open class ObserveAble<T>: NSObject {
     }
 
     deinit {
+        // deinit中不要使用多线程方法
         cleanAll()
     }
 
@@ -77,7 +78,7 @@ extension ObserveAble {
     ///
     /// - Parameter key: 唯一标识
     public func removeObserver(key: String) {
-        observerManager.removeObserver(key: key, target: self)
+        observerManager.removeObserver(key: key)
     }
 
     /// 移除所有观察者，线程阻塞
@@ -85,9 +86,9 @@ extension ObserveAble {
         observerManager.removeAll()
     }
 
-    /// 移除所有观察者，立即执行
+    /// 移除所有观察者，不会阻塞多线程
     public func cleanAll() {
-        observerManager.cleanHolder()
+        observerManager.cleanAll()
     }
 
 }
@@ -103,7 +104,7 @@ extension ObserveAble {
     ///   - action: 观察者执行Action
     public func bindObserver(key: String, count: Int? = nil, action: @escaping Observer<T>.Action) {
         guard let count = count, count > 0 else {
-            observerManager.append(observer: Observer<T>(key: key, action: action), target: self)
+            observerManager.append(observer: Observer<T>(key: key, action: action))
             return
         }
 
@@ -116,7 +117,7 @@ extension ObserveAble {
             if counter() == 0 {
                 self?.removeObserver(key: key)
             }
-        }), target: self)
+        }))
 
     }
 

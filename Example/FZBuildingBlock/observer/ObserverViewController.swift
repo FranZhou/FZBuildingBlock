@@ -53,10 +53,6 @@ class ObserverViewController: UIViewController {
     }
 
     deinit {
-        // observer能自动释放了
-//        self.observer?.removeObserver(key: "observer test1", target: self)
-//        self.observer?.removeObserver(key: "observer test2", target: self)
-
         print("\(self) ObserverViewController deinit")
     }
 
