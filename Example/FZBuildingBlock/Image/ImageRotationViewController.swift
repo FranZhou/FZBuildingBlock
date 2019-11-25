@@ -42,20 +42,20 @@ class ImageRotationViewController: UIViewController {
         btn.setTitle("旋转当前图片", for: .normal)
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
 
-        btn.fz.addHandler(closure: { (_) in
+        btn.fz.addHandler(closure: { [weak btn](_) in
             print("fz_addAction touchUpInside")
-            btn.fz.showIndicator()
+            btn?.fz.showIndicator()
         }, for: .touchUpInside)
 
         btn.fz.addHandler(closure: { (_) in
             print("fz_addAction touchUpInside repeat")
         }, for: .touchUpInside)
 
-        btn.fz.addHandler(closure: { (_) in
+        btn.fz.addHandler(closure: { [weak btn](_) in
             print("touchUpOutside")
-//            btn.fz.removeHandlers(forEvent: .allEvents)
-            btn.fz.removeAllHandlers()
-            btn.fz.hideIndicator()
+//            btn?.fz.removeHandlers(forEvent: .allEvents)
+            btn?.fz.removeAllHandlers()
+            btn?.fz.hideIndicator()
         }, for: .touchUpOutside)
 
         btn.fz.addHandler(closure: { (_) in
