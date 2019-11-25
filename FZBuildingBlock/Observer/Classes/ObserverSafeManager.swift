@@ -22,7 +22,21 @@ open class ObserverSafeManager<T>: NSObject {
     public var fireQueue: DispatchQueue = DispatchQueue.main
 
     public func isEmpty() -> Bool {
-        return observerHolder.count == 0
+        if observerHolder.count == 0 {
+            return true
+        } else {
+            // 获取所有观察者对象
+            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<Observer<T>> in
+                if let observerSet = obj as? NSMutableSet,
+                    let observerArray = Array(observerSet) as? Array<Observer<T>> {
+                    return observerArray
+                }
+                return []
+            }) else {
+                return true
+            }
+            return allObservers.count == 0
+        }
     }
 
     /// 触发监听方法，按照添加顺序执行
@@ -106,8 +120,17 @@ open class ObserverSafeManager<T>: NSObject {
             guard let `self` = self else {
                 return
             }
-            self.observerHolder.removeAllObjects()
+            self.cleanHolder()
         }
+    }
+    
+    public func cleanHolder(){
+        self.observerHolder.removeAllObjects()
+    }
+    
+    deinit {
+        // deinit中不要使用多线程
+        cleanHolder()
     }
 
 }

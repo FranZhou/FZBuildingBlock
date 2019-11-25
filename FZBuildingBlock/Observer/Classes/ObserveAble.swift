@@ -60,7 +60,7 @@ open class ObserveAble<T>: NSObject {
     }
 
     deinit {
-        print("ObserveAble deinit")
+        cleanAll()
     }
 
 }
@@ -76,13 +76,19 @@ extension ObserveAble {
     /// 移除观察者
     ///
     /// - Parameter key: 唯一标识
-    public func removeObserver(key: String, target: AnyObject) {
-        observerManager.removeObserver(key: key, target: target)
+    public func removeObserver(key: String) {
+        observerManager.removeObserver(key: key, target: self)
     }
 
-    /// 移除所有观察者
+    /// 移除所有观察者，线程阻塞
     public func removeAll() {
         observerManager.removeAll()
+    }
+    
+    
+    /// 移除所有观察者，立即执行
+    public func cleanAll() {
+        observerManager.cleanHolder()
     }
 
 }
@@ -94,12 +100,11 @@ extension ObserveAble {
     ///
     /// - Parameters:
     ///   - key: 唯一标示
-    ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - count: 更新触发的次数，nil 则没有限制
     ///   - action: 观察者执行Action
-    public func bindObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping Observer<T>.Action) {
+    public func bindObserver(key: String, count: Int? = nil, action: @escaping Observer<T>.Action) {
         guard let count = count, count > 0 else {
-            observerManager.append(observer: Observer<T>(key: key, action: action), target: target)
+            observerManager.append(observer: Observer<T>(key: key, action: action), target: self)
             return
         }
 
@@ -110,9 +115,9 @@ extension ObserveAble {
 
             // 每次触发更新，如果 count == 0 则 remove, counter 会自减
             if counter() == 0 {
-                self?.removeObserver(key: key, target: target)
+                self?.removeObserver(key: key)
             }
-        }), target: target)
+        }), target: self)
 
     }
 
@@ -120,11 +125,10 @@ extension ObserveAble {
     ///
     /// - Parameters:
     ///   - key: 唯一标示
-    ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - count: 更新触发的次数, nil 则没有限制，立即触发的一次回调不回改变 count
     ///   - action: (观察者, 是否为立即触发的回调)
-    public func bindAndFireObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping (Change, Bool) -> Void) {
-        bindObserver(key: key, target: target, count: count) {
+    public func bindAndFireObserver(key: String, count: Int? = nil, action: @escaping (Change, Bool) -> Void) {
+        bindObserver(key: key, count: count) {
             action($0, false)
         }
         action((old: value, new: value), true)
@@ -134,10 +138,9 @@ extension ObserveAble {
     ///
     /// - Parameters:
     ///   - key: 唯一标示
-    ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - action: 观察者
-    public func fireOnce(key: String, target: AnyObject, action: @escaping Observer<T>.Action) {
-        bindObserver(key: key, target: target, count: 1, action: action)
+    public func fireOnce(key: String, action: @escaping Observer<T>.Action) {
+        bindObserver(key: key, count: 1, action: action)
     }
 
     /// OptionalEscapeingAction 闭包与 Observer<T>.Action 的区别是多了一个 finish 参数, 这同样是一个闭包, 它的作用是 removeObserver
@@ -145,17 +148,19 @@ extension ObserveAble {
     ///
     /// - Parameters:
     ///   - key: 唯一标示
-    ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - immediate: 是否立即触发一次回调(当前值)
     ///   - action: 更新回调闭包
-    public func fireUntilCompleted(key: String, target: AnyObject, immediate: Bool, action: @escaping OptionalEscapeingAction) {
+    public func fireUntilCompleted(key: String, immediate: Bool, action: @escaping OptionalEscapeingAction) {
 
         // 只要 finish 回调一次就 remove， finish的触发由注册的地方来实现
-        let finish = {
-            self.removeObserver(key: key, target: target)
+        let finish = { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            self.removeObserver(key: key)
         }
 
-        self.bindObserver(key: key, target: target) {
+        self.bindObserver(key: key) {
             action($0, finish)
         }
 
