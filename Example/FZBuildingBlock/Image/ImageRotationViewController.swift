@@ -100,6 +100,10 @@ class ImageRotationViewController: UIViewController {
         cutImageView!.fz.y = view.fz.height - cutImageView.fz.height - 50
     }
 
+    deinit {
+        print("ImageRotationViewController deinit")
+    }
+
     /*
     // MARK: - Navigation
 

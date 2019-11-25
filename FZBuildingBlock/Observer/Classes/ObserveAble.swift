@@ -84,8 +84,7 @@ extension ObserveAble {
     public func removeAll() {
         observerManager.removeAll()
     }
-    
-    
+
     /// 移除所有观察者，立即执行
     public func cleanAll() {
         observerManager.cleanHolder()

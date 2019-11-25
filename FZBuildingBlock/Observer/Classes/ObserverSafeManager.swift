@@ -123,11 +123,11 @@ open class ObserverSafeManager<T>: NSObject {
             self.cleanHolder()
         }
     }
-    
-    public func cleanHolder(){
+
+    public func cleanHolder() {
         self.observerHolder.removeAllObjects()
     }
-    
+
     deinit {
         // deinit中不要使用多线程
         cleanHolder()
