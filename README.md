@@ -12,6 +12,7 @@ Tools 模块，提供开发中的一些简单的功能集合<br/>
 Observer 模块，简单的观察者模式实现<br/>
 Views 模块，个性化视图，快速开发时使用<br/>
 Router 模块，路由组件，通过url映射相应的Target-Action<br/>
+Permission 模块，权限申请，申请系统相应功能的权限<br/>
   
   
 
