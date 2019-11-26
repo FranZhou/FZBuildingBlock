@@ -1,0 +1,4 @@
+module ifaddrs [system] {
+    header "/usr/include/ifaddrs.h"
+    export *
+}
