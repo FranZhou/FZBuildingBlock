@@ -17,7 +17,7 @@ class ImageRotationViewController: UIViewController {
         let timer = Timer.scheduledTimer(timeInterval: 1, target: FZProxy(target: self), selector: #selector(btnClickAction(sender:)), userInfo: nil, repeats: true)
         return timer
     }()
-    
+
     var image: UIImage!
     var imageView: UIImageView!
     var cutImageView: UIImageView!
@@ -29,7 +29,7 @@ class ImageRotationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        let _ = self.timer
+        _ = self.timer
         if let image = UIImage.fz.image(withColor: UIColor.fz.randomColor(), size: CGSize(width: 250, height: 200)) {
             self.image = image
         } else {
