@@ -10,8 +10,10 @@ import Foundation
 /// 观察者管理器, 提供安全的操作方式
 open class ObserverSafeManager<T>: NSObject {
 
-    /// 所有的观察者集合，使用array而不是set是为了方便控制触发时的执行顺序
-    var observerArray = Array<Observer<T>>()
+    private let observerHolder: NSMapTable<AnyObject, NSMutableSet> = {
+        let observerMap = NSMapTable<AnyObject, NSMutableSet>.weakToStrongObjects()
+        return observerMap
+    }()
 
     /// 观察者管理队列，在该队列中管理观察者对象；新增或者删除使用barrier执行，阻塞其他操作；监听触发时，使用异步执行
     private var manageQueue = DispatchQueue(label: "com.fzbuildingblock.ObserverSafeManagerQueue", attributes: DispatchQueue.Attributes.concurrent)
@@ -20,7 +22,21 @@ open class ObserverSafeManager<T>: NSObject {
     public var fireQueue: DispatchQueue = DispatchQueue.main
 
     public func isEmpty() -> Bool {
-        return observerArray.isEmpty
+        if observerHolder.count == 0 {
+            return true
+        } else {
+            // 获取所有观察者对象
+            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<Observer<T>> in
+                if let observerSet = obj as? NSMutableSet,
+                    let observerArray = Array(observerSet) as? Array<Observer<T>> {
+                    return observerArray
+                }
+                return []
+            }) else {
+                return true
+            }
+            return allObservers.count == 0
+        }
     }
 
     /// 触发监听方法，按照添加顺序执行
@@ -33,11 +49,19 @@ open class ObserverSafeManager<T>: NSObject {
             guard let `self` = self else {
                 return
             }
-            // 对全部监听者对象进行一次copy
-            let observerArray = Array<Observer<T>>(self.observerArray)
+
+            // 获取所有观察者对象
+            let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<Observer<T>> in
+                if let observerSet = obj as? NSMutableSet,
+                    let observerArray = Array(observerSet) as? Array<Observer<T>> {
+                    return observerArray
+                }
+                return []
+            })
+
             // 在触发队列触发监听者监控操作
             self.fireQueue.async {
-                observerArray.forEach({observer in
+                allObservers?.forEach({observer in
                     observer.action((old: oldValue, new: newValue))
                 })
             }
@@ -45,27 +69,54 @@ open class ObserverSafeManager<T>: NSObject {
     }
 
     /// 添加观察者对象
-    ///
-    /// - Parameter observer:
-    public func append(observer: Observer<T>) {
-        self.manageQueue.async(flags: .barrier) { [weak self] in
-            guard let `self` = self else {
-                return
+    /// - Parameter observer: 观察者
+    /// - Parameter target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
+    public func append(observer: Observer<T>, target: AnyObject) {
+        self.manageQueue.async(flags: .barrier) { [weak self, weak target] in
+            guard let `self` = self,
+                let target = target else {
+                    return
             }
 
-            guard let index = self.observerArray.firstIndex(where: { (o: Observer<T>) -> Bool in
-                return o == observer
-            }) else {
-                self.observerArray.append(observer)
-                return
+            if let observerForTarget = self.observerHolder.object(forKey: target) {
+                observerForTarget.add(observer)
+            } else {
+                let observerSet = NSMutableSet()
+                observerSet.add(observer)
+
+                self.observerHolder.setObject(observerSet, forKey: target)
             }
-            self.observerArray.remove(at: index)
-            self.observerArray.append(observer)
+
         }
     }
 
-    /// 移除指定观察者
-    ///
+    /// 根据唯一标示和生命周期绑定对象移除指定观察者
+    /// - Parameter key: 唯一标示
+    /// - Parameter target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
+    public func removeObserver(key: String, target: AnyObject) {
+        self.manageQueue.async(flags: .barrier) { [weak self, weak target] in
+            guard let `self` = self,
+                let target = target else {
+                    return
+            }
+
+            if let observerForTarget = self.observerHolder.object(forKey: target) {
+                let observerArray = observerForTarget.compactMap({ (obj) -> Observer<T>? in
+                    return obj as? Observer<T>
+                })
+
+                observerArray.forEach { (observer: Observer<T>) in
+                    if observer.key == key {
+                        observerForTarget.remove(observer)
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    /// 根据唯一标示移除指定观察者
     /// - Parameter key: 唯一标示
     public func removeObserver(key: String) {
         self.manageQueue.async(flags: .barrier) { [weak self] in
@@ -73,32 +124,45 @@ open class ObserverSafeManager<T>: NSObject {
                 return
             }
 
-            guard let index = self.observerArray.firstIndex(where: { (o: Observer<T>) -> Bool in
-                return o.key == key
-            }) else {
-                return
+            self.observerHolder.keyEnumerator().allObjects.forEach { (obj) in
+                if let observerForTarget = self.observerHolder.object(forKey: obj as AnyObject) {
+                    let observerArray = observerForTarget.compactMap({ (obj) -> Observer<T>? in
+                        return obj as? Observer<T>
+                    })
+
+                    observerArray.forEach { (observer: Observer<T>) in
+                        if observer.key == key {
+                            observerForTarget.remove(observer)
+                        }
+                    }
+
+                }
             }
-            self.observerArray.remove(at: index)
         }
     }
 
-    /// 移除所有观察者，线程安全
+    /// 根据生命周期绑定对象移除指定观察者
+    /// - Parameter target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
+    public func removeObserver(target: AnyObject) {
+        self.manageQueue.async(flags: .barrier) { [weak self, weak target] in
+            guard let `self` = self,
+                let target = target else {
+                    return
+            }
+
+            self.observerHolder.removeObject(forKey: target)
+
+        }
+    }
+
+    /// 移除所有观察者
     public func removeAll() {
         self.manageQueue.async(flags: .barrier) { [weak self] in
             guard let `self` = self else {
                 return
             }
-            self.cleanAll()
+            self.observerHolder.removeAllObjects()
         }
     }
 
-    /// 移除所有观察者，不会阻塞多线程
-    public func cleanAll() {
-       self.observerArray.removeAll(keepingCapacity: false)
-    }
-
-    deinit {
-        // deinit中不要使用多线程方法
-        cleanAll()
-    }
 }

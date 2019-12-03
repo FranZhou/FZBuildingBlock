@@ -20,11 +20,11 @@ class ObserverViewController: UIViewController {
 
         self.observer = ObserveAble<Int?>(value: nil)
 
-        self.observer?.bindAndFireObserver(key: "observer test1", action: {(value, fireAtOnce) in
+        self.observer?.bindAndFireObserver(key: "observer test1", target: self, action: {(value, fireAtOnce) in
             print("bindAndFireObserver: \(value) -> \(fireAtOnce)")
         })
 
-        self.observer?.fireUntilCompleted(key: "observer test2", immediate: true, action: { (arg0, finish) in
+        self.observer?.fireUntilCompleted(key: "observer test2", target: self, immediate: true, action: { (arg0, finish) in
             let (_, newValue) = arg0
             print("fireUntilCompleted: \(arg0)")
             guard let v = newValue, v%3 == 0  else {
