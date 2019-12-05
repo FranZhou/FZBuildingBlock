@@ -12,6 +12,7 @@ open class FZObserver<T>: NSObject {
     /// value change tuple
     public typealias Change = (old: T, new: T)
 
+    /// observer action
     public typealias Action = (Change) -> Void
 
     /// 观察者唯一标示

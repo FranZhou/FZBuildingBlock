@@ -88,7 +88,9 @@ extension FZObserveAble {
 //        observerManager.removeObserver(target: target)
 //    }
 
-    /// 根据唯一标示和生命周期绑定对象移除指定观察者
+    /// 根据唯一标示和生命周期绑定对象移除指定观察者.
+    /// 当key和target都为nil时，移除所有观察者
+    ///
     /// - Parameter key: key
     /// - Parameter target: target
     public func removeObserver(key: String? = nil, target: AnyObject? = nil) {
@@ -102,7 +104,7 @@ extension FZObserveAble {
             if let target = target {
                 observerManager.removeObserver(target: target)
             } else {
-                // no key no target, do nothing
+                removeAll()
             }
         }
     }
@@ -122,7 +124,7 @@ extension FZObserveAble {
     /// - Parameters:
     ///   - key: 唯一标示
     ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
-    ///   - count: 更新触发的次数，nil 则没有限制
+    ///   - count: 更新触发的次数，nil 或者 <0时，代表没有限制
     ///   - action: 观察者执行Action
     public func bindObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping FZObserver<T>.Action) {
         guard let count = count, count > 0 else {
@@ -148,7 +150,7 @@ extension FZObserveAble {
     /// - Parameters:
     ///   - key: 唯一标示
     ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
-    ///   - count: 更新触发的次数, nil 则没有限制，立即触发的一次回调不回改变 count
+    ///   - count: 更新触发的次数, nil 或者 <0 则没有限制，立即触发的一次回调不会改变 count
     ///   - action: (观察者, 是否为立即触发的回调)
     public func bindAndFireObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping (Change, Bool) -> Void) {
         bindObserver(key: key, target: target, count: count) {

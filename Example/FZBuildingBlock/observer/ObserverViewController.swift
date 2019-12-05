@@ -20,17 +20,23 @@ class ObserverViewController: UIViewController {
 
         self.observer = FZObserveAble<Int?>(value: nil)
 
-        self.observer?.bindAndFireObserver(key: "observer test1", target: self, action: {(value, fireAtOnce) in
-            print("bindAndFireObserver: \(value) -> \(fireAtOnce)")
+        self.observer?.bindObserver(key: "observer test1", target: self, count: 2, action: {(oldVal, newVal) in
+            print("bindObserver: \(String(describing: oldVal)) -> \(String(describing: newVal))")
         })
 
-        self.observer?.fireUntilCompleted(key: "observer test2", target: self, immediate: true, action: { (arg0, finish) in
+        self.observer?.fireUntilCompleted(key: "observer test2", target: self, immediate: true, action: { [weak self](arg0, finish) in
             let (_, newValue) = arg0
             print("fireUntilCompleted: \(arg0)")
             guard let v = newValue, v%3 == 0  else {
                 return
             }
             finish()
+
+            self?.observer?.removeObserver(key: "observer test3", target: self)
+        })
+
+        self.observer?.bindAndFireObserver(key: "observer test3", target: self, action: {(value, fireAtOnce) in
+            print("bindAndFireObserver -----> : \(value) -> \(fireAtOnce)")
         })
 
         self.setUpView()

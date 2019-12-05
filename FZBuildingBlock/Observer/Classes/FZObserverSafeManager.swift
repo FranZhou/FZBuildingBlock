@@ -10,8 +10,11 @@ import Foundation
 /// 观察者管理器, 提供安全的操作方式
 open class FZObserverSafeManager<T>: NSObject {
 
-    private let observerHolder: NSMapTable<AnyObject, NSMutableSet> = {
-        let observerMap = NSMapTable<AnyObject, NSMutableSet>.weakToStrongObjects()
+    /// 所有观察者的持有者。
+    /// 观察者会和一个target做生命周期绑定，当target释放时，绑定到target上的观察者也会释放。
+    /// 这里用NSMutableArray而不是NSMutableSet的原因是为了保证执行顺序。
+    private let observerHolder: NSMapTable<AnyObject, NSMutableArray> = {
+        let observerMap = NSMapTable<AnyObject, NSMutableArray>.weakToStrongObjects()
         return observerMap
     }()
 
@@ -27,8 +30,8 @@ open class FZObserverSafeManager<T>: NSObject {
         } else {
             // 获取所有观察者对象
             guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObserver<T>> in
-                if let observerSet = obj as? NSMutableSet,
-                    let observerArray = Array(observerSet) as? Array<FZObserver<T>> {
+                if let objArray = obj as? NSMutableArray,
+                    let observerArray = Array(objArray) as? Array<FZObserver<T>> {
                     return observerArray
                 }
                 return []
@@ -52,8 +55,8 @@ open class FZObserverSafeManager<T>: NSObject {
 
             // 获取所有观察者对象
             let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObserver<T>> in
-                if let observerSet = obj as? NSMutableSet,
-                    let observerArray = Array(observerSet) as? Array<FZObserver<T>> {
+                if let objArray = obj as? NSMutableArray,
+                    let observerArray = Array(objArray) as? Array<FZObserver<T>> {
                     return observerArray
                 }
                 return []
@@ -78,13 +81,23 @@ open class FZObserverSafeManager<T>: NSObject {
                     return
             }
 
-            if let observerForTarget = self.observerHolder.object(forKey: target) {
-                observerForTarget.add(observer)
-            } else {
-                let observerSet = NSMutableSet()
-                observerSet.add(observer)
+            if let observerArrayForTarget = self.observerHolder.object(forKey: target),
+                let observerArray = observerArrayForTarget as? Array<FZObserver<T>> {
 
-                self.observerHolder.setObject(observerSet, forKey: target)
+                // 移除同一target下相同key的观察者
+                observerArray.forEach { (_observer: FZObserver<T>) in
+                    if observer.key == _observer.key {
+                        observerArrayForTarget.remove(_observer)
+                    }
+                }
+
+                // 记录最新添加的观察者对象
+                observerArrayForTarget.add(observer)
+            } else {
+                let objArray = NSMutableArray()
+                objArray.add(observer)
+
+                self.observerHolder.setObject(objArray, forKey: target)
             }
 
         }
@@ -100,14 +113,12 @@ open class FZObserverSafeManager<T>: NSObject {
                     return
             }
 
-            if let observerForTarget = self.observerHolder.object(forKey: target) {
-                let observerArray = observerForTarget.compactMap({ (obj) -> FZObserver<T>? in
-                    return obj as? FZObserver<T>
-                })
+            if let observerArrayForTarget = self.observerHolder.object(forKey: target),
+                let observerArray = observerArrayForTarget as? Array<FZObserver<T>> {
 
                 observerArray.forEach { (observer: FZObserver<T>) in
                     if observer.key == key {
-                        observerForTarget.remove(observer)
+                        observerArrayForTarget.remove(observer)
                     }
                 }
 
@@ -125,14 +136,12 @@ open class FZObserverSafeManager<T>: NSObject {
             }
 
             self.observerHolder.keyEnumerator().allObjects.forEach { (obj) in
-                if let observerForTarget = self.observerHolder.object(forKey: obj as AnyObject) {
-                    let observerArray = observerForTarget.compactMap({ (obj) -> FZObserver<T>? in
-                        return obj as? FZObserver<T>
-                    })
+                if let observerArrayForTarget = self.observerHolder.object(forKey: obj as AnyObject),
+                    let observerArray = observerArrayForTarget as? Array<FZObserver<T>> {
 
                     observerArray.forEach { (observer: FZObserver<T>) in
                         if observer.key == key {
-                            observerForTarget.remove(observer)
+                            observerArrayForTarget.remove(observer)
                         }
                     }
 
