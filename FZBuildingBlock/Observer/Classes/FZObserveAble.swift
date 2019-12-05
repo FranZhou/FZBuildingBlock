@@ -39,7 +39,7 @@ open class FZObserveAble<T>: NSObject {
         }
     }
 
-    /// 唯一可以更新 value 的方法 需要通过 updateGuard 来判断，只有返回 true 才能更新
+    /// 唯一可以更新 value 的方法 需要通过 updateFilter 来判断，只有返回 true 才能更新
     ///
     /// - Parameter v: 需要更新的 value
     public func update(value: T) {
@@ -51,7 +51,7 @@ open class FZObserveAble<T>: NSObject {
     ///
     /// - Parameters:
     ///   - value: 给一个初始值
-    ///   - updateGuard: 设置一个 guard 用来判断是否能够更新
+    ///   - updateFilter: 设置一个 guard 用来判断是否能够更新
     ///   - setter: 初始化绑定的更新回调
     public init(value: T, updateFilter: FilterAction? = nil, setter: @escaping SetterAction = { _ in }) {
         self.value = value
