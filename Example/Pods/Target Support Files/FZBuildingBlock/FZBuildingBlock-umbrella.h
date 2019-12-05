@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "FZProxy.h"
 
 FOUNDATION_EXPORT double FZBuildingBlockVersionNumber;
 FOUNDATION_EXPORT const unsigned char FZBuildingBlockVersionString[];
