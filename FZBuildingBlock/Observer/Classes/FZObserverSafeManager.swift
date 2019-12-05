@@ -1,5 +1,5 @@
 //
-//  ObserverSafeManager.swift
+//  FZObserverSafeManager.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/2/19.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// 观察者管理器, 提供安全的操作方式
-open class ObserverSafeManager<T>: NSObject {
+open class FZObserverSafeManager<T>: NSObject {
 
     private let observerHolder: NSMapTable<AnyObject, NSMutableSet> = {
         let observerMap = NSMapTable<AnyObject, NSMutableSet>.weakToStrongObjects()
@@ -26,9 +26,9 @@ open class ObserverSafeManager<T>: NSObject {
             return true
         } else {
             // 获取所有观察者对象
-            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<Observer<T>> in
+            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObserver<T>> in
                 if let observerSet = obj as? NSMutableSet,
-                    let observerArray = Array(observerSet) as? Array<Observer<T>> {
+                    let observerArray = Array(observerSet) as? Array<FZObserver<T>> {
                     return observerArray
                 }
                 return []
@@ -51,9 +51,9 @@ open class ObserverSafeManager<T>: NSObject {
             }
 
             // 获取所有观察者对象
-            let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<Observer<T>> in
+            let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObserver<T>> in
                 if let observerSet = obj as? NSMutableSet,
-                    let observerArray = Array(observerSet) as? Array<Observer<T>> {
+                    let observerArray = Array(observerSet) as? Array<FZObserver<T>> {
                     return observerArray
                 }
                 return []
@@ -71,7 +71,7 @@ open class ObserverSafeManager<T>: NSObject {
     /// 添加观察者对象
     /// - Parameter observer: 观察者
     /// - Parameter target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
-    public func append(observer: Observer<T>, target: AnyObject) {
+    public func append(observer: FZObserver<T>, target: AnyObject) {
         self.manageQueue.async(flags: .barrier) { [weak self, weak target] in
             guard let `self` = self,
                 let target = target else {
@@ -101,11 +101,11 @@ open class ObserverSafeManager<T>: NSObject {
             }
 
             if let observerForTarget = self.observerHolder.object(forKey: target) {
-                let observerArray = observerForTarget.compactMap({ (obj) -> Observer<T>? in
-                    return obj as? Observer<T>
+                let observerArray = observerForTarget.compactMap({ (obj) -> FZObserver<T>? in
+                    return obj as? FZObserver<T>
                 })
 
-                observerArray.forEach { (observer: Observer<T>) in
+                observerArray.forEach { (observer: FZObserver<T>) in
                     if observer.key == key {
                         observerForTarget.remove(observer)
                     }
@@ -126,11 +126,11 @@ open class ObserverSafeManager<T>: NSObject {
 
             self.observerHolder.keyEnumerator().allObjects.forEach { (obj) in
                 if let observerForTarget = self.observerHolder.object(forKey: obj as AnyObject) {
-                    let observerArray = observerForTarget.compactMap({ (obj) -> Observer<T>? in
-                        return obj as? Observer<T>
+                    let observerArray = observerForTarget.compactMap({ (obj) -> FZObserver<T>? in
+                        return obj as? FZObserver<T>
                     })
 
-                    observerArray.forEach { (observer: Observer<T>) in
+                    observerArray.forEach { (observer: FZObserver<T>) in
                         if observer.key == key {
                             observerForTarget.remove(observer)
                         }

@@ -8,7 +8,7 @@
 import Foundation
 
 /// 可观察对象， T 为 value的类型
-open class ObserveAble<T>: NSObject {
+open class FZObserveAble<T>: NSObject {
 
     /// value change tuple
     public typealias Change = (old: T, new: T)
@@ -29,7 +29,7 @@ open class ObserveAble<T>: NSObject {
     public var setterAction: SetterAction
 
     /// 所有观察者的管理器
-    public var observerManager = ObserverSafeManager<T>()
+    public var observerManager = FZObserverSafeManager<T>()
 
     /// 最新的 value
     public private(set) var value: T {
@@ -62,7 +62,7 @@ open class ObserveAble<T>: NSObject {
 }
 
 // MARK: - 观察者管理操作
-extension ObserveAble {
+extension FZObserveAble {
 
     /// 是否没有观察者了
     public var isEmpty: Bool {
@@ -115,7 +115,7 @@ extension ObserveAble {
 }
 
 // MARK: - 添加观察者, 添加之后需要注意移除操作
-extension ObserveAble {
+extension FZObserveAble {
 
     /// 绑定观察者
     ///
@@ -124,15 +124,15 @@ extension ObserveAble {
     ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - count: 更新触发的次数，nil 则没有限制
     ///   - action: 观察者执行Action
-    public func bindObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping Observer<T>.Action) {
+    public func bindObserver(key: String, target: AnyObject, count: Int? = nil, action: @escaping FZObserver<T>.Action) {
         guard let count = count, count > 0 else {
-            observerManager.append(observer: Observer<T>(key: key, action: action), target: target)
+            observerManager.append(observer: FZObserver<T>(key: key, action: action), target: target)
             return
         }
 
         let counter = createCounter(start: count)
 
-        observerManager.append(observer: Observer<T>(key: key, action: { [weak self] t in
+        observerManager.append(observer: FZObserver<T>(key: key, action: { [weak self] t in
             action(t)
 
             // 每次触发更新，如果 count == 0 则 remove, counter 会自减
@@ -163,7 +163,7 @@ extension ObserveAble {
     ///   - key: 唯一标示
     ///   - target: 观察者生命周期绑定对象，当target被释放时，相应的观察者也会自动释放
     ///   - action: 观察者
-    public func fireOnce(key: String, target: AnyObject, action: @escaping Observer<T>.Action) {
+    public func fireOnce(key: String, target: AnyObject, action: @escaping FZObserver<T>.Action) {
         bindObserver(key: key, target: target, count: 1, action: action)
     }
 

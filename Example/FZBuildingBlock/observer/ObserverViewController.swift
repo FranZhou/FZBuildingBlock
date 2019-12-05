@@ -11,14 +11,14 @@ import FZBuildingBlock
 
 class ObserverViewController: UIViewController {
 
-    var observer: ObserveAble<Int?>?
+    var observer: FZObserveAble<Int?>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
-        self.observer = ObserveAble<Int?>(value: nil)
+        self.observer = FZObserveAble<Int?>(value: nil)
 
         self.observer?.bindAndFireObserver(key: "observer test1", target: self, action: {(value, fireAtOnce) in
             print("bindAndFireObserver: \(value) -> \(fireAtOnce)")

@@ -1,5 +1,5 @@
 //
-//  Observer.swift
+//  FZObserver.swift
 //  FZBuildingBlock
 //
 //  Created by FranZhou on 2019/2/19.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// 观察者对象
-open class Observer<T>: NSObject {
+open class FZObserver<T>: NSObject {
     /// value change tuple
     public typealias Change = (old: T, new: T)
 
@@ -34,7 +34,7 @@ open class Observer<T>: NSObject {
 
     // MARK: - Equatable protocol
 
-    public static func == (lhs: Observer<T>, rhs: Observer<T>) -> Bool {
+    public static func == (lhs: FZObserver<T>, rhs: FZObserver<T>) -> Bool {
         return lhs.key == rhs.key
     }
 
