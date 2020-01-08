@@ -46,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let res2 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/oc_router_action", extraParameters: ["name": "FranZhou", "age": 28])
         print(String(describing: res2))
+        
+        FZRouter.defaultRouter.appendRouter(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter")
+        
+        let res3 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter", extraParameters: ["name": "FranZhou", "age": 29])
+        print(String(describing: res3?.targetActionReturnValue))
 
 //        FZPermissionLocation.shared.requestLocationPermision(for: .whenInUse) { (status) in
 //            print(status)

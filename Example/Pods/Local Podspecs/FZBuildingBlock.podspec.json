@@ -1,6 +1,6 @@
 {
   "name": "FZBuildingBlock",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "summary": "提供开发中最基础的功能组件",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/FranZhou/FZBuildingBlock",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/FranZhou/FZBuildingBlock.git",
-    "tag": "0.3.1"
+    "tag": "0.3.2"
   },
   "platforms": {
     "ios": "8.0"

@@ -39,6 +39,9 @@ extension FZRouterPlistLoader {
 
 extension FZRouterPlistLoader: FZRouterLoaderProtocol {
 
+    
+    /// 加载通过plist导入的路由
+    /// - Parameter filePath: 路由文件路径
     fileprivate func routerModel(withFilePath filePath: String) -> [FZRouterModelProtocol]? {
 
         var routerModelArray: [FZRouterModelProtocol]?
@@ -107,6 +110,37 @@ extension FZRouterPlistLoader: FZRouterLoaderProtocol {
 
         return routerModelArray
     }
+    
+    
+    /// 加载url字符串路由
+    /// - Parameter url: url string
+    fileprivate func routerModel(withRouterURL url: String) -> FZRouterModelProtocol?{
+        guard let routerURL = URL(string: url),
+            let routerKey = FZRouterURLUtil.key(withRouterURL: url) else{
+                return nil
+        }
+        
+        let path = routerURL.relativePath
+        let pathArray = path.split(separator: "/").filter { (substring) -> Bool in
+            return substring != ""
+        }
+        
+        if pathArray.count == 2 {
+            let targetName = String(pathArray[0].first!).uppercased() + String(pathArray[0].dropFirst())
+            let actionValue = String(pathArray[1])
+            
+            if let targetObject = target(forName: targetName){
+                let selector = action(forName: actionValue)
+                
+                if (targetObject as AnyObject).responds(to: selector) {
+                    let routerModel = FZRouterModel(routerKey: routerKey, target: targetObject, selector: selector)
+                    return routerModel
+                }
+            }
+        }
+        
+        return nil
+    }
 
     public func loadRouter(withFilePath filePath: String, router: FZRouter) {
         router.routerManager.removeAllRouter()
@@ -122,11 +156,20 @@ extension FZRouterPlistLoader: FZRouterLoaderProtocol {
     }
 
     public func loadRouter(withRouterURLs urls: [String], router: FZRouter) {
-
+        router.routerManager.removeAllRouter()
+        urls.forEach { [weak self, weak router](url) in
+            guard let `self` = self,
+                let router = router else{
+                    return
+            }
+            self.appendRouter(withRouterURL: url, router: router)
+        }
     }
 
     public func appendRouter(withRouterURL url: String, router: FZRouter) {
-
+        if let routerModel = routerModel(withRouterURL: url){
+            router.routerManager.add(router: routerModel)
+        }
     }
 
 }

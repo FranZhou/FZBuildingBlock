@@ -19,7 +19,7 @@ open class FZRouterURLUtil: NSObject {
 
         let path = routerURL.relativePath
 
-        return "\(scheme)://\(host)/\(path)"
+        return "\(scheme)://\(host)\(path)"
     }
 
     @objc public class func urlParameters(withRouterURL url: String) -> [String: AnyObject]? {
