@@ -20,7 +20,7 @@ public final class FZProxy: NSObject {
         super.init()
     }
 
-    public class func proxyWithTarget(target: NSObject) -> FZProxy {
+    public class func proxy(withTarget target: NSObject) -> FZProxy {
         return FZProxy(target: target)
     }
 
