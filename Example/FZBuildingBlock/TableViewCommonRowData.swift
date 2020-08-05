@@ -9,9 +9,8 @@
 import Foundation
 import FZBuildingBlock
 
+class TableViewCommonRowData: FZTableViewRowData {
 
-class TableViewCommonRowData: FZTableViewRowData{
-    
     /// cell data
     @objc open var cellData: Any?
 
@@ -20,5 +19,5 @@ class TableViewCommonRowData: FZTableViewRowData{
 
     /// cell class name
     @objc open var cellClassName: String?
-    
+
 }

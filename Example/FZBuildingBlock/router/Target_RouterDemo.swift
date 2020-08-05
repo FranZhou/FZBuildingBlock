@@ -21,7 +21,7 @@ class Target_RouterDemo: NSObject {
         dataPacket.returnValue = "result"
 
     }
-    
+
     @objc class func urlRouter(_ dataPacket: FZRouterDataPacketProtocol) {
         if let params = dataPacket.parameters {
             print(params.description)

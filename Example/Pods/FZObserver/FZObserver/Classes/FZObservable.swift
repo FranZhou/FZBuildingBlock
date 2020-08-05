@@ -7,10 +7,9 @@
 
 import Foundation
 
-
 /// 可观察对象
 final class FZObservable<T>: Equatable, Hashable {
-    
+
     /// 观察者唯一标示
     public let key: String
 
@@ -21,15 +20,15 @@ final class FZObservable<T>: Equatable, Hashable {
         self.key = key
         self.action = action
     }
-    
+
     // MARK: - Hashable
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(key.hashValue)
     }
-    
-    public var hashValue: Int{
-        get{
+
+    public var hashValue: Int {
+        get {
             return key.hashValue
         }
     }
@@ -39,5 +38,5 @@ final class FZObservable<T>: Equatable, Hashable {
     public static func == (lhs: FZObservable<T>, rhs: FZObservable<T>) -> Bool {
         return lhs.key == rhs.key
     }
-    
+
 }

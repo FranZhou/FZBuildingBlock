@@ -9,14 +9,13 @@ import UIKit
 
 @available(iOS 9.0, *)
 open class FZTableViewRowDataAfteriOS9: FZTableViewRowData {
-    
-    public typealias CellCanFocusClosure = TableViewIndexPathBoolClosure
-    
-    //MARK: - dataSource
-    
 
-    //MARK: - delegate
-    
+    public typealias CellCanFocusClosure = TableViewIndexPathBoolClosure
+
+    // MARK: - dataSource
+
+    // MARK: - delegate
+
     /// optional func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool
     @objc open var cellCanFocus: CellCanFocusClosure?
 

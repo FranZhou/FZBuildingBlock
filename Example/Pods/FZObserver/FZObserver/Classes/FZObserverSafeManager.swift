@@ -138,7 +138,7 @@ final class FZObserverSafeManager<T> {
             self.observerHolder.keyEnumerator().allObjects.forEach { (obj) in
                 if let observerArrayForTarget = self.observerHolder.object(forKey: obj as AnyObject),
                     let observerArray = observerArrayForTarget as? Array<FZObservable<T>> {
-                    
+
                     observerArray.forEach { (observer: FZObservable<T>) in
                         if observer.key == key {
                             observerArrayForTarget.remove(observer)

@@ -30,7 +30,7 @@ extension FZTableView {
     open func defaultConfig() {
 
         self.separatorStyle = .none
-        
+
         if #available(iOS 11.0, *) {
             self.contentInsetAdjustmentBehavior = .never
         }

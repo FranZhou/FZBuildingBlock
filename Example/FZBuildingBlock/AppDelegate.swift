@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let res2 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerTest/oc_router_action", extraParameters: ["name": "FranZhou", "age": 28])
         print(String(describing: res2))
-        
+
         FZRouter.defaultRouter.appendRouter(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter")
-        
+
         let res3 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter", extraParameters: ["name": "FranZhou", "age": 29])
         print(String(describing: res3?.returnValue))
 
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        FZPermissionMicrophone.shared.requestMicrophonePermission{ (status) in
+        FZPermissionMicrophone.shared.requestMicrophonePermission { (status) in
             print(status)
         }
 
@@ -90,11 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FZPermissionPhotoLibrary.shared.requestPhotoLibraryPermission { (status) in
             print(status)
         }
-        
+
         FZPermissionEvent.shared.requestEventPermision(for: .event) { (status) in
             print(status)
         }
-        
+
         FZPermissionEvent.shared.requestEventPermision(for: .reminder) { (status) in
             print(status)
         }

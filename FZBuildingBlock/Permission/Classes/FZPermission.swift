@@ -8,7 +8,7 @@
 import UIKit
 
 open class FZPermission: NSObject {
-    
+
     public typealias FZPermissionCallBack = (FZPermissionStatus) -> Void
 
     public class func requestPermission(for type: FZPermissionType, callback: @escaping FZPermissionCallBack) {
