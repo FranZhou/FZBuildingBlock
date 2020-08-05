@@ -57,7 +57,7 @@ public class FZPermissionNotification: NSObject {
 
     }
 
-    public func requestNotificationPermision(for type: FZPermissionNotificationOptions, callback: @escaping FZPermissionCallBack) {
+    public func requestNotificationPermision(for type: FZPermissionNotificationOptions, callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.notification(type).containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.notification(type).missingKeysDescription ?? "") not found in Info.plist"))
             return

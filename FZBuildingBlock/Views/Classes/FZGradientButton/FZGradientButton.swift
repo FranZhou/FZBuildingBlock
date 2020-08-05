@@ -8,7 +8,7 @@
 import Foundation
 
 /// Displays a custom button of the gradient
-open class FZGradientButton: UIButton {
+open class FZGradientButton: FZButton {
 
     fileprivate typealias FZButtonStateGradient = (colors: [UIColor], locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint)
 

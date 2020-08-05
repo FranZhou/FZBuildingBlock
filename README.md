@@ -9,12 +9,11 @@
 
 Extensions 模块，为控件提供经常需要使用的扩展<br/>
 Tools 模块，提供开发中的一些简单的功能集合<br/>
-Observer 模块，简单的观察者模式实现<br/>
 Views 模块，个性化视图，快速开发时使用<br/>
-Router 模块，路由组件，通过url映射相应的Target-Action<br/>
 Permission 模块，权限申请，申请系统相应功能的权限<br/>
-  
-  
+Router模块，路由调度功能，已经独立提取出来:  https://github.com/FranZhou/FZRouterSwift <br/>
+Observer模块，观察者监听功能，已经独立提取出来:  https://github.com/FranZhou/FZObserver  <br/>
+
 
 ## Requirements
 

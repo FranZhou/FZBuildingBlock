@@ -31,7 +31,7 @@ public class FZPermissionAddressBook: NSObject {
         }
     }
 
-    public func requestAddressBookPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestAddressBookPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.addressBook.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.addressBook.missingKeysDescription ?? "") not found in Info.plist"))
             return

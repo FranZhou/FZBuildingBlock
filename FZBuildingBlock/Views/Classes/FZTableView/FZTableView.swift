@@ -30,11 +30,8 @@ extension FZTableView {
     open func defaultConfig() {
 
         self.separatorStyle = .none
-
+        
         if #available(iOS 11.0, *) {
-            self.estimatedRowHeight = 0
-            self.estimatedSectionHeaderHeight = 0
-            self.estimatedSectionFooterHeight = 0
             self.contentInsetAdjustmentBehavior = .never
         }
 
@@ -43,7 +40,7 @@ extension FZTableView {
     /// 配合tableViewManager使用，渲染tableview
     ///
     /// - Parameter data: FZTableViewSection array
-    open func updateTableView(withData data: [FZTableViewSection]? = nil) {
+    open func updateTableViewManager(withData data: FZTableViewSectionAndRowData? = nil) {
 
         if let manager = tableViewManager {
             if let delegate = self.delegate,
@@ -56,7 +53,9 @@ extension FZTableView {
             }
         }
 
-        tableViewManager?.updateManager(withData: data)
-        super.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableViewManager?.tableSectionsAndRowsData = data
+            self?.reloadData()
+        }
     }
 }

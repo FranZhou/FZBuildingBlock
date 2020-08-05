@@ -7,6 +7,9 @@ target 'FZBuildingBlock_Example' do
   
   pod 'MLeaksFinder'
   
+  pod 'FZObserver'
+  pod 'FZRouterSwift'
+  
   target 'FZBuildingBlock_Tests' do
     inherit! :search_paths
 

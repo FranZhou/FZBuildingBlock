@@ -29,7 +29,7 @@ public class FZPermissionEvent: NSObject {
         }
     }
 
-    public func requestEventPermision(for type: EKEntityType, callback: @escaping FZPermissionCallBack) {
+    public func requestEventPermision(for type: EKEntityType, callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.event(type).containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.event(type).missingKeysDescription ?? "") not found in Info.plist"))
             return

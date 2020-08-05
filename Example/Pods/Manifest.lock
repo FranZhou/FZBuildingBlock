@@ -1,29 +1,31 @@
 PODS:
   - FBRetainCycleDetector (0.1.4)
-  - FZBuildingBlock (0.3.2):
-    - FZBuildingBlock/Extensions (= 0.3.2)
-    - FZBuildingBlock/Observer (= 0.3.2)
-    - FZBuildingBlock/Permission (= 0.3.2)
-    - FZBuildingBlock/Router (= 0.3.2)
-    - FZBuildingBlock/Tools (= 0.3.2)
-    - FZBuildingBlock/Views (= 0.3.2)
-  - FZBuildingBlock/Extensions (0.3.2)
-  - FZBuildingBlock/Observer (0.3.2)
-  - FZBuildingBlock/Permission (0.3.2)
-  - FZBuildingBlock/Router (0.3.2)
-  - FZBuildingBlock/Tools (0.3.2)
-  - FZBuildingBlock/Views (0.3.2):
+  - FZBuildingBlock (0.3.3):
+    - FZBuildingBlock/Extensions (= 0.3.3)
+    - FZBuildingBlock/Permission (= 0.3.3)
+    - FZBuildingBlock/Tools (= 0.3.3)
+    - FZBuildingBlock/Views (= 0.3.3)
+  - FZBuildingBlock/Extensions (0.3.3)
+  - FZBuildingBlock/Permission (0.3.3)
+  - FZBuildingBlock/Tools (0.3.3)
+  - FZBuildingBlock/Views (0.3.3):
     - FZBuildingBlock/Extensions
+  - FZObserver (0.1.0)
+  - FZRouterSwift (0.1.0)
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
 
 DEPENDENCIES:
   - FZBuildingBlock (from `../`)
+  - FZObserver
+  - FZRouterSwift
   - MLeaksFinder
 
 SPEC REPOS:
   trunk:
     - FBRetainCycleDetector
+    - FZObserver
+    - FZRouterSwift
     - MLeaksFinder
 
 EXTERNAL SOURCES:
@@ -32,9 +34,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FZBuildingBlock: 6481a007e94a4458482097378a72a7652f314e79
+  FZBuildingBlock: 64d1328b6d330e0856a6c7dfed6887255c3b8ef2
+  FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
+  FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
 
-PODFILE CHECKSUM: 4376e1ed0214b735e89a0ce513016bc2ca3e99af
+PODFILE CHECKSUM: 5a1ef85f5b4347cfa2e6b0d238cc04eda2eb680b
 
 COCOAPODS: 1.9.0.beta.2

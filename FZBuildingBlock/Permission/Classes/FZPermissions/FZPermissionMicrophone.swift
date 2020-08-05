@@ -27,7 +27,7 @@ public class FZPermissionMicrophone: NSObject {
         }
     }
 
-    public func requestMicrophonePermission(callback: @escaping FZPermissionCallBack) {
+    public func requestMicrophonePermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.microphone.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.microphone.missingKeysDescription ?? "") not found in Info.plist"))
             return

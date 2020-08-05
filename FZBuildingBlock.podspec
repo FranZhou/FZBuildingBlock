@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'FZBuildingBlock'
-    s.version          = '0.3.2'
+    s.version          = '0.3.3'
     s.summary          = '提供开发中最基础的功能组件'
     
     # This description is used to generate tags and improve search results.
@@ -46,12 +46,6 @@ Pod::Spec.new do |s|
 #        }
     end
     
-    # 观察者
-    s.subspec 'Observer' do |s_observer|
-        s_observer.source_files = 'FZBuildingBlock/Observer/Classes/**/*'
-        s_observer.frameworks = 'Foundation'
-    end
-    
     # 工具目录
     s.subspec 'Tools' do |s_tools|
         s_tools.source_files = 'FZBuildingBlock/Tools/Classes/**/*'
@@ -67,12 +61,6 @@ Pod::Spec.new do |s|
         s_views.source_files = 'FZBuildingBlock/Views/Classes/**/*'
         s_views.frameworks = 'UIKit'
         s_views.dependency 'FZBuildingBlock/Extensions'
-    end
-    
-    # 自定义路由
-    s.subspec 'Router' do |s_router|
-        s_router.source_files = 'FZBuildingBlock/Router/Classes/**/*'
-        s_router.frameworks = 'Foundation'
     end
     
     # 权限申请

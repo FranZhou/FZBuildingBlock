@@ -38,7 +38,7 @@ public class FZPermissionMotion: NSObject {
 
     }
 
-    public func requestMotionPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestMotionPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.motion.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.motion.missingKeysDescription ?? "") not found in Info.plist"))
             return

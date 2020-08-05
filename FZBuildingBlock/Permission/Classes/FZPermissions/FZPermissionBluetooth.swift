@@ -15,7 +15,7 @@ public class FZPermissionBluetooth: NSObject {
     private var bluetoothManagerArray: [FZPermissionBluetoothManager] = []
 
     public var status: FZPermissionStatus {
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.1, *) {
             let status = CBPeripheralManager.authorization
 
             switch status {
@@ -49,7 +49,7 @@ public class FZPermissionBluetooth: NSObject {
         }
     }
 
-    public func requestBluetoothPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestBluetoothPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.bluetooth.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.bluetooth.missingKeysDescription ?? "") not found in Info.plist"))
             return

@@ -29,7 +29,7 @@ public class FZPermissionCamera: NSObject {
         }
     }
 
-    public func requestCameraPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestCameraPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.camera.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.camera.missingKeysDescription ?? "") not found in Info.plist"))
             return

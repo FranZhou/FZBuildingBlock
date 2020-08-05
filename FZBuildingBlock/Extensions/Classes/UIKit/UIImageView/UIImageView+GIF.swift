@@ -57,7 +57,7 @@ extension FZBuildingBlockWrapper where Base: UIImageView {
         loadGIFFrames(gifFrames: gif)
     }
 
-    public func fz_loadGif(withData data: Data) {
+    public func loadGif(withData data: Data) {
         guard let gif = UIImage.fz.loadGIF(withData: data) else {
             return
         }

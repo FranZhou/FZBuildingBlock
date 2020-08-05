@@ -29,7 +29,7 @@ public class FZPermissionPhotoLibrary: NSObject {
         }
     }
 
-    public func requestPhotoLibraryPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestPhotoLibraryPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.photoLibrary.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.photoLibrary.missingKeysDescription ?? "") not found in Info.plist"))
             return

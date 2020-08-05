@@ -7,15 +7,15 @@
 //
 
 #import "Target_OCRouterDemo.h"
-#import <FZBuildingBlock/FZBuildingBlock-Swift.h>
+#import <FZRouterSwift/FZRouterSwift-Swift.h>
 
 @implementation Target_OCRouterDemo
 
-+ (void)testOCRouterAction:(FZRouterDataPacket *)dataPacket{
++ (void)testOCRouterAction:(id<FZRouterDataPacketProtocol>)dataPacket{
     
     NSLog(@"%@", dataPacket.parameters);
     
-    dataPacket.targetActionReturnValue = @"Target_OCRouterDemo";
+    dataPacket.returnValue = @"Target_OCRouterDemo";
 }
 
 @end

@@ -8,23 +8,24 @@
 
 import UIKit
 import FZBuildingBlock
+import FZObserver
 
 class ObserverViewController: UIViewController {
 
-    var observer: FZObserveAble<Int?>?
+    var observer: FZObserver<Int?>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
-        self.observer = FZObserveAble<Int?>(value: nil)
+        self.observer = FZObserver<Int?>(wrappedValue: nil)
 
-        self.observer?.bindObserver(key: "observer test1", target: self, count: 2, action: {(oldVal, newVal) in
+        self.observer?.addObserver(key: "observer test1", target: self, count: 2, action: {(oldVal, newVal) in
             print("bindObserver: \(String(describing: oldVal)) -> \(String(describing: newVal))")
         })
 
-        self.observer?.fireUntilCompleted(key: "observer test2", target: self, immediate: true, action: { [weak self](arg0, finish) in
+        self.observer?.fireUntilCompleted(key: "observer test2", target: self, immediately: true, action: { [weak self](arg0, finish) in
             let (_, newValue) = arg0
             print("fireUntilCompleted: \(arg0)")
             guard let v = newValue, v%3 == 0  else {
@@ -35,7 +36,7 @@ class ObserverViewController: UIViewController {
             self?.observer?.removeObserver(key: "observer test3", target: self)
         })
 
-        self.observer?.bindAndFireObserver(key: "observer test3", target: self, action: {(value, fireAtOnce) in
+        self.observer?.addAndFireObserver(key: "observer test3", target: self, action: {(value, fireAtOnce) in
             print("bindAndFireObserver -----> : \(value) -> \(fireAtOnce)")
         })
 
@@ -55,7 +56,7 @@ class ObserverViewController: UIViewController {
     }
 
     @objc func btnClickAction(sender: Any) {
-        self.observer?.update(value: Int(arc4random()))
+        self.observer?.wrappedValue = Int(arc4random())
     }
 
     deinit {

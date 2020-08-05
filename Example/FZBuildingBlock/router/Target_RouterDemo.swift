@@ -7,27 +7,27 @@
 //
 
 import UIKit
-import FZBuildingBlock
+import FZRouterSwift
 
 @objc(Target_RouterDemo)
 class Target_RouterDemo: NSObject {
 
-    @objc class func testRouterAction(_ dataPacket: FZRouterDataPacket) {
+    @objc class func testRouterAction(_ dataPacket: FZRouterDataPacketProtocol) {
 
         if let params = dataPacket.parameters {
             print(params.description)
         }
 
-        dataPacket.targetActionReturnValue = "result"
+        dataPacket.returnValue = "result"
 
     }
     
-    @objc class func urlRouter(_ dataPacket: FZRouterDataPacket) {
+    @objc class func urlRouter(_ dataPacket: FZRouterDataPacketProtocol) {
         if let params = dataPacket.parameters {
             print(params.description)
         }
 
-        dataPacket.targetActionReturnValue = "urlRouter"
+        dataPacket.returnValue = "urlRouter"
 
     }
 

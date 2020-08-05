@@ -30,7 +30,7 @@ public class FZPermissionMediaLibrary: NSObject {
         }
     }
 
-    public func requestMediaLibraryPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestMediaLibraryPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.mediaLibrary.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.mediaLibrary.missingKeysDescription ?? "") not found in Info.plist"))
             return

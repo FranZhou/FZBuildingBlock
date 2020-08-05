@@ -30,7 +30,7 @@ public class FZPermissionSpeechRecognizer: NSObject {
         }
     }
 
-    public func requestSpeechRecognizerPermission(callback: @escaping FZPermissionCallBack) {
+    public func requestSpeechRecognizerPermission(callback: @escaping FZPermission.FZPermissionCallBack) {
         guard FZPermissionType.speechRecognizer.containsAllUsageDescriptionKeyInInfoPlist else {
             callback(.disabled("WARNING: \(FZPermissionType.speechRecognizer.missingKeysDescription ?? "") not found in Info.plist"))
             return

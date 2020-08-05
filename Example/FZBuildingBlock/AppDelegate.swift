@@ -8,6 +8,7 @@
 
 import UIKit
 import FZBuildingBlock
+import FZRouterSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,53 +51,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FZRouter.defaultRouter.appendRouter(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter")
         
         let res3 = try? FZRouter.defaultRouter.router(withRouterURL: "fran://www.franzhou.com/routerDemo/urlRouter", extraParameters: ["name": "FranZhou", "age": 29])
-        print(String(describing: res3?.targetActionReturnValue))
+        print(String(describing: res3?.returnValue))
 
-//        FZPermissionLocation.shared.requestLocationPermision(for: .whenInUse) { (status) in
-//            print(status)
-//        }
-//
-//        FZPermissionLocation.shared.requestLocationPermision(for: .always) { (status) in
-//            print(status)
-//        }
-//
-//        FZPermissionContacts.shared.requestContactsPermission(for: .contacts) { (status) in
-//            print(status)
-//        }
-//
-//        FZPermissionAddressBook.shared.requestAddressBookPermission { (status) in
-//            print(status)
-//        }
-//
-//        if #available(iOS 12.0, *) {
-//            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert, .provisional]) { (status) in
-//                print(status)
-//            }
-//        } else {
-//            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert]) { (status) in
-//                print(status)
-//            }
-//        }
-//
-//        FZPermissionMicrophone.shared.requestMicrophonePermission{ (status) in
-//            print(status)
-//        }
-//
-//        FZPermissionCamera.shared.requestCameraPermission { (status) in
-//            print(status)
-//        }
-//
-//        FZPermissionPhotoLibrary.shared.requestPhotoLibraryPermission { (status) in
-//            print(status)
-//        }
-//        
-//        FZPermissionEvent.shared.requestEventPermision(for: .event) { (status) in
-//            print(status)
-//        }
-//        
-//        FZPermissionEvent.shared.requestEventPermision(for: .reminder) { (status) in
-//            print(status)
-//        }
+        FZPermissionLocation.shared.requestLocationPermision(for: .whenInUse) { (status) in
+            print(status)
+        }
+
+        FZPermissionLocation.shared.requestLocationPermision(for: .always) { (status) in
+            print(status)
+        }
+
+        FZPermissionContacts.shared.requestContactsPermission(for: .contacts) { (status) in
+            print(status)
+        }
+
+        FZPermissionAddressBook.shared.requestAddressBookPermission { (status) in
+            print(status)
+        }
+
+        if #available(iOS 12.0, *) {
+            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert, .provisional]) { (status) in
+                print(status)
+            }
+        } else {
+            FZPermissionNotification.shared.requestNotificationPermision(for: [.badge, .sound, .alert]) { (status) in
+                print(status)
+            }
+        }
+
+        FZPermissionMicrophone.shared.requestMicrophonePermission{ (status) in
+            print(status)
+        }
+
+        FZPermissionCamera.shared.requestCameraPermission { (status) in
+            print(status)
+        }
+
+        FZPermissionPhotoLibrary.shared.requestPhotoLibraryPermission { (status) in
+            print(status)
+        }
+        
+        FZPermissionEvent.shared.requestEventPermision(for: .event) { (status) in
+            print(status)
+        }
+        
+        FZPermissionEvent.shared.requestEventPermision(for: .reminder) { (status) in
+            print(status)
+        }
 
         FZPermissionBluetooth.shared.requestBluetoothPermission { (status) in
             print(status)
