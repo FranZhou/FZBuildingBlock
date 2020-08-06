@@ -30,7 +30,7 @@ class ImageColorViewController: UIViewController {
         btn.fz.width = 200
         btn.fz.height = 50
         btn.setTitle("切换背景颜色", for: .normal)
-        btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
+        btn.addTarget(FZProxy.proxy(withTarget: self), action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
         btn.setVerticallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .normal)
         btn.setHorizontallyGradient(with: [UIColor.fz.randomColor(), UIColor.fz.randomColor(), UIColor.fz.randomColor()], for: .highlighted)
 

@@ -24,6 +24,8 @@ open class FZTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 这里的作用是隐藏父类的delegate属性
+    /// super.delegate永远指向自己， 新设置的delegate用fileprivate weak var _delegate: UITextFieldDelegate?来存储
     override weak open var delegate: UITextFieldDelegate? {
         set {
             _delegate = newValue
@@ -57,6 +59,7 @@ extension FZTextField {
 
     fileprivate func setupDefaultConfig() {
         // The delegate is set to self by default
+        // super is important
         super.delegate = self
 
         // add notification
@@ -105,8 +108,8 @@ extension FZTextField {
         var realRect = bounds
         realRect.origin.x += edgeInsets.left
         realRect.origin.y += edgeInsets.top
-        realRect.size.width += edgeInsets.left + edgeInsets.right
-        realRect.size.height += edgeInsets.top + edgeInsets.bottom
+        realRect.size.width -= edgeInsets.left + edgeInsets.right
+        realRect.size.height -= edgeInsets.top + edgeInsets.bottom
 
         return realRect
     }
@@ -239,6 +242,17 @@ extension FZTextField: UITextFieldDelegate {
         }
 
         return shouldChangeCharacters
+    }
+
+    @available(iOS 13.0, *)
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let _delegate = delegate {
+            _delegate.textFieldDidChangeSelection?(textField)
+        }
+
+        for _delegate in delegateHandlers {
+            _delegate.textFieldDidChangeSelection?(textField)
+        }
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {

@@ -40,24 +40,27 @@ class KeyboardObserverViewController: UIViewController {
         textField.layer.borderColor = UIColor.fz.randomColor().cgColor
         textField.delegate = self
         textField.maxInputLength = 10
-        textField.edgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textField.edgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         textField.placeholder = "请输入"
         textField.frame = CGRect(x: 50, y: 100, width: 200, height: 50)
         self.view.addSubview(textField)
 
         let textView = FZTextView()
+        textView.text = "dasfas"
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.fz.randomColor().cgColor
         textView.frame = CGRect(x: 50, y: 300, width: 250, height: 100)
         textView.delegate = self
-        textView.maxInputLength = 20
-        textView.placeholderText = "请输入"
+        textView.maxInputLength = 200
+        textView.placeholderText = "please input(请输入):"
         self.view.addSubview(textView)
 
     }
 
     deinit {
         keyboardObserver.stopKeyboardObserver()
+
+        print("KeyboardObserverViewController deinit")
     }
 
 }

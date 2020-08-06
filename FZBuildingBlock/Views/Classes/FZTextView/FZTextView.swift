@@ -29,14 +29,16 @@ open class FZTextView: UITextView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 这里的作用是隐藏父类的delegate属性
+    /// super.delegate永远指向自己， 新设置的delegate用fileprivate weak var _delegate: UITextViewDelegate?来存储
     weak override open var delegate: UITextViewDelegate? {
-        set {
-            _delegate = newValue
-        }
-        get {
-            return _delegate
-        }
-    }
+           set {
+               _delegate = newValue
+           }
+           get {
+               return _delegate
+           }
+       }
 
     /// stored property of delegate
     fileprivate weak var _delegate: UITextViewDelegate?
@@ -49,16 +51,28 @@ open class FZTextView: UITextView {
 
     /// placeholder Label
     @objc open fileprivate(set) var placeholderLabel: UILabel = {
+        let textView = UITextView()
+        textView.text = " "
+
         let label = UILabel()
         label.textColor = UIColor.lightGray
         label.numberOfLines = 0
         label.isUserInteractionEnabled = false
+        label.font = textView.font ?? UIFont.systemFont(ofSize: 12)
         return label
     }()
 
     deinit {
         delegateHandlers.removeAll()
         NotificationCenter.default.removeObserver(self)
+    }
+
+    open override var font: UIFont? {
+        didSet {
+            if let _newFont = font {
+                self.placeholderLabel.font = _newFont
+            }
+        }
     }
 
 }
@@ -147,25 +161,28 @@ extension FZTextView {
             showPlaceholder = false
         }
 
+        placeholderLabel.isHidden = !showPlaceholder
+
         if showPlaceholder {
 
             if placeholderLabel.superview == nil {
-                self.addSubview(placeholderLabel)
+                addSubview(placeholderLabel)
             }
+            bringSubviewToFront(placeholderLabel)
 
             let textContainerInset = self.textContainerInset
             let lineFragmentPadding = self.textContainer.lineFragmentPadding
 
             placeholderLabel.textAlignment = self.textAlignment
 
-            let x = lineFragmentPadding + textContainerInset.left
-            let y = textContainerInset.top
-            let width = self.bounds.width - x - lineFragmentPadding - textContainerInset.right
-            let height = min(placeholderLabel.sizeThatFits(CGSize(width: width, height: CGFloat.leastNormalMagnitude)).height, self.bounds.height - textContainerInset.top - textContainerInset.bottom)
+            let x = lineFragmentPadding + textContainerInset.left + self.layer.borderWidth
+            let y = textContainerInset.top + self.layer.borderWidth
+            let width = self.bounds.width - x - lineFragmentPadding - textContainerInset.right - 2 * self.layer.borderWidth
+            let height = min(placeholderLabel.sizeThatFits(CGSize(width: width, height: CGFloat.leastNormalMagnitude)).height, self.bounds.height - textContainerInset.top - textContainerInset.bottom - 2 * self.layer.borderWidth)
             placeholderLabel.frame = CGRect(x: x, y: y, width: width, height: height)
 
         } else {
-            placeholderLabel.removeFromSuperview()
+            sendSubviewToBack(placeholderLabel)
         }
     }
 
