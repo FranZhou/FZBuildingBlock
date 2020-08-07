@@ -138,7 +138,7 @@ class ViewController: UIViewController {
         let sectionAndRowData = FZTableViewSectionAndRowData()
         sectionAndRowData.sectionDatas = tableViewData
 
-        // common cellDequeue dequeue
+        // common cell
         sectionAndRowData.setCell { (tableView, indexPath) -> UITableViewCell in
             var cell: UITableViewCell?
 
