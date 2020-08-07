@@ -23,10 +23,28 @@ open class FZTableViewRowDataAfteriOS13: FZTableViewRowDataAfteriOS11 {
     /// optional func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool
     @objc open var cellShouldBeginMultipleSelectionInteraction: CellShouldBeginMultipleSelectionInteractionClosure?
 
+    @discardableResult
+    open func setCellShouldBeginMultipleSelectionInteraction(_ block: CellShouldBeginMultipleSelectionInteractionClosure?) -> Self {
+        cellShouldBeginMultipleSelectionInteraction = block
+        return self
+    }
+
     /// optional func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath)
     @objc open var cellDidBeginMultipleSelectionInteraction: CellDidBeginMultipleSelectionInteractionClosure?
 
+    @discardableResult
+    open func setCellDidBeginMultipleSelectionInteraction(_ block: CellDidBeginMultipleSelectionInteractionClosure?) -> Self {
+        cellDidBeginMultipleSelectionInteraction = block
+        return self
+    }
+
     /// optional func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration?
     @objc open var cellContextMenuConfiguration: CellContextMenuConfigurationClosure?
+
+    @discardableResult
+    open func setCellContextMenuConfiguration(_ block: CellContextMenuConfigurationClosure?) -> Self {
+        cellContextMenuConfiguration = block
+        return self
+    }
 
 }

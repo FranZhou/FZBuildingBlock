@@ -139,7 +139,7 @@ class ViewController: UIViewController {
         sectionAndRowData.sectionDatas = tableViewData
 
         // common cellDequeue dequeue
-        sectionAndRowData.cellDequeue = { (tableView: UITableView, indexPath: IndexPath) -> UITableViewCell in
+        sectionAndRowData.setCell { (tableView, indexPath) -> UITableViewCell in
             var cell: UITableViewCell?
 
             if let tableView = tableView as? FZTableView,

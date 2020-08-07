@@ -29,11 +29,29 @@ open class FZTableViewSectionAndRowDataAfteriOS9: FZTableViewSectionAndRowData {
     /// optional func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool
     @objc open var tableViewShouldUpdateFocus: TableViewShouldUpdateFocusClosure?
 
+    @discardableResult
+    open func setTableViewShouldUpdateFocus(_ block: TableViewShouldUpdateFocusClosure?) -> Self {
+        tableViewShouldUpdateFocus = block
+        return self
+    }
+
     /// optional func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
     @objc open var tableViewDidUpdateFocus: TableViewDidUpdateFocusClosure?
 
+    @discardableResult
+    open func setTableViewDidUpdateFocus(_ block: TableViewDidUpdateFocusClosure?) -> Self {
+        tableViewDidUpdateFocus = block
+        return self
+    }
+
     /// optional func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath?
     @objc open var tableViewIndexPathForPreferredFocusedView: TableViewIndexPathForPreferredFocusedViewClosure?
+
+    @discardableResult
+    open func setTableViewIndexPathForPreferredFocusedView(_ block: TableViewIndexPathForPreferredFocusedViewClosure?) -> Self {
+        tableViewIndexPathForPreferredFocusedView = block
+        return self
+    }
 
     // MARK: - common delegate
 
@@ -43,5 +61,11 @@ open class FZTableViewSectionAndRowDataAfteriOS9: FZTableViewSectionAndRowData {
 
     /// optional func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool
     @objc open var cellCanFocus: FZTableViewRowDataAfteriOS9.CellCanFocusClosure?
+
+    @discardableResult
+    open func setCellCanFocus(_ block: FZTableViewRowDataAfteriOS9.CellCanFocusClosure?) -> Self {
+        cellCanFocus = block
+        return self
+    }
 
 }

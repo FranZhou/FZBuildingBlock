@@ -22,8 +22,8 @@ open class FZLargeImageView: UIView {
             // 设置 imageWidthScale
             if let imageRect = self.imageRect,
                 imageRect.size.width > 0,
-                self.fz.width > 0 {
-                self.imageWidthScale = self.fz.width / imageRect.size.width
+                self.frame.size.width > 0 {
+                self.imageWidthScale = self.frame.size.width / imageRect.size.width
             } else {
                 self.imageWidthScale = nil
             }
@@ -31,8 +31,8 @@ open class FZLargeImageView: UIView {
             // 设置 imageHeightScale
             if let imageRect = self.imageRect,
                 imageRect.size.height > 0,
-                self.fz.height > 0 {
-                self.imageHeightScale = self.fz.height / imageRect.size.height
+                self.frame.size.height > 0 {
+                self.imageHeightScale = self.frame.size.height / imageRect.size.height
             } else {
                 self.imageHeightScale = nil
             }
@@ -50,6 +50,12 @@ open class FZLargeImageView: UIView {
     private var imageWidthScale: CGFloat?
 
     private var imageHeightScale: CGFloat?
+
+    open override var backgroundColor: UIColor? {
+        didSet {
+            self.layer.backgroundColor = backgroundColor?.cgColor
+        }
+    }
 
 }
 
@@ -71,7 +77,7 @@ extension FZLargeImageView {
                 return
         }
 
-        let scale = max(1.0/imageWidthScale, 1.0/imageHeightScale)
+        let scale = max(1.0 / imageWidthScale, 1.0 / imageHeightScale)
         let lev = Int(ceil(scale))
 
         tiledLayer.levelsOfDetail = 1

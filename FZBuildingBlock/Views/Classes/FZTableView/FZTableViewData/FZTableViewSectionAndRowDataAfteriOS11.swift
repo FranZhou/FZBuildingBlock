@@ -27,12 +27,30 @@ open class FZTableViewSectionAndRowDataAfteriOS11: FZTableViewSectionAndRowDataA
     // MARK: common row delegate
 
     /// optional func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    @objc open var cellLeadingSwipeActionsConfiguration: FZTableViewRowDataAfteriOS11.CellSwipeActionsConfigurationClosure?
+    @objc open var cellLeadingSwipeActionsConfiguration: FZTableViewRowDataAfteriOS11.CellLeadingSwipeActionsConfigurationClosure?
+
+    @discardableResult
+    open func setCellLeadingSwipeActionsConfiguration(_ block: FZTableViewRowDataAfteriOS11.CellLeadingSwipeActionsConfigurationClosure?) -> Self {
+        cellLeadingSwipeActionsConfiguration = block
+        return self
+    }
 
     /// optional func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    @objc open var cellTrailingSwipeActionsConfiguration: FZTableViewRowDataAfteriOS11.CellSwipeActionsConfigurationClosure?
+    @objc open var cellTrailingSwipeActionsConfiguration: FZTableViewRowDataAfteriOS11.CellTrailingSwipeActionsConfigurationClosure?
+
+    @discardableResult
+    open func setCellTrailingSwipeActionsConfiguration(_ block: FZTableViewRowDataAfteriOS11.CellTrailingSwipeActionsConfigurationClosure?) -> Self {
+        cellTrailingSwipeActionsConfiguration = block
+        return self
+    }
 
     /// optional func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool
     @objc open var cellShouldSpringLoad: FZTableViewRowDataAfteriOS11.CellShouldSpringLoadClosure?
+
+    @discardableResult
+    open func setCellShouldSpringLoad(_ block: FZTableViewRowDataAfteriOS11.CellShouldSpringLoadClosure?) -> Self {
+        cellShouldSpringLoad = block
+        return self
+    }
 
 }

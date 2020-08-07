@@ -14,6 +14,7 @@ class LargeImageViewController: UIViewController {
     lazy var largeImageView: FZLargeImageView = {
         let view = FZLargeImageView()
         view.frame = self.view.bounds
+        view.backgroundColor = .white
         return view
     }()
 

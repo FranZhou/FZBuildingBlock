@@ -29,7 +29,7 @@ class ViewBorderLineViewController: UIViewController {
         btn.fz.y = 100
         btn.fz.width = 200
         btn.fz.height = 50
-        btn.setTitle("旋转当前图片", for: .normal)
+        btn.setTitle("修改图片边框", for: .normal)
         btn.setTitleColor(UIColor.fz.randomColor(), for: .normal)
         btn.addTarget(self, action: #selector(ImageColorViewController.btnClickAction(sender:)), for: .touchUpInside)
         self.view.addSubview(btn)

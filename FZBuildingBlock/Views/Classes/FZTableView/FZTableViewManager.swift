@@ -12,6 +12,10 @@ open class FZTableViewManager: NSObject {
 
     open var tableSectionsAndRowsData: FZTableViewSectionAndRowData?
 
+}
+
+extension FZTableViewManager {
+
     private func tableSectionData(section: Int) -> FZTableViewSectionData? {
         return tableSectionsAndRowsData?.sectionDatas?[fz_safe: section]
     }
@@ -27,6 +31,7 @@ open class FZTableViewManager: NSObject {
     private func tableRowData(indexPath: IndexPath) -> FZTableViewRowData? {
         return tableRowData(section: indexPath.section, row: indexPath.row)
     }
+
 }
 
 // MARK: UITableViewDelegate
@@ -582,9 +587,9 @@ extension FZTableViewManager: UITableViewDataSource {
         var cell: UITableViewCell?
 
         if let rowData = tableRowData(indexPath: indexPath),
-            let block = rowData.cellDequeue {
+            let block = rowData.cell {
             cell = block(tableView, indexPath)
-        } else if let block = tableSectionsAndRowsData?.cellDequeue {
+        } else if let block = tableSectionsAndRowsData?.cell {
             cell = block(tableView, indexPath)
         }
 

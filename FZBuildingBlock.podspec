@@ -60,13 +60,18 @@ Pod::Spec.new do |s|
     s.subspec 'Views' do |s_views|
         s_views.source_files = 'FZBuildingBlock/Views/Classes/**/*'
         s_views.frameworks = 'UIKit'
-        s_views.dependency 'FZBuildingBlock/Extensions'
     end
     
     # 权限申请
     s.subspec 'Permission' do |s_permission|
         s_permission.source_files = 'FZBuildingBlock/Permission/Classes/**/*'
         s_permission.frameworks = 'Foundation', 'UIKit', 'AddressBook', 'AddressBook', 'AVFoundation', 'Contacts', 'EventKit', 'CoreLocation', 'MediaPlayer', 'CoreMotion', 'Photos', 'Intents', 'Speech'
+    end
+    
+    # 自定义视图
+    s.subspec 'Bluetooth' do |s_bluetooth|
+        s_bluetooth.source_files = 'FZBuildingBlock/Bluetooth/Classes/**/*'
+        s_bluetooth.frameworks = 'CoreBluetooth'
     end
     
     # s.resource_bundles = {

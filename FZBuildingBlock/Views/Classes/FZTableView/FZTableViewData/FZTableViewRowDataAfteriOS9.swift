@@ -19,4 +19,10 @@ open class FZTableViewRowDataAfteriOS9: FZTableViewRowData {
     /// optional func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool
     @objc open var cellCanFocus: CellCanFocusClosure?
 
+    @discardableResult
+    open func setCellCanFocus(_ block: CellCanFocusClosure?) -> Self {
+        cellCanFocus = block
+        return self
+    }
+
 }
