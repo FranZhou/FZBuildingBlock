@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     lazy var tableView: FZTableView = {
         let navigationBarAndStatusBarHeight: CGFloat = self.navigationController?.fz.navigationBarAndStatusBarHeight ?? 0
 
-        let tableView = FZTableView(frame: CGRect(x: 0, y: navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - navigationBarAndStatusBarHeight), style: .plain)
+        let tableView = FZTableView(frame: self.view.bounds, style: .plain)
         tableView.tableViewManager = FZTableViewManager()
         tableView.register(FZTableViewCommonCell.classForCoder(), forCellReuseIdentifier: FZTableViewCommonCell.reuseIdentifier())
         return tableView

@@ -31,10 +31,6 @@ extension FZTableView {
 
         self.separatorStyle = .none
 
-        if #available(iOS 11.0, *) {
-            self.contentInsetAdjustmentBehavior = .never
-        }
-
     }
 
     /// 配合tableViewManager使用，渲染tableview
