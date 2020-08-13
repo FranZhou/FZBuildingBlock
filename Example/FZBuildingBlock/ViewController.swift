@@ -135,6 +135,8 @@ class ViewController: UIViewController {
 
         self.view.addSubview(self.tableView)
 
+        self.testResponsibilityChain()
+
         let sectionAndRowData = FZTableViewSectionAndRowData()
         sectionAndRowData.sectionDatas = tableViewData
 
@@ -201,6 +203,45 @@ extension ViewController {
         print("fz_navigationBarAndStatusBarHeight -> \(String(describing: self.navigationController?.fz.navigationBarAndStatusBarHeight))")
         print("fz_tabBarHeight -> \(String(describing: self.tabBarController?.fz.tabBarHeight))")
         print("fz_tabBarAndSafeAreaHeight -> \(String(describing: self.tabBarController?.fz.tabBarAndSafeAreaHeight))")
+    }
+
+}
+
+extension ViewController {
+
+    func testResponsibilityChain() {
+        let context = FZResponsibilityChainContext<Int>()
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data > 0 && data < 10
+        }.setExecute { (data) in
+            print("Matching1 --> \(data)")
+        }
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data >= 0 && data < 100
+        }.setExecute { (data) in
+            print("Matching2 --> \(data)")
+        }
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data >= 100 && data <= 1000
+        }.setExecute { (data) in
+            print("Matching3 --> \(data)")
+        }
+
+        context.createMatchingFailureHandler().setExecute { (data) in
+            print("MatchingFailure --> \(data)")
+        }
+
+        context.handler(responsibilityData: 1)
+
+        context.handler(responsibilityData: 77)
+
+        context.handler(responsibilityData: 777)
+
+        context.handler(responsibilityData: -1)
+
     }
 
 }

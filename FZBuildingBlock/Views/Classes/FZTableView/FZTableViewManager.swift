@@ -16,19 +16,19 @@ open class FZTableViewManager: NSObject {
 
 extension FZTableViewManager {
 
-    private func tableSectionData(section: Int) -> FZTableViewSectionData? {
+    public func tableSectionData(section: Int) -> FZTableViewSectionData? {
         return tableSectionsAndRowsData?.sectionDatas?[fz_safe: section]
     }
 
-    private func tableRowData(section: Int, row: Int) -> FZTableViewRowData? {
+    public func tableRowData(section: Int, row: Int) -> FZTableViewRowData? {
         return tableSectionData(section: section)?.sectionRowDatas?[fz_safe: row]
     }
 
-    private func tableRowData(sectionData: FZTableViewSectionData, row: Int) -> FZTableViewRowData? {
+    public func tableRowData(sectionData: FZTableViewSectionData, row: Int) -> FZTableViewRowData? {
         return sectionData.sectionRowDatas?[fz_safe: row]
     }
 
-    private func tableRowData(indexPath: IndexPath) -> FZTableViewRowData? {
+    public func tableRowData(indexPath: IndexPath) -> FZTableViewRowData? {
         return tableRowData(section: indexPath.section, row: indexPath.row)
     }
 
