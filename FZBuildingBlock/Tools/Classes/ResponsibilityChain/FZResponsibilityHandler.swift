@@ -95,48 +95,29 @@ extension FZResponsibilityHandler {
     /// - Returns: 处理责任链数据的handler
     @discardableResult
     public func handlerExecute(withData data: T) -> [FZResponsibilityHandler<T>] {
-
-        // 主动调用一次，结果被封装闭包内部未执行
-        var result = self.execute(data: data, records: [])
-
-        // 通过while循环代替递归，避免出现栈溢出
-        while case .next(_) = result {
-            switch result {
-            case let .next(next):
-                result = next()
-            case let .finish(finish):
-                return finish()
-            }
-        }
-
-        // 出了while循环后，肯定是 .finish
-        if case let .finish(finish) = result {
-            return finish()
-        }
-
-        return []
+        return execute(data: data, records: [])
     }
 
-    /// 递归蹦床
+    /// 尾递归执行责任链调用
     /// - Parameters:
-    ///   - data: 处理的数据
-    ///   - records: 处理过数据的handler集合
-    /// - Returns: 下一步执行方式
-    private func execute(data: T, records: [FZResponsibilityHandler<T>]) -> FZResponsibilityChainResult<[FZResponsibilityHandler<T>]> {
+    ///   - data: 责任链数据
+    ///   - records: 处理该数据的handler集合
+    /// - Returns: records
+    private func execute(data: T, records: [FZResponsibilityHandler<T>]) -> [FZResponsibilityHandler<T>] {
         var _records = records
         if condition(data) {
             execute(data)
             _records.append(self)
             if let next = nextHandler,
                 fallThrough {
-                return .next(next.execute(data: data, records: _records))
+                return next.execute(data: data, records: _records)
             } else {
-                return .finish(_records)
+                return _records
             }
         } else if let next = nextHandler {
-            return .next(next.execute(data: data, records: _records))
+            return next.execute(data: data, records: _records)
         } else {
-            return .finish(_records)
+            return _records
         }
     }
 

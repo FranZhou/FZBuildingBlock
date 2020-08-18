@@ -138,7 +138,7 @@ extension ViewExtensionViewController {
         let context = FZResponsibilityChainContext<Int>()
 
         context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
-            return data > 0 && data < 10
+            return data >= 0 && data < 10
         }.setExecute { (data) in
             print("Matching1 --> \(data)")
         }
