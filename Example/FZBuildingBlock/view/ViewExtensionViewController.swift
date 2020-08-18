@@ -74,6 +74,9 @@ class ViewExtensionViewController: UIViewController {
 
         self.view.addSubview(self.tableView)
 
+        // 测试责任链模式
+        self.testResponsibilityChain()
+
         let sectionAndRowData = FZTableViewSectionAndRowData()
         sectionAndRowData.sectionDatas = tableViewData
 
@@ -126,5 +129,44 @@ class ViewExtensionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension ViewExtensionViewController {
+
+    func testResponsibilityChain() {
+        let context = FZResponsibilityChainContext<Int>()
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data > 0 && data < 10
+        }.setExecute { (data) in
+            print("Matching1 --> \(data)")
+        }
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data >= 10 && data < 100
+        }.setExecute { (data) in
+            print("Matching2 --> \(data)")
+        }
+
+        context.createResponsibilityChainHandler().setConditioon { (data) -> Bool in
+            return data >= 100 && data < 1000
+        }.setExecute { (data) in
+            print("Matching3 --> \(data)")
+        }
+
+        context.createMatchingFailureHandler().setExecute { (data) in
+            print("MatchingFailure --> \(data)")
+        }
+
+        context.handlerExecute(with: 1)
+
+        context.handlerExecute(with: 77)
+
+        context.handlerExecute(with: 777)
+
+        context.handlerExecute(with: -1)
+
+    }
 
 }

@@ -1,16 +1,16 @@
 PODS:
   - FBRetainCycleDetector (0.1.4)
-  - FZBuildingBlock (0.3.3):
-    - FZBuildingBlock/Bluetooth (= 0.3.3)
-    - FZBuildingBlock/Extensions (= 0.3.3)
-    - FZBuildingBlock/Permission (= 0.3.3)
-    - FZBuildingBlock/Tools (= 0.3.3)
-    - FZBuildingBlock/Views (= 0.3.3)
-  - FZBuildingBlock/Bluetooth (0.3.3)
-  - FZBuildingBlock/Extensions (0.3.3)
-  - FZBuildingBlock/Permission (0.3.3)
-  - FZBuildingBlock/Tools (0.3.3)
-  - FZBuildingBlock/Views (0.3.3)
+  - FZBuildingBlock (0.4.0):
+    - FZBuildingBlock/Bluetooth (= 0.4.0)
+    - FZBuildingBlock/Extensions (= 0.4.0)
+    - FZBuildingBlock/Permission (= 0.4.0)
+    - FZBuildingBlock/Tools (= 0.4.0)
+    - FZBuildingBlock/Views (= 0.4.0)
+  - FZBuildingBlock/Bluetooth (0.4.0)
+  - FZBuildingBlock/Extensions (0.4.0)
+  - FZBuildingBlock/Permission (0.4.0)
+  - FZBuildingBlock/Tools (0.4.0)
+  - FZBuildingBlock/Views (0.4.0)
   - FZObserver (0.1.0)
   - FZRouterSwift (0.1.0)
   - MLeaksFinder (1.0.0):
@@ -35,7 +35,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FZBuildingBlock: 6deffcad84c3039f6851952940bfac3562f190b7
+  FZBuildingBlock: 9f3ceabb45d1e356d5bf7aa92904ed3bb973817f
   FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
   FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0

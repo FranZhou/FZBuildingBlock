@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'FZBuildingBlock'
-    s.version          = '0.3.3'
+    s.version          = '0.4.0'
     s.summary          = '提供开发中最基础的功能组件'
     
     # This description is used to generate tags and improve search results.
