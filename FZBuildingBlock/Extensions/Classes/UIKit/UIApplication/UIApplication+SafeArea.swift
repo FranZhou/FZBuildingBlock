@@ -13,7 +13,7 @@ extension FZBuildingBlockWrapper where Base: UIApplication {
     public var safeArea: UIEdgeInsets {
         get {
             if #available(iOS 11.0, *),
-                let safeAreaInsets = base.keyWindow?.safeAreaInsets {
+                let safeAreaInsets = base.delegate?.window??.safeAreaInsets {
                 return safeAreaInsets
             } else {
                 return .zero

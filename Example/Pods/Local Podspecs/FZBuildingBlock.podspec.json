@@ -46,7 +46,12 @@
     {
       "name": "Views",
       "source_files": "FZBuildingBlock/Views/Classes/**/*",
-      "frameworks": "UIKit"
+      "frameworks": "UIKit",
+      "dependencies": {
+        "FZBuildingBlock/Extensions": [
+
+        ]
+      }
     },
     {
       "name": "Permission",

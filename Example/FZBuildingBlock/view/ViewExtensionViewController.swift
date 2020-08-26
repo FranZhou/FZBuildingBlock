@@ -60,6 +60,22 @@ class ViewExtensionViewController: UIViewController {
                 sectionRows.append(row)
             }
 
+            // 验证码
+            do {
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "验证码"
+
+                var row = TableViewCommonRowData()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
+                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                    let vc = CaptchaViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
+
             section.sectionRowDatas = sectionRows
             tableViewData.append(section)
         }

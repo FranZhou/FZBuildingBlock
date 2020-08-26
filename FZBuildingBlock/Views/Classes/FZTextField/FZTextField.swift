@@ -39,7 +39,10 @@ open class FZTextField: UITextField {
     fileprivate weak var _delegate: UITextFieldDelegate?
 
     /// other delegate handlers
-    fileprivate var delegateHandlers: [UITextFieldDelegate] = []
+    fileprivate var delegateHandlers: NSHashTable<UITextFieldDelegate> = {
+        let hashTable = NSHashTable<UITextFieldDelegate>(options: NSPointerFunctions.Options.weakMemory)
+        return hashTable
+    }()
 
     /// limit max input length, Less than or equal to 0 means no limit, default is 0
     @objc open var maxInputLength: Int = 0
@@ -48,7 +51,7 @@ open class FZTextField: UITextField {
     @objc open var edgeInsets: UIEdgeInsets = UIEdgeInsets.zero
 
     deinit {
-        delegateHandlers.removeAll()
+        delegateHandlers.removeAllObjects()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -78,16 +81,14 @@ extension FZTextField {
         /// To avoid repeated additions, remove first
         removeDelegateHandler(delegateHandler)
         /// keep it in delegateHandlers
-        delegateHandlers.append(delegateHandler)
+        delegateHandlers.add(delegateHandler)
     }
 
     /// remove delegateHandler
     ///
     /// - Parameter delegateHandler: UITextFieldDelegate to remove
     @objc open func removeDelegateHandler(_ delegateHandler: UITextFieldDelegate) {
-        delegateHandlers.removeAll { (_delegate: UITextFieldDelegate) -> Bool in
-            return _delegate === delegateHandler
-        }
+        delegateHandlers.remove(delegateHandler)
     }
 
 }
@@ -166,7 +167,7 @@ extension FZTextField: UITextFieldDelegate {
             shouldBeginEditing = shouldBeginEditing && (_delegate.textFieldShouldBeginEditing?(textField) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldBeginEditing = shouldBeginEditing && (_delegate.textFieldShouldBeginEditing?(textField) ?? true)
         }
 
@@ -180,7 +181,7 @@ extension FZTextField: UITextFieldDelegate {
             _delegate.textFieldDidBeginEditing?(textField)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textFieldDidBeginEditing?(textField)
         }
 
@@ -195,7 +196,7 @@ extension FZTextField: UITextFieldDelegate {
             shouldEndEditing = shouldEndEditing && (_delegate.textFieldShouldEndEditing?(textField) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldEndEditing = shouldEndEditing && (_delegate.textFieldShouldEndEditing?(textField) ?? true)
         }
 
@@ -209,7 +210,7 @@ extension FZTextField: UITextFieldDelegate {
             _delegate.textFieldDidEndEditing?(textField)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textFieldDidEndEditing?(textField)
         }
     }
@@ -222,7 +223,7 @@ extension FZTextField: UITextFieldDelegate {
             _delegate.textFieldDidEndEditing?(textField, reason: reason)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textFieldDidEndEditing?(textField, reason: reason)
         }
 
@@ -237,7 +238,7 @@ extension FZTextField: UITextFieldDelegate {
             shouldChangeCharacters = shouldChangeCharacters && (_delegate.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldChangeCharacters = shouldChangeCharacters && (_delegate.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true)
         }
 
@@ -250,7 +251,7 @@ extension FZTextField: UITextFieldDelegate {
             _delegate.textFieldDidChangeSelection?(textField)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textFieldDidChangeSelection?(textField)
         }
     }
@@ -264,7 +265,7 @@ extension FZTextField: UITextFieldDelegate {
             shouldClear = shouldClear && (_delegate.textFieldShouldClear?(textField) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldClear = shouldClear && (_delegate.textFieldShouldClear?(textField) ?? true)
         }
 
@@ -280,7 +281,7 @@ extension FZTextField: UITextFieldDelegate {
             shouldReturn = shouldReturn && (_delegate.textFieldShouldReturn?(textField) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldReturn = shouldReturn && (_delegate.textFieldShouldReturn?(textField) ?? true)
         }
 

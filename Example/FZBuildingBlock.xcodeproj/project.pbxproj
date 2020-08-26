@@ -16,6 +16,7 @@
 		1D2A5E7A221CFFDE00CBAE1A /* ImageRotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E75221CFFDE00CBAE1A /* ImageRotationViewController.swift */; };
 		1D2A5E7B221CFFDE00CBAE1A /* ImageColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E76221CFFDE00CBAE1A /* ImageColorViewController.swift */; };
 		1D2A5E7C221CFFDE00CBAE1A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E77221CFFDE00CBAE1A /* ImageViewController.swift */; };
+		1D784A1424F5190F0020226F /* CaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D784A1324F5190F0020226F /* CaptchaViewController.swift */; };
 		1D80893A223B9B6D00604783 /* ButtonLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D808939223B9B6D00604783 /* ButtonLayoutViewController.swift */; };
 		1DE50D82221E9D9C0089F93D /* ImageCornerRadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D81221E9D9C0089F93D /* ImageCornerRadiusViewController.swift */; };
 		1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */; };
@@ -61,6 +62,7 @@
 		1D2A5E75221CFFDE00CBAE1A /* ImageRotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRotationViewController.swift; sourceTree = "<group>"; };
 		1D2A5E76221CFFDE00CBAE1A /* ImageColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageColorViewController.swift; sourceTree = "<group>"; };
 		1D2A5E77221CFFDE00CBAE1A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		1D784A1324F5190F0020226F /* CaptchaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaViewController.swift; sourceTree = "<group>"; };
 		1D808939223B9B6D00604783 /* ButtonLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLayoutViewController.swift; sourceTree = "<group>"; };
 		1DE50D81221E9D9C0089F93D /* ImageCornerRadiusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCornerRadiusViewController.swift; sourceTree = "<group>"; };
 		1DE50D94221FF7A50089F93D /* KeyboardObserverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserverViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				1DEF13622226E331001F8C9A /* ViewExtensionViewController.swift */,
 				1DEF13642226E373001F8C9A /* ViewBorderLineViewController.swift */,
 				1D808939223B9B6D00604783 /* ButtonLayoutViewController.swift */,
+				1D784A1324F5190F0020226F /* CaptchaViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */,
 				1D2A5E78221CFFDE00CBAE1A /* ObserverViewController.swift in Sources */,
+				1D784A1424F5190F0020226F /* CaptchaViewController.swift in Sources */,
 				1D11AF6A231D280D00919ED9 /* Target_RouterDemo.swift in Sources */,
 				1D2A5E79221CFFDE00CBAE1A /* StringImageViewController.swift in Sources */,
 			);

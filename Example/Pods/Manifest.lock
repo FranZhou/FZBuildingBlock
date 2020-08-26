@@ -10,7 +10,8 @@ PODS:
   - FZBuildingBlock/Extensions (0.4.0)
   - FZBuildingBlock/Permission (0.4.0)
   - FZBuildingBlock/Tools (0.4.0)
-  - FZBuildingBlock/Views (0.4.0)
+  - FZBuildingBlock/Views (0.4.0):
+    - FZBuildingBlock/Extensions
   - FZObserver (0.1.0)
   - FZRouterSwift (0.1.0)
   - MLeaksFinder (1.0.0):
@@ -35,7 +36,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FZBuildingBlock: 9f3ceabb45d1e356d5bf7aa92904ed3bb973817f
+  FZBuildingBlock: 45ad82ac27bd472e3ad9cbea314c4d360ab19f9d
   FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
   FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0

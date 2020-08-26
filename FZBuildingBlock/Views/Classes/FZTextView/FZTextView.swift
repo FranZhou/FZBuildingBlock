@@ -44,7 +44,10 @@ open class FZTextView: UITextView {
     fileprivate weak var _delegate: UITextViewDelegate?
 
     /// other delegate handlers
-    fileprivate var delegateHandlers: [UITextViewDelegate] = []
+    fileprivate var delegateHandlers: NSHashTable<UITextViewDelegate> = {
+        let hashTable = NSHashTable<UITextViewDelegate>(options: NSPointerFunctions.Options.weakMemory)
+        return hashTable
+    }()
 
     /// limit max input length, Less than or equal to 0 means no limit, default is 0
     @objc open var maxInputLength: Int = 0
@@ -63,7 +66,7 @@ open class FZTextView: UITextView {
     }()
 
     deinit {
-        delegateHandlers.removeAll()
+        delegateHandlers.removeAllObjects()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -114,16 +117,14 @@ extension FZTextView {
         /// To avoid repeated additions, remove first
         removeDelegateHandler(delegateHandler)
         /// keep it in delegateHandlers
-        delegateHandlers.append(delegateHandler)
+        delegateHandlers.add(delegateHandler)
     }
 
     /// remove delegateHandler
     ///
     /// - Parameter delegateHandler: UITextViewDelegate to remove
     @objc open func removeDelegateHandler(_ delegateHandler: UITextViewDelegate) {
-        delegateHandlers.removeAll { (_delegate: UITextViewDelegate) -> Bool in
-            return _delegate === delegateHandler
-        }
+        delegateHandlers.remove(delegateHandler)
     }
 
 }
@@ -272,7 +273,7 @@ extension FZTextView: UITextViewDelegate {
             shouldBeginEditing = shouldBeginEditing && (_delegate.textViewShouldBeginEditing?(textView) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldBeginEditing = shouldBeginEditing && (_delegate.textViewShouldBeginEditing?(textView) ?? true)
         }
 
@@ -286,7 +287,7 @@ extension FZTextView: UITextViewDelegate {
             shouldEndEditing = shouldEndEditing && (_delegate.textViewShouldEndEditing?(textView) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldEndEditing = shouldEndEditing && (_delegate.textViewShouldEndEditing?(textView) ?? true)
         }
 
@@ -298,7 +299,7 @@ extension FZTextView: UITextViewDelegate {
             _delegate.textViewDidBeginEditing?(textView)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textViewDidBeginEditing?(textView)
         }
     }
@@ -308,7 +309,7 @@ extension FZTextView: UITextViewDelegate {
             _delegate.textViewDidEndEditing?(textView)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textViewDidEndEditing?(textView)
         }
     }
@@ -320,7 +321,7 @@ extension FZTextView: UITextViewDelegate {
             shouldChange = shouldChange && (_delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldChange = shouldChange && (_delegate.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true)
         }
 
@@ -332,7 +333,7 @@ extension FZTextView: UITextViewDelegate {
             _delegate.textViewDidChange?(textView)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textViewDidChange?(textView)
         }
     }
@@ -342,7 +343,7 @@ extension FZTextView: UITextViewDelegate {
             _delegate.textViewDidChangeSelection?(textView)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             _delegate.textViewDidChangeSelection?(textView)
         }
     }
@@ -355,7 +356,7 @@ extension FZTextView: UITextViewDelegate {
             shouldInteractWithURL = shouldInteractWithURL && (_delegate.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldInteractWithURL = shouldInteractWithURL && (_delegate.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true)
         }
 
@@ -370,7 +371,7 @@ extension FZTextView: UITextViewDelegate {
             shouldInteractWithTextAttachment = shouldInteractWithTextAttachment && (_delegate.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldInteractWithTextAttachment = shouldInteractWithTextAttachment && (_delegate.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true)
         }
 
@@ -384,7 +385,7 @@ extension FZTextView: UITextViewDelegate {
             shouldInteractWithURL = shouldInteractWithURL && (_delegate.textView?(textView, shouldInteractWith: URL, in: characterRange) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldInteractWithURL = shouldInteractWithURL && (_delegate.textView?(textView, shouldInteractWith: URL, in: characterRange) ?? true)
         }
 
@@ -398,7 +399,7 @@ extension FZTextView: UITextViewDelegate {
             shouldInteractWithTextAttachment = shouldInteractWithTextAttachment && (_delegate.textView?(textView, shouldInteractWith: textAttachment, in: characterRange) ?? true)
         }
 
-        for _delegate in delegateHandlers {
+        for _delegate in delegateHandlers.allObjects {
             shouldInteractWithTextAttachment = shouldInteractWithTextAttachment && (_delegate.textView?(textView, shouldInteractWith: textAttachment, in: characterRange) ?? true)
         }
 

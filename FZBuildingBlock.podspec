@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
         s_extensions.source_files = 'FZBuildingBlock/Extensions/Classes/**/*'
         s_extensions.frameworks = 'UIKit', 'Foundation', 'CoreGraphics'
 #        s_extensions.resource_bundles = {
-#            'FZBuildingBlock_Extension' => ['FZBuildingBlock/Extension/Assets/**/*']
+#            'FZBuildingBlock_Extension' => ['FZBuildingBlock/Extension/Assets/**/*']Z
 #        }
     end
     
@@ -60,6 +60,7 @@ Pod::Spec.new do |s|
     s.subspec 'Views' do |s_views|
         s_views.source_files = 'FZBuildingBlock/Views/Classes/**/*'
         s_views.frameworks = 'UIKit'
+        s_views.dependency "FZBuildingBlock/Extensions"
     end
     
     # 权限申请
