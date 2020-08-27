@@ -2,14 +2,21 @@ platform :ios, "9.0"
 
 use_frameworks!
 
+def memory_leaks
+  pod 'MLeaksFinder'
+end
+
+def fz_library
+  pod 'FZObserver'
+  pod 'FZRouterSwift'
+end
+
 target 'FZBuildingBlock_Example' do
   pod 'FZBuildingBlock', :path => '../'
   
-  pod 'MLeaksFinder'
-  
-  pod 'FZObserver'
-  pod 'FZRouterSwift'
-  
+  memory_leaks
+  fz_library
+
   target 'FZBuildingBlock_Tests' do
     inherit! :search_paths
 
