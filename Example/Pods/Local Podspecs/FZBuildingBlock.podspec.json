@@ -76,6 +76,20 @@
       "name": "Bluetooth",
       "source_files": "FZBuildingBlock/Bluetooth/Classes/**/*",
       "frameworks": "CoreBluetooth"
+    },
+    {
+      "name": "Location",
+      "source_files": "FZBuildingBlock/Location/Classes/**/*",
+      "frameworks": [
+        "UIKit",
+        "Foundation",
+        "CoreLocation"
+      ],
+      "dependencies": {
+        "FZObserver": [
+
+        ]
+      }
     }
   ],
   "swift_version": "5.0"

@@ -50,7 +50,6 @@ Pod::Spec.new do |s|
     s.subspec 'Tools' do |s_tools|
         s_tools.source_files = 'FZBuildingBlock/Tools/Classes/**/*'
         s_tools.frameworks = 'UIKit', 'Foundation'
-        
         s_tools.resources = 'FZBuildingBlock/Tools/Resources/**/*'
         s_tools.preserve_path = 'FZBuildingBlock/Tools/Resources/Tools.modulemap'
         s_tools.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/FZBuildingBlock/Tools/Resources'}
@@ -73,6 +72,14 @@ Pod::Spec.new do |s|
     s.subspec 'Bluetooth' do |s_bluetooth|
         s_bluetooth.source_files = 'FZBuildingBlock/Bluetooth/Classes/**/*'
         s_bluetooth.frameworks = 'CoreBluetooth'
+    end
+    
+    # 定位
+    s.subspec 'Location' do |s_location|
+        s_location.source_files = 'FZBuildingBlock/Location/Classes/**/*'
+        s_location.frameworks = 'UIKit', 'Foundation', 'CoreLocation'
+        
+        s_location.dependency 'FZObserver'
     end
     
     # s.resource_bundles = {
