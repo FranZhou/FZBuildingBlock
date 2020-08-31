@@ -20,7 +20,7 @@ open class FZLocationManager: NSObject {
 
     // MARK: - static
     /// singleton
-    public static let sharedManager: FZLocationManager = {
+    public static let `default`: FZLocationManager = {
         let manager = FZLocationManager()
         return manager
     }()
@@ -30,7 +30,7 @@ open class FZLocationManager: NSObject {
     // MARK: Location
     ///  用户定位，可供监听
     ///  locationManager:didUpdateLocations:
-    open lazy var userLocation: FZObserver<FZLocation?> = FZObserver(wrappedValue: nil)
+    open lazy var userLocation: FZObserver<CLLocation?> = FZObserver(wrappedValue: nil)
 
     /// 用户定位失败
     /// locationManager:didFailWithError:
@@ -38,51 +38,51 @@ open class FZLocationManager: NSObject {
 
     /// 用户面朝的方向
     /// locationManager:didUpdateHeading:
-    open lazy var userHeading: FZObserver<FZHeading?> = FZObserver(wrappedValue: nil)
+    open lazy var userHeading: FZObserver<CLHeading?> = FZObserver(wrappedValue: nil)
 
     // MARK: BeaconRegion
 
     /// 检测到区域内的iBeacons
     /// locationManager:didRangeBeacons:inRegion:
-    open lazy var userBeaconRegion: FZObserver<([FZBeacon], FZBeaconRegion)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userBeaconRegion: FZObserver<([CLBeacon], CLBeaconRegion)?>  = FZObserver(wrappedValue: nil)
 
     /// 区域检测iBeacons失败
     /// locationManager:rangingBeaconsDidFailForRegion:withError:
-    open lazy var userBeaconRegionFail: FZObserver<(FZBeaconRegion, FZLocationError)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userBeaconRegionFail: FZObserver<(CLBeaconRegion, FZLocationError)?>  = FZObserver(wrappedValue: nil)
 
     /// 检测到区域内的iBeacons
     /// locationManager:didRangeBeacons:satisfyingConstraint:
     @available(iOS 13.0, *)
-    open lazy var userBeaconConstraint: FZObserver<([FZBeacon], FZBeaconIdentityConstraint)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userBeaconConstraint: FZObserver<([CLBeacon], CLBeaconIdentityConstraint)?>  = FZObserver(wrappedValue: nil)
 
     /// 区域检测iBeacons失败
     /// locationManager:didFailRangingBeaconsForConstraint:error:
     @available(iOS 13.0, *)
-    open lazy var userBeaconConstraintFail: FZObserver<(FZBeaconIdentityConstraint, FZLocationError)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userBeaconConstraintFail: FZObserver<(CLBeaconIdentityConstraint, FZLocationError)?>  = FZObserver(wrappedValue: nil)
 
     // MARK: Region
 
     /// 开启区域监控
     /// locationManager:didStartMonitoringForRegion:
-    open lazy var userRegionMonitorStart: FZObserver<FZRegion?>  = FZObserver(wrappedValue: nil)
+    open lazy var userRegionMonitorStart: FZObserver<CLRegion?>  = FZObserver(wrappedValue: nil)
 
     /// 用户进入区域
     ///  locationManager:didEnterRegion:
-    open lazy var userEnterRegion: FZObserver<FZRegion?>  = FZObserver(wrappedValue: nil)
+    open lazy var userEnterRegion: FZObserver<CLRegion?>  = FZObserver(wrappedValue: nil)
 
     /// 用户离开区域
     /// locationManager:didExitRegion:
-    open lazy var userExitRegion: FZObserver<FZRegion?>  = FZObserver(wrappedValue: nil)
+    open lazy var userExitRegion: FZObserver<CLRegion?>  = FZObserver(wrappedValue: nil)
 
     /// 用户区域状态
     /// locationManager:didDetermineState:forRegion:
-    open lazy var userRegionState: FZObserver<(FZRegionState, FZRegion)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userRegionState: FZObserver<(CLRegionState, CLRegion)?>  = FZObserver(wrappedValue: nil)
 
     /// 区域监控失败
     /// locationManager:monitoringDidFailForRegion:withError:
-    open lazy var userRegionMonitorFail: FZObserver<(FZRegion?, FZLocationError)?>  = FZObserver(wrappedValue: nil)
+    open lazy var userRegionMonitorFail: FZObserver<(CLRegion?, FZLocationError)?>  = FZObserver(wrappedValue: nil)
 
-    // MARK: - -
+    // MARK: Pause/Resume/Deferred
 
     /// 停止位置更新
     /// locationManagerDidPauseLocationUpdates
@@ -99,11 +99,19 @@ open class FZLocationManager: NSObject {
     // MARK: Visit
 
     /// 用户访问
-    open lazy var userVisit: FZObserver<FZVisit?> = FZObserver(wrappedValue: nil)
+    open lazy var userVisit: FZObserver<CLVisit?> = FZObserver(wrappedValue: nil)
 
     // MARK: Location Manager
 
     /// CLLocationManager
+    ///
+    /// ```
+    ///  distanceFilter = kCLDistanceFilterNone
+    ///  desiredAccuracy = kCLLocationAccuracyBest
+    ///  allowsBackgroundLocationUpdates = true
+    ///  pausesLocationUpdatesAutomatically = false
+    ///  headingFilter = kCLHeadingFilterNone
+    /// ```
     open lazy var locationManager: CLLocationManager = {
         let lm = CLLocationManager()
         lm.distanceFilter = kCLDistanceFilterNone
@@ -117,8 +125,8 @@ open class FZLocationManager: NSObject {
     }()
 
     // MARK: - init
-    ///  init
-    public override init() {
+    /// init
+    private override init() {
         super.init()
         locationManager.delegate = self
         request(authorizationType: FZLocationConfiguration.requestAuthorizationType)
@@ -148,7 +156,7 @@ extension FZLocationManager {
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
-    open func startMonitoringSignificantLocationChanges(for region: FZRegion) {
+    open func startMonitoringSignificantLocationChanges(for region: CLRegion) {
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
@@ -188,43 +196,35 @@ extension FZLocationManager {
         return CLLocationManager.isRangingAvailable()
     }
 
-    open func startRangingBeacons(in beaconRegion: FZBeaconRegion) {
+    open func startRangingBeacons(in beaconRegion: CLBeaconRegion) {
         if isRangingAvailable() {
-            locationManager.startRangingBeacons(in: beaconRegion.beaconRegion)
+            locationManager.startRangingBeacons(in: beaconRegion)
         }
     }
 
-    open func stopRangingBeacons(in beaconRegion: FZBeaconRegion) {
-        locationManager.stopRangingBeacons(in: beaconRegion.beaconRegion)
+    open func stopRangingBeacons(in beaconRegion: CLBeaconRegion) {
+        locationManager.stopRangingBeacons(in: beaconRegion)
     }
 
     @available(iOS 13.0, *)
-    open func startRangingBeacons(satisfying constraint: FZBeaconIdentityConstraint) {
+    open func startRangingBeacons(satisfying constraint: CLBeaconIdentityConstraint) {
         if isRangingAvailable() {
-            locationManager.startRangingBeacons(satisfying: constraint.beaconIdentityConstraint)
+            locationManager.startRangingBeacons(satisfying: constraint)
         }
     }
 
     @available(iOS 13.0, *)
-    open func stopRangingBeacons(satisfying constraint: FZBeaconIdentityConstraint) {
-        locationManager.stopRangingBeacons(satisfying: constraint.beaconIdentityConstraint)
+    open func stopRangingBeacons(satisfying constraint: CLBeaconIdentityConstraint) {
+        locationManager.stopRangingBeacons(satisfying: constraint)
     }
 
-    open func rangedRegions() -> Set<FZRegion> {
-        var regions: [FZRegion] = []
-        for region in locationManager.rangedRegions {
-            regions.append(FZRegion(region: region))
-        }
-        return Set(regions)
+    open func rangedRegions() -> Set<CLRegion> {
+        return locationManager.rangedRegions
     }
 
     @available(iOS 13.0, *)
-    open func rangedBeaconConstraints() -> Set<FZBeaconIdentityConstraint> {
-        var beaconConstraints: [FZBeaconIdentityConstraint] = []
-        for beaconConstraint in locationManager.rangedBeaconConstraints {
-            beaconConstraints.append(FZBeaconIdentityConstraint(beaconIdentityConstraint: beaconConstraint))
-        }
-        return Set(beaconConstraints)
+    open func rangedBeaconConstraints() -> Set<CLBeaconIdentityConstraint> {
+        return locationManager.rangedBeaconConstraints
     }
 }
 
@@ -237,27 +237,23 @@ extension FZLocationManager {
         return CLLocationManager.isMonitoringAvailable(for: regionClass)
     }
 
-    open func startMonitoring(for region: FZRegion, desiredAccuracy: CLLocationAccuracy? = nil) {
+    open func startMonitoring(for region: CLRegion, desiredAccuracy: CLLocationAccuracy? = nil) {
         if let desiredAccuracy = desiredAccuracy {
             locationManager.desiredAccuracy = desiredAccuracy
         }
-        locationManager.startMonitoring(for: region.region)
+        locationManager.startMonitoring(for: region)
     }
 
-    open func stopMonitoring(for region: FZRegion) {
-        locationManager.stopMonitoring(for: region.region)
+    open func stopMonitoring(for region: CLRegion) {
+        locationManager.stopMonitoring(for: region)
     }
 
-    open func requestState(for region: FZRegion) {
-        locationManager.requestState(for: region.region)
+    open func requestState(for region: CLRegion) {
+        locationManager.requestState(for: region)
     }
 
-    open func monitoredRegions() -> Set<FZRegion> {
-        var regions: [FZRegion] = []
-        for region in locationManager.monitoredRegions {
-            regions.append(FZRegion(region: region))
-        }
-        return Set(regions)
+    open func monitoredRegions() -> Set<CLRegion> {
+        return locationManager.monitoredRegions
     }
 
 }

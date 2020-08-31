@@ -30,7 +30,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
             return
         }
 
-        userLocation.wrappedValue = FZLocation(location: location)
+        userLocation.wrappedValue = location
     }
 
     // MARK: - Location Error
@@ -58,7 +58,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 3.0, *)
     open func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        userHeading.wrappedValue = FZHeading(heading: newHeading)
+        userHeading.wrappedValue = newHeading
     }
 
     /**
@@ -88,11 +88,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS, introduced: 7.0, deprecated: 13.0)
     open func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        var rangeBeacons: [FZBeacon] = []
-        beacons.forEach { (beacon) in
-            rangeBeacons.append(FZBeacon(beacon: beacon))
-        }
-        userBeaconRegion.wrappedValue = (rangeBeacons, FZBeaconRegion(beaconRegion: region))
+        userBeaconRegion.wrappedValue = (beacons, region)
     }
 
     /*
@@ -103,7 +99,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS, introduced: 7.0, deprecated: 13.0)
     open func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
-        userBeaconRegionFail.wrappedValue = (FZBeaconRegion(beaconRegion: region), FZLocationError(error: error))
+        userBeaconRegionFail.wrappedValue = (region, FZLocationError(error: error))
     }
 
     // MARK: - BeaconRegion for iOS 13
@@ -111,17 +107,13 @@ extension FZLocationManager: CLLocationManagerDelegate {
     /// locationManager:didRangeBeacons:satisfyingConstraint:
     @available(iOS 13.0, *)
     open func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        var rangeBeacons: [FZBeacon] = []
-        beacons.forEach { (beacon) in
-            rangeBeacons.append(FZBeacon(beacon: beacon))
-        }
-        userBeaconConstraint.wrappedValue = (rangeBeacons, FZBeaconIdentityConstraint(beaconIdentityConstraint: beaconConstraint))
+        userBeaconConstraint.wrappedValue = (beacons, beaconConstraint)
     }
 
     /// locationManager:didFailRangingBeaconsForConstraint:error:
     @available(iOS 13.0, *)
     open func locationManager(_ manager: CLLocationManager, didFailRangingFor beaconConstraint: CLBeaconIdentityConstraint, error: Error) {
-        userBeaconConstraintFail.wrappedValue = (FZBeaconIdentityConstraint(beaconIdentityConstraint: beaconConstraint), FZLocationError(error: error))
+        userBeaconConstraintFail.wrappedValue = (beaconConstraint, FZLocationError(error: error))
     }
 
     // MARK: - Monitoring For Region
@@ -135,7 +127,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 5.0, *)
     open func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        userRegionMonitorStart.wrappedValue = FZRegion(region: region)
+        userRegionMonitorStart.wrappedValue = region
     }
 
     /**
@@ -148,7 +140,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 4.0, *)
     open func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        userEnterRegion.wrappedValue = FZRegion(region: region)
+        userEnterRegion.wrappedValue = region
     }
 
     /**
@@ -161,7 +153,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 4.0, *)
     open func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        userExitRegion.wrappedValue = FZRegion(region: region)
+        userExitRegion.wrappedValue = region
     }
 
     /**
@@ -173,13 +165,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 4.0, *)
     open func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-        var _region: FZRegion?
-        if let region = region {
-            _region = FZRegion(region: region)
-        }
-        let _error = FZLocationError(error: error)
-
-        userRegionMonitorFail.wrappedValue = (_region, _error)
+        userRegionMonitorFail.wrappedValue = (region, FZLocationError(error: error))
     }
 
     /**
@@ -194,7 +180,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 7.0, *)
     open func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        userRegionState.wrappedValue = (FZRegionState(regionState: state), FZRegion(region: region))
+        userRegionState.wrappedValue = (state, region)
     }
 
     // MARK: -
@@ -274,7 +260,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      */
     @available(iOS 8.0, *)
     open func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        userVisit.wrappedValue = FZVisit(visit: visit)
+        userVisit.wrappedValue = visit
     }
 
 }

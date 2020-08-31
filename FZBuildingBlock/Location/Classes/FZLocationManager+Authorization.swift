@@ -27,8 +27,9 @@ extension FZLocationManager {
         case .notDetermined:
             request(authorizationType: FZLocationConfiguration.requestAuthorizationType)
             return false
-        @unknown default:
-            fatalError("unknown authorizationStatus")
+        default:
+            FZLocationConfiguration.locationAuthorizationAction?(authorizationStatus)
+            return false
         }
     }
 
@@ -61,7 +62,7 @@ extension FZLocationManager {
     }
 
     /// 请求定位权限
-    open func request(authorizationType type: FZLocationManager.AuthorizationType = FZLocationConfiguration.requestAuthorizationType) {
+    open func request(authorizationType type: FZLocationManager.AuthorizationType) {
         switch type {
         case .whenInUse:
             locationManager.requestWhenInUseAuthorization()
