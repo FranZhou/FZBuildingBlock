@@ -63,11 +63,39 @@ extension FZLocationManager {
 
     /// 请求定位权限
     open func request(authorizationType type: FZLocationManager.AuthorizationType) {
+        var usageDescriptionKey: [String] = []
+
         switch type {
         case .whenInUse:
-            locationManager.requestWhenInUseAuthorization()
+            usageDescriptionKey.append("NSLocationWhenInUseUsageDescription")
         case .always:
-            locationManager.requestAlwaysAuthorization()
+            usageDescriptionKey.append("NSLocationWhenInUseUsageDescription")
+            if #available(iOS 11.0, *) {
+                usageDescriptionKey.append("NSLocationAlwaysAndWhenInUseUsageDescription")
+            } else {
+                usageDescriptionKey.append("NSLocationAlwaysUsageDescription")
+            }
+        }
+
+        let missingKeys = usageDescriptionKey.filter { (descriptionKey) -> Bool in
+            if let _ = Bundle.main.object(forInfoDictionaryKey: descriptionKey) {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        if missingKeys.count > 0 {
+            let controller = UIAlertController(title: "缺少配置信息", message: "info.plist文件缺少必要配置：\(missingKeys)", preferredStyle: UIAlertController.Style.alert)
+            controller.addAction(UIAlertAction(title: "知道了", style: UIAlertAction.Style.default, handler: nil))
+            UIApplication.shared.delegate?.window??.rootViewController?.present(controller, animated: true, completion: nil)
+        } else {
+            switch type {
+            case .whenInUse:
+                locationManager.requestWhenInUseAuthorization()
+            case .always:
+                locationManager.requestAlwaysAuthorization()
+            }
         }
     }
 

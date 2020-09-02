@@ -82,6 +82,10 @@ open class FZLocationManager: NSObject {
     /// locationManager:monitoringDidFailForRegion:withError:
     open lazy var userRegionMonitorFail: FZObserver<(CLRegion?, FZLocationError)?>  = FZObserver(wrappedValue: nil)
 
+    // MARK: status
+    /// 定位授权状态
+    open lazy var userAuthorization: FZObserver<CLAuthorizationStatus>  = FZObserver(wrappedValue: CLLocationManager.authorizationStatus())
+
     // MARK: Pause/Resume/Deferred
 
     /// 停止位置更新

@@ -9,6 +9,18 @@
 import UIKit
 import FZBuildingBlock
 
+struct FZBundleInfoConfig {
+
+    @FZBundleInfo(key: "CFBundleDisplayName", defaultValue: "")
+    static var bundleDisplayName: String
+
+    @FZBundleInfo(key: "CFBundleVersion", defaultValue: "")
+    static var bundleVersion: String
+
+    @FZBundleInfo(key: "CFBundleShortVersionString", defaultValue: "")
+    static var bundleShortVersionString: String
+}
+
 class ViewExtensionViewController: UIViewController {
 
     lazy var tableView: FZTableView = {
@@ -89,6 +101,10 @@ class ViewExtensionViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         self.view.addSubview(self.tableView)
+
+        print(FZBundleInfoConfig.bundleDisplayName)
+        print(FZBundleInfoConfig.bundleVersion)
+        print(FZBundleInfoConfig.bundleShortVersionString)
 
         // 测试责任链模式
         self.testResponsibilityChain()

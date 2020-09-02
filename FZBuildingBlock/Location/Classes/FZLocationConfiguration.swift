@@ -20,5 +20,5 @@ public struct FZLocationConfiguration {
     public static var shouldDisplayHeadingCalibration: Bool = false
 
     /// 日志打印
-    public static var messageLog: ((_ items: Any...) -> Void)?
+    public static var locationLog: ((_ items: Any...) -> Void)?
 }

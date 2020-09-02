@@ -103,6 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(status)
         }
 
+        print(UIDevice.current.fz.getModelName())
+
         return true
     }
 

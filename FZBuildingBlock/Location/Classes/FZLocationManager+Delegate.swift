@@ -29,7 +29,6 @@ extension FZLocationManager: CLLocationManagerDelegate {
         guard let location = locations.last else {
             return
         }
-
         userLocation.wrappedValue = location
     }
 
@@ -195,6 +194,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
     @available(iOS 4.2, *)
     open func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         FZLocationConfiguration.locationAuthorizationAction?(status)
+        userAuthorization.wrappedValue = status
     }
 
     // MARK: -
