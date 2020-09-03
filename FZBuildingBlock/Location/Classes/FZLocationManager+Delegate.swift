@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import FZWeakProxy
 
 // MARK: - CLLocationManagerDelegate
 extension FZLocationManager: CLLocationManagerDelegate {
@@ -25,11 +26,11 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    locations is an array of CLLocation objects in chronological order.
      */
     @available(iOS 6.0, *)
-    open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
             return
         }
-        userLocation.wrappedValue = location
+        userLocation.wrappedValue = (FZWeakProxy(target: self), location)
     }
 
     // MARK: - Location Error
@@ -42,8 +43,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when an error has occurred. Error types are defined in "CLError.h".
      */
     @available(iOS 2.0, *)
-    open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        userLocationFail.wrappedValue = FZLocationError(error: error)
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        userLocationFail.wrappedValue = (FZWeakProxy(target: self), FZLocationError(error: error)!)
     }
 
     // MARK: - heading
@@ -56,8 +57,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when a new heading is available.
      */
     @available(iOS 3.0, *)
-    open func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        userHeading.wrappedValue = newHeading
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        userHeading.wrappedValue = (FZWeakProxy(target: self), newHeading)
     }
 
     /**
@@ -69,7 +70,7 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    will remain until heading is calibrated, unless dismissed early via dismissHeadingCalibrationDisplay.
      */
     @available(iOS 3.0, *)
-    open func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
         return FZLocationConfiguration.shouldDisplayHeadingCalibration
     }
 
@@ -86,8 +87,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    by the device.
      */
     @available(iOS, introduced: 7.0, deprecated: 13.0)
-    open func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        userBeaconRegion.wrappedValue = (beacons, region)
+    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        userBeaconRegion.wrappedValue = (FZWeakProxy(target: self), beacons, region)
     }
 
     /*
@@ -97,22 +98,22 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when an error has occurred ranging beacons in a region. Error types are defined in "CLError.h".
      */
     @available(iOS, introduced: 7.0, deprecated: 13.0)
-    open func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
-        userBeaconRegionFail.wrappedValue = (region, FZLocationError(error: error))
+    public func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
+        userBeaconRegionFail.wrappedValue = (FZWeakProxy(target: self), region, FZLocationError(error: error)!)
     }
 
     // MARK: - BeaconRegion for iOS 13
 
     /// locationManager:didRangeBeacons:satisfyingConstraint:
     @available(iOS 13.0, *)
-    open func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        userBeaconConstraint.wrappedValue = (beacons, beaconConstraint)
+    public func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
+        userBeaconConstraint.wrappedValue = (FZWeakProxy(target: self), beacons, beaconConstraint)
     }
 
     /// locationManager:didFailRangingBeaconsForConstraint:error:
     @available(iOS 13.0, *)
-    open func locationManager(_ manager: CLLocationManager, didFailRangingFor beaconConstraint: CLBeaconIdentityConstraint, error: Error) {
-        userBeaconConstraintFail.wrappedValue = (beaconConstraint, FZLocationError(error: error))
+    public func locationManager(_ manager: CLLocationManager, didFailRangingFor beaconConstraint: CLBeaconIdentityConstraint, error: Error) {
+        userBeaconConstraintFail.wrappedValue = (FZWeakProxy(target: self), beaconConstraint, FZLocationError(error: error)!)
     }
 
     // MARK: - Monitoring For Region
@@ -125,8 +126,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when a monitoring for a region started successfully.
      */
     @available(iOS 5.0, *)
-    open func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        userRegionMonitorStart.wrappedValue = region
+    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        userRegionMonitorStart.wrappedValue = (FZWeakProxy(target: self), region)
     }
 
     /**
@@ -138,8 +139,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    CLLocationManager instance with a non-nil delegate that implements this method.
      */
     @available(iOS 4.0, *)
-    open func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        userEnterRegion.wrappedValue = region
+    public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        userEnterRegion.wrappedValue = (FZWeakProxy(target: self), region)
     }
 
     /**
@@ -151,8 +152,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    CLLocationManager instance with a non-nil delegate that implements this method.
      */
     @available(iOS 4.0, *)
-    open func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        userExitRegion.wrappedValue = region
+    public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        userExitRegion.wrappedValue = (FZWeakProxy(target: self), region)
     }
 
     /**
@@ -163,8 +164,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when a region monitoring error has occurred. Error types are defined in "CLError.h".
      */
     @available(iOS 4.0, *)
-    open func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-        userRegionMonitorFail.wrappedValue = (region, FZLocationError(error: error))
+    public func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        userRegionMonitorFail.wrappedValue = (FZWeakProxy(target: self), region, FZLocationError(error: error)!)
     }
 
     /**
@@ -178,8 +179,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    a call to requestStateForRegion:.
      */
     @available(iOS 7.0, *)
-    open func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        userRegionState.wrappedValue = (state, region)
+    public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        userRegionState.wrappedValue = (FZWeakProxy(target: self), state, region)
     }
 
     // MARK: -
@@ -192,9 +193,9 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when the authorization status changes for this application.
      */
     @available(iOS 4.2, *)
-    open func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         FZLocationConfiguration.locationAuthorizationAction?(status)
-        userAuthorization.wrappedValue = status
+        userAuthorization.wrappedValue = (FZWeakProxy(target: self), status)
     }
 
     // MARK: -
@@ -205,9 +206,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    Invoked when location updates are automatically paused.
      */
     @available(iOS 6.0, *)
-    open func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        let value = userLocationPause.wrappedValue
-        userLocationPause.wrappedValue = value + 1
+    public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+        userLocationPause.wrappedValue = FZWeakProxy(target: self)
     }
 
     /**
@@ -219,9 +219,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *      not receive this notification.
      */
     @available(iOS 6.0, *)
-    open func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        let value = userLocationResume.wrappedValue
-        userLocationResume.wrappedValue = value + 1
+    public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        userLocationResume.wrappedValue = FZWeakProxy(target: self)
     }
 
     /**
@@ -237,14 +236,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    criteria are met (see CLError), otherwise error will be nil.
      */
     @available(iOS 6.0, *)
-    open func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        var finishDeferred = true
-        var _error: FZLocationError?
-        if let error = error {
-            finishDeferred = false
-            _error = FZLocationError(error: error)
-        }
-        userLocationDeferred.wrappedValue = (finishDeferred, _error)
+    public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
+        userLocationDeferred.wrappedValue = (FZWeakProxy(target: self), FZLocationError(error: error))
     }
 
     // MARK: - Visit
@@ -259,8 +252,8 @@ extension FZLocationManager: CLLocationManagerDelegate {
      *    prior launch).
      */
     @available(iOS 8.0, *)
-    open func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        userVisit.wrappedValue = visit
+    public func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        userVisit.wrappedValue = (FZWeakProxy(target: self), visit)
     }
 
 }

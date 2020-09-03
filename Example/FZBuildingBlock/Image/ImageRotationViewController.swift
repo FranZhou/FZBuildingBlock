@@ -8,13 +8,14 @@
 
 import UIKit
 import FZBuildingBlock
+import FZWeakProxy
 
 class ImageRotationViewController: UIViewController {
 
     let originSize = CGSize(width: 250, height: 200)
 
     lazy var timer: Timer = {
-        let timer = Timer.scheduledTimer(timeInterval: 1, target: FZProxy(target: self), selector: #selector(btnClickAction(sender:)), userInfo: nil, repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: 1, target: FZWeakProxy(target: self), selector: #selector(btnClickAction(sender:)), userInfo: nil, repeats: true)
         return timer
     }()
 

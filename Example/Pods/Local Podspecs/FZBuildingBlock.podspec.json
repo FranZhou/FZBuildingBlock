@@ -75,18 +75,25 @@
     {
       "name": "Bluetooth",
       "source_files": "FZBuildingBlock/Bluetooth/Classes/**/*",
-      "frameworks": "CoreBluetooth"
+      "frameworks": "CoreBluetooth",
+      "dependencies": {
+        "FZObserver": [
+
+        ],
+        "FZWeakProxy": [
+
+        ]
+      }
     },
     {
       "name": "Location",
       "source_files": "FZBuildingBlock/Location/Classes/**/*",
-      "frameworks": [
-        "UIKit",
-        "Foundation",
-        "CoreLocation"
-      ],
+      "frameworks": "CoreLocation",
       "dependencies": {
         "FZObserver": [
+
+        ],
+        "FZWeakProxy": [
 
         ]
       }

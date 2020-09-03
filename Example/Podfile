@@ -9,6 +9,7 @@ end
 def fz_library
   pod 'FZObserver'
   pod 'FZRouterSwift'
+  pod 'FZWeakProxy'
 end
 
 target 'FZBuildingBlock_Example' do

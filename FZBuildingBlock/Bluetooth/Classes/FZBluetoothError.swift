@@ -1,13 +1,13 @@
 //
-//  FZLocationError.swift
+//  FZBluetoothError.swift
 //  FZBuildingBlock
 //
-//  Created by FranZhou on 2020/8/28.
+//  Created by FranZhou on 2020/9/2.
 //
 
 import Foundation
 
-public struct FZLocationError: Error {
+public struct FZBluetoothError: Error {
     public var error: Error?
     public var code: Int
     public var message: String

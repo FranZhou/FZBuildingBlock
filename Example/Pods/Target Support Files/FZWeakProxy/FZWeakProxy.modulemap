@@ -1,0 +1,6 @@
+framework module FZWeakProxy {
+  umbrella header "FZWeakProxy-umbrella.h"
+
+  export *
+  module * { export * }
+}

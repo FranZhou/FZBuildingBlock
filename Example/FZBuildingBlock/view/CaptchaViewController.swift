@@ -36,6 +36,10 @@ class CaptchaViewController: UIViewController {
         }
     }
 
+    deinit {
+        print("CaptchaViewController deinit")
+    }
+
     /*
     // MARK: - Navigation
 

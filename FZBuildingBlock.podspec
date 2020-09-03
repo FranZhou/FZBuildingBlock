@@ -72,14 +72,18 @@ Pod::Spec.new do |s|
     s.subspec 'Bluetooth' do |s_bluetooth|
         s_bluetooth.source_files = 'FZBuildingBlock/Bluetooth/Classes/**/*'
         s_bluetooth.frameworks = 'CoreBluetooth'
+        
+        s_bluetooth.dependency 'FZObserver'
+        s_bluetooth.dependency 'FZWeakProxy'
     end
     
     # 定位
     s.subspec 'Location' do |s_location|
         s_location.source_files = 'FZBuildingBlock/Location/Classes/**/*'
-        s_location.frameworks = 'UIKit', 'Foundation', 'CoreLocation'
+        s_location.frameworks = 'CoreLocation'
         
         s_location.dependency 'FZObserver'
+        s_location.dependency 'FZWeakProxy'
     end
     
     # s.resource_bundles = {

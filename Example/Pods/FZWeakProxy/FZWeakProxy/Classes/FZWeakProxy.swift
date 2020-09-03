@@ -1,33 +1,29 @@
 //
-//  FZProxy.swift
-//  FZBuildingBlock
+//  FZWeakProxy.swift
+//  FZWeakProxy
 //
-//  Created by FranZhou on 2019/12/5.
+//  Created by FranZhou on 2020/9/3.
 //
 
 import Foundation
 
 /// swift cannot inherit from NSProxy
-public final class FZProxy: NSObject {
+public final class FZWeakProxy<T>: NSObject where T: NSObject {
 
     /// proxy target
-    public private(set) weak var target: NSObject?
+    public private(set) weak var target: T?
 
     // MARK: - init
 
-    public init(target: NSObject) {
+    public init(target: T) {
         self.target = target
         super.init()
     }
 
-    public class func proxy(withTarget target: NSObject) -> FZProxy {
-        return FZProxy(target: target)
+    // MARK: - NSObject
+    public class func proxy(withTarget target: T) -> FZWeakProxy<T> {
+        return FZWeakProxy(target: target)
     }
-
-}
-
-// MARK: - NSObject
-extension FZProxy {
 
     public override func copy() -> Any {
         guard let target = target else {
@@ -84,10 +80,7 @@ extension FZProxy {
 
 //    open class func debugDescription() -> String
 
-}
-
-// MARK: - NSObjectProtocol
-extension FZProxy {
+    // MARK: - NSObjectProtocol
 
     public override func isEqual(_ object: Any?) -> Bool {
         guard let target = target else {
