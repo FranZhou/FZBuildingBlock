@@ -10,6 +10,7 @@
 		1D11AF4F2319249600919ED9 /* FZRouterDemo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D11AF4E2319249600919ED9 /* FZRouterDemo.plist */; };
 		1D11AF6A231D280D00919ED9 /* Target_RouterDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11AF69231D280D00919ED9 /* Target_RouterDemo.swift */; };
 		1D11AF812320B1A200919ED9 /* Target_OCRouterDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D11AF802320B1A200919ED9 /* Target_OCRouterDemo.m */; };
+		1D1A7B29250225F000D57744 /* AssociatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A7B28250225F000D57744 /* AssociatedViewController.swift */; };
 		1D22C9DD24DA8026007F24BF /* TableViewCommonRowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D22C9DC24DA8026007F24BF /* TableViewCommonRowData.swift */; };
 		1D2A5E78221CFFDE00CBAE1A /* ObserverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E72221CFFDE00CBAE1A /* ObserverViewController.swift */; };
 		1D2A5E79221CFFDE00CBAE1A /* StringImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A5E74221CFFDE00CBAE1A /* StringImageViewController.swift */; };
@@ -56,6 +57,7 @@
 		1D11AF7F2320B1A200919ED9 /* Target_OCRouterDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_OCRouterDemo.h; sourceTree = "<group>"; };
 		1D11AF802320B1A200919ED9 /* Target_OCRouterDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_OCRouterDemo.m; sourceTree = "<group>"; };
 		1D11AF822320B3A900919ED9 /* FZBuildingBlock_Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FZBuildingBlock_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		1D1A7B28250225F000D57744 /* AssociatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedViewController.swift; sourceTree = "<group>"; };
 		1D22C9DC24DA8026007F24BF /* TableViewCommonRowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCommonRowData.swift; sourceTree = "<group>"; };
 		1D2A5E72221CFFDE00CBAE1A /* ObserverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverViewController.swift; sourceTree = "<group>"; };
 		1D2A5E74221CFFDE00CBAE1A /* StringImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringImageViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 			path = router;
 			sourceTree = "<group>";
 		};
+		1D1A7B27250225CF00D57744 /* associated */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A7B28250225F000D57744 /* AssociatedViewController.swift */,
+			);
+			path = associated;
+			sourceTree = "<group>";
+		};
 		1D2A5E71221CFFDE00CBAE1A /* observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +242,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				1D22C9DC24DA8026007F24BF /* TableViewCommonRowData.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1D1A7B27250225CF00D57744 /* associated */,
 				1D11AF68231D27F500919ED9 /* router */,
 				1DE50D93221FF78A0089F93D /* keyboard */,
 				1D2A5E73221CFFDE00CBAE1A /* Image */,
@@ -497,6 +508,7 @@
 				1D11AF812320B1A200919ED9 /* Target_OCRouterDemo.m in Sources */,
 				1DE50D82221E9D9C0089F93D /* ImageCornerRadiusViewController.swift in Sources */,
 				1D2A5E7C221CFFDE00CBAE1A /* ImageViewController.swift in Sources */,
+				1D1A7B29250225F000D57744 /* AssociatedViewController.swift in Sources */,
 				1DEF13652226E373001F8C9A /* ViewBorderLineViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1DE50D95221FF7A50089F93D /* KeyboardObserverViewController.swift in Sources */,
