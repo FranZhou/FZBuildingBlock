@@ -86,6 +86,14 @@ Pod::Spec.new do |s|
         s_location.dependency 'FZWeakProxy'
     end
     
+    # 主题
+    s.subspec 'Theme' do |s_theme|
+        s_theme.source_files = 'FZBuildingBlock/Theme/Classes/**/*'
+        s_theme.frameworks = 'Foundation', 'UIKit'
+        
+        s_theme.dependency 'FZObserver'
+    end
+    
     # s.resource_bundles = {
     #   'FZBuildingBlock' => ['FZBuildingBlock/Assets/*.png']
     # }

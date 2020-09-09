@@ -5,6 +5,7 @@ PODS:
     - FZBuildingBlock/Extensions (= 0.4.0)
     - FZBuildingBlock/Location (= 0.4.0)
     - FZBuildingBlock/Permission (= 0.4.0)
+    - FZBuildingBlock/Theme (= 0.4.0)
     - FZBuildingBlock/Tools (= 0.4.0)
     - FZBuildingBlock/Views (= 0.4.0)
   - FZBuildingBlock/Bluetooth (0.4.0):
@@ -15,6 +16,8 @@ PODS:
     - FZObserver
     - FZWeakProxy
   - FZBuildingBlock/Permission (0.4.0)
+  - FZBuildingBlock/Theme (0.4.0):
+    - FZObserver
   - FZBuildingBlock/Tools (0.4.0)
   - FZBuildingBlock/Views (0.4.0):
     - FZBuildingBlock/Extensions
@@ -45,7 +48,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FZBuildingBlock: 3d31599af091910b14bc28830e21a985f7eeed49
+  FZBuildingBlock: 97cad4af4c2c996e9872a39a9824b9d3e7451c4c
   FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
   FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
   FZWeakProxy: 326388199dce487f8735fbcd04e281a6c7ba3440

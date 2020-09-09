@@ -87,6 +87,22 @@ class ViewExtensionViewController: UIViewController {
                 }
                 sectionRows.append(row)
             }
+            
+            // 页面主题切换
+            do {
+                var cellModel = FZTableViewCellModel()
+                cellModel.leftString = "页面主题切换"
+
+                var row = TableViewCommonRowData()
+                row.cellData = cellModel
+                row.identifier = FZTableViewCommonCell.reuseIdentifier()
+                row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
+                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                    let vc = ThemeViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                sectionRows.append(row)
+            }
 
             section.sectionRowDatas = sectionRows
             tableViewData.append(section)

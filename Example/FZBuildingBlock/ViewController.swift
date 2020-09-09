@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 
         let tableView = FZTableView(frame: self.view.bounds, style: .plain)
         tableView.tableViewManager = FZTableViewManager()
+        tableView.backgroundColor = UIColor.white
         tableView.register(FZTableViewCommonCell.classForCoder(), forCellReuseIdentifier: FZTableViewCommonCell.reuseIdentifier())
         return tableView
     }()
