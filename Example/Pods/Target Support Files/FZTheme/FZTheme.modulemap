@@ -1,0 +1,6 @@
+framework module FZTheme {
+  umbrella header "FZTheme-umbrella.h"
+
+  export *
+  module * { export * }
+}

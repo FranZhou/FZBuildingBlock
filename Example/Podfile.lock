@@ -5,7 +5,6 @@ PODS:
     - FZBuildingBlock/Extensions (= 0.4.0)
     - FZBuildingBlock/Location (= 0.4.0)
     - FZBuildingBlock/Permission (= 0.4.0)
-    - FZBuildingBlock/Theme (= 0.4.0)
     - FZBuildingBlock/Tools (= 0.4.0)
     - FZBuildingBlock/Views (= 0.4.0)
   - FZBuildingBlock/Bluetooth (0.4.0):
@@ -16,13 +15,12 @@ PODS:
     - FZObserver
     - FZWeakProxy
   - FZBuildingBlock/Permission (0.4.0)
-  - FZBuildingBlock/Theme (0.4.0):
-    - FZObserver
   - FZBuildingBlock/Tools (0.4.0)
   - FZBuildingBlock/Views (0.4.0):
     - FZBuildingBlock/Extensions
   - FZObserver (0.1.0)
   - FZRouterSwift (0.1.0)
+  - FZTheme (0.1.0)
   - FZWeakProxy (0.1.0)
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
@@ -31,6 +29,7 @@ DEPENDENCIES:
   - FZBuildingBlock (from `../`)
   - FZObserver
   - FZRouterSwift
+  - FZTheme
   - FZWeakProxy
   - MLeaksFinder
 
@@ -39,6 +38,7 @@ SPEC REPOS:
     - FBRetainCycleDetector
     - FZObserver
     - FZRouterSwift
+    - FZTheme
     - FZWeakProxy
     - MLeaksFinder
 
@@ -48,12 +48,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FZBuildingBlock: 97cad4af4c2c996e9872a39a9824b9d3e7451c4c
+  FZBuildingBlock: 3d31599af091910b14bc28830e21a985f7eeed49
   FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
   FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
+  FZTheme: a10bfc2fcf6bda332ab0547c53bf2bbd8d7d49ab
   FZWeakProxy: 326388199dce487f8735fbcd04e281a6c7ba3440
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
 
-PODFILE CHECKSUM: fa0a48e326892590df21346156826d195b46e7c1
+PODFILE CHECKSUM: a94c9c6b8b9fe1b11cc457df0e66f3f520fc2410
 
 COCOAPODS: 1.9.0.beta.2

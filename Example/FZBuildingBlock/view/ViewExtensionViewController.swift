@@ -87,7 +87,7 @@ class ViewExtensionViewController: UIViewController {
                 }
                 sectionRows.append(row)
             }
-            
+
             // 页面主题切换
             do {
                 var cellModel = FZTableViewCellModel()

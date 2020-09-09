@@ -97,19 +97,6 @@
 
         ]
       }
-    },
-    {
-      "name": "Theme",
-      "source_files": "FZBuildingBlock/Theme/Classes/**/*",
-      "frameworks": [
-        "Foundation",
-        "UIKit"
-      ],
-      "dependencies": {
-        "FZObserver": [
-
-        ]
-      }
     }
   ],
   "swift_version": "5.0"

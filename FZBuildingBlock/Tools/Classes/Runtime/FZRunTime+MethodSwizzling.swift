@@ -31,10 +31,9 @@ extension FZRuntime {
             method_exchangeImplementations(originalMethod, swizzledMethod)
         }
     }
-    
-    
-    public class func addMethod(clz: AnyClass, selector: Selector, method: Method) -> Bool{
+
+    public class func addMethod(clz: AnyClass, selector: Selector, method: Method) -> Bool {
         return class_addMethod(clz, selector, method_getImplementation(method), method_getTypeEncoding(method))
     }
-    
+
 }

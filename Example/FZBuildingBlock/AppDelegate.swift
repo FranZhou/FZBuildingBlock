@@ -104,8 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         print(UIDevice.current.fz.getModelName())
-        
-        FZThemeManager.manager
 
         return true
     }
