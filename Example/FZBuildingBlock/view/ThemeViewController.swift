@@ -15,7 +15,6 @@ class ThemeViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        FZThemeManager.manager.isFlowSystemThemeStyle = true
         FZThemeManager.manager.themeLoader { (style) -> (Bool, FZThemeMachineProtocol?)? in
             print("\(style.themeName)")
             return (false, nil)
@@ -31,15 +30,8 @@ class ThemeViewController: UIViewController {
                 view.backgroundColor = UIColor.green
             }
         }
-    }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if FZThemeManager.manager.currentThemeStyle == .light {
-            FZThemeManager.manager.switchCurrentTheme(to: .dark)
-        } else {
-            FZThemeManager.manager.switchCurrentTheme(to: .light)
-        }
+        
+        setupUI()
     }
     
     
@@ -55,6 +47,56 @@ class ThemeViewController: UIViewController {
     
     deinit {
         print("ThemeViewController deinit")
+    }
+    
+}
+
+extension ThemeViewController {
+    
+    func setupUI(){
+        
+        do{
+            let btn = FZButton(frame: CGRect(x: 20, y: 100, width: 100, height: 50))
+            btn.setTitle("light", for: UIControl.State.normal)
+            btn.fz_theme.appearance { (btn, style, themeMachine) in
+                btn.setTitleColor(UIColor.fz.randomColor(), for: UIControl.State.normal)
+                btn.backgroundColor = UIColor.fz.randomColor()
+            }
+            
+            btn.fz.addHandler(closure: { (control) in
+                FZThemeManager.manager.switchCurrentTheme(to: .light)
+            }, for: UIControl.Event.touchUpInside)
+            self.view.addSubview(btn)
+        }
+        
+        do{
+            let btn = FZButton(frame: CGRect(x: 140, y: 100, width: 100, height: 50))
+            btn.setTitle("dark", for: UIControl.State.normal)
+            btn.fz_theme.appearance { (btn, style, themeMachine) in
+                btn.setTitleColor(UIColor.fz.randomColor(), for: UIControl.State.normal)
+                btn.backgroundColor = UIColor.fz.randomColor()
+            }
+            
+            btn.fz.addHandler(closure: { (control) in
+                FZThemeManager.manager.switchCurrentTheme(to: .dark)
+            }, for: UIControl.Event.touchUpInside)
+            self.view.addSubview(btn)
+        }
+        
+        do{
+            let btn = FZButton(frame: CGRect(x: 260, y: 100, width: 100, height: 50))
+            btn.setTitle("custom", for: UIControl.State.normal)
+            btn.fz_theme.appearance { (btn, style, themeMachine) in
+                btn.setTitleColor(UIColor.fz.randomColor(), for: UIControl.State.normal)
+                btn.backgroundColor = UIColor.fz.randomColor()
+            }
+            
+            btn.fz.addHandler(closure: { (control) in
+                FZThemeManager.manager.switchCurrentTheme(to: .custom("test"))
+            }, for: UIControl.Event.touchUpInside)
+            self.view.addSubview(btn)
+        }
+        
     }
     
 }

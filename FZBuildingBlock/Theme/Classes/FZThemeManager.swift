@@ -20,7 +20,9 @@ public class FZThemeManager: NSObject{
      */
     public internal(set) var currentThemeStyle: FZThemeStyle = FZThemeConfiguration.defaultThemeStyle{
         didSet{
-            fireAllThemeBlock()
+            if oldValue.themeName != currentThemeStyle.themeName{
+                fireAllThemeBlock()
+            }
         }
     }
     
