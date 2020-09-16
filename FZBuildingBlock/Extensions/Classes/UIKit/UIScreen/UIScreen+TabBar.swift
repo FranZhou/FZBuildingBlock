@@ -7,6 +7,18 @@
 
 import Foundation
 
-extension FZBuildingBlockWrapper where Base: UIScreen {
+extension UIScreen.fz {
+
+    public static var tabBarHeight: CGFloat {
+        get {
+            return 49
+        }
+    }
+
+    public static var tabBarAndSafeAreaHeight: CGFloat {
+        get {
+            return UIApplication.shared.fz.safeArea.bottom + tabBarHeight
+        }
+    }
 
 }

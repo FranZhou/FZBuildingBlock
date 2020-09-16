@@ -60,7 +60,7 @@ class ImageColorViewController: UIViewController {
             return
         }
 
-        self.navigationItem.fz.showIndicator(position: .center)
+        self.navigationItem.fz.showIndicator(position: .left)
 
         print(self.view.fz.colorRGBA(atPoint: point)?.fz.rgbHexString() ?? "")
     }
