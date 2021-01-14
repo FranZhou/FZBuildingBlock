@@ -13,9 +13,8 @@ extension UIViewController.fz {
     ///
     /// - Parameter rootWindow: default = UIApplication.shared.delegate?.window
     /// - Returns:
-    public static func getTopViewController(rootWindow: UIWindow?? = UIApplication.shared.delegate?.window) -> UIViewController? {
-        guard let delegateWindow = rootWindow,
-            let window = delegateWindow
+    public static func getTopViewController(rootWindow: UIWindow? = UIApplication.shared.windows.first) -> UIViewController? {
+        guard let window = rootWindow
             else {
                 return nil
         }
@@ -32,21 +31,22 @@ extension FZBuildingBlockWrapper where Base: UIViewController {
     /// - Returns:
     public func getTopViewController() -> UIViewController {
 
-        // presented
         if let presentedVC = base.presentedViewController {
+            // presented
             return presentedVC.fz.getTopViewController()
-        }
-
-        // navigation
-        if base.isKind(of: UINavigationController.self) {
-            if let topVC = (base as! UINavigationController).visibleViewController {
+        } else if let splitVC = base as? UISplitViewController {
+            // splite
+            if let lastVC = splitVC.viewControllers.last {
+                return lastVC.fz.getTopViewController()
+            }
+        } else if let navigationVC = base as? UINavigationController {
+            // navigation
+            if let topVC = navigationVC.topViewController {
                 return topVC.fz.getTopViewController()
             }
-        }
-
-        // tarbbar
-        if base.isKind(of: UITabBarController.self) {
-            if let selectVC = (base as! UITabBarController).selectedViewController {
+        } else if let tabbarVC = base as? UITabBarController {
+            // tarbbar
+            if let selectVC = tabbarVC.selectedViewController {
                 return selectVC.fz.getTopViewController()
             }
         }

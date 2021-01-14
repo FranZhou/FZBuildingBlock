@@ -7,8 +7,7 @@
 
 import UIKit
 
-@objc
-open class FZTableView: UITableView {
+@objc open class FZTableView: UITableView {
 
     open var tableViewManager: FZTableViewManager?
 
@@ -27,7 +26,7 @@ open class FZTableView: UITableView {
 // MARK: - default config
 extension FZTableView {
 
-    open func defaultConfig() {
+    @objc open func defaultConfig() {
 
         self.separatorStyle = .none
 
@@ -36,7 +35,7 @@ extension FZTableView {
     /// 配合tableViewManager使用，渲染tableview
     ///
     /// - Parameter data: FZTableViewSection array
-    open func updateTableViewManager(withData data: FZTableViewSectionAndRowData? = nil) {
+    @objc open func updateTableViewManager(withData data: FZTableViewSectionAndRowData? = nil) {
 
         if let manager = tableViewManager {
             if let delegate = self.delegate,

@@ -24,8 +24,7 @@ open class FZTableViewCell: UITableViewCell {
 }
 
 // MARK: - override
-@objc
-extension FZTableViewCell {
+@objc extension FZTableViewCell {
 
     /// cell reuseIdentifier
     ///

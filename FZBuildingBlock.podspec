@@ -68,7 +68,7 @@ Pod::Spec.new do |s|
         s_permission.frameworks = 'Foundation', 'UIKit', 'AddressBook', 'AddressBook', 'AVFoundation', 'Contacts', 'EventKit', 'CoreLocation', 'MediaPlayer', 'CoreMotion', 'Photos', 'Intents', 'Speech'
     end
     
-    # 自定义视图
+    # 蓝牙
     s.subspec 'Bluetooth' do |s_bluetooth|
         s_bluetooth.source_files = 'FZBuildingBlock/Bluetooth/Classes/**/*'
         s_bluetooth.frameworks = 'CoreBluetooth'

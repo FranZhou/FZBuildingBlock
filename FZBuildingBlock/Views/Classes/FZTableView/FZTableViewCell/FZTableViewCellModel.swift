@@ -7,8 +7,7 @@
 
 import Foundation
 
-@objc
-open class FZTableViewCellModel: NSObject {
+@objc open class FZTableViewCellModel: NSObject {
 
     /// model功能标识字段，默认为nil
     /// 当你需要根据model判断当前处理什么业务时，可以设置modelIdentifier，然后根据modelIdentifier来判断

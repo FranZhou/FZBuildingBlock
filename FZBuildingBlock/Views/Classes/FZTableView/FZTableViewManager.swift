@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-open class FZTableViewManager: NSObject {
+@objc open class FZTableViewManager: NSObject {
 
     open var tableSectionsAndRowsData: FZTableViewSectionAndRowData?
 
@@ -35,10 +35,10 @@ extension FZTableViewManager {
 }
 
 // MARK: UITableViewDelegate
-extension FZTableViewManager: UITableViewDelegate {
+@objc extension FZTableViewManager: UITableViewDelegate {
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellWillDisplay {
             block(tableView, cell, indexPath)
@@ -48,7 +48,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderViewWillDisplay {
             block(tableView, view, section)
@@ -58,7 +58,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterViewWillDisplay {
             block(tableView, view, section)
@@ -68,7 +68,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.celldidEndDisplaying {
             block(tableView, cell, indexPath)
@@ -78,7 +78,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderViewDidEndDisplay {
             block(tableView, view, section)
@@ -88,7 +88,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterViewDidEndDisplay {
             block(tableView, view, section)
@@ -98,7 +98,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellHeight {
             return block(tableView, indexPath)
@@ -109,7 +109,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderViewHeight {
             return block(tableView, section)
@@ -120,7 +120,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterViewHeight {
             return block(tableView, section)
@@ -131,7 +131,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 7.0, *)
-    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellEstimatedHeight {
             return block(tableView, indexPath)
@@ -142,7 +142,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 7.0, *)
-    public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderViewEstimatedHeight {
             return block(tableView, section)
@@ -153,7 +153,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 7.0, *)
-    public func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterViewEstimatedHeight {
             return block(tableView, section)
@@ -164,7 +164,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderView {
             return block(tableView, section)
@@ -175,7 +175,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterView {
             return block(tableView, section)
@@ -186,7 +186,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellAccessoryButtonTapped {
             block(tableView, indexPath)
@@ -196,7 +196,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellShouldHighlight {
             return block(tableView, indexPath)
@@ -207,7 +207,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellDidHighlight {
             block(tableView, indexPath)
@@ -217,7 +217,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 6.0, *)
-    public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellDidUnhighlight {
             block(tableView, indexPath)
@@ -227,7 +227,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    open func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellWillSelect {
             return block(tableView, indexPath)
@@ -238,7 +238,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 3.0, *)
-    public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+    open func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellWillDeselect {
             return block(tableView, indexPath)
@@ -249,7 +249,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellDidSelect {
             block(tableView, indexPath)
@@ -259,7 +259,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 3.0, *)
-    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellDidDeselect {
             block(tableView, indexPath)
@@ -269,7 +269,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellEditingStyle {
             return block(tableView, indexPath)
@@ -280,7 +280,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 3.0, *)
-    public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    open func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellTitleForDeleteConfirmationButton {
             return block(tableView, indexPath)
@@ -291,7 +291,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS, introduced: 8.0, deprecated: 13.0)
-    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellEditActions {
             return block(tableView, indexPath)
@@ -302,7 +302,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 11.0, *)
-    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if let rowData = tableRowData(indexPath: indexPath),
             let rowDataAfteriOS11 = rowData as? FZTableViewRowDataAfteriOS11,
             let block = rowDataAfteriOS11.cellLeadingSwipeActionsConfiguration {
@@ -315,7 +315,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 11.0, *)
-    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS11,
             let block = rowData.cellTrailingSwipeActionsConfiguration {
             return block(tableView, indexPath)
@@ -327,7 +327,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellShouldIndentWhileEditing {
             return block(tableView, indexPath)
@@ -338,7 +338,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellWillBeginEditing {
             block(tableView, indexPath)
@@ -348,7 +348,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    open func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         if let indexPath = indexPath,
             let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellDidEndEditing {
@@ -359,7 +359,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    open func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if let block = tableSectionsAndRowsData?.tableViewCellTargetIndexPathForMove {
             return block(tableView, sourceIndexPath, proposedDestinationIndexPath)
         }
@@ -367,7 +367,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+    open func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellIndentationLevel {
             return block(tableView, indexPath)
@@ -378,7 +378,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS, introduced: 5.0, deprecated: 13.0)
-    public func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellShouldShowMenu {
             return block(tableView, indexPath)
@@ -389,7 +389,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS, introduced: 5.0, deprecated: 13.0)
-    public func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+    open func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellCanPerformAction {
             return block(tableView, action, indexPath, sender)
@@ -400,7 +400,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS, introduced: 5.0, deprecated: 13.0)
-    public func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+    open func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellPerformAction {
             block(tableView, action, indexPath, sender)
@@ -410,7 +410,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 9.0, *)
-    public func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS9,
             let block = rowData.cellCanFocus {
             return block(tableView, indexPath)
@@ -422,7 +422,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 9.0, *)
-    public func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS9,
             let block = sectionsAndRowsData.tableViewShouldUpdateFocus {
             return block(tableView, context)
@@ -434,7 +434,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 9.0, *)
-    public func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+    open func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS9,
             let block = sectionsAndRowsData.tableViewDidUpdateFocus {
             block(tableView, context, coordinator)
@@ -445,7 +445,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 9.0, *)
-    public func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
+    open func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS9,
             let block = sectionsAndRowsData.tableViewIndexPathForPreferredFocusedView {
             return block(tableView)
@@ -457,7 +457,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 11.0, *)
-    public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS11,
             let block = rowData.cellShouldSpringLoad {
             return block(tableView, indexPath, context)
@@ -469,7 +469,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS13,
             let block = rowData.cellShouldBeginMultipleSelectionInteraction {
             return block(tableView, indexPath)
@@ -481,7 +481,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS13,
             let block = rowData.cellDidBeginMultipleSelectionInteraction {
             block(tableView, indexPath)
@@ -492,7 +492,7 @@ extension FZTableViewManager: UITableViewDelegate {
     }
 
     @available(iOS 13.0, *)
-    public func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
+    open func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS13,
             let block = sectionsAndRowsData.tableViewDidEndMultipleSelectionInteraction {
             block(tableView)
@@ -512,7 +512,7 @@ extension FZTableViewManager: UITableViewDelegate {
      *         present at this particular time.
      */
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    open func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if let rowData = tableRowData(indexPath: indexPath) as? FZTableViewRowDataAfteriOS13,
             let block = rowData.cellContextMenuConfiguration {
             return block(tableView, indexPath, point)
@@ -530,7 +530,7 @@ extension FZTableViewManager: UITableViewDelegate {
      * @param configuration  The configuration of the menu about to be displayed by this interaction.
      */
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    open func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS13,
             let block = sectionsAndRowsData.tableViewPreviewForHighlightingContextMenuWithConfiguration {
             return block(tableView, configuration)
@@ -546,7 +546,7 @@ extension FZTableViewManager: UITableViewDelegate {
      * @param configuration  The configuration of the menu displayed by this interaction.
      */
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    open func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS13,
             let block = sectionsAndRowsData.tableViewPreviewForDismissingContextMenuWithConfiguration {
             return block(tableView, configuration)
@@ -562,7 +562,7 @@ extension FZTableViewManager: UITableViewDelegate {
      * @param animator       Commit animator. Add animations to this object to run them alongside the commit transition.
      */
     @available(iOS 13.0, *)
-    public func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+    open func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         if let sectionsAndRowsData = tableSectionsAndRowsData as? FZTableViewSectionAndRowDataAfteriOS13,
             let block = sectionsAndRowsData.tableViewWillPerformPreviewActionForMenuConfiguration {
             block(tableView, configuration, animator)
@@ -575,7 +575,7 @@ extension FZTableViewManager: UITableViewDelegate {
 extension FZTableViewManager: UITableViewDataSource {
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sectionData = tableSectionData(section: section) {
             return sectionData.sectionRowDatas?.count ?? 0
         }
@@ -583,7 +583,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
 
         if let rowData = tableRowData(indexPath: indexPath),
@@ -597,12 +597,12 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return tableSectionsAndRowsData?.sectionDatas?.count ?? 0
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionHeaderTitle {
             return block(tableView, section)
@@ -613,7 +613,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let sectionData = tableSectionData(section: section),
             let block = sectionData.sectionFooterTitle {
             return block(tableView, section)
@@ -624,7 +624,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellCanEdit {
             return block(tableView, indexPath)
@@ -635,7 +635,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellCanMove {
             return block(tableView, indexPath)
@@ -646,7 +646,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         if let block = tableSectionsAndRowsData?.tableViewSectionIndexTitles {
             return block(tableView)
         }
@@ -654,7 +654,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         if let block = tableSectionsAndRowsData?.tableViewSectionForSectionIndexTitle {
             return block(tableView, title, index)
         }
@@ -662,7 +662,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if let rowData = tableRowData(indexPath: indexPath),
             let block = rowData.cellCommitEditingStyle {
             block(tableView, editingStyle, indexPath)
@@ -672,7 +672,7 @@ extension FZTableViewManager: UITableViewDataSource {
     }
 
     @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if let block = tableSectionsAndRowsData?.tableViewCellMove {
             block(tableView, sourceIndexPath, destinationIndexPath)
         }
