@@ -49,6 +49,9 @@
 		1BBBB55D67C282036AD6A302A77D7374 /* FZPermissionMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103209E5BD544BA76F6CC95AD5A7F21 /* FZPermissionMotion.swift */; };
 		1BE446E3EAEBC93BAA70A18B97681D81 /* FBClassStrongLayout.mm in Sources */ = {isa = PBXBuildFile; fileRef = D86B01923EBF89EFF498D6C1A0A5B595 /* FBClassStrongLayout.mm */; };
 		1C6F6E009A7402C75C813759F88B3620 /* UIColor+RGB255.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED519AA44EB3D76304A9F15F9932FF32 /* UIColor+RGB255.swift */; };
+		1D520A4925F86C8300DB0548 /* Date+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D520A4825F86C8300DB0548 /* Date+Utility.swift */; };
+		1D520A5D25F8984D00DB0548 /* FZBuildingBlockCompatibleValue+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D520A5C25F8984D00DB0548 /* FZBuildingBlockCompatibleValue+Date.swift */; };
+		1D520A6825F89C1600DB0548 /* Date+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D520A6725F89C1600DB0548 /* Date+Component.swift */; };
 		1D82FB7CB577DB9C7925CE44FB43BB9D /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4ED5CDB20234B42B6E84F3AB9850E /* UIView+Shadow.swift */; };
 		1DED826A4486DC7345DFE3F7C1E9655C /* UIControl+TouchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8315F4A390FD32C4C668C36842CC2A /* UIControl+TouchArea.swift */; };
 		1EAB1982BDB01F15E053FC95F9A0C4C8 /* FZTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D09B6494A79D1A7D2DB636C2B782AA /* FZTableViewCellModel.swift */; };
@@ -411,7 +414,7 @@
 		04560B84B51FCCEFE5544B7859CA789D /* UITabBarController+MemoryLeak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+MemoryLeak.h"; path = "MLeaksFinder/UITabBarController+MemoryLeak.h"; sourceTree = "<group>"; };
 		04565DA20B6CD9F4E359D74BC0542B97 /* FZBuildingBlockCompatible+UIBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIBarButtonItem.swift"; sourceTree = "<group>"; };
 		04A04E1E99130E2BD67D2B0794416446 /* UIColor+Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
-		053749B53E6E2C9C0094567668547F45 /* FBAssociationManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBAssociationManager.mm; path = FBRetainCycleDetector/Associations/FBAssociationManager.mm; sourceTree = "<group>"; };
+		053749B53E6E2C9C0094567668547F45 /* FBAssociationManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBAssociationManager.mm; path = FBRetainCycleDetector/Associations/FBAssociationManager.mm; sourceTree = "<group>"; };
 		05EC09806383795C7EC2DD8668814113 /* FBClassStrongLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBClassStrongLayout.h; path = FBRetainCycleDetector/Layout/Classes/FBClassStrongLayout.h; sourceTree = "<group>"; };
 		05FE3AE279BA7366ECAD2B0114AA28ED /* FZTheme.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FZTheme.modulemap; sourceTree = "<group>"; };
 		06506421A1341B2CB713785F36003BB7 /* UIPinchGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIPinchGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
@@ -423,7 +426,7 @@
 		0E6E317B9241649B8EEC113779BD7B1C /* FZPermissionSpeechRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionSpeechRecognizer.swift; sourceTree = "<group>"; };
 		0E6EDCA0A6B7A7CDC7282440BEEB27C9 /* FZBuildingBlock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZBuildingBlock.release.xcconfig; sourceTree = "<group>"; };
 		0F44874CDCA7C65844D68A38062E6B1A /* UITapGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
-		103580E9D24E48338F8FA0AB222B205C /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Tests.framework; path = "Pods-FZBuildingBlock_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		103580E9D24E48338F8FA0AB222B205C /* Pods_FZBuildingBlock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0CA783AD6A912527ADFB6DCE00C3C /* UINavigationItem+Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Indicator.swift"; sourceTree = "<group>"; };
 		11B45DF98AB645FF41C6D83F4027B0FF /* FZRouterLoaderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZRouterLoaderProtocol.swift; path = FZRouterSwift/Classes/FZRouterProtocol/FZRouterLoaderProtocol.swift; sourceTree = "<group>"; };
 		11DB5D15512A4721E737DA46FD7231F2 /* FZPermissionBluetooth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionBluetooth.swift; sourceTree = "<group>"; };
@@ -440,14 +443,17 @@
 		174AA14B11523423374A34B7E1641093 /* FZPermissionStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZPermissionStatus.swift; path = FZBuildingBlock/Permission/Classes/FZPermissionStatus.swift; sourceTree = "<group>"; };
 		176F63401BE6E0D2D77F9F2D69AAF660 /* FZPermission.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZPermission.swift; path = FZBuildingBlock/Permission/Classes/FZPermission.swift; sourceTree = "<group>"; };
 		17FFD269BE656AAE773BBDFA1D24E1DB /* FZTableViewRowData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewRowData.swift; sourceTree = "<group>"; };
-		1802B8E36FB14D9618C5D946816AE3CE /* FZWeakProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZWeakProxy.framework; path = FZWeakProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1802B8E36FB14D9618C5D946816AE3CE /* FZWeakProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZWeakProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1846626080621C63BF70ADAC7D2A9B7A /* Pods-FZBuildingBlock_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Example-frameworks.sh"; sourceTree = "<group>"; };
 		19A9805A4490DDD5660B17FE3907B781 /* Pods-FZBuildingBlock_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Tests-Info.plist"; sourceTree = "<group>"; };
 		1A6148DCCA39F623F84EF158C8564099 /* NSMutableAttributedString+Append.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Append.swift"; sourceTree = "<group>"; };
 		1AD311B54D48E28D1E6AF662000E7140 /* Tools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = Tools.modulemap; path = FZBuildingBlock/Tools/Resources/Tools.modulemap; sourceTree = "<group>"; };
 		1B09F693AB9A06D579E4B96CB68C3390 /* FZLocationManager+Heading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZLocationManager+Heading.swift"; path = "FZBuildingBlock/Location/Classes/FZLocationManager+Heading.swift"; sourceTree = "<group>"; };
-		1C278F2E14331831AE5015213998351E /* Struct.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = Struct.mm; path = FBRetainCycleDetector/Layout/Classes/Parser/Struct.mm; sourceTree = "<group>"; };
+		1C278F2E14331831AE5015213998351E /* Struct.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = Struct.mm; path = FBRetainCycleDetector/Layout/Classes/Parser/Struct.mm; sourceTree = "<group>"; };
 		1C31C0E48FB87D6EF9394EF9FD761A1E /* Pods-FZBuildingBlock_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZBuildingBlock_Example-Info.plist"; sourceTree = "<group>"; };
+		1D520A4825F86C8300DB0548 /* Date+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utility.swift"; sourceTree = "<group>"; };
+		1D520A5C25F8984D00DB0548 /* FZBuildingBlockCompatibleValue+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatibleValue+Date.swift"; sourceTree = "<group>"; };
+		1D520A6725F89C1600DB0548 /* Date+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Component.swift"; sourceTree = "<group>"; };
 		1D6551E7D19B3E59D1E0C10C419DA013 /* NSMutableAttributedString+Add.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Add.swift"; sourceTree = "<group>"; };
 		1E782CC32ADAB0DE92A982BB7137ECC8 /* FZRouterModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZRouterModelProtocol.swift; path = FZRouterSwift/Classes/FZRouterProtocol/FZRouterModelProtocol.swift; sourceTree = "<group>"; };
 		1FCED219FC65730248E8B88C8ECB55ED /* FBObjectInStructReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBObjectInStructReference.h; path = FBRetainCycleDetector/Layout/Classes/Reference/FBObjectInStructReference.h; sourceTree = "<group>"; };
@@ -473,7 +479,7 @@
 		28DC797B6A33862CC6E990215234D85F /* UIButton+Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+Indicator.swift"; sourceTree = "<group>"; };
 		29A38CE1A4DDEA281B5FB852E5B03C2D /* FZAssociatedObjects.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZAssociatedObjects.swift; sourceTree = "<group>"; };
 		29B00A29C9A02E81F0129AF592D743D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		2A1194AC019E1C497A170EE4AB725374 /* FBRetainCycleDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBRetainCycleDetector.framework; path = FBRetainCycleDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1194AC019E1C497A170EE4AB725374 /* FBRetainCycleDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBRetainCycleDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AAE99B2E75F2154E9F9424F90E36E52 /* FZTableViewSectionData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewSectionData.swift; sourceTree = "<group>"; };
 		2AC9FC12B5629425A8F7DAADB888E194 /* UIBarButtonItem+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Closures.swift"; sourceTree = "<group>"; };
 		2BC5266594D2C66F6CA4380671675C5E /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
@@ -500,7 +506,7 @@
 		3D9CD8A6D1C457567C1ABA35BD56EA8E /* FZDefaultURLRouterUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZDefaultURLRouterUtil.swift; path = FZRouterSwift/Classes/FZDefaultURLRouter/FZDefaultURLRouterUtil.swift; sourceTree = "<group>"; };
 		3E387A265403B4F38F46EF57201321E9 /* String+Pinyin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Pinyin.swift"; sourceTree = "<group>"; };
 		3F02D3A74F3AB604B5752B3D8275704F /* String+Size.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
-		4076216C0F8E6B3CDB5759B15DB4EDA1 /* fishhook.c */ = {isa = PBXFileReference; includeInIndex = 1; name = fishhook.c; path = fishhook/fishhook.c; sourceTree = "<group>"; };
+		4076216C0F8E6B3CDB5759B15DB4EDA1 /* fishhook.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = fishhook/fishhook.c; sourceTree = "<group>"; };
 		41B2F635AC841D7E13DB6D54AB41D5BD /* FZCommonCryptoAlgorithm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZCommonCryptoAlgorithm.swift; sourceTree = "<group>"; };
 		42D770681AF446AC9A858294266363B7 /* FZAssociatedPolicyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZAssociatedPolicyManager.swift; sourceTree = "<group>"; };
 		4301916DED19FF4DC199980E9BC62D08 /* FZPermissionMediaLibrary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionMediaLibrary.swift; sourceTree = "<group>"; };
@@ -525,7 +531,7 @@
 		502D596A480078529309206304DC2322 /* FZObserver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZObserver-dummy.m"; sourceTree = "<group>"; };
 		50CDE1677E4D4E7C41A6C0E74310596B /* MLeaksFinder-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MLeaksFinder-Info.plist"; sourceTree = "<group>"; };
 		50FA020B8D133651450B604D3AD48FDC /* MLeaksFinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MLeaksFinder.h; path = MLeaksFinder/MLeaksFinder.h; sourceTree = "<group>"; };
-		5209272188C316E050F7C27C39999DCD /* MLeaksFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MLeaksFinder.framework; path = MLeaksFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5209272188C316E050F7C27C39999DCD /* MLeaksFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MLeaksFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C3D89FF5D5BD5EAA94D02C6F2D3BAF /* Pods-FZBuildingBlock_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		54030B7470FFA609E422146EDA711E28 /* FZConnectedPeripheral+Service.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZConnectedPeripheral+Service.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZConnectedPeripheral+Service.swift"; sourceTree = "<group>"; };
 		54256D166B36B68981C1547EEF540D4A /* FBRetainCycleDetector-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBRetainCycleDetector-umbrella.h"; sourceTree = "<group>"; };
@@ -558,7 +564,7 @@
 		6469E3E63988A95E2C662D7C23971F2A /* UIImage+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+FileName.swift"; sourceTree = "<group>"; };
 		650ED0EFB31EF0808E5A1B5BBB4B4801 /* FZObserver-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZObserver-prefix.pch"; sourceTree = "<group>"; };
 		65F37C963FC6DB44CD61553681F1ABB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		68B004EA68DFE8FCD5B32D6F8AD93B8B /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZBuildingBlock_Example.framework; path = "Pods-FZBuildingBlock_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B004EA68DFE8FCD5B32D6F8AD93B8B /* Pods_FZBuildingBlock_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZBuildingBlock_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		691A350D6B5CC5A189567531966219E7 /* FBRetainCycleUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBRetainCycleUtils.m; path = FBRetainCycleDetector/FBRetainCycleUtils.m; sourceTree = "<group>"; };
 		6948DC6514C9688C22A2CEB65877554A /* String+Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		696D42B30E3072E5CACE5A9A6837F388 /* FZObserverSafeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZObserverSafeManager.swift; path = FZObserver/Classes/FZObserverSafeManager.swift; sourceTree = "<group>"; };
@@ -579,7 +585,7 @@
 		735D88AF5EC0D7221738F40288AAFA6D /* String+URL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		73CFFD61AE5B9F560B2CADFEBFA322C2 /* Pods-FZBuildingBlock_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZBuildingBlock_Example.release.xcconfig"; sourceTree = "<group>"; };
 		74303D515668E013B069C8533AE1E03C /* FZBuildingBlock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FZBuildingBlock.modulemap; sourceTree = "<group>"; };
-		744FC9F785B7EF49E26583808E0A3FAE /* FZObserver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZObserver.framework; path = FZObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		744FC9F785B7EF49E26583808E0A3FAE /* FZObserver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B19333C0461A64B13DBD9B7C894C57 /* FBObjectiveCBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBObjectiveCBlock.m; path = FBRetainCycleDetector/Graph/FBObjectiveCBlock.m; sourceTree = "<group>"; };
 		7551C421EB4FB34BBBA0E2D548704F46 /* FZLargeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZLargeImageView.swift; sourceTree = "<group>"; };
 		755B3670941259C4A3ECF2BD4E9B49F9 /* FBObjectiveCObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBObjectiveCObject.h; path = FBRetainCycleDetector/Graph/FBObjectiveCObject.h; sourceTree = "<group>"; };
@@ -590,7 +596,7 @@
 		789C75B566E647A9BBEBA6C5241FBC30 /* FZLocationManager+Authorization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZLocationManager+Authorization.swift"; path = "FZBuildingBlock/Location/Classes/FZLocationManager+Authorization.swift"; sourceTree = "<group>"; };
 		79DB9B328B1B74145EB61DB75BA06FAC /* UISwipeGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
 		7AB09183B9C5E1CC56A9C7983D5628FB /* Type.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Type.h; path = FBRetainCycleDetector/Layout/Classes/Parser/Type.h; sourceTree = "<group>"; };
-		7C2E7EDFA7445452C62B1D31631F465A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7C2E7EDFA7445452C62B1D31631F465A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7C5CB88B863F916AF6E9ABEF1C61FD5C /* FBObjectiveCObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBObjectiveCObject.m; path = FBRetainCycleDetector/Graph/FBObjectiveCObject.m; sourceTree = "<group>"; };
 		7C661E0C250AC7D87DB9A3FD05F52611 /* UIColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		7D12EEE780B5B190E163799DDBB6F426 /* FBRetainCycleDetector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBRetainCycleDetector.h; path = FBRetainCycleDetector/Detector/FBRetainCycleDetector.h; sourceTree = "<group>"; };
@@ -599,7 +605,7 @@
 		7F1F25A5F19B6447C2653BD01DA49938 /* UINavigationController+MemoryLeak.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MemoryLeak.m"; path = "MLeaksFinder/UINavigationController+MemoryLeak.m"; sourceTree = "<group>"; };
 		7FA3EB02343ABE74D3ED6DE2E46EF5D6 /* UIViewController+MemoryLeak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MemoryLeak.h"; path = "MLeaksFinder/UIViewController+MemoryLeak.h"; sourceTree = "<group>"; };
 		8128AA8ED935FFC5A1EDA65DC7BBCF87 /* FBBlockStrongRelationDetector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBBlockStrongRelationDetector.h; path = FBRetainCycleDetector/Layout/Blocks/FBBlockStrongRelationDetector.h; sourceTree = "<group>"; };
-		81392068FB46E6B5DDD06A71262A790F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		81392068FB46E6B5DDD06A71262A790F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		82A3A33AD3DC4EAB363087CDA7D31999 /* UILongPressGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILongPressGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
 		8335FC5D3C2CAB1EFE5BF03D35954B15 /* FZTableViewRowDataAfteriOS11.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewRowDataAfteriOS11.swift; sourceTree = "<group>"; };
 		83F34C73381FD521602AF27D4A268806 /* NSAttributedString+ConvenienceInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+ConvenienceInit.swift"; sourceTree = "<group>"; };
@@ -631,14 +637,14 @@
 		97BA97440737D03DFEC51499269CD34E /* FZTableViewSectionAndRowDataAfteriOS9.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewSectionAndRowDataAfteriOS9.swift; sourceTree = "<group>"; };
 		984F20161F588DBEBE0CCE84822A78C8 /* FZTheme-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FZTheme-Info.plist"; sourceTree = "<group>"; };
 		98511210A67B90C301DE62BF01393899 /* FZJSONModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZJSONModel.swift; sourceTree = "<group>"; };
-		98B082D4569C92F191BB698ED519C8B5 /* FBStandardGraphEdgeFilters.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBStandardGraphEdgeFilters.mm; path = FBRetainCycleDetector/Filtering/FBStandardGraphEdgeFilters.mm; sourceTree = "<group>"; };
+		98B082D4569C92F191BB698ED519C8B5 /* FBStandardGraphEdgeFilters.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBStandardGraphEdgeFilters.mm; path = FBRetainCycleDetector/Filtering/FBStandardGraphEdgeFilters.mm; sourceTree = "<group>"; };
 		991C127E2D2E5CBD6966A7522397EFCF /* FZLocationManager+Visit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZLocationManager+Visit.swift"; path = "FZBuildingBlock/Location/Classes/FZLocationManager+Visit.swift"; sourceTree = "<group>"; };
 		99F4ED5CDB20234B42B6E84F3AB9850E /* UIView+Shadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9A8E327A10B3A11F4D63B4CEA3CEC39A /* UIViewController+MemoryLeak.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MemoryLeak.m"; path = "MLeaksFinder/UIViewController+MemoryLeak.m"; sourceTree = "<group>"; };
 		9CBB073A597D017C7F1F9ECA1D07EEC3 /* FZConnectedPeripheral+L2CAPChannel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZConnectedPeripheral+L2CAPChannel.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZConnectedPeripheral+L2CAPChannel.swift"; sourceTree = "<group>"; };
 		9CD8B7BE2BBE041EA094A20F65151A7E /* FBRetainCycleDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBRetainCycleDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D478CE6521A2AAF788FA951A6A6AFD3 /* String+CommonCrypto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+CommonCrypto.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E55C58F7A7B95639FD1CA88B62BAED8 /* FBRetainCycleDetector-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBRetainCycleDetector-dummy.m"; sourceTree = "<group>"; };
 		9F1DC52FA0C4B74785848DFF0B261FAD /* FZRouterSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZRouterSwift-prefix.pch"; sourceTree = "<group>"; };
 		9F467AC81957ED1E70B3089A72C9DACB /* FZTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableView.swift; sourceTree = "<group>"; };
@@ -662,7 +668,7 @@
 		A90D988178044431D7E3A51A068BC7E1 /* FZTheme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZTheme.release.xcconfig; sourceTree = "<group>"; };
 		AA2CE77759FFF5D8E5AE827E59107C62 /* FZWeakProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZWeakProxy.debug.xcconfig; sourceTree = "<group>"; };
 		AA3372CAC29229E42A601FD83175794B /* FZLocationManager+Location.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZLocationManager+Location.swift"; path = "FZBuildingBlock/Location/Classes/FZLocationManager+Location.swift"; sourceTree = "<group>"; };
-		AB1EC87FC223F5182B54B6704065C673 /* FBStructEncodingParser.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBStructEncodingParser.mm; path = FBRetainCycleDetector/Layout/Classes/Parser/FBStructEncodingParser.mm; sourceTree = "<group>"; };
+		AB1EC87FC223F5182B54B6704065C673 /* FBStructEncodingParser.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBStructEncodingParser.mm; path = FBRetainCycleDetector/Layout/Classes/Parser/FBStructEncodingParser.mm; sourceTree = "<group>"; };
 		AB329F865C5F7BF2F163C55CFBF66326 /* FZCentralManager+Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZCentralManager+Scan.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZCentralManager+Scan.swift"; sourceTree = "<group>"; };
 		AB33BFBC703AEE9091942D7667A9C63E /* FZTheme-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZTheme-dummy.m"; sourceTree = "<group>"; };
 		AB8A47DCE0BD56F776F9E97C535C01C7 /* FZLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZLock.swift; sourceTree = "<group>"; };
@@ -672,7 +678,7 @@
 		ACD087C83FEAEA60A1D65E3028915E26 /* UIColor+HSB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+HSB.swift"; sourceTree = "<group>"; };
 		AD48355D51CBEE49E15E40F07BB3BA68 /* FBObjectiveCGraphElement+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBObjectiveCGraphElement+Internal.h"; path = "FBRetainCycleDetector/Graph/Internal/FBObjectiveCGraphElement+Internal.h"; sourceTree = "<group>"; };
 		AE1AA7CD7B0FBDAADE4C765B6970B967 /* UIApplication+MemoryLeak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+MemoryLeak.h"; path = "MLeaksFinder/UIApplication+MemoryLeak.h"; sourceTree = "<group>"; };
-		AE26582AFD41EFBCC9B06ADAB19F4B06 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FZBuildingBlock.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AE26582AFD41EFBCC9B06ADAB19F4B06 /* FZBuildingBlock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FZBuildingBlock.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AE6981D63401D3656A8A491779264AC1 /* FZPeripheralManager+Service.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZPeripheralManager+Service.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZPeripheralManager+Service.swift"; sourceTree = "<group>"; };
 		AEA865EB0B7DDEDD5B92157F8D24A674 /* FZThemeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZThemeManager.swift; path = FZTheme/Classes/FZThemeManager.swift; sourceTree = "<group>"; };
 		B1DDED43F393A2E03B5E0633044C88F6 /* UIBarButtonItem+Handler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Handler.swift"; sourceTree = "<group>"; };
@@ -714,10 +720,10 @@
 		D240B2F6C2F3E59984CE2BDC5FFE64A3 /* FZLocationError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZLocationError.swift; path = FZBuildingBlock/Location/Classes/FZLocationError.swift; sourceTree = "<group>"; };
 		D37300E5E0A6DCB3F0FFA798CF61269E /* FZThemeMachineProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZThemeMachineProtocol.swift; path = FZTheme/Classes/FZThemeMachineProtocol.swift; sourceTree = "<group>"; };
 		D3AD12410E30A106A9BFA0A2AA7BA2D9 /* FZCentralManager+Retrieve.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZCentralManager+Retrieve.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZCentralManager+Retrieve.swift"; sourceTree = "<group>"; };
-		D3EDF8B9C831017718B2D8B7001B5424 /* FBRetainCycleDetector.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBRetainCycleDetector.mm; path = FBRetainCycleDetector/Detector/FBRetainCycleDetector.mm; sourceTree = "<group>"; };
-		D474E43D0978C10932783AB6B98ED9C4 /* FBObjectiveCGraphElement.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBObjectiveCGraphElement.mm; path = FBRetainCycleDetector/Graph/FBObjectiveCGraphElement.mm; sourceTree = "<group>"; };
+		D3EDF8B9C831017718B2D8B7001B5424 /* FBRetainCycleDetector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBRetainCycleDetector.mm; path = FBRetainCycleDetector/Detector/FBRetainCycleDetector.mm; sourceTree = "<group>"; };
+		D474E43D0978C10932783AB6B98ED9C4 /* FBObjectiveCGraphElement.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBObjectiveCGraphElement.mm; path = FBRetainCycleDetector/Graph/FBObjectiveCGraphElement.mm; sourceTree = "<group>"; };
 		D852AF777EF56A740F28D365E083DC18 /* FZBuildingBlockCompatible+UIGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIGestureRecognizer.swift"; sourceTree = "<group>"; };
-		D86B01923EBF89EFF498D6C1A0A5B595 /* FBClassStrongLayout.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBClassStrongLayout.mm; path = FBRetainCycleDetector/Layout/Classes/FBClassStrongLayout.mm; sourceTree = "<group>"; };
+		D86B01923EBF89EFF498D6C1A0A5B595 /* FBClassStrongLayout.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBClassStrongLayout.mm; path = FBRetainCycleDetector/Layout/Classes/FBClassStrongLayout.mm; sourceTree = "<group>"; };
 		D9168A5C94032C7F6C1CF612543104A4 /* MLeaksFinder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MLeaksFinder.modulemap; sourceTree = "<group>"; };
 		DA9B48725BD03ED9DF2735D44D5518A8 /* UINavigationController+Query.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Query.swift"; sourceTree = "<group>"; };
 		DB1054B4DB1BD32941F0B5E9330D2D99 /* IFAddressTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IFAddressTool.swift; sourceTree = "<group>"; };
@@ -731,13 +737,13 @@
 		DF264C70FA40CAE4AE27368327ECE4A2 /* UIImage+Rotation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		DF8EE30C08D91CA0591CB656EAB43D57 /* FZBuildingBlockCompatible+UIImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatible+UIImage.swift"; sourceTree = "<group>"; };
 		DF92816247FC73E5643418854F1214DE /* UIView+BorderLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+BorderLine.swift"; sourceTree = "<group>"; };
-		DFAD4CEA003E9D2D77F096594D30A8BF /* FBObjectiveCNSCFTimer.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBObjectiveCNSCFTimer.mm; path = FBRetainCycleDetector/Graph/Specialization/FBObjectiveCNSCFTimer.mm; sourceTree = "<group>"; };
+		DFAD4CEA003E9D2D77F096594D30A8BF /* FBObjectiveCNSCFTimer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBObjectiveCNSCFTimer.mm; path = FBRetainCycleDetector/Graph/Specialization/FBObjectiveCNSCFTimer.mm; sourceTree = "<group>"; };
 		E248966561DDF57A83C73E2F4197D139 /* FZWeakProxy-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZWeakProxy-umbrella.h"; sourceTree = "<group>"; };
 		E296C2F87B5A4C9A782FB8AA7103A600 /* FBIvarReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBIvarReference.h; path = FBRetainCycleDetector/Layout/Classes/Reference/FBIvarReference.h; sourceTree = "<group>"; };
 		E29F36EDD4B078164CF67096384ACFE6 /* FZPeripheralManager+L2CAPChannel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FZPeripheralManager+L2CAPChannel.swift"; path = "FZBuildingBlock/Bluetooth/Classes/FZPeripheralManager+L2CAPChannel.swift"; sourceTree = "<group>"; };
 		E51E6B2F1044A432819CFA16C9C6158F /* FZResponsibilityHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZResponsibilityHandler.swift; sourceTree = "<group>"; };
 		E64EE10DDDFF030149CE9122F481D249 /* FZRouterSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZRouterSwift-dummy.m"; sourceTree = "<group>"; };
-		E6B4B8E92803856410FB03194CF30036 /* FZRouterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZRouterSwift.framework; path = FZRouterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B4B8E92803856410FB03194CF30036 /* FZRouterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZRouterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DCB8EA6CAAC65453A280F118ED51F1 /* FZDefaultURLRouterManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FZDefaultURLRouterManager.swift; path = FZRouterSwift/Classes/FZDefaultURLRouter/FZDefaultURLRouterManager.swift; sourceTree = "<group>"; };
 		E89CA619A179F49FEFBBAF121687B3A7 /* FZButtonEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZButtonEvent.swift; sourceTree = "<group>"; };
 		E987AF00E5CE1EBE965D1052C30EC006 /* FZUIControlClosureHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZUIControlClosureHandler.swift; sourceTree = "<group>"; };
@@ -746,20 +752,20 @@
 		EB436B86E51037B6E904404ED37D9241 /* fishhook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = fishhook/fishhook.h; sourceTree = "<group>"; };
 		EB525348159D3F9DAF7E7C1051CD41B3 /* FZBuildingBlockCompatibleValue+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FZBuildingBlockCompatibleValue+String.swift"; sourceTree = "<group>"; };
 		EBB441751EA45D9BD5C9AE0BAD0FE543 /* FBNodeEnumerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBNodeEnumerator.h; path = FBRetainCycleDetector/Detector/FBNodeEnumerator.h; sourceTree = "<group>"; };
-		EC5906B2D3BAB712BC9C08DC2650EC58 /* FZTheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZTheme.framework; path = FZTheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC5906B2D3BAB712BC9C08DC2650EC58 /* FZTheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZTheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6CA354EBF08398B67C04E3049F2EF2 /* Pods-FZBuildingBlock_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZBuildingBlock_Example-resources.sh"; sourceTree = "<group>"; };
 		ECD5A6C8B190A65D47AEB85C28B3563A /* FZPermissionSiri.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionSiri.swift; sourceTree = "<group>"; };
 		ED49FACF5D470C03D22E91FC6D51CDF4 /* FZWeakProxy-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZWeakProxy-dummy.m"; sourceTree = "<group>"; };
 		ED4F82FEAEB2DFDA8B414190F84949D7 /* String+SafeAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+SafeAccess.swift"; sourceTree = "<group>"; };
 		ED519AA44EB3D76304A9F15F9932FF32 /* UIColor+RGB255.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB255.swift"; sourceTree = "<group>"; };
 		ED7108C82DA8E3F994384DCA074B72A7 /* UIFont+TTF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIFont+TTF.swift"; sourceTree = "<group>"; };
-		EF22B4CA99B835422B08629F7FD25644 /* FBNodeEnumerator.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FBNodeEnumerator.mm; path = FBRetainCycleDetector/Detector/FBNodeEnumerator.mm; sourceTree = "<group>"; };
+		EF22B4CA99B835422B08629F7FD25644 /* FBNodeEnumerator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FBNodeEnumerator.mm; path = FBRetainCycleDetector/Detector/FBNodeEnumerator.mm; sourceTree = "<group>"; };
 		F022D6674C32EE4558BC51A838A35EE6 /* UINavigationController+MemoryLeak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MemoryLeak.h"; path = "MLeaksFinder/UINavigationController+MemoryLeak.h"; sourceTree = "<group>"; };
 		F1211DAE592234556DCCA579FAD9DDAB /* NSMutableAttributedString+ConvenienceInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		F36BA2F59DBF3FA4F9DB5A2C21857C02 /* UIScrollView+Snapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Snapshot.swift"; sourceTree = "<group>"; };
 		F3CF04A97F8750064F04E996B1298E5A /* FZPermissionEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZPermissionEvent.swift; sourceTree = "<group>"; };
 		F4446CF3A4305F870483172AF5197B8B /* UIScreen+TabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIScreen+TabBar.swift"; sourceTree = "<group>"; };
-		F464BE079FA511406C29252126E051B9 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZBuildingBlock.framework; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F464BE079FA511406C29252126E051B9 /* FZBuildingBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FZBuildingBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A4044F17FDBB41E4F200A71C0D8640 /* UIImage+Copy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Copy.swift"; sourceTree = "<group>"; };
 		F4F40CB923BFD5FA81451D7EC3F91C19 /* FZTableViewSectionAndRowData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FZTableViewSectionAndRowData.swift; sourceTree = "<group>"; };
 		F6AD0EEE41661544B026BCB2A0B1FF46 /* UIImage+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
@@ -887,7 +893,6 @@
 				376CD820DA72894441072AF4C6544806 /* Data+JPEG.swift */,
 				5D78508392937D4DFC44AF5B92B55877 /* Data+PNG.swift */,
 			);
-			name = Data;
 			path = Data;
 			sourceTree = "<group>";
 		};
@@ -897,7 +902,6 @@
 				CEDE04304AA704461B5A367FD3AD1618 /* UIFont+TTC.swift */,
 				ED7108C82DA8E3F994384DCA074B72A7 /* UIFont+TTF.swift */,
 			);
-			name = UIFont;
 			path = UIFont;
 			sourceTree = "<group>";
 		};
@@ -907,7 +911,6 @@
 				B77497BE766B79690B06FD33E1421BC8 /* UIScreen+NavigationBar.swift */,
 				F4446CF3A4305F870483172AF5197B8B /* UIScreen+TabBar.swift */,
 			);
-			name = UIScreen;
 			path = UIScreen;
 			sourceTree = "<group>";
 		};
@@ -937,7 +940,6 @@
 				696D42B30E3072E5CACE5A9A6837F388 /* FZObserverSafeManager.swift */,
 				FAF7F9FCD4847EA778F551FD3C2E88AC /* Support Files */,
 			);
-			name = FZObserver;
 			path = FZObserver;
 			sourceTree = "<group>";
 		};
@@ -956,7 +958,6 @@
 				63773547BC98C821E370D2942178F6B8 /* UIButton+ImageAndTitleLayout.swift */,
 				28DC797B6A33862CC6E990215234D85F /* UIButton+Indicator.swift */,
 			);
-			name = UIButton;
 			path = UIButton;
 			sourceTree = "<group>";
 		};
@@ -976,6 +977,15 @@
 			);
 			name = "Pods-FZBuildingBlock_Example";
 			path = "Target Support Files/Pods-FZBuildingBlock_Example";
+			sourceTree = "<group>";
+		};
+		1D520A4725F86AA900DB0548 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				1D520A4825F86C8300DB0548 /* Date+Utility.swift */,
+				1D520A6725F89C1600DB0548 /* Date+Component.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		1DD3E1EC0D7E7BDD656C15BB2D942B1A /* Targets Support Files */ = {
@@ -1009,7 +1019,6 @@
 				2610BF69A51EE999D04D9927B21096CE /* FZWeakProxy.swift */,
 				01BD46DC00C2510444645774B30C01E4 /* Support Files */,
 			);
-			name = FZWeakProxy;
 			path = FZWeakProxy;
 			sourceTree = "<group>";
 		};
@@ -1021,8 +1030,8 @@
 				271B920265662E6F375F1840753603F8 /* FZBuildingBlockCompatibleValue+Array.swift */,
 				CE0EEE25F23E6EF587B0EDC26CAAA460 /* FZBuildingBlockCompatibleValue+Data.swift */,
 				EB525348159D3F9DAF7E7C1051CD41B3 /* FZBuildingBlockCompatibleValue+String.swift */,
+				1D520A5C25F8984D00DB0548 /* FZBuildingBlockCompatibleValue+Date.swift */,
 			);
-			name = "Foundation+FZBuildingBlock";
 			path = "Foundation+FZBuildingBlock";
 			sourceTree = "<group>";
 		};
@@ -1067,7 +1076,6 @@
 				79DB9B328B1B74145EB61DB75BA06FAC /* UISwipeGestureRecognizer+Closures.swift */,
 				0F44874CDCA7C65844D68A38062E6B1A /* UITapGestureRecognizer+Closures.swift */,
 			);
-			name = UIGestureRecognizer;
 			path = UIGestureRecognizer;
 			sourceTree = "<group>";
 		};
@@ -1141,7 +1149,6 @@
 				9A8E327A10B3A11F4D63B4CEA3CEC39A /* UIViewController+MemoryLeak.m */,
 				53508ADF12F4708F65EF1BE4D955EE6A /* Support Files */,
 			);
-			name = MLeaksFinder;
 			path = MLeaksFinder;
 			sourceTree = "<group>";
 		};
@@ -1202,7 +1209,6 @@
 			children = (
 				75A7E77A7C3C8451DD65067055F10184 /* Array+SafeAccess.swift */,
 			);
-			name = Array;
 			path = Array;
 			sourceTree = "<group>";
 		};
@@ -1248,13 +1254,13 @@
 				1E782CC32ADAB0DE92A982BB7137ECC8 /* FZRouterModelProtocol.swift */,
 				41C7D45AEB9499D0CC156E1E23F92A4E /* Support Files */,
 			);
-			name = FZRouterSwift;
 			path = FZRouterSwift;
 			sourceTree = "<group>";
 		};
 		6034D3314234F7708065E308519A0278 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				1D520A4725F86AA900DB0548 /* Date */,
 				50CB6C2C5B5EF950C94A7DD5AE5300D9 /* Array */,
 				AC2E0EEBB6DEE6E7095D6179D64063BB /* Bundle */,
 				060A6280167DBA28F0FFC0F5CB126291 /* Data */,
@@ -1316,7 +1322,6 @@
 				7AB09183B9C5E1CC56A9C7983D5628FB /* Type.h */,
 				C17C5AF96FA87B0ACACCA1FD1BE63064 /* Support Files */,
 			);
-			name = FBRetainCycleDetector;
 			path = FBRetainCycleDetector;
 			sourceTree = "<group>";
 		};
@@ -1335,7 +1340,6 @@
 			children = (
 				11A0CA783AD6A912527ADFB6DCE00C3C /* UINavigationItem+Indicator.swift */,
 			);
-			name = UINavigationItem;
 			path = UINavigationItem;
 			sourceTree = "<group>";
 		};
@@ -1360,7 +1364,6 @@
 				C6E6A59DB37CDE4E111CEA40796FB236 /* String+Trim.swift */,
 				735D88AF5EC0D7221738F40288AAFA6D /* String+URL.swift */,
 			);
-			name = String;
 			path = String;
 			sourceTree = "<group>";
 		};
@@ -1403,7 +1406,6 @@
 				97BA97440737D03DFEC51499269CD34E /* FZTableViewSectionAndRowDataAfteriOS9.swift */,
 				2AAE99B2E75F2154E9F9424F90E36E52 /* FZTableViewSectionData.swift */,
 			);
-			name = FZTableViewData;
 			path = FZTableViewData;
 			sourceTree = "<group>";
 		};
@@ -1415,7 +1417,6 @@
 				4F7E731CD88B745BDF18ACB8D16856BF /* UINavigationController+Root.swift */,
 				7864E6DF5BB954126870E8D6F40D8E19 /* UINavigationController+StackManager.swift */,
 			);
-			name = UINavigationController;
 			path = UINavigationController;
 			sourceTree = "<group>";
 		};
@@ -1468,7 +1469,6 @@
 				2AC9FC12B5629425A8F7DAADB888E194 /* UIBarButtonItem+Closures.swift */,
 				B1DDED43F393A2E03B5E0633044C88F6 /* UIBarButtonItem+Handler.swift */,
 			);
-			name = UIBarButtonItem;
 			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
@@ -1495,7 +1495,6 @@
 			children = (
 				2BC5266594D2C66F6CA4380671675C5E /* UIViewController+TopViewController.swift */,
 			);
-			name = UIViewController;
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
@@ -1538,7 +1537,6 @@
 				A6B5D8925D907A0A9DE1F0DD07031126 /* NSMutableAttributedString+Remove.swift */,
 				B6370E37A32CDEB26FD01A176F8F48C7 /* NSMutableAttributedString+Set.swift */,
 			);
-			name = NSAttributedString;
 			path = NSAttributedString;
 			sourceTree = "<group>";
 		};
@@ -1564,7 +1562,6 @@
 				27AC7C200570B5A5337F49C4614A20A8 /* UIView+Snapshot.swift */,
 				2100C2DD875FEDF706809039977D7C94 /* UIView+UIViewController.swift */,
 			);
-			name = UIView;
 			path = UIView;
 			sourceTree = "<group>";
 		};
@@ -1573,7 +1570,6 @@
 			children = (
 				5F563011C7954461EE06B3CF1C93E746 /* UIImageView+GIF.swift */,
 			);
-			name = UIImageView;
 			path = UIImageView;
 			sourceTree = "<group>";
 		};
@@ -1606,7 +1602,6 @@
 			children = (
 				4CD89475F455548142DC0DBE7E42111A /* Bundle+Find.swift */,
 			);
-			name = Bundle;
 			path = Bundle;
 			sourceTree = "<group>";
 		};
@@ -1677,7 +1672,6 @@
 				F6AD0EEE41661544B026BCB2A0B1FF46 /* UIImage+String.swift */,
 				146A06D655FBFBA34820E875818B831D /* UIImage+WaterMark.swift */,
 			);
-			name = UIImage;
 			path = UIImage;
 			sourceTree = "<group>";
 		};
@@ -1732,7 +1726,6 @@
 				6F749AC731F9554A0F39BB73BFA71C7E /* UIApplication+SafeArea.swift */,
 				6FF57633FA3EB543764848BD75C7DE38 /* UIApplication+StatusBar.swift */,
 			);
-			name = UIApplication;
 			path = UIApplication;
 			sourceTree = "<group>";
 		};
@@ -1751,7 +1744,6 @@
 				BF596EECE9D12E56DFEECA52C8268F27 /* FZBuildingBlockCompatible+UIView.swift */,
 				A3045DCC0ED0B37B99EA9D8E27667132 /* FZBuildingBlockCompatible+UIViewController.swift */,
 			);
-			name = "UIKit+FZBuildingBlock";
 			path = "UIKit+FZBuildingBlock";
 			sourceTree = "<group>";
 		};
@@ -1762,7 +1754,6 @@
 				F83BF74D135F3C2755EF7F6BB0EC1C9B /* UIControl+Closures.swift */,
 				4E8315F4A390FD32C4C668C36842CC2A /* UIControl+TouchArea.swift */,
 			);
-			name = UIControl;
 			path = UIControl;
 			sourceTree = "<group>";
 		};
@@ -1780,7 +1771,6 @@
 			children = (
 				F36BA2F59DBF3FA4F9DB5A2C21857C02 /* UIScrollView+Snapshot.swift */,
 			);
-			name = UIScrollView;
 			path = UIScrollView;
 			sourceTree = "<group>";
 		};
@@ -1792,7 +1782,6 @@
 				04A04E1E99130E2BD67D2B0794416446 /* UIColor+Random.swift */,
 				ED519AA44EB3D76304A9F15F9932FF32 /* UIColor+RGB255.swift */,
 			);
-			name = UIColor;
 			path = UIColor;
 			sourceTree = "<group>";
 		};
@@ -1801,7 +1790,6 @@
 			children = (
 				FD97EDD294EE0E92DE7ED4580748AB33 /* UITabBarController+TabBar.swift */,
 			);
-			name = UITabBarController;
 			path = UITabBarController;
 			sourceTree = "<group>";
 		};
@@ -1812,7 +1800,6 @@
 				57D09B6494A79D1A7D2DB636C2B782AA /* FZTableViewCellModel.swift */,
 				CE039BDC2E6D2123549674738943D7E2 /* FZTableViewCommonCell.swift */,
 			);
-			name = FZTableViewCell;
 			path = FZTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -1836,7 +1823,6 @@
 				0712A00A5EF2A294808BF146EE5F9CEA /* UIDevice+Disk.swift */,
 				8C02A42C77F1C008DF0429CBCED1DB77 /* UIDevice+Model.swift */,
 			);
-			name = UIDevice;
 			path = UIDevice;
 			sourceTree = "<group>";
 		};
@@ -1857,7 +1843,6 @@
 				C4A5D8755DB31424F29A4A161B1CEF5E /* UIWindow+Theme.swift */,
 				50BE1513A04D327C1FE6D34160E0292F /* Support Files */,
 			);
-			name = FZTheme;
 			path = FZTheme;
 			sourceTree = "<group>";
 		};
@@ -2451,6 +2436,7 @@
 				532A8CDB5A6846C8F6DD2E834C0A7095 /* FZBuildingBlockCompatible+UIImage.swift in Sources */,
 				719A4FE1DA67C7F8C900E855FAF382DE /* FZBuildingBlockCompatible+UINavigationItem.swift in Sources */,
 				C9C0D61BAA0B4C601B69CB399CE8FA4F /* FZBuildingBlockCompatible+UIScreen.swift in Sources */,
+				1D520A6825F89C1600DB0548 /* Date+Component.swift in Sources */,
 				B53EDD00A62358558FE52449211F05C6 /* FZBuildingBlockCompatible+UIView.swift in Sources */,
 				39081AB97D42470324949FD8A8881C0D /* FZBuildingBlockCompatible+UIViewController.swift in Sources */,
 				691B3FDA0B42E51741EEDCBADCB2BA4B /* FZBuildingBlockCompatible.swift in Sources */,
@@ -2480,6 +2466,7 @@
 				D462F974266DE0728217E686712B37CC /* FZGradientView.swift in Sources */,
 				6F3686C1FA10C675251A0954310B08A8 /* FZJSONModel.swift in Sources */,
 				9C341013B6F64929C0C58EFAE257A7B4 /* FZLargeImageView.swift in Sources */,
+				1D520A4925F86C8300DB0548 /* Date+Utility.swift in Sources */,
 				E0E891000C6A43CC716D2B5011699D15 /* FZLocationConfiguration.swift in Sources */,
 				27261DBE1D96445B384CA32415978C13 /* FZLocationError.swift in Sources */,
 				C6769E5188115009E334BC08C1EDBFB9 /* FZLocationManager+Authorization.swift in Sources */,
@@ -2570,6 +2557,7 @@
 				4A063A1397DB17033F418A8E68DC82A4 /* UIColor+HSB.swift in Sources */,
 				18DC41AFFF3B5395BD53B1DDBA1AACE9 /* UIColor+Random.swift in Sources */,
 				1C6F6E009A7402C75C813759F88B3620 /* UIColor+RGB255.swift in Sources */,
+				1D520A5D25F8984D00DB0548 /* FZBuildingBlockCompatibleValue+Date.swift in Sources */,
 				D226A34AF09FB1BD5011EE137D12292B /* UIControl+Closures.swift in Sources */,
 				1DED826A4486DC7345DFE3F7C1E9655C /* UIControl+TouchArea.swift in Sources */,
 				E7C7765F3407676187CC04F854ADCA41 /* UIDevice+Disk.swift in Sources */,
@@ -3062,8 +3050,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

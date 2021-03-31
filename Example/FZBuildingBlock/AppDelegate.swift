@@ -105,6 +105,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         print(UIDevice.current.fz.getModelName())
 
+        let date = Date.init()
+        print(date)
+        let addDate = date.fz.dateByAdding(years: -1, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0)
+        print(addDate)
+        let signDate = Date.fz.date(years: 1991, months: 3, days: 22, hours: 9, minutes: 2, seconds: 22)
+        print(signDate?.fz.string(with: "yyyy-MM-dd HH:mm:ss"))
+        
         return true
     }
 
