@@ -452,7 +452,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FZBuildingBlock_Example/Pods-FZBuildingBlock_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FZObserver/FZObserver.framework",
 				"${BUILT_PRODUCTS_DIR}/FZRouterSwift/FZRouterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FZTheme/FZTheme.framework",
@@ -461,7 +460,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FZObserver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FZRouterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FZTheme.framework",

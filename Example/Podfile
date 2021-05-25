@@ -1,9 +1,11 @@
-platform :ios, "9.0"
+platform :ios, "10.0"
 
 use_frameworks!
 
 def memory_leaks
-  pod 'MLeaksFinder', :configurations => ['Debug']
+  # 正常指定版本 1.0.0 的没有移除 FBRetainCycleDetector
+  # 需要手动指定 :git => 'https://github.com/Tencent/MLeaksFinder.git'
+  pod 'MLeaksFinder', :configurations => ['Debug'], :git => 'https://github.com/Tencent/MLeaksFinder.git'
 end
 
 def fz_library

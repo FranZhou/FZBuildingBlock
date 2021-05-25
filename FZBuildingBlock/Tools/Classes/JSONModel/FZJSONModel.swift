@@ -17,15 +17,18 @@ public enum FZJSONModelError: Error {
     case modelToDictionaryFail
 }
 
+public let FZJSONEncoderSingeltonInstance: JSONEncoder = JSONEncoder()
+public let FZJSONDecoderSingeltonInstance: JSONDecoder = JSONDecoder()
+ 
 public final class FZJSONModel<T: Codable> {
-
+    
 }
 
 // MARK: - model to dictionary
 /// model to dictionary
 extension FZJSONModel {
 
-    public static func dictionaryFromModel(_ model: T, encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
+    public static func dictionaryFromModel(_ model: T, encoder: JSONEncoder = FZJSONEncoderSingeltonInstance) throws -> [String: Any] {
         guard let modelData = try? encoder.encode(model),
             let dictionary = try? JSONSerialization.jsonObject(with: modelData, options: JSONSerialization.ReadingOptions.mutableLeaves) as? [String: Any]
             else {
@@ -40,7 +43,7 @@ extension FZJSONModel {
 /// string to model
 extension FZJSONModel {
 
-    public static func modelFormJSONString(_ jsonStr: String, decoder: JSONDecoder = JSONDecoder()) throws ->T {
+    public static func modelFormJSONString(_ jsonStr: String, decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws ->T {
 
         do {
             guard let jsonData = jsonStr.data(using: .utf8) else {
@@ -57,7 +60,7 @@ extension FZJSONModel {
 
     }
 
-    public static func modelArrayFormJSONString(_ jsonStr: String, decoder: JSONDecoder = JSONDecoder()) throws -> [T] {
+    public static func modelArrayFormJSONString(_ jsonStr: String, decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws -> [T] {
 
         do {
             guard let jsonData = jsonStr.data(using: .utf8) else {
@@ -80,7 +83,7 @@ extension FZJSONModel {
 /// collection to model
 extension FZJSONModel {
 
-    public static func modelFormDictionary(_ dict: [String: Any], decoder: JSONDecoder = JSONDecoder()) throws ->T {
+    public static func modelFormDictionary(_ dict: [String: Any], decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws ->T {
 
         do {
             guard JSONSerialization.isValidJSONObject(dict) else {
@@ -100,7 +103,7 @@ extension FZJSONModel {
 
     }
 
-    public static func modelArrayFormArray(_ array: [Any], decoder: JSONDecoder = JSONDecoder()) throws -> [T] {
+    public static func modelArrayFormArray(_ array: [Any], decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws -> [T] {
 
         do {
             guard JSONSerialization.isValidJSONObject(array) else {
@@ -126,7 +129,7 @@ extension FZJSONModel {
 /// data to model or model array
 extension FZJSONModel {
 
-    public static func modelFormData(_ data: Data, decoder: JSONDecoder = JSONDecoder()) throws -> T {
+    public static func modelFormData(_ data: Data, decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws -> T {
         do {
             let model = try decoder.decode(T.self, from: data)
             return model
@@ -135,7 +138,7 @@ extension FZJSONModel {
         }
     }
 
-    public static func modelArrayFormData(_ data: Data, decoder: JSONDecoder = JSONDecoder()) throws -> [T] {
+    public static func modelArrayFormData(_ data: Data, decoder: JSONDecoder = FZJSONDecoderSingeltonInstance) throws -> [T] {
         do {
             let modelArray = try decoder.decode([T].self, from: data)
             return modelArray

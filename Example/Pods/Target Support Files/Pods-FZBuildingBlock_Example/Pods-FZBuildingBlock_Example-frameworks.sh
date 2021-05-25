@@ -191,7 +191,6 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZObserver/FZObserver.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZRouterSwift/FZRouterSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZTheme/FZTheme.framework"
@@ -199,7 +198,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZObserver/FZObserver.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZRouterSwift/FZRouterSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FZTheme/FZTheme.framework"
