@@ -14,9 +14,9 @@ private struct FZUIControlEventClosureAssociatedKey {
 // MARK: - property
 extension FZBuildingBlockWrapper where Base: UIControl {
 
-    fileprivate var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]]? {
+    fileprivate var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]]? {
         get {
-            if let controlEventHandlers = objc_getAssociatedObject(base, FZUIControlEventClosureAssociatedKey.associatedKeys) as? [UIControl.Event.RawValue: [FZUIControlClosureHandler]] {
+            if let controlEventHandlers = objc_getAssociatedObject(base, FZUIControlEventClosureAssociatedKey.associatedKeys) as? [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]] {
                 return controlEventHandlers
             }
             return nil
@@ -36,18 +36,18 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     /// - Parameters:
     ///   - handler: event触发后执行的handler
     ///   - controlEvent: event
-    fileprivate mutating func storeHandler(handler: FZUIControlClosureHandler, for controlEvent: UIControl.Event) {
-        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]] = [:]
+    fileprivate mutating func store(handler: FZUIControlClosureHandler<Base>, for controlEvent: UIControl.Event) {
+        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]] = [:]
 
         // 获取已经存储的所有事件对应的处理Handlers
         if let storedEventHandlers = self.controlEventHandlers {
-            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler] in
+            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler<Base>] in
                 return new
             }
         }
 
         // 查找当前正在添加controlEvent的已经添加的Handlers
-        var eventHandlers: [FZUIControlClosureHandler] = []
+        var eventHandlers: [FZUIControlClosureHandler<Base>] = []
         if let storedHandlers = controlEventHandlers[controlEvent.rawValue] {
             // 记录已经添加过的Handlers
             eventHandlers.append(contentsOf: storedHandlers)
@@ -66,18 +66,18 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     ///
     /// - Parameter event: event
     /// - Returns: handlers
-    fileprivate func actionHandlers(forEvent event: UIControl.Event) -> [FZUIControlClosureHandler] {
-        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]] = [:]
+    fileprivate func actionHandlers(forEvent event: UIControl.Event) -> [FZUIControlClosureHandler<Base>] {
+        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]] = [:]
 
         // 获取已经存储的所有事件对应的处理Handlers
         if let storedEventHandlers = self.controlEventHandlers {
-            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler] in
+            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler<Base>] in
                 return new
             }
         }
 
         // 查找当前controlEvent的已经添加的Handlers
-        var eventHandlers: [FZUIControlClosureHandler] = []
+        var eventHandlers: [FZUIControlClosureHandler<Base>] = []
         if let storedHandlers = controlEventHandlers[event.rawValue] {
             // 记录已经添加过的Handlers
             eventHandlers.append(contentsOf: storedHandlers)
@@ -90,8 +90,8 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     ///
     /// - Parameter events: events
     /// - Returns: handlers
-    fileprivate func actionHandlers(forEvents events: [UIControl.Event]) -> [FZUIControlClosureHandler] {
-        var eventHandlers: [FZUIControlClosureHandler] = []
+    fileprivate func actionHandlers(forEvents events: [UIControl.Event]) -> [FZUIControlClosureHandler<Base>] {
+        var eventHandlers: [FZUIControlClosureHandler<Base>] = []
 
         for event in events {
             let handlers = actionHandlers(forEvent: event)
@@ -129,20 +129,20 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     /// - allEvents: UIControl.Event
     ///
     /// - Parameters:
+    ///   - event: event
     ///   - closure: handler closure
-    ///   - controlEvent: event
     /// - Returns: FZUIControlClosureHandler
     @discardableResult
-    public mutating func addHandler(closure: @escaping FZUIControlClosureHandler.FZUIControlClosure, for controlEvent: UIControl.Event) -> FZUIControlClosureHandler {
+    public mutating func add(event: UIControl.Event, withClosure closure: @escaping FZUIControlClosureHandler<Base>.FZUIControlClosure) -> FZUIControlClosureHandler<Base> {
 
         // create handler
-        let handler = FZUIControlClosureHandler(closure: closure, sender: base, event: controlEvent)
+        let handler = FZUIControlClosureHandler(closure: closure, sender: base, event: event)
 
         // add target
-        base.addTarget(handler, action: #selector(handler.handle), for: controlEvent)
+        base.addTarget(handler, action: #selector(handler.handle), for: event)
 
         // store handler
-        storeHandler(handler: handler, for: controlEvent)
+        store(handler: handler, for: event)
 
         return handler
     }
@@ -150,17 +150,17 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     /// 移除指定的FZUIControlClosureHandler
     ///
     /// - Parameter handler: FZUIControlClosureHandler to remove
-    public mutating func removeHandler(handler: FZUIControlClosureHandler) {
-        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]] = [:]
+    public mutating func remove(handler: FZUIControlClosureHandler<Base>) {
+        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]] = [:]
 
         if let storedEventHandlers = self.controlEventHandlers {
-            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler] in
+            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler<Base>] in
                 return new
             }
         }
 
         // contain remove handler
-        let filterHandlers = controlEventHandlers.filter { (eventhandlers: (key: UIControl.Event.RawValue, value: [FZUIControlClosureHandler])) -> Bool in
+        let filterHandlers = controlEventHandlers.filter { (eventhandlers: (key: UIControl.Event.RawValue, value: [FZUIControlClosureHandler<Base>])) -> Bool in
             return eventhandlers.value.contains(handler)
         }
 
@@ -168,7 +168,7 @@ extension FZBuildingBlockWrapper where Base: UIControl {
             let event = filterHandler.key
 
             // remove handler
-            let handlers = filterHandler.value.filter { (closureHandler: FZUIControlClosureHandler) -> Bool in
+            let handlers = filterHandler.value.filter { (closureHandler: FZUIControlClosureHandler<Base>) -> Bool in
                 return handler != closureHandler
             }
 
@@ -193,10 +193,10 @@ extension FZBuildingBlockWrapper where Base: UIControl {
     /// - Parameter event: 需要移除Handlers的event
     public mutating func removeHandlers(forEvent event: UIControl.Event) {
 
-        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler]] = [:]
+        var controlEventHandlers: [UIControl.Event.RawValue: [FZUIControlClosureHandler<Base>]] = [:]
 
         if let storedEventHandlers = self.controlEventHandlers {
-            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler] in
+            controlEventHandlers.merge(storedEventHandlers) { (_, new) -> [FZUIControlClosureHandler<Base>] in
                 return new
             }
         }
@@ -204,7 +204,7 @@ extension FZBuildingBlockWrapper where Base: UIControl {
         // 清空event对应的Handlers
         if let removeHandlers = controlEventHandlers[event.rawValue] {
             for handler in removeHandlers {
-                base.removeTarget(handler, action: #selector(handler.handle), for: handler.event ?? event)
+                base.removeTarget(handler, action: #selector(handler.handle), for: handler.event)
             }
         }
 

@@ -21,6 +21,10 @@ class ImageColorViewController: UIViewController {
             print("UITapGestureRecognizer")
         }
 
+        self.view.fz.onLongPress { _ in
+            print("UILongPressGestureRecognizer")
+        }
+
         self.setUpView()
     }
 

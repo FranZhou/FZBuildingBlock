@@ -63,9 +63,10 @@ extension ThemeViewController {
                 btn.backgroundColor = UIColor.fz.randomColor()
             }
 
-            btn.fz.addHandler(closure: { (_) in
+            btn.fz.add(event: .touchUpInside) { _ in
                 FZThemeManager.manager.switchCurrentTheme(to: .light)
-            }, for: UIControl.Event.touchUpInside)
+            }
+
             self.view.addSubview(btn)
         }
 
@@ -77,9 +78,10 @@ extension ThemeViewController {
                 btn.backgroundColor = UIColor.fz.randomColor()
             }
 
-            btn.fz.addHandler(closure: { (_) in
-                FZThemeManager.manager.switchCurrentTheme(to: .dark)
-            }, for: UIControl.Event.touchUpInside)
+            btn.fz.add(event: .touchUpInside) { _ in
+                FZThemeManager.manager.switchCurrentTheme(to: .light)
+            }
+
             self.view.addSubview(btn)
         }
 
@@ -91,9 +93,9 @@ extension ThemeViewController {
                 btn.backgroundColor = UIColor.fz.randomColor()
             }
 
-            btn.fz.addHandler(closure: { (_) in
+            btn.fz.add(event: .touchUpInside) { _ in
                 FZThemeManager.manager.switchCurrentTheme(to: .custom("test"))
-            }, for: UIControl.Event.touchUpInside)
+            }
             self.view.addSubview(btn)
         }
 
