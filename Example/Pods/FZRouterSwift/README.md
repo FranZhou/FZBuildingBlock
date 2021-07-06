@@ -1,11 +1,11 @@
 # FZRouterSwift
 
-<!--
+
 [![CI Status](https://img.shields.io/travis/FranZhou/FZRouterSwift.svg?style=flat)](https://travis-ci.org/FranZhou/FZRouterSwift)
 [![Version](https://img.shields.io/cocoapods/v/FZRouterSwift.svg?style=flat)](https://cocoapods.org/pods/FZRouterSwift)
 [![License](https://img.shields.io/cocoapods/l/FZRouterSwift.svg?style=flat)](https://cocoapods.org/pods/FZRouterSwift)
 [![Platform](https://img.shields.io/cocoapods/p/FZRouterSwift.svg?style=flat)](https://cocoapods.org/pods/FZRouterSwift)
--->
+
 
 ## Example
 
@@ -143,7 +143,8 @@ You can consult FZDefaultURLRouter to implement your own routing parser.
 
 ## Author
 
-FranZhou, fairytale_zf@outlook.com
+FranZhou, fairytale_zf@outlook.com<br/>
+swift QQ交流群: 628172981
 
 ## License
 

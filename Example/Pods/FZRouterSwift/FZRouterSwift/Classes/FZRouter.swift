@@ -79,7 +79,7 @@ extension FZRouter {
 
     @discardableResult
     @objc public func removeRouter(withRouterURL url: String) -> FZRouterModelProtocol? {
-        return routerManager.remove(WithRouterURL: url)
+        return routerManager.remove(withRouterURL: url)
     }
 
     @objc public func removeAllRouter() {

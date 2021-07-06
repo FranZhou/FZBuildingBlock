@@ -13,31 +13,42 @@ open class FZDefaultURLRouterPlistLoader: NSObject {
 
 }
 
-extension FZDefaultURLRouterPlistLoader {
+// MARK: - FZRouterLoaderProtocol
+extension FZDefaultURLRouterPlistLoader: FZRouterLoaderProtocol {
 
-    fileprivate func dictionary(forKey key: Any, in dictionary: NSDictionary) -> NSDictionary? {
-        return dictionary.object(forKey: key) as? NSDictionary
-    }
-
-    fileprivate func array(forKey key: Any, in dictionary: NSDictionary) -> NSArray? {
-        return dictionary.object(forKey: key) as? NSArray
-    }
-
-    fileprivate func target(forName target: String) -> AnyClass? {
-        if target.count > 0 {
-            let targetName = "Target_\(target.first?.uppercased() ?? "")\(target.dropFirst())"
-            return NSClassFromString(targetName)
+    public func loadRouter(withFilePath filePath: String, router: FZRouter) {
+        router.routerManager.removeAllRouter()
+        if let routerModeArray = routerModel(withFilePath: filePath) {
+            router.routerManager.add(routers: routerModeArray)
         }
-        return nil
     }
 
-    fileprivate func action(forName action: String) -> Selector {
-        let selectorName = action + ":"
-        return NSSelectorFromString(selectorName)
+    public func appendRouter(withFilePath filePath: String, router: FZRouter) {
+        if let routerModeArray = routerModel(withFilePath: filePath) {
+            router.routerManager.add(routers: routerModeArray)
+        }
+    }
+
+    public func loadRouter(withRouterURLs urls: [String], router: FZRouter) {
+        router.routerManager.removeAllRouter()
+        urls.forEach { [weak self, weak router](url) in
+            guard let `self` = self,
+                let router = router else {
+                    return
+            }
+            self.appendRouter(withRouterURL: url, router: router)
+        }
+    }
+
+    public func appendRouter(withRouterURL url: String, router: FZRouter) {
+        if let routerModel = routerModel(withRouterURL: url) {
+            router.routerManager.add(router: routerModel)
+        }
     }
 }
 
-extension FZDefaultURLRouterPlistLoader: FZRouterLoaderProtocol {
+// MARK: - fileprivate
+extension FZDefaultURLRouterPlistLoader {
 
     /// 加载通过plist导入的路由
     /// - Parameter filePath: 路由文件路径
@@ -68,7 +79,6 @@ extension FZDefaultURLRouterPlistLoader: FZRouterLoaderProtocol {
                                         // target
                                         if let targetActionDic = targetAction as? NSDictionary,
                                             let targetName = targetActionDic.object(forKey: "target") as? String,
-                                            let targetObject = self.target(forName: targetName),
                                             let actionDic = dictionary(forKey: "actions", in: targetActionDic) {
 
                                             // action
@@ -77,14 +87,12 @@ extension FZDefaultURLRouterPlistLoader: FZRouterLoaderProtocol {
                                                     let actionValue = action.value as? String {
 
                                                     let routerURL = "\(scheme)://\(host)/\(serverPath)/\(actionKey)"
-
                                                     let selector = self.action(forName: actionValue)
 
                                                     // routerKey target selector
-                                                    if let routerKey = FZDefaultURLRouterUtil.key(withRouterURL: routerURL),
-                                                        (targetObject as AnyObject).responds(to: selector) {
+                                                    if let routerKey = FZDefaultURLRouterUtil.key(withRouterURL: routerURL) {
 
-                                                        let routerModel = FZDefaultURLRouterModel(routerKey: routerKey, target: targetObject, selector: selector)
+                                                        let routerModel = FZDefaultURLRouterModel(routerKey: routerKey, targetName: targetName, selector: selector)
 
                                                         if routerModelArray == nil {
                                                             routerModelArray = []
@@ -126,48 +134,46 @@ extension FZDefaultURLRouterPlistLoader: FZRouterLoaderProtocol {
         if pathArray.count == 2 {
             let targetName = String(pathArray[0].first!).uppercased() + String(pathArray[0].dropFirst())
             let actionValue = String(pathArray[1])
+            let selector = action(forName: actionValue)
 
-            if let targetObject = target(forName: targetName) {
-                let selector = action(forName: actionValue)
-
-                if (targetObject as AnyObject).responds(to: selector) {
-                    let routerModel = FZDefaultURLRouterModel(routerKey: routerKey, target: targetObject, selector: selector)
-                    return routerModel
-                }
-            }
+            return FZDefaultURLRouterModel(routerKey: routerKey, targetName: targetName, selector: selector)
         }
 
         return nil
     }
 
-    public func loadRouter(withFilePath filePath: String, router: FZRouter) {
-        router.routerManager.removeAllRouter()
-        if let routerModeArray = routerModel(withFilePath: filePath) {
-            router.routerManager.add(routers: routerModeArray)
-        }
+}
+
+// MARK: - internal
+extension FZDefaultURLRouterPlistLoader {
+
+    internal func dictionary(forKey key: Any, in dictionary: NSDictionary) -> NSDictionary? {
+        return dictionary.object(forKey: key) as? NSDictionary
     }
 
-    public func appendRouter(withFilePath filePath: String, router: FZRouter) {
-        if let routerModeArray = routerModel(withFilePath: filePath) {
-            router.routerManager.add(routers: routerModeArray)
-        }
+    internal func array(forKey key: Any, in dictionary: NSDictionary) -> NSArray? {
+        return dictionary.object(forKey: key) as? NSArray
     }
 
-    public func loadRouter(withRouterURLs urls: [String], router: FZRouter) {
-        router.routerManager.removeAllRouter()
-        urls.forEach { [weak self, weak router](url) in
-            guard let `self` = self,
-                let router = router else {
-                    return
-            }
-            self.appendRouter(withRouterURL: url, router: router)
+    internal func target(forName target: String) -> AnyClass? {
+        if target.count > 0 {
+            let targetName = "Target_\(target.first?.uppercased() ?? "")\(target.dropFirst())"
+            return NSClassFromString(targetName)
         }
+        return nil
     }
 
-    public func appendRouter(withRouterURL url: String, router: FZRouter) {
-        if let routerModel = routerModel(withRouterURL: url) {
-            router.routerManager.add(router: routerModel)
-        }
+    internal func action(forName action: String) -> Selector {
+        let selectorName = action + ":"
+        return NSSelectorFromString(selectorName)
     }
 
+    internal func load(routerModel: FZDefaultURLRouterModel) {
+        if !routerModel.isLoad,
+           let targetName = routerModel.targetName,
+           let targetObject = self.target(forName: targetName) {
+            routerModel.target = targetObject
+        }
+        routerModel.isLoad = true
+    }
 }

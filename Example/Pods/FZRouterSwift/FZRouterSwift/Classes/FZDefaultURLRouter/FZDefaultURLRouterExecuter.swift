@@ -21,9 +21,15 @@ extension FZDefaultURLRouterExecuter: FZRouterExecuterProtocol {
         let manager = router.routerManager
 
         // get routerkey from url. then get routerModel
-        guard let routerModel = manager.router(WithRouterURL: url)
+        guard let routerModel = manager.router(withRouterURL: url)
             else {
                 return nil
+        }
+
+        if let routerModel = routerModel as? FZDefaultURLRouterModel,
+           !routerModel.isLoad {
+            // load routerModel
+            FZDefaultURLRouterPlistLoader.defaultLoader.load(routerModel: routerModel)
         }
 
         return routerModel

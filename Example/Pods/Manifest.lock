@@ -18,7 +18,7 @@ PODS:
   - FZBuildingBlock/Views (0.4.0):
     - FZBuildingBlock/Extensions
   - FZObserver (0.1.0)
-  - FZRouterSwift (0.1.0)
+  - FZRouterSwift (0.1.1)
   - FZTheme (0.1.0)
   - FZWeakProxy (0.1.0)
   - MLeaksFinder (1.0.0)
@@ -52,7 +52,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   FZBuildingBlock: 3d31599af091910b14bc28830e21a985f7eeed49
   FZObserver: 50ae4ea99299d28b0f6133af92ffa58ab12904aa
-  FZRouterSwift: a45b949d971f9af755ddc0ba9ad0c27a2ecd2d68
+  FZRouterSwift: a00d89f5e8411264e5690dd6edd7688e0744ecde
   FZTheme: a10bfc2fcf6bda332ab0547c53bf2bbd8d7d49ab
   FZWeakProxy: 326388199dce487f8735fbcd04e281a6c7ba3440
   MLeaksFinder: 89eb3142bf1bbd0a3d1849543b629399c5da74c5

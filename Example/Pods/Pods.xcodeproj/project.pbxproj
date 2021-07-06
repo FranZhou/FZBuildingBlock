@@ -2585,6 +2585,36 @@
 			};
 			name = Debug;
 		};
+		35D9A959F84E61A166024A12728E3232 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A8C83E6F1E2086F38A200EEF1D955E4 /* FZRouterSwift.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FZRouterSwift/FZRouterSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift.modulemap";
+				PRODUCT_MODULE_NAME = FZRouterSwift;
+				PRODUCT_NAME = FZRouterSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		3CF66A16039414429E703BE0ED8B4C03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EC066A4F4F04362DDA83B3FF01767DA /* FZWeakProxy.debug.xcconfig */;
@@ -2648,36 +2678,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		66C53988AADF3EB963F95481D6BF6C0F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A8C83E6F1E2086F38A200EEF1D955E4 /* FZRouterSwift.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FZRouterSwift/FZRouterSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift.modulemap";
-				PRODUCT_MODULE_NAME = FZRouterSwift;
-				PRODUCT_NAME = FZRouterSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2897,6 +2897,37 @@
 			};
 			name = Debug;
 		};
+		CA21412C0CEF796747024BBAE4E80497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7385444B8F399FF72421708508537D9B /* FZRouterSwift.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FZRouterSwift/FZRouterSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift.modulemap";
+				PRODUCT_MODULE_NAME = FZRouterSwift;
+				PRODUCT_NAME = FZRouterSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CBCDD6BB7632D4CAA0F0427EC9F7C8CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3A79381311B6A6A7A93050E6713BFC1 /* FZTheme.release.xcconfig */;
@@ -2994,37 +3025,6 @@
 			};
 			name = Debug;
 		};
-		FEDBA0B90740B9DA86435ABDB9D591F6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7385444B8F399FF72421708508537D9B /* FZRouterSwift.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FZRouterSwift/FZRouterSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FZRouterSwift/FZRouterSwift.modulemap";
-				PRODUCT_MODULE_NAME = FZRouterSwift;
-				PRODUCT_NAME = FZRouterSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3103,8 +3103,8 @@
 		E5914ACCF9A9FCD21893770608C3C1D0 /* Build configuration list for PBXNativeTarget "FZRouterSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				66C53988AADF3EB963F95481D6BF6C0F /* Debug */,
-				FEDBA0B90740B9DA86435ABDB9D591F6 /* Release */,
+				35D9A959F84E61A166024A12728E3232 /* Debug */,
+				CA21412C0CEF796747024BBAE4E80497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

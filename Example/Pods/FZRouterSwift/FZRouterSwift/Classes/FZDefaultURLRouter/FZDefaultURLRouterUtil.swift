@@ -64,4 +64,5 @@ open class FZDefaultURLRouterUtil: NSObject {
         // There are really no parameters in the url
         return nil
     }
+
 }

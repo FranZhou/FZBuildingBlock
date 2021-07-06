@@ -28,3 +28,34 @@ import Foundation
     @objc func passingParameters(withRouterURL url: String, extra parameters: [String: Any]?, routerModel: FZRouterModelProtocol, router: FZRouter) -> [String: Any]?
 
 }
+
+// MARK: - default implementation
+extension FZRouterExecuterProtocol {
+
+    public func couldExecute(withRouterURL url: String, router: FZRouter) -> FZRouterModelProtocol? {
+        let manager = router.routerManager
+
+        // get routerkey from url. then get routerModel
+        guard let routerModel = manager.router(withRouterURL: url)
+            else {
+                return nil
+        }
+        return routerModel
+    }
+
+    public func passingParameters(withRouterURL url: String, extra parameters: [String: Any]?, routerModel: FZRouterModelProtocol, router: FZRouter) -> [String: Any]? {
+
+        // get parameters from url
+        var totalParameters: [String: Any] = [:]
+
+        // extraParameters will cover urlParameters when they have same key
+        if let extraParameters = parameters {
+            totalParameters = totalParameters.merging(extraParameters, uniquingKeysWith: { (_: Any, extraValue: Any) -> Any in
+                return extraValue
+            })
+        }
+
+        return totalParameters
+    }
+
+}

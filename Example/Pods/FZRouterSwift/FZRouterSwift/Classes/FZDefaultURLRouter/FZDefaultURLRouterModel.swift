@@ -15,12 +15,26 @@ open class FZDefaultURLRouterModel: NSObject, FZRouterModelProtocol {
     public var selector: Selector?
     public var targetActionBlock: FZRouterModelTargetActionBlock?
 
+    // lazy load
+    internal var isLoad = false
+    internal var targetName: String?
+
     /// FZRouterModel
     ///
     /// - Parameters:
-    ///   - routerKey:  suggest scheme://host/serverPath/method
-    ///   - target: router target
+    ///   - routerKey: suggest scheme://host/serverPath/method
+    ///   - targetName: router target string
     ///   - selector: router selector
+    @objc internal init(routerKey: String, targetName: String?, selector: Selector?) {
+        self.isLoad = false
+        self.routerKey = routerKey
+        self.targetName = targetName
+        self.selector = selector
+        self.target = nil
+        self.targetActionBlock = nil
+        super.init()
+
+    }
 
     /// FZRouterModel
     ///
@@ -34,6 +48,7 @@ open class FZDefaultURLRouterModel: NSObject, FZRouterModelProtocol {
         self.target = target
         self.selector = selector
         self.targetActionBlock = targetActionBlock
+        self.isLoad = true
         super.init()
     }
 
@@ -42,6 +57,7 @@ open class FZDefaultURLRouterModel: NSObject, FZRouterModelProtocol {
         self.target = nil
         self.selector = nil
         self.targetActionBlock = nil
+        self.isLoad = true
         super.init()
     }
 

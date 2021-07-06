@@ -32,7 +32,7 @@ extension FZDefaultURLRouterManager: FZRouterManagerProtocol {
         }
     }
 
-    public func remove(WithRouterURL url: String) -> FZRouterModelProtocol? {
+    public func remove(withRouterURL url: String) -> FZRouterModelProtocol? {
         if let routerKey = FZDefaultURLRouterUtil.key(withRouterURL: url) {
             return routerMapper.removeValue(forKey: routerKey)
         }
@@ -43,7 +43,7 @@ extension FZDefaultURLRouterManager: FZRouterManagerProtocol {
         routerMapper.removeAll()
     }
 
-    public func router(WithRouterURL url: String) -> FZRouterModelProtocol? {
+    public func router(withRouterURL url: String) -> FZRouterModelProtocol? {
         if let routerKey = FZDefaultURLRouterUtil.key(withRouterURL: url) {
             return routerMapper[routerKey]
         }

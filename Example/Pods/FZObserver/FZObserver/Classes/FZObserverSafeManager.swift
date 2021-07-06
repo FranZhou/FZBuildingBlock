@@ -29,9 +29,9 @@ final class FZObserverSafeManager<T> {
             return true
         } else {
             // 获取所有观察者对象
-            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> [FZObservable[T]> in
+            guard let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObservable<T>> in
                 if let objArray = obj as? NSMutableArray,
-                    let observerArray = Array(objArray) as? [FZObservable[T]> {
+                    let observerArray = Array(objArray) as? Array<FZObservable<T>> {
                     return observerArray
                 }
                 return []
@@ -54,9 +54,9 @@ final class FZObserverSafeManager<T> {
             }
 
             // 获取所有观察者对象
-            let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> [FZObservable[T]> in
+            let allObservers = self.observerHolder.objectEnumerator()?.allObjects.flatMap({ (obj) -> Array<FZObservable<T>> in
                 if let objArray = obj as? NSMutableArray,
-                    let observerArray = Array(objArray) as? [FZObservable[T]> {
+                    let observerArray = Array(objArray) as? Array<FZObservable<T>> {
                     return observerArray
                 }
                 return []
@@ -82,7 +82,7 @@ final class FZObserverSafeManager<T> {
             }
 
             if let observerArrayForTarget = self.observerHolder.object(forKey: target),
-                let observerArray = observerArrayForTarget as? [FZObservable[T]> {
+                let observerArray = observerArrayForTarget as? Array<FZObservable<T>> {
 
                 // 移除同一target下相同key的观察者
                 observerArray.forEach { (_observer: FZObservable<T>) in
@@ -114,7 +114,7 @@ final class FZObserverSafeManager<T> {
             }
 
             if let observerArrayForTarget = self.observerHolder.object(forKey: target),
-                let observerArray = observerArrayForTarget as? [FZObservable[T]> {
+                let observerArray = observerArrayForTarget as? Array<FZObservable<T>> {
 
                 observerArray.forEach { (observer: FZObservable<T>) in
                     if observer.key == key {
@@ -137,8 +137,8 @@ final class FZObserverSafeManager<T> {
 
             self.observerHolder.keyEnumerator().allObjects.forEach { (obj) in
                 if let observerArrayForTarget = self.observerHolder.object(forKey: obj as AnyObject),
-                    let observerArray = observerArrayForTarget as? [FZObservable[T]> {
-
+                    let observerArray = observerArrayForTarget as? Array<FZObservable<T>> {
+                    
                     observerArray.forEach { (observer: FZObservable<T>) in
                         if observer.key == key {
                             observerArrayForTarget.remove(observer)

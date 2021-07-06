@@ -24,7 +24,7 @@ import Foundation
     /// - Parameter url: routerURL
     /// - Returns: FZRouterModelProtocol
     @discardableResult
-    @objc func remove(WithRouterURL url: String) -> FZRouterModelProtocol?
+    @objc func remove(withRouterURL url: String) -> FZRouterModelProtocol?
 
     /// remove all router
     @objc func removeAllRouter()
@@ -33,7 +33,7 @@ import Foundation
     ///
     /// - Parameter key: routerURL
     /// - Returns: FZRouterModelProtocol
-    @objc func router(WithRouterURL url: String) -> FZRouterModelProtocol?
+    @objc func router(withRouterURL url: String) -> FZRouterModelProtocol?
 
     /// get all router
     @objc func allRouters() -> [FZRouterModelProtocol]?
