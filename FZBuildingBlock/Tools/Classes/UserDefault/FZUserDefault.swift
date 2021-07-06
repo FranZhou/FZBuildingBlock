@@ -32,8 +32,8 @@ import Foundation
 @propertyWrapper
 public struct FZUserDefault<T> {
 
-    ///这里的属性key 和 defaultValue 还有init方法都是实际业务中的业务代码
-    ///我们不需要过多关注
+    /// 这里的属性key 和 defaultValue 还有init方法都是实际业务中的业务代码
+    /// 我们不需要过多关注
     let key: String
     let defaultValue: T
 

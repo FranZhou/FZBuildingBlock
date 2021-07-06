@@ -46,10 +46,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
-                row.cellHeight = { (tableView, indexPath) in
+                row.cellHeight = { (_, _) in
                     return 44
                 }
-                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                row.cellDidSelect = { [weak self](_, _) in
                     let vc = ImageViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -72,10 +72,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
-                row.cellHeight = { (tableView, indexPath) in
+                row.cellHeight = { (_, _) in
                     return 44
                 }
-                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                row.cellDidSelect = { [weak self](_, _) in
                     let vc = ObserverViewController.self()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -91,10 +91,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.self.classForCoder())
-                row.cellHeight = { (tableView, indexPath) in
+                row.cellHeight = { (_, _) in
                     return 44
                 }
-                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                row.cellDidSelect = { [weak self](_, _) in
                     let vc = KeyboardObserverViewController.self()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -110,10 +110,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
-                row.cellHeight = { (tableView, indexPath) in
+                row.cellHeight = { (_, _) in
                     return 44
                 }
-                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                row.cellDidSelect = { [weak self](_, _) in
                     let vc = ViewExtensionViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -129,10 +129,10 @@ class ViewController: UIViewController {
                 row.cellData = cellModel
                 row.identifier = FZTableViewCommonCell.reuseIdentifier()
                 row.cellClassName = NSStringFromClass(FZTableViewCommonCell.classForCoder())
-                row.cellHeight = { (tableView, indexPath) in
+                row.cellHeight = { (_, _) in
                     return 44
                 }
-                row.cellDidSelect = { [weak self](tableView, indexPath) in
+                row.cellDidSelect = { [weak self](_, _) in
                     let vc = AssociatedViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
                         clz is UITableViewCell.Type {
                         cell = (clz as! UITableViewCell.Type).init(style: .default, reuseIdentifier: rowData.identifier ?? cellClassName)
                     } else {
-                        if (FZTableViewCell.classForCoder() is UITableViewCell.Type) {
+                        if FZTableViewCell.classForCoder() is UITableViewCell.Type {
                             cell = (FZTableViewCell.classForCoder() as! UITableViewCell.Type).init(style: .default, reuseIdentifier: rowData.identifier ?? "FZTableViewCell")
                         }
                     }

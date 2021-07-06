@@ -9,7 +9,7 @@ import UIKit
 
 open class FZButton: UIButton {
 
-    private var btnEvents: Array<FZButtonEvent> = Array<FZButtonEvent>()
+    private var btnEvents: [FZButtonEvent] = [FZButtonEvent]()
 
     /// 并发队列，控制对btnEvents的安全访问
     private let queue = DispatchQueue(label: "com.fzbuildingblock.FZButtonSafeManagerQueue", attributes: .concurrent)

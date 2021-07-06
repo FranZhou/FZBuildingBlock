@@ -104,7 +104,7 @@ extension FZCaptchaView {
     /// 在多个数组里取随机数
     /// - Parameter pools: pools description
     /// - Returns: description
-    private func randomElementInPools<T>(pools: Array<Array<T>>) -> T? {
+    private func randomElementInPools<T>(pools: [[T]]) -> T? {
         for pool in pools {
             if let element = randomElement(in: pool) {
                 return element
@@ -127,7 +127,7 @@ extension FZCaptchaView {
     /// 取数组内的随机位置
     /// - Parameter array: array description
     /// - Returns: description
-    private func randomElement<T>(in array: Array<T>) -> T? {
+    private func randomElement<T>(in array: [T]) -> T? {
         if array.count > 0 {
             let count = array.count
             let index = Int(arc4random()) % count

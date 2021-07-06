@@ -44,8 +44,8 @@ public struct IFAddressTool {
 
                     // Convert interface address to a human readable string:
                     var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                    if (getnameinfo(ptr.pointee.ifa_addr, socklen_t(addr.sa_len), &hostname, socklen_t(hostname.count),
-                                    nil, socklen_t(0), NI_NUMERICHOST) == 0) {
+                    if getnameinfo(ptr.pointee.ifa_addr, socklen_t(addr.sa_len), &hostname, socklen_t(hostname.count),
+                                    nil, socklen_t(0), NI_NUMERICHOST) == 0 {
                         let name = String(validatingUTF8: ptr.pointee.ifa_name) ?? ""
                         let address = String(cString: hostname)
                         addresses.append((ifaName: name, address: address))

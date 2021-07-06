@@ -59,28 +59,28 @@ extension AssociatedViewController {
         print("==========")
 
         print("===== testIntProperty start =====")
-        print("\(testIntProperty)")
+        print("\(String(describing: testIntProperty))")
         testIntProperty = (testIntProperty ?? 0) + 1
-        print("\(testIntProperty)")
+        print("\(String(describing: testIntProperty))")
         print("===== testIntProperty end =====")
 
         print("===== testWeakProperty start =====")
-        var obj = self.object
-        print("\(testWeakProperty)")
+        let obj = self.object
+        print("\(String(describing: testWeakProperty))")
         testWeakProperty = obj
-        print("\(testWeakProperty)")
+        print("\(String(describing: testWeakProperty))")
         self.object = obj ?? NSObject()
         print("===== testWeakProperty end =====")
 
         print("===== testBlockProperty start =====")
-        print("\(testBlockProperty)")
+        print("\(String(describing: testBlockProperty))")
         testBlockProperty = { (str) in
             let res = "\(str) -->"
             print(res)
             return res
         }
-        print("\(testBlockProperty)")
-        let res = testBlockProperty?("H")
+        print("\(String(describing: testBlockProperty))")
+        _ = testBlockProperty?("H")
         print("===== testBlockProperty end =====")
 
         print("==========")

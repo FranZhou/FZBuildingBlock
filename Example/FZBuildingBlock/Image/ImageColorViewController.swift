@@ -69,6 +69,10 @@ class ImageColorViewController: UIViewController {
         print(self.view.fz.colorRGBA(atPoint: point)?.fz.rgbHexString() ?? "")
     }
 
+    deinit {
+        print("ImageColorViewController deinit")
+    }
+
     /*
     // MARK: - Navigation
 

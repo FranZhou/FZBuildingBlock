@@ -18,7 +18,7 @@ extension NSMutableAttributedString.fz {
         return self.mutableAttributedString(with: string, attributes: [attribute])
     }
 
-    ///便利创建方式
+    /// 便利创建方式
     ///
     /// - Parameters:
     ///   - string: 字符串

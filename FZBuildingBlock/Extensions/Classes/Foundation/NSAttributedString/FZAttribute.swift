@@ -56,7 +56,7 @@ public enum FZAttribute {
     case baselineOffset(CGFloat)
     case obliqueness(CGFloat)
     case expansion(CGFloat)
-    case writingDirection(Array<Int>)
+    case writingDirection([Int])
     case verticalGlyphForm(Int)
 
     var value: [NSAttributedString.Key: Any] {

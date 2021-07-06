@@ -19,9 +19,9 @@ public enum FZJSONModelError: Error {
 
 public let FZJSONEncoderSingeltonInstance: JSONEncoder = JSONEncoder()
 public let FZJSONDecoderSingeltonInstance: JSONDecoder = JSONDecoder()
- 
+
 public final class FZJSONModel<T: Codable> {
-    
+
 }
 
 // MARK: - model to dictionary

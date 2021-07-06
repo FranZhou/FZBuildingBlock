@@ -79,7 +79,7 @@ extension ThemeViewController {
             }
 
             btn.fz.add(event: .touchUpInside) { _ in
-                FZThemeManager.manager.switchCurrentTheme(to: .light)
+                FZThemeManager.manager.switchCurrentTheme(to: .dark)
             }
 
             self.view.addSubview(btn)

@@ -62,10 +62,8 @@ extension FZBuildingBlockWrapper where Base == Date {
     }
 }
 
+extension Date.fz {
 
-extension Date.fz{
-    
-    
     /// string转date
     /// - Parameters:
     ///   - dateString: dateString description
@@ -77,8 +75,7 @@ extension Date.fz{
         formatter.locale = locale
         return formatter.date(from: dateString)
     }
-    
-    
+
     public static func date(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0, identifier: Calendar.Identifier = Calendar.Identifier.gregorian) -> Date? {
         let gregorian = Calendar.init(identifier: Calendar.Identifier.gregorian)
 
@@ -89,8 +86,8 @@ extension Date.fz{
         components.setValue(hours, for: Calendar.Component.hour)
         components.setValue(minutes, for: Calendar.Component.minute)
         components.setValue(seconds, for: Calendar.Component.second)
-        
+
         return gregorian.date(from: components)
     }
-    
+
 }

@@ -28,8 +28,8 @@ public class FZThemeManager: NSObject {
     }
 
     /// 主题机缓存
-    private lazy var themeMachineCache: Dictionary<FZThemeStyle, (Bool, FZThemeMachineProtocol?)> = {
-        let dic = Dictionary<FZThemeStyle, (Bool, FZThemeMachineProtocol?)>()
+    private lazy var themeMachineCache: [FZThemeStyle: (Bool: FZThemeMachineProtocol?)] = {
+        let dic = [FZThemeStyle: (Bool: FZThemeMachineProtocol?)]()
         return dic
     }()
 
